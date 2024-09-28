@@ -177,7 +177,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.22
+  orthographic size: 2.69
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -655,6 +655,31 @@ MonoBehaviour:
   readyToMove: 0
   chargeDuration: 1
   chargeForce: 10
+  turnCurveVelocity:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  turnVelocity: 3
 --- !u!54 &919132148097758034
 Rigidbody:
   m_ObjectHideFlags: 0

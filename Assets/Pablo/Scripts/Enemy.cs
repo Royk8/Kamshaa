@@ -58,6 +58,8 @@ public class Enemy : MonoBehaviour
 
     public virtual void ChangeState(States s)
     {
+        states = s;
+
         switch (s)
         {
             case States.Idle:
@@ -72,7 +74,6 @@ public class Enemy : MonoBehaviour
             default:
                 break;
         }
-        states = s;
     }
 
     public virtual void IdleState()
