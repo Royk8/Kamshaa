@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class FPSLimiter : MonoBehaviour
 {
+    public int TargetFPS = 60;
     void Awake()
     {
-        Application.targetFrameRate = 600;
+        Application.targetFrameRate = TargetFPS;
     }
 
 

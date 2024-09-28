@@ -19,6 +19,8 @@ public class Movement : MonoBehaviour
 
     [Header("Jump")]
     public float jumpForce;
+    [Range(0f, 1f)]
+    public float minJumpForceMultiplier;
     public float maxJumpTime;
     public float jumpCooldown;
     public int extraJumps;
@@ -27,10 +29,12 @@ public class Movement : MonoBehaviour
     private float jumpStarted;
 
     [Header("Dash")]
+    [Range(1f, 10f)]
     public float DashSpeedMultiplier;
     public float DashTime;
 
     [Header("Others")]
+    [Range(0f, 10f)]
     public float gravityMultiplier;
     public float groundCheckRadius = 0.2f;
     public bool isGrounded;
@@ -87,7 +91,7 @@ public class Movement : MonoBehaviour
             {
                 isJumping = true;
                 jumpStarted = Time.time;
-                zVelocity = jumpForce * 0.5f * Time.deltaTime;
+                zVelocity = jumpForce * minJumpForceMultiplier;
                 if (!isGrounded) extraJumpsLeft--;
             }
         }
@@ -99,7 +103,8 @@ public class Movement : MonoBehaviour
 
         if (isJumping && (timeFlyingLeft > 0) && inputAdapter.GetJumpButton())
         {
-            zVelocity = jumpForce * Time.deltaTime;
+            zVelocity = Math.Clamp(zVelocity + jumpForce*Time.deltaTime, float.MinValue, jumpForce);
+            //zVelocity = jumpForce;
         }
 
         if (!isJumping && isGrounded)
