@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_SP Morion
+  m_Name: MUNDO
   m_Shader: {fileID: -6465566751694194690, guid: be3d4a11a2c1dc147b47b0bb3d4fe5a5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -42,7 +42,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Distorision: -10
-    - _Saturacion: 0
+    - _Saturacion: 1
     - _b: 0
     - _g: 0
     - _r: 0
