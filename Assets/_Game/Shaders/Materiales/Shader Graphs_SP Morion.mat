@@ -42,7 +42,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Distorision: -10
-    - _Saturacion: 0
+    - _Saturacion: 1
     - _b: 0
     - _g: 0
     - _r: 0
