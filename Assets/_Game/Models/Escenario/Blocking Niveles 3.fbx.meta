@@ -12,8 +12,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Fuego
+    second: {fileID: 2100000, guid: ce858cb013689d041aa88386745ae5a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material
     second: {fileID: 2100000, guid: 246b10d523ce90e48aacedfd2c1f58a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tierra
+    second: {fileID: 2100000, guid: 25daaf203d6cb3043b7f853a8b17f6a3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tierra.001
+    second: {fileID: 2100000, guid: caa4bb3b49b58e74a9f167c2afc5cabe, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
