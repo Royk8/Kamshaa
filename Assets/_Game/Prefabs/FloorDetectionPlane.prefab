@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7081010381956229847}
   - component: {fileID: 7081010381956229846}
   m_Layer: 0
-  m_Name: RedPlane
+  m_Name: FloorDetectionPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
