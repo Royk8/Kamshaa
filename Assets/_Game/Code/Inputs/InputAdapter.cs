@@ -48,7 +48,6 @@ public class InputAdapter : MonoBehaviour
         dashInput = _playerActionsMap.FindAction("Dash");
         test = _playerActionsMap.FindAction("Test");
         test.performed += Testing;
-        Debug.Log("Awake");
     }
 
     private void Testing(InputAction.CallbackContext context)

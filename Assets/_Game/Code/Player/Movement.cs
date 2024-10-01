@@ -5,7 +5,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class Movement : MonoBehaviour
 {
@@ -13,19 +12,20 @@ public class Movement : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
     public Transform playerModel;
+    public Transform headPosition;
     private AnimationsControl animationsControl;
+    public InputAdapter inputAdapter;
+    public Transform floorDetectorPlane;
 
     [Header("Movement")]
     public float moveSpeed;
-    public float maxSpeedTime;
-    public float inputThreshold;
+    public float timeToMaxSpeed;
+    public float inputThresholdToStartMoving;
     private float acceleration;
     private Vector2 moveVelocity;
 
     [Header("Jump")]
     public float jumpForce;
-    [Range(0f, 1f)]
-    public float minJumpForceMultiplier;
     public float maxJumpTime;
     public float jumpCooldown;
     public int extraJumps;
@@ -34,8 +34,6 @@ public class Movement : MonoBehaviour
     private float jumpStarted;
 
     [Header("Dash")]
-    [Range(1f, 10f)]
-    public float DashSpeedMultiplier;
     public float DashDistance;
     public float DashTime;
 
@@ -43,20 +41,17 @@ public class Movement : MonoBehaviour
     [Range(0f, 10f)]
     public float gravityMultiplier;
     public float groundCheckRadius = 0.2f;
-    public bool isGrounded;
+    private bool isGrounded;
     private float gravity = -9.8f;
-    public InputAdapter inputAdapter;
-    public Transform floorDetectorPlane;
-    private Vector3 redPlaneNormal;
+    private Vector3 floorPlaneNormal;
     private Vector3 moveVelocity3;
-    public Transform headPosition;
     private IEnumerator jumpCoroutine;
     private Vector3 lookDirection;
 
     private void Start()
     {
         inputAdapter = GetComponent<InputAdapter>();
-        acceleration = moveSpeed / maxSpeedTime;
+        acceleration = moveSpeed / timeToMaxSpeed;
         inputAdapter.OnJumpDown += StartJumpSimple;
         inputAdapter.OnJumpUp += StopJump;
         inputAdapter.OnDash += Dash;
