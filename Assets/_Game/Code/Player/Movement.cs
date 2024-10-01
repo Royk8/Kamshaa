@@ -71,34 +71,75 @@ public class Movement : MonoBehaviour
         DetectSurface();
         FloatOnTheFloor();
     }
-
+    [Header("Walking direction")]
     public Vector3 rightRotation = new Vector3(-40, -60, -45);
     public Vector3 leftRotation = new Vector3(-40, 60, 45);
     public Vector3 upRotation = new Vector3(-60, -180, 0);
     public Vector3 downRotation = new Vector3(0, 0, 0);
+    public Vector3 upRightRotation = new Vector3(-40, -60, -45);
+    public Vector3 uPLeftRotation = new Vector3(-40, 60, 45);
+    public Vector3 downRightRotation = new Vector3(-60, -180, 0);
+    public Vector3 downLeftRotation = new Vector3(0, 0, 0);
+
+    public Vector3 GetDirection(Vector2 input)
+    {
+        // Get the angle in degrees (0 to 360)
+        float angle = Mathf.Atan2(input.y, input.x) * Mathf.Rad2Deg;
+
+        // Normalize the angle to be in the range of 0 to 360
+        if (angle < 0)
+            angle += 360;
+
+        // Categorize the angle into 8 directions
+        if (angle >= 337.5f || angle < 22.5f)
+        {
+            return rightRotation;
+            //return "Right";
+        }
+        else if (angle >= 22.5f && angle < 67.5f)
+        {
+            return upRightRotation;
+            //return "Up-Right";
+        }
+        else if (angle >= 67.5f && angle < 112.5f)
+        {
+            return upRotation;
+            //return "Up";
+        }
+        else if (angle >= 112.5f && angle < 157.5f)
+        {
+            return uPLeftRotation;
+            //return "Up-Left";
+        }
+        else if (angle >= 157.5f && angle < 202.5f)
+        {
+            return leftRotation;
+            //return "Left";
+        }
+        else if (angle >= 202.5f && angle < 247.5f)
+        {
+            return downLeftRotation;
+            //return "Down-Left";
+        }
+        else if (angle >= 247.5f && angle < 292.5f)
+        {
+            return downRotation;
+            //return "Down";
+        }
+        else if (angle >= 292.5f && angle < 337.5f)
+        {
+            return downRightRotation;
+            //return "Down-Right";
+        }
+
+        return downRotation;
+    }
 
     private void RotateToLookDirection()
     {
         Vector2 moveInput = inputAdapter.GetMovement();
 
-        Vector3 targetRotation = Vector3.zero;
-
-        if (moveInput.x > 0)      // Right
-        {
-            targetRotation = rightRotation;
-        }
-        else if (moveInput.x < 0) // Left
-        {
-            targetRotation = leftRotation;
-        }
-        else if (moveInput.y > 0)   // Up
-        {
-            targetRotation = upRotation;
-        }
-        else if (moveInput.y < 0)   // Down
-        {
-            targetRotation = downRotation;
-        }
+        Vector3 targetRotation = GetDirection(moveInput);
 
         // Smoothly rotate the character towards the target rotation if there's movement input
         if (moveInput.x != 0 || moveInput.y != 0)
