@@ -5,12 +5,15 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class Movement : MonoBehaviour
 {
     [Header("Reeferences")]
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public Transform playerModel;
+    private AnimationsControl animationsControl;
 
     [Header("Movement")]
     public float moveSpeed;
@@ -58,12 +61,14 @@ public class Movement : MonoBehaviour
         inputAdapter.OnJumpUp += StopJump;
         inputAdapter.OnDash += Dash;
         inputAdapter.ToggleInputs(true);
+        animationsControl = GetComponent<AnimationsControl>();
     }
 
     private void Update()
     {
         CheckGround();
         UpdateLookDirection();
+        RotateToLookDirection();
         Move();
         Jumping();
         HandleGravity();
@@ -72,9 +77,46 @@ public class Movement : MonoBehaviour
         FloatOnTheFloor();
     }
 
+    public Vector3 rightRotation = new Vector3(-40, -60, -45);
+    public Vector3 leftRotation = new Vector3(-40, 60, 45);
+    public Vector3 upRotation = new Vector3(-60, -180, 0);
+    public Vector3 downRotation = new Vector3(0, 0, 0);
+
+    private void RotateToLookDirection()
+    {
+        Vector2 moveInput = inputAdapter.GetMovement();
+
+        Vector3 targetRotation = Vector3.zero;
+
+        if (moveInput.x > 0)      // Right
+        {
+            targetRotation = rightRotation;
+        }
+        else if (moveInput.x < 0) // Left
+        {
+            targetRotation = leftRotation;
+        }
+        else if (moveInput.y > 0)   // Up
+        {
+            targetRotation = upRotation;
+        }
+        else if (moveInput.y < 0)   // Down
+        {
+            targetRotation = downRotation;
+        }
+
+        // Smoothly rotate the character towards the target rotation if there's movement input
+        if (moveInput.x != 0 || moveInput.y != 0)
+        {
+            Quaternion targetQuaternion = Quaternion.Euler(targetRotation);
+            playerModel.rotation = Quaternion.Slerp(playerModel.rotation, targetQuaternion, 90f * Time.deltaTime);
+        }
+    }
+
     private void CheckGround()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
+        animationsControl.CambiarEnPiso(isGrounded);
     }
 
     private void HandleGravity()
@@ -100,8 +142,10 @@ public class Movement : MonoBehaviour
             if (Time.time > (jumpStarted + jumpCooldown))
             {
                 jumpStarted = Time.time;
-                if (!isGrounded) { 
+                if (!isGrounded)
+                {
                     extraJumpsLeft--;
+                    animationsControl?.DobleSalto();
                     isJumping = false;
                     StopCoroutine(jumpCoroutine);
                 }
@@ -195,10 +239,8 @@ public class Movement : MonoBehaviour
     private void Dash(InputAction.CallbackContext context)
     {
         Vector2 moveInput = inputAdapter.GetMovement();
-        if (moveInput != Vector2.zero)
-        {
-            StartCoroutine(DashExecuter(moveInput));
-        }
+        StartCoroutine(DashExecuter());
+
     }
 
     public void MoveExecuter()
@@ -207,7 +249,7 @@ public class Movement : MonoBehaviour
         transform.Translate(direction * Time.deltaTime);
     }
 
-    public IEnumerator DashExecuter(Vector2 direction)
+    public IEnumerator DashExecuter()
     {
         if (!isDashing)
         {
@@ -218,7 +260,7 @@ public class Movement : MonoBehaviour
 
             while (Time.time < (startTime + DashTime))
             {
-                Vector3 thisFramePosition = Vector3.Lerp(transform.position, dashFinalPosition, Time.deltaTime/DashTime);
+                Vector3 thisFramePosition = Vector3.Lerp(transform.position, dashFinalPosition, Time.deltaTime / DashTime);
                 Vector3 thisFrameDirection = thisFramePosition - transform.position;
                 thisFrameDirection = VerifyPlaneOfMovement(new Vector2(thisFrameDirection.x, thisFrameDirection.z));
                 transform.Translate(thisFrameDirection);
@@ -295,7 +337,7 @@ public class Movement : MonoBehaviour
             Debug.Log("User Input: " + inputAdapter.GetMovement());
             Debug.Log("Is Jump Pressed: " + inputAdapter.GetJumpButton());
             StopPlay();
-            
+
         }
         lastFramePosition = transform.position;
     }

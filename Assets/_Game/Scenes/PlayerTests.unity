@@ -8999,6 +8999,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6137111976235571160, guid: 8813d73309031cc49863de674c808123, type: 3}
   m_PrefabInstance: {fileID: 2137842295}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &614676243408395470 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2579016717068830856, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
+  m_PrefabInstance: {fileID: 8393208088058541881}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6002850257643531869
 GameObject:
   m_ObjectHideFlags: 0
@@ -9168,9 +9173,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2579016717068830856, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2579016717068830856, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.52
+      objectReference: {fileID: 0}
     - target: {fileID: 6428577061434168102, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 87.4
+      value: 81.41
       objectReference: {fileID: 0}
     - target: {fileID: 6428577061434168102, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9208,6 +9221,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9017193530443090786, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017193530443090786, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017193530443090786, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039992414470757265, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
+      propertyPath: playerModel
+      value: 
+      objectReference: {fileID: 614676243408395470}
     - target: {fileID: 9039992414470757265, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
       propertyPath: DashDistance
       value: 10
