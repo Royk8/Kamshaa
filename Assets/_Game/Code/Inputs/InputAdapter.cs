@@ -66,7 +66,7 @@ public class InputAdapter : MonoBehaviour
     public void ToggleInputs(bool toggle)
     {
         isInputActive = toggle;
-        Debug.Log($"{(toggle ? "A" : "Dea")}ctivating the inputs");
+        //Debug.Log($"{(toggle ? "A" : "Dea")}ctivating the inputs");
 
         if(toggle)
         {

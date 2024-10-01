@@ -33,6 +33,7 @@ public class Movement : MonoBehaviour
     [Header("Dash")]
     [Range(1f, 10f)]
     public float DashSpeedMultiplier;
+    public float DashDistance;
     public float DashTime;
 
     [Header("Others")]
@@ -47,6 +48,7 @@ public class Movement : MonoBehaviour
     private Vector3 moveVelocity3;
     public Transform headPosition;
     private IEnumerator jumpCoroutine;
+    private Vector3 lookDirection;
 
     private void Start()
     {
@@ -61,6 +63,7 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         CheckGround();
+        UpdateLookDirection();
         Move();
         Jumping();
         HandleGravity();
@@ -210,13 +213,15 @@ public class Movement : MonoBehaviour
         {
             isDashing = true;
             inputAdapter.ToggleInputs(false);
+            Vector3 dashFinalPosition = transform.position + lookDirection * DashDistance;
             float startTime = Time.time;
-            Vector2 dashVelocity = direction * moveSpeed * DashSpeedMultiplier * Time.deltaTime;
 
             while (Time.time < (startTime + DashTime))
             {
-                moveVelocity = VerifyPlaneOfMovement(dashVelocity);
-                transform.Translate(moveVelocity.x, 0, moveVelocity.y);
+                Vector3 thisFramePosition = Vector3.Lerp(transform.position, dashFinalPosition, Time.deltaTime/DashTime);
+                Vector3 thisFrameDirection = thisFramePosition - transform.position;
+                thisFrameDirection = VerifyPlaneOfMovement(new Vector2(thisFrameDirection.x, thisFrameDirection.z));
+                transform.Translate(thisFrameDirection);
                 yield return null;
             }
             isDashing = false;
@@ -261,6 +266,16 @@ public class Movement : MonoBehaviour
             {
                 break;
             }
+        }
+    }
+
+    public void UpdateLookDirection()
+    {
+        Vector2 inputDirection2D = inputAdapter.GetMovement();
+        Vector3 newInputDirection = new Vector3(inputDirection2D.x, 0, inputDirection2D.y).normalized;
+        if (newInputDirection != Vector3.zero)
+        {
+            lookDirection = newInputDirection;
         }
     }
 
