@@ -56,27 +56,28 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   playerModel: {fileID: 2579016717068830856}
+  headPosition: {fileID: 1310862752596650323}
+  inputAdapter: {fileID: 1350956863114062409}
+  floorDetectorPlane: {fileID: 0}
   moveSpeed: 5
-  maxSpeedTime: 0.1
-  inputThreshold: 0.1
+  timeToMaxSpeed: 0.1
+  inputThresholdToStartMoving: 0.1
   jumpForce: 6
-  minJumpForceMultiplier: 0.3
   maxJumpTime: 0.2
   jumpCooldown: 0.2
   extraJumps: 1
-  DashSpeedMultiplier: 5
   DashDistance: 10
   DashTime: 0.1
   gravityMultiplier: 3
   groundCheckRadius: 0.2
-  isGrounded: 0
-  inputAdapter: {fileID: 1350956863114062409}
-  floorDetectorPlane: {fileID: 0}
-  headPosition: {fileID: 1310862752596650323}
   rightRotation: {x: -40, y: -60, z: -45}
   leftRotation: {x: -40, y: 60, z: 45}
   upRotation: {x: -60, y: -180, z: 0}
   downRotation: {x: 0, y: 0, z: 0}
+  upRightRotation: {x: -40, y: -145, z: 0}
+  uPLeftRotation: {x: 240, y: -45, z: 210}
+  downRightRotation: {x: -35, y: -35, z: 0}
+  downLeftRotation: {x: -35, y: 27, z: 0}
 --- !u!114 &1350956863114062409
 MonoBehaviour:
   m_ObjectHideFlags: 0
