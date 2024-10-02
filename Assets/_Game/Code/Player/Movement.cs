@@ -34,8 +34,10 @@ public class Movement : MonoBehaviour
     private float jumpStarted;
 
     [Header("Dash")]
-    public float DashDistance;
-    public float DashTime;
+    public float dashDistance;
+    public float dashTime;
+    public float dashCooldown;
+    private float dashStarted;
 
     [Header("Others")]
     [Range(0f, 10f)]
@@ -55,6 +57,7 @@ public class Movement : MonoBehaviour
         inputAdapter.OnJumpDown += StartJumpSimple;
         inputAdapter.OnJumpUp += StopJump;
         inputAdapter.OnDash += Dash;
+        inputAdapter.OnShoot += Shoot;
         inputAdapter.ToggleInputs(true);
         animationsControl = GetComponent<AnimationsControl>();
     }
@@ -275,8 +278,8 @@ public class Movement : MonoBehaviour
     private void Dash(InputAction.CallbackContext context)
     {
         Vector2 moveInput = inputAdapter.GetMovement();
-        StartCoroutine(DashExecuter());
-
+        if(isGrounded)
+            StartCoroutine(DashExecuter());
     }
 
     public void MoveExecuter()
@@ -287,16 +290,18 @@ public class Movement : MonoBehaviour
 
     public IEnumerator DashExecuter()
     {
-        if (!isDashing)
+        if (!isDashing && Time.time > (dashStarted + dashCooldown))
         {
+            animationsControl.Dash();
             isDashing = true;
+            dashStarted = Time.time;
             inputAdapter.ToggleInputs(false);
-            Vector3 dashFinalPosition = transform.position + lookDirection * DashDistance;
+            Vector3 dashFinalPosition = transform.position + lookDirection * dashDistance;
             float startTime = Time.time;
 
-            while (Time.time < (startTime + DashTime))
+            while (Time.time < (startTime + dashTime))
             {
-                Vector3 thisFramePosition = Vector3.Lerp(transform.position, dashFinalPosition, Time.deltaTime / DashTime);
+                Vector3 thisFramePosition = Vector3.Lerp(transform.position, dashFinalPosition, Time.deltaTime / dashTime);
                 Vector3 thisFrameDirection = thisFramePosition - transform.position;
                 thisFrameDirection = VerifyPlaneOfMovement(new Vector2(thisFrameDirection.x, thisFrameDirection.z));
                 transform.Translate(thisFrameDirection);
@@ -305,6 +310,11 @@ public class Movement : MonoBehaviour
             isDashing = false;
             inputAdapter.ToggleInputs(true);
         }
+    }
+
+    public void Shoot(InputAction.CallbackContext context)
+    {
+        animationsControl.Disparar();
     }
 
 
