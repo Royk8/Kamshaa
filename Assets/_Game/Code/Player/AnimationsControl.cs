@@ -8,6 +8,7 @@ public class AnimationsControl : MonoBehaviour
     [SerializeField]
     private bool enPiso;
     public bool autoCalcularVelocidad;
+    public VFXControlPersonaje vfx;
 
     Vector3 bPos;
 
@@ -37,6 +38,10 @@ public class AnimationsControl : MonoBehaviour
 	public void Dash()
 	{
         animator.SetTrigger("dash");
+		if (vfx!=null)
+		{
+            vfx.Dash();
+		}
     }
     public void DobleSalto()
     {
