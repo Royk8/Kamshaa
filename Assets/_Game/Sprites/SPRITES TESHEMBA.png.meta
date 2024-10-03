@@ -1,0 +1,576 @@
+fileFormatVersion: 2
+guid: 99cd9c9da45029f42a05c9b928c912ff
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SPRITES TESHEMBA_0
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 609
+        width: 140
+        height: 1255
+      alignment: 9
+      pivot: {x: 0.31672466, y: 0.97607976}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1fc0999399e8284e833ab67571eca4d
+      internalID: -1738278868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPRITES TESHEMBA_1
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 609
+        width: 141
+        height: 1255
+      alignment: 9
+      pivot: {x: 0.29202768, y: 0.97607976}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2206c39aab16794f8e5be1cc4925b9b
+      internalID: -1854975241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPRITES TESHEMBA_7
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 1416
+        width: 347
+        height: 519
+      alignment: 9
+      pivot: {x: 0.5422539, y: 0.062115207}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47577c61918919e4ea93c55d37175828
+      internalID: 531183992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPRITES TESHEMBA_8
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 1416
+        width: 541
+        height: 560
+      alignment: 9
+      pivot: {x: 0.53387755, y: 0.04835554}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44a737800a5b77b4e9f8213868b4513a
+      internalID: -607739116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPRITES TESHEMBA_32
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 1237
+        width: 296
+        height: 144
+      alignment: 9
+      pivot: {x: 0.51238394, y: 0.09272003}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb3a68452cda05243be98e6bb19cbeb6
+      internalID: -1509013703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPRITES TESHEMBA_39
+      rect:
+        serializedVersion: 2
+        x: 987
+        y: 990
+        width: 308
+        height: 327
+      alignment: 9
+      pivot: {x: 0.4642972, y: 0.09645664}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35dff6a6c1436a94793aff7f6a646e63
+      internalID: -727884546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPRITES TESHEMBA_40
+      rect:
+        serializedVersion: 2
+        x: 1419
+        y: 696
+        width: 546
+        height: 578
+      alignment: 9
+      pivot: {x: 0.9095184, y: 0.06242059}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbd8cde3866dbee44b1257dc1051c128
+      internalID: 913045364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPRITES TESHEMBA_51
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 958
+        width: 204
+        height: 131
+      alignment: 9
+      pivot: {x: 0.57187337, y: 0.22018969}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1199651433d6e0499bfd96627bcc134
+      internalID: 347260936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPRITES TESHEMBA_59
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 557
+        width: 114
+        height: 277
+      alignment: 9
+      pivot: {x: 0.43569303, y: 0.9763858}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28807efcdadd8e7499c93f941bbb93d3
+      internalID: 740398363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPRITES TESHEMBA_60
+      rect:
+        serializedVersion: 2
+        x: 1046
+        y: 683
+        width: 250
+        height: 214
+      alignment: 9
+      pivot: {x: 0.50000095, y: 0.0032705145}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 056c448d48ef11543907c2c242603a88
+      internalID: -1228534129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPRITES TESHEMBA_61
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 131
+        width: 314
+        height: 338
+      alignment: 9
+      pivot: {x: 0.5233476, y: 0.0662106}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d726758aa84180c4caeab588b7a1c377
+      internalID: 197429412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPRITES TESHEMBA_62
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 450
+        width: 180
+        height: 158
+      alignment: 9
+      pivot: {x: 0.5000014, y: 0.10560878}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b4ad10022f57dd4d9d248323638aeb7
+      internalID: -580798350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPRITES TESHEMBA_63
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 70
+        width: 373
+        height: 538
+      alignment: 9
+      pivot: {x: 0.5196549, y: 0.03670011}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 084ed6dd38317b84d8449f3b10ef5f35
+      internalID: 891544611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPRITES TESHEMBA_64
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 131
+        width: 114
+        height: 277
+      alignment: 9
+      pivot: {x: 0.3392318, y: 0.9499191}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0df334c5a51cbec4eb0acd660b3291da
+      internalID: -1246266244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPRITES TESHEMBA_65
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 131
+        width: 209
+        height: 208
+      alignment: 9
+      pivot: {x: 0.41230854, y: 0.11230116}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c74cb8ad303a9249a53022c64adc3b7
+      internalID: 136993757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPRITES TESHEMBA_2
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 1694
+        width: 252
+        height: 195
+      alignment: 9
+      pivot: {x: 0.44181725, y: 0.12404973}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd4b1d65f8c7992489354f2a511e4211
+      internalID: 231032902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPRITES TESHEMBA_3
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 1416
+        width: 238
+        height: 197
+      alignment: 9
+      pivot: {x: 0.50000024, y: 0.16507997}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8047a607807dbe5449b284b173561a9a
+      internalID: -628694317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: dd0269332ab494146a1a0d7abe59b84a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      SPRITES TESHEMBA_0: -1738278868
+      SPRITES TESHEMBA_1: -1854975241
+      SPRITES TESHEMBA_10: 1718763274
+      SPRITES TESHEMBA_11: -1006610879
+      SPRITES TESHEMBA_12: -616246053
+      SPRITES TESHEMBA_13: 169926419
+      SPRITES TESHEMBA_14: -1082924724
+      SPRITES TESHEMBA_15: -1648691570
+      SPRITES TESHEMBA_16: -1520910398
+      SPRITES TESHEMBA_17: -2042909339
+      SPRITES TESHEMBA_18: -238302137
+      SPRITES TESHEMBA_19: 1648792023
+      SPRITES TESHEMBA_2: 231032902
+      SPRITES TESHEMBA_20: -1649283627
+      SPRITES TESHEMBA_21: -2051477920
+      SPRITES TESHEMBA_22: 1077373573
+      SPRITES TESHEMBA_23: -1472280486
+      SPRITES TESHEMBA_24: -2146691618
+      SPRITES TESHEMBA_25: -894158519
+      SPRITES TESHEMBA_26: -1489547009
+      SPRITES TESHEMBA_27: 878469211
+      SPRITES TESHEMBA_28: -1551205906
+      SPRITES TESHEMBA_29: 607433130
+      SPRITES TESHEMBA_3: -628694317
+      SPRITES TESHEMBA_30: 1846713020
+      SPRITES TESHEMBA_31: -127219760
+      SPRITES TESHEMBA_32: -1509013703
+      SPRITES TESHEMBA_33: 835515788
+      SPRITES TESHEMBA_34: -1307424715
+      SPRITES TESHEMBA_35: -1988862257
+      SPRITES TESHEMBA_36: -475496406
+      SPRITES TESHEMBA_37: -467200134
+      SPRITES TESHEMBA_38: -129192289
+      SPRITES TESHEMBA_39: -727884546
+      SPRITES TESHEMBA_4: 2095264502
+      SPRITES TESHEMBA_40: 913045364
+      SPRITES TESHEMBA_41: -771317897
+      SPRITES TESHEMBA_42: -547775902
+      SPRITES TESHEMBA_43: 1412859648
+      SPRITES TESHEMBA_44: -1739527280
+      SPRITES TESHEMBA_45: -127836903
+      SPRITES TESHEMBA_46: 770187523
+      SPRITES TESHEMBA_47: 318530823
+      SPRITES TESHEMBA_48: -863646342
+      SPRITES TESHEMBA_49: 577161722
+      SPRITES TESHEMBA_5: -1350592295
+      SPRITES TESHEMBA_50: 1063090065
+      SPRITES TESHEMBA_51: 347260936
+      SPRITES TESHEMBA_52: 185142299
+      SPRITES TESHEMBA_53: 1663604966
+      SPRITES TESHEMBA_54: -928492115
+      SPRITES TESHEMBA_55: -81024991
+      SPRITES TESHEMBA_56: -783012015
+      SPRITES TESHEMBA_57: -230642462
+      SPRITES TESHEMBA_58: 935729701
+      SPRITES TESHEMBA_59: 740398363
+      SPRITES TESHEMBA_6: -1425157427
+      SPRITES TESHEMBA_60: -1228534129
+      SPRITES TESHEMBA_61: 197429412
+      SPRITES TESHEMBA_62: -580798350
+      SPRITES TESHEMBA_63: 891544611
+      SPRITES TESHEMBA_64: -1246266244
+      SPRITES TESHEMBA_65: 136993757
+      SPRITES TESHEMBA_7: 531183992
+      SPRITES TESHEMBA_8: -607739116
+      SPRITES TESHEMBA_9: -751836611
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

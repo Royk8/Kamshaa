@@ -48,7 +48,6 @@ public class InputAdapter : MonoBehaviour
         dashInput = _playerActionsMap.FindAction("Dash");
         test = _playerActionsMap.FindAction("Test");
         test.performed += Testing;
-        Debug.Log("Awake");
     }
 
     private void Testing(InputAction.CallbackContext context)
@@ -66,7 +65,7 @@ public class InputAdapter : MonoBehaviour
     public void ToggleInputs(bool toggle)
     {
         isInputActive = toggle;
-        Debug.Log($"{(toggle ? "A" : "Dea")}ctivating the inputs");
+        //Debug.Log($"{(toggle ? "A" : "Dea")}ctivating the inputs");
 
         if(toggle)
         {
