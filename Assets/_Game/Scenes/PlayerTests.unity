@@ -9168,10 +9168,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3153554831117848856, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6428577061434168102, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 81.41
@@ -9211,22 +9207,6 @@ PrefabInstance:
     - target: {fileID: 6428577061434168102, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9039992414470757265, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
-      propertyPath: DashTime
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9039992414470757265, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
-      propertyPath: dashTime
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9039992414470757265, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
-      propertyPath: dashCooldown
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9039992414470757265, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
-      propertyPath: dashDistance
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9039992414470757265, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
       propertyPath: floorDetectorPlane
