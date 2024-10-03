@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 74d7ed606ac94d9439e15388cc98936a
+guid: 3d6ccc6ab5b0bf04bb01587edf60bd56
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,28 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Agua
-    second: {fileID: 2100000, guid: a0b72c25f54af94498a5d9ced747295e, type: 2}
+      name: Beetle#1_2k
+    second: {fileID: 2100000, guid: 4d7782d727c297d4299445f12a570fe7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Fuego
-    second: {fileID: 2100000, guid: ce858cb013689d041aa88386745ae5a2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 246b10d523ce90e48aacedfd2c1f58a9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Tierra
-    second: {fileID: 2100000, guid: 25daaf203d6cb3043b7f853a8b17f6a3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Tierra.001
-    second: {fileID: 2100000, guid: caa4bb3b49b58e74a9f167c2afc5cabe, type: 2}
+      name: Leafs
+    second: {fileID: 2100000, guid: cb004a94cedb9b849bd3416fab9dad21, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -60,9 +45,9 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.9
+    globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1
@@ -115,7 +100,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.009
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

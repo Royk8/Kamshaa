@@ -22,11 +22,15 @@ public class AnimationsControl : MonoBehaviour
 
     IEnumerator RecalcularMovimiento()
 	{
+        Vector3 aPos;
 		while (autoCalcularVelocidad)
 		{
             yield return new WaitForSeconds(0.2f);
-            CambiarVelocidad((transform.position - bPos).sqrMagnitude);
+            aPos = transform.position;
+            aPos.y = 0;
+            CambiarVelocidad((aPos - bPos).sqrMagnitude);
             bPos = transform.position;
+            bPos.y = 0;
 		}
 	}
 
