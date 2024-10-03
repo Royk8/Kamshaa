@@ -1,5 +1,4 @@
 using Giloc.Attacks;
-using Giloc.Enums;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,25 +9,31 @@ namespace Giloc.Enemies
     {
         #region properties
         [SerializeField] private List<Cannon> cannons;
-        private Transform playerTransform;
         #endregion
 
         #region unityMethods
+        private void OnEnable()
+        {
+            colliderDecteter.onPlayerDetected += StartChasing;
+            colliderDecteter.onPlayerExit += StartIdle;
+            enemyMovement.OnPlayerReached += AllowAttack;
+        }
+
         private void Start()
         {
-            colliderDecteter.onPlayerDetected += AssignPlayerTransform;
-            colliderDecteter.onPlayerExit += IdleMove;
+            secondsSinceLastAttack = minTimeBetweenAttacks;
         }
+
         private void Update()
         {
             WaitNextAttack();
-            ChasingMove();
         }
 
         private void OnDisable()
         {
-            colliderDecteter.onPlayerDetected -= AssignPlayerTransform;
-            colliderDecteter.onPlayerExit -= IdleMove;
+            colliderDecteter.onPlayerDetected -= StartChasing;
+            colliderDecteter.onPlayerExit -= StartIdle;
+            enemyMovement.OnPlayerReached -= AllowAttack;
         }
         #endregion
 
@@ -47,48 +52,56 @@ namespace Giloc.Enemies
             }
             secondsSinceLastAttack = 0;
             preparingAttack = false;
+            enemyMovement.ResumeChasing();
         }
 
         protected override void CancelAttack()
         {
             attackCanceled = true;
+            preparingAttack = false;
         }
 
-        protected override void IdleMove()
+        private void StartChasing(Transform transform)
         {
-            playerTransform = null;
+            ResetAttackStoppers();
+            enemyMovement.StartChasing(transform, attackDistance);
         }
 
-        protected override void ChasingMove()
+        private void StartIdle()
         {
-            if (!playerTransform || preparingAttack) return;
-            var direction = (playerTransform.position - transform.position).normalized;
-            if(Vector3.Distance(transform.position, playerTransform.position) > attackDistance)
-            {
-                transform.Translate(chasingSpeed * Time.deltaTime * direction);
-            }
+            playerReached = false;
+            secondsSinceLastAttack = minTimeBetweenAttacks;
+            CancelAttack();
+            enemyMovement.StartIdle();
         }
 
         protected override IEnumerator PrepareAttack()
         {
             yield return new WaitForSeconds(attackPreparationTime);
             if(!attackCanceled) Attack();
+            else ResetAttackStoppers();
         }
 
         protected override void WaitNextAttack()
         {
-            if (preparingAttack) return;
+            if (preparingAttack || !playerReached) return;
             secondsSinceLastAttack += Time.deltaTime;
-            if (secondsSinceLastAttack > minTimeBetweenAttacks && !preparingAttack)
+            if (secondsSinceLastAttack > minTimeBetweenAttacks)
             {
                 StartCoroutine(PrepareAttack());
                 preparingAttack = true;
             }
         }
 
-        private void AssignPlayerTransform(Transform playerTransformDetected)
+        private void AllowAttack()
         {
-            playerTransform = playerTransformDetected;
+            playerReached = true;
+        }
+
+        private void ResetAttackStoppers()
+        {
+            preparingAttack = false;
+            attackCanceled = false;
         }
         #endregion
     }
