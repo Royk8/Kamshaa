@@ -103,7 +103,7 @@ public class Cucarron : Enemy, IEnemy
     {
         base.IdleState();
         if (buried) return;
-        if ((transform.position - initalPosition).magnitude < 0.05f)
+        if ((transform.position - initalPosition).magnitude < 0.7f)
         {
             readyToMove = false;
             anim.SetBool("IsMoving", false);
