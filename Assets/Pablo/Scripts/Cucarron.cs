@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
-using UnityEngine.TextCore.LowLevel;
 
-[RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(NavMeshAgent))]
 public class Cucarron : Enemy, IEnemy
 {
     public NavMeshAgent agent;
     public Animator anim;
-    public Rigidbody rb;
     public AnimationClip movementClip;
     public bool readyToMove = true;
     public float chargeDuration;
@@ -64,11 +61,6 @@ public class Cucarron : Enemy, IEnemy
     {
         isAttacking = true;
         float normalVelocity = agent.speed;
-        /*Quaternion tempInitRotation = transform.rotation;
-        transform.LookAt(target, Vector3.up);
-        Quaternion tempRotation = transform.rotation;
-        transform.rotation = tempInitRotation;*/
-
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
         alreadyTurned = false;
@@ -131,13 +123,19 @@ public class Cucarron : Enemy, IEnemy
         readyToMove = true;
     }
 
-    public void GetStuned()
+    public IEnumerator GetStuned(float timeStuned)
     {
-
+        agent.isStopped = true;
+        yield return new WaitForSeconds(timeStuned);
+        agent.isStopped = false;
     }
 
-    public void ReceiveDamage()
+    public void ReceiveDamage(int damageDealed)
     {
-
+        life -= damageDealed;
+        if (life <= 0)
+        {
+            ChangeState(States.Dead);
+        }
     }
 }
