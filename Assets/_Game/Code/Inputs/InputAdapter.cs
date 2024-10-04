@@ -13,16 +13,23 @@ public class InputAdapter : MonoBehaviour
     private InputAction jumpInputUp;
     private InputAction jumpInputDown;
     private InputAction dashInput;
+    private InputAction shootInput;
     private InputAction test;
 
 
     public event Action<InputAction.CallbackContext> OnDash;
+    public event Action<InputAction.CallbackContext> OnShoot;
     public event Action<InputAction.CallbackContext> OnJumpUp;
     public event Action<InputAction.CallbackContext> OnJumpDown;
 
     private void HandleOnDash(InputAction.CallbackContext context)
     {
         if(OnDash != null) OnDash.Invoke(context);
+    }    
+    
+    private void HandleOnShoot(InputAction.CallbackContext context)
+    {
+        if(OnShoot != null) OnShoot.Invoke(context);
     }
 
     private void HandleOnJumpUp(InputAction.CallbackContext context)
@@ -46,9 +53,9 @@ public class InputAdapter : MonoBehaviour
         jumpInputUp = _playerActionsMap.FindAction("JumpUp");
         jumpInputDown = _playerActionsMap.FindAction("JumpDown");
         dashInput = _playerActionsMap.FindAction("Dash");
+        shootInput = _playerActionsMap.FindAction("Shoot");
         test = _playerActionsMap.FindAction("Test");
         test.performed += Testing;
-        Debug.Log("Awake");
     }
 
     private void Testing(InputAction.CallbackContext context)
@@ -66,19 +73,21 @@ public class InputAdapter : MonoBehaviour
     public void ToggleInputs(bool toggle)
     {
         isInputActive = toggle;
-        Debug.Log($"{(toggle ? "A" : "Dea")}ctivating the inputs");
+        //Debug.Log($"{(toggle ? "A" : "Dea")}ctivating the inputs");
 
         if(toggle)
         {
             jumpInputUp.performed += HandleOnJumpUp;
             jumpInputDown.performed += HandleOnJumpDown;
             dashInput.performed += HandleOnDash;
+            shootInput.performed += HandleOnShoot;
         }
         else
         {
             jumpInputUp.performed -= HandleOnJumpUp;
             jumpInputDown.performed -= HandleOnJumpDown;
             dashInput.performed -= HandleOnDash;
+            shootInput.performed -= HandleOnShoot;
         }
     }
 
