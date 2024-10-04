@@ -46,6 +46,10 @@ public class AnimationsControl : MonoBehaviour
     public void DobleSalto()
     {
         animator.SetTrigger("resalto");
+        if (vfx != null)
+        {
+            vfx.DobleSalto();
+        }
     }
     public void Disparar()
     {

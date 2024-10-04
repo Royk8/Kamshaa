@@ -7,6 +7,8 @@ public class VFXControlPersonaje : MonoBehaviour
     public TrailRenderer trailRenderer;
     public Movement movimiento;
     public ControladorCamara conCamara;
+    public GameObject particulasDobleSalto;
+
     void Start()
     {
         
@@ -29,4 +31,9 @@ public class VFXControlPersonaje : MonoBehaviour
         trailRenderer.emitting = false;
 
     }
+
+    public void DobleSalto()
+	{
+        Instantiate(particulasDobleSalto, transform.position + Vector3.up*1.5f, Quaternion.identity);
+	}
 }
