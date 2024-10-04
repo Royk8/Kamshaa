@@ -55,28 +55,30 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 72
-  playerModel: {fileID: 2579016717068830856}
+  playerModel: {fileID: 9017193530443090786}
+  headPosition: {fileID: 1310862752596650323}
+  inputAdapter: {fileID: 1350956863114062409}
+  floorDetectorPlane: {fileID: 0}
   moveSpeed: 5
-  maxSpeedTime: 0.1
-  inputThreshold: 0.1
+  timeToMaxSpeed: 0.1
+  inputThresholdToStartMoving: 0.1
   jumpForce: 6
-  minJumpForceMultiplier: 0.3
   maxJumpTime: 0.2
   jumpCooldown: 0.2
   extraJumps: 1
-  DashSpeedMultiplier: 5
-  DashDistance: 10
-  DashTime: 0.1
+  dashDistance: 10
+  dashTime: 0.2
+  dashCooldown: 0.6
   gravityMultiplier: 3
   groundCheckRadius: 0.2
-  isGrounded: 0
-  inputAdapter: {fileID: 1350956863114062409}
-  floorDetectorPlane: {fileID: 0}
-  headPosition: {fileID: 1310862752596650323}
-  rightRotation: {x: -40, y: -60, z: -45}
-  leftRotation: {x: -40, y: 60, z: 45}
-  upRotation: {x: -60, y: -180, z: 0}
-  downRotation: {x: 0, y: 0, z: 0}
+  rightRotation: {x: 0, y: 90, z: 40}
+  leftRotation: {x: 0, y: 270, z: -40}
+  upRotation: {x: 40, y: 0, z: 0}
+  downRotation: {x: -40, y: 180, z: 0}
+  upRightRotation: {x: 24, y: 57, z: 32}
+  uPLeftRotation: {x: 32, y: -40, z: -25}
+  downRightRotation: {x: -25, y: -235, z: 30}
+  downLeftRotation: {x: -30, y: -135, z: -27}
 --- !u!114 &1350956863114062409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,7 +473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2288079207335745616, guid: e4d868beb4cdc26499707682c1697b4b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.99
+      value: -0.9900001
       objectReference: {fileID: 0}
     - target: {fileID: 2288079207335745616, guid: e4d868beb4cdc26499707682c1697b4b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -479,31 +481,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2288079207335745616, guid: e4d868beb4cdc26499707682c1697b4b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: -0.38093317
       objectReference: {fileID: 0}
     - target: {fileID: 2288079207335745616, guid: e4d868beb4cdc26499707682c1697b4b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.13864842
       objectReference: {fileID: 0}
     - target: {fileID: 2288079207335745616, guid: e4d868beb4cdc26499707682c1697b4b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9396927
+      value: -0.85901815
       objectReference: {fileID: 0}
     - target: {fileID: 2288079207335745616, guid: e4d868beb4cdc26499707682c1697b4b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.3420201
+      value: -0.31265712
       objectReference: {fileID: 0}
     - target: {fileID: 2288079207335745616, guid: e4d868beb4cdc26499707682c1697b4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -40
+      value: -25.564
       objectReference: {fileID: 0}
     - target: {fileID: 2288079207335745616, guid: e4d868beb4cdc26499707682c1697b4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: -235.244
       objectReference: {fileID: 0}
     - target: {fileID: 2288079207335745616, guid: e4d868beb4cdc26499707682c1697b4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 31.878
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

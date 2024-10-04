@@ -13,16 +13,23 @@ public class InputAdapter : MonoBehaviour
     private InputAction jumpInputUp;
     private InputAction jumpInputDown;
     private InputAction dashInput;
+    private InputAction shootInput;
     private InputAction test;
 
 
     public event Action<InputAction.CallbackContext> OnDash;
+    public event Action<InputAction.CallbackContext> OnShoot;
     public event Action<InputAction.CallbackContext> OnJumpUp;
     public event Action<InputAction.CallbackContext> OnJumpDown;
 
     private void HandleOnDash(InputAction.CallbackContext context)
     {
         if(OnDash != null) OnDash.Invoke(context);
+    }    
+    
+    private void HandleOnShoot(InputAction.CallbackContext context)
+    {
+        if(OnShoot != null) OnShoot.Invoke(context);
     }
 
     private void HandleOnJumpUp(InputAction.CallbackContext context)
@@ -46,6 +53,7 @@ public class InputAdapter : MonoBehaviour
         jumpInputUp = _playerActionsMap.FindAction("JumpUp");
         jumpInputDown = _playerActionsMap.FindAction("JumpDown");
         dashInput = _playerActionsMap.FindAction("Dash");
+        shootInput = _playerActionsMap.FindAction("Shoot");
         test = _playerActionsMap.FindAction("Test");
         test.performed += Testing;
     }
@@ -72,12 +80,14 @@ public class InputAdapter : MonoBehaviour
             jumpInputUp.performed += HandleOnJumpUp;
             jumpInputDown.performed += HandleOnJumpDown;
             dashInput.performed += HandleOnDash;
+            shootInput.performed += HandleOnShoot;
         }
         else
         {
             jumpInputUp.performed -= HandleOnJumpUp;
             jumpInputDown.performed -= HandleOnJumpDown;
             dashInput.performed -= HandleOnDash;
+            shootInput.performed -= HandleOnShoot;
         }
     }
 

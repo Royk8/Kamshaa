@@ -1,5 +1,7 @@
+using System.Collections;
+
 public interface IEnemy
 {
-    public void ReceiveDamage();
-    public void GetStuned();
+    public void ReceiveDamage(int damageDealed);
+    public IEnumerator GetStuned(float timeStuned);
 }
