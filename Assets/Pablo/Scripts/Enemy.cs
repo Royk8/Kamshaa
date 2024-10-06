@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public float attackDistance;
     public float escapeDistance;
     public Transform target;
-    public float distanceToTarget;
+    private float distanceToTarget;
     public bool playerIsTheTarget = true;
     public bool corrupted = true;
     public Coroutine calculateDistanceCO;
