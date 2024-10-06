@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4e8422b022f4354418097c62d8998d67
+guid: c5ffddbf073312c4c860543b2fd89904
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Verde
-    second: {fileID: 2100000, guid: 4d6075fc7cd496542a265321e1e88be1, type: 2}
+      name: Material.002
+    second: {fileID: 2100000, guid: 7ecf1c528ad275a4eaf0a9bc63b9412e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -40,7 +40,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 5
+    globalScale: 4
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -95,7 +95,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.049999997
+    globalScale: 0.04
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

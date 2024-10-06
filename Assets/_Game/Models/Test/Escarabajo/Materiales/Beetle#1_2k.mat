@@ -127,7 +127,7 @@ Material:
     - _ZWrite: 1
     - _offset: 0
     - _tama_o: 1
-    - _tiempo: 1.1
+    - _tiempo: -0.1
     m_Colors:
     - _BaseColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     - _Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
