@@ -29,6 +29,7 @@ public class ControladorCamara : MonoBehaviour
         if (objetivo != null)
         {
             Vector3 posicionDeseada = objetivo.position + desplazamientoInicial;  // Mantén la distancia original
+            if (posicionDeseada.y < 0) posicionDeseada.y = 3;
             Vector3 posicionSuavizada = Vector3.Lerp(transform.position, posicionDeseada, velocidadSuavizada);  // Movimiento suavizado
             transform.position = posicionSuavizada;
         }
