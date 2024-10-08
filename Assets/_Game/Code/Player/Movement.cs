@@ -51,6 +51,7 @@ public class Movement : MonoBehaviour, IStuneable
     private Vector3 moveVelocity3;
     private IEnumerator jumpCoroutine;
     private Vector3 lookDirection;
+    private Vector3 startPosition;
 
     private void Start()
     {
@@ -62,6 +63,7 @@ public class Movement : MonoBehaviour, IStuneable
         inputAdapter.OnShoot += Shoot;
         inputAdapter.ToggleInputs(true);
         animationsControl = GetComponent<AnimationsControl>();
+        startPosition = transform.position;
     }
 
 
@@ -76,6 +78,7 @@ public class Movement : MonoBehaviour, IStuneable
         MoveExecuter();
         DetectSurface();
         FloatOnTheFloor();
+        RestartPosition();
     }
     [Header("Walking direction")]
     public Vector3 rightRotation = new Vector3(-40, -60, -45);
@@ -287,7 +290,7 @@ public class Movement : MonoBehaviour, IStuneable
 
     public void MoveExecuter()
     {
-        if(isStunned)
+        if (isStunned)
         {
             return;
         }
@@ -305,9 +308,35 @@ public class Movement : MonoBehaviour, IStuneable
             inputAdapter.ToggleInputs(false);
             Vector3 dashFinalPosition = transform.position + lookDirection * dashDistance;
             float startTime = Time.time;
+            bool isDashingOffGround = false;
+            Vector3 offGroundPosition = Vector3.zero;
 
             while (Time.time < (startTime + dashTime))
             {
+                if (!isGrounded)
+                {
+                    if (!isDashingOffGround)
+                    {
+                        isDashingOffGround = true;
+                        offGroundPosition = transform.position;
+                        offGroundPosition.y = 0;
+                    }
+                }
+                else
+                {
+                    isDashingOffGround = false;
+                }
+
+                if (isDashingOffGround)
+                {
+                    Vector3 currentXZPosition = transform.position;
+                    currentXZPosition.y = 0;
+                    if (Vector3.Distance(offGroundPosition, currentXZPosition) > 2f)
+                    {
+                        break;
+                    }
+                }
+
                 Vector3 thisFramePosition = Vector3.Lerp(transform.position, dashFinalPosition, Time.deltaTime / dashTime);
                 Vector3 thisFrameDirection = thisFramePosition - transform.position;
                 thisFrameDirection = VerifyPlaneOfMovement(new Vector2(thisFrameDirection.x, thisFrameDirection.z));
@@ -423,5 +452,42 @@ public class Movement : MonoBehaviour, IStuneable
             isStunned = false;
             inputAdapter.ToggleInputs(true);
         }
+    }
+
+    public void RestartPosition()
+    {
+        if (transform.position.y < -20)
+        {
+            transform.position = startPosition;
+            StartCoroutine(StopGravityCoroutine(0.1f));
+        }
+    }
+
+    private IEnumerator gravityStoppedCoroutine;
+    private bool isGravityStopped;
+
+    private void StopGravity(float time)
+    {
+        if (gravityStoppedCoroutine != null)
+        {
+            StopCoroutine(gravityStoppedCoroutine);
+        }
+        gravityStoppedCoroutine = StopGravityCoroutine(time);
+        StartCoroutine(gravityStoppedCoroutine);
+    }
+
+    IEnumerator StopGravityCoroutine(float time)
+    {
+        if (gravity == 0)
+        {
+            yield break;
+        }
+
+        float oldGravity = gravity;
+        isGravityStopped = true;
+        zVelocity = 0;
+        yield return new WaitForSeconds(time);
+        gravity = oldGravity;
+        isGravityStopped = false;
     }
 }
