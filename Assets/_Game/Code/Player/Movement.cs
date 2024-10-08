@@ -47,6 +47,7 @@ public class Movement : MonoBehaviour, IStuneable
     public float groundCheckRadius = 0.2f;
     private bool isGrounded;
     private float gravity = -9.8f;
+    private bool isGravityStopped;
     private Vector3 floorPlaneNormal;
     private Vector3 moveVelocity3;
     private IEnumerator jumpCoroutine;
@@ -64,6 +65,7 @@ public class Movement : MonoBehaviour, IStuneable
         inputAdapter.ToggleInputs(true);
         animationsControl = GetComponent<AnimationsControl>();
         startPosition = transform.position;
+        StopGravityCoroutine(0.1f);
     }
 
 
@@ -461,19 +463,6 @@ public class Movement : MonoBehaviour, IStuneable
             transform.position = startPosition;
             StartCoroutine(StopGravityCoroutine(0.1f));
         }
-    }
-
-    private IEnumerator gravityStoppedCoroutine;
-    private bool isGravityStopped;
-
-    private void StopGravity(float time)
-    {
-        if (gravityStoppedCoroutine != null)
-        {
-            StopCoroutine(gravityStoppedCoroutine);
-        }
-        gravityStoppedCoroutine = StopGravityCoroutine(time);
-        StartCoroutine(gravityStoppedCoroutine);
     }
 
     IEnumerator StopGravityCoroutine(float time)
