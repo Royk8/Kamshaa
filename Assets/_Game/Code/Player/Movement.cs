@@ -64,6 +64,7 @@ public class Movement : MonoBehaviour, IStuneable
         animationsControl = GetComponent<AnimationsControl>();
     }
 
+
     private void Update()
     {
         CheckGround();
@@ -286,6 +287,10 @@ public class Movement : MonoBehaviour, IStuneable
 
     public void MoveExecuter()
     {
+        if(isStunned)
+        {
+            return;
+        }
         Vector3 direction = new Vector3(moveVelocity3.x, zVelocity + moveVelocity3.y, moveVelocity3.z);
         transform.Translate(direction * Time.deltaTime);
     }
