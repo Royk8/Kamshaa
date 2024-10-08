@@ -129,3 +129,5 @@ Assets/Screenshots*
 # Ignore the Cache folder since it is updated locally.
 /[Aa]ssets/Plugins/FMOD/Cache/*
 /[Aa]ssets/Plugins/FMOD/Cache.meta/*
+
+fmod_editor.log
