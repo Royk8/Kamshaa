@@ -18,13 +18,18 @@ public class Mantis : MonoBehaviour
     public LayerMask hitBoxMask;
     public string actualMechanic;
     public float slashDamage, slashWait, slashWarningDelay, slashFinishDelay;
+    private Transform selectedPosition;
     [Space(1)]
     [Header("Poison")]
     [Space(2)]
+    public float basicAttackRange = 3;
+    public float basicAttackFrecuence = 1;
+    public GameObject basicAttackHitSphere;
     public NavMeshAgent agent;
     public List<Transform> posiblePositions = new();
     private List<Transform> posiblePositionsRemaining = new();
     public PoisonTick poisonTick;
+    private Transform spawnPosition;
 
     private void Start()
     {
@@ -49,10 +54,13 @@ public class Mantis : MonoBehaviour
     private IEnumerator Slash()
     {
         if (slashUbicationsRemaining.Count == 0)
+        {
             slashUbicationsRemaining = slashUbications.Where(x => x).ToList();
+            slashUbicationsRemaining.Remove(selectedPosition);
+        }
 
         // se posiciona la mantis en el lugar de donde va a atacar
-        Transform selectedPosition = slashUbicationsRemaining[Random.Range(0, slashUbicationsRemaining.Count)];
+        selectedPosition = slashUbicationsRemaining[Random.Range(0, slashUbicationsRemaining.Count)];
         slashUbicationsRemaining.Remove(selectedPosition);
         transform.SetPositionAndRotation(selectedPosition.position, selectedPosition.rotation);
         yield return new WaitForSeconds(slashWait);
@@ -71,7 +79,7 @@ public class Mantis : MonoBehaviour
             if (collidersAffected[i].TryGetComponent(out IDamageable damageable))
             {
                 damageable.ReceiveDamage(slashDamage);
-                Debug.Log(collidersAffected[i].name + " dañado por slash de: " + transform.name);
+                Debug.Log($"{collidersAffected[i].name} dañado por slash de: {transform.name} ");
             }
             else
                 Debug.Log(collidersAffected[i].name);
@@ -86,10 +94,13 @@ public class Mantis : MonoBehaviour
     private IEnumerator Poison()
     {
         if (posiblePositionsRemaining.Count == 0)
+        {
             posiblePositionsRemaining = posiblePositions.Where(x => x).ToList();
+            posiblePositionsRemaining.Remove(spawnPosition);
+        }
 
         // posiciona a la mantis en una de las posibles posiciones de spawn para ir a atacar al jugador
-        Transform spawnPosition = posiblePositionsRemaining[Random.Range(0, posiblePositionsRemaining.Count)];
+        spawnPosition = posiblePositionsRemaining[Random.Range(0, posiblePositionsRemaining.Count)];
         posiblePositionsRemaining.Remove(spawnPosition);
         transform.SetLocalPositionAndRotation(spawnPosition.position, spawnPosition.rotation);
 
@@ -97,6 +108,7 @@ public class Mantis : MonoBehaviour
         agent.enabled = true;
         agent.isStopped = false;
         Coroutine destinationCo = StartCoroutine(SetMantisDestination(player.transform));
+        Coroutine basicAttackCo = StartCoroutine(BasicAttack());
 
         // ubica y activa la nube de veneno
         poisonTick.transform.position = new Vector3 (player.transform.position.x, poisonTick.transform.position.y, player.transform.position.z);
@@ -104,6 +116,8 @@ public class Mantis : MonoBehaviour
         yield return new WaitForSeconds(poisonTick.poisonWarning + poisonTick.poisonDuration);
         poisonTick.gameObject.SetActive(false);
         StopCoroutine(destinationCo);
+        StopCoroutine(basicAttackCo);
+        basicAttackHitSphere.SetActive(false);
         agent.ResetPath();
         agent.isStopped = true;
         agent.enabled = false;
@@ -112,11 +126,36 @@ public class Mantis : MonoBehaviour
 
     private IEnumerator SetMantisDestination(Transform destination)
     {
-        while (!agent.isStopped)
+        while (true)
         {
             agent.SetDestination(destination.position);
             yield return new WaitForSeconds(0.3f);
         }
-        Debug.Log("sale");
+    }
+
+    private IEnumerator BasicAttack()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.3f);
+            basicAttackHitSphere.SetActive(false);
+            if ((transform.position - player.position).magnitude > basicAttackRange) continue;
+
+            Collider[] collidersAffected = Physics.OverlapSphere(transform.position, basicAttackHitSphere.transform.localScale.x, hitBoxMask);
+            basicAttackHitSphere.SetActive(true);
+            if (collidersAffected.Length > 0)
+                Debug.LogError($"{collidersAffected.FirstOrDefault().name} afectado por el ataque basico");
+            for (int i = 0; i < collidersAffected.Length; i++)
+            {
+                if (collidersAffected[i].gameObject == gameObject) continue;
+                if (TryGetComponent(out IDamageable damageable))
+                {
+                    damageable.ReceiveDamage(slashDamage);
+                    Debug.Log($"{collidersAffected[i].name} dañado por ataque basico de: {transform.name}");
+                }
+            }
+            yield return new WaitForSeconds(basicAttackFrecuence);
+        }
+
     }
 }
