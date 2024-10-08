@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class Movement : MonoBehaviour
+public class Movement : MonoBehaviour, IStuneable
 {
     [Header("Reeferences")]
     public Transform groundCheck;
@@ -23,6 +23,8 @@ public class Movement : MonoBehaviour
     public float inputThresholdToStartMoving;
     private float acceleration;
     private Vector2 moveVelocity;
+    private bool isStunned;
+    private IEnumerator stunCoroutine;
 
     [Header("Jump")]
     public float jumpForce;
@@ -278,7 +280,7 @@ public class Movement : MonoBehaviour
     private void Dash(InputAction.CallbackContext context)
     {
         Vector2 moveInput = inputAdapter.GetMovement();
-        if(isGrounded)
+        if (isGrounded)
             StartCoroutine(DashExecuter());
     }
 
@@ -393,5 +395,28 @@ public class Movement : MonoBehaviour
 #if UNITY_EDITOR
         EditorApplication.isPaused = true; // Stop Play mode in the editor
 #endif
+    }
+
+    public void GetStunned(float duration)
+    {
+        if (isStunned && stunCoroutine != null)
+        {
+            StopCoroutine(stunCoroutine);
+            isStunned = false;
+        }
+        stunCoroutine = Stun(duration);
+        StartCoroutine(stunCoroutine);
+    }
+
+    public IEnumerator Stun(float duration)
+    {
+        if (!isStunned)
+        {
+            isStunned = true;
+            inputAdapter.ToggleInputs(false);
+            yield return new WaitForSeconds(duration);
+            isStunned = false;
+            inputAdapter.ToggleInputs(true);
+        }
     }
 }
