@@ -5,12 +5,18 @@ using FMODUnity;
 
 public class EventsManager : MonoBehaviour
 {
-    [field: Header("SFX")]
-    [field: SerializeField] public EventReference BunnyHurt { get; private set; }
-    [field: SerializeField] public EventReference BearHurt { get; private set; }
-    [field: SerializeField] public EventReference HellephantHurt { get; private set; }
-    [field: SerializeField] public EventReference PlayerHurt { get; private set; }
-    [field: SerializeField] public EventReference PlayerShoot { get; private set; }
+    [field: Header("Player")]
+    [field: SerializeField] public EventReference PlayerStep { get; private set; }
+    [field: SerializeField] public EventReference PlayerDash { get; private set; }
+    [field: SerializeField] public EventReference PlayerAttack { get; private set; }
+    [field: SerializeField] public EventReference PlayerDie { get; private set; }
+    [field: SerializeField] public EventReference PlayerJump { get; private set; }
+
+    [field: Header("Enemy")]
+
+    [field: SerializeField] public EventReference EnemyAttack { get; private set; }
+
+    [field: SerializeField] public EventReference EnemyDie { get; private set; }
 
     public static EventsManager Instance { get; private set; }
 

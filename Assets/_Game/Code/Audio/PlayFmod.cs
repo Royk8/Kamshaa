@@ -5,12 +5,11 @@ using UnityEngine;
 public class PlayFmod : MonoBehaviour
 {
 
-    
-    public FMODUnity.StudioEventEmitter[] emitter;
-
-    public void playSound(int i)
+    public void PlayEvent(string eventoPath)
     {
-        emitter[i].Play();
+        FMODUnity.RuntimeManager.PlayOneShot(eventoPath, GetComponent<Transform>().position);
+
+        //AudioManager.Instance.PlayOneShot(EventsManager.Instance.eventname, this.transform.position);
     }
 
 }
