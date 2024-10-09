@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class Vespa : Enemy, IEnemy
+public class Vespa : Enemy, IDamageable, IStuneable
 {
     public NavMeshAgent agent;
     public List<Transform> wayPoints = new();
@@ -117,6 +118,8 @@ public class Vespa : Enemy, IEnemy
     {
         base.DeadState();
         if (states != States.Dead) return;
+        if (agent.remainingDistance <= 0.5f)
+            SelectNextWayPoint();
     }
 
     public override void ChangeState(States s)
@@ -132,18 +135,39 @@ public class Vespa : Enemy, IEnemy
             case States.Attacking:
                 break;
             case States.Dead:
+                ComeBackToTheRoute();
                 break;
             default:
                 break;
         }
     }
 
-    public void ReceiveDamage(int damageDealed)
+    [ContextMenu("Matar")]
+    public void Matar()
     {
+        ReceiveDamage(life);
     }
 
-    public IEnumerator GetStuned(float timeStuned)
+    public void ReceiveDamage(float value)
     {
-        yield return null;
+        if (!corrupted) return;
+        life -= value;
+        if (life <= 0)
+        {
+            ChangeState(States.Dead);
+        }
+    }
+
+    public void GetStunned(float duration)
+    {
+        agent.isStopped = true;
+        agent.enabled = false;
+        Invoke(nameof(UnStun), duration);
+    }
+
+    private void UnStun()
+    {
+        agent.isStopped = false;
+        agent.enabled = true;
     }
 }
