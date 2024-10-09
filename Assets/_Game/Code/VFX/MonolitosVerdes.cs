@@ -50,6 +50,7 @@ public class MonolitosVerdes : MonoBehaviour
             objetosInvertirActivo[i].SetActive(!objetosInvertirActivo[i].activeSelf);
 		}
         this.enabled = false;
+        ControlAmbiente.singleton.LlenarAzul();
     }
 
     private IEnumerator MoverYVibrar()

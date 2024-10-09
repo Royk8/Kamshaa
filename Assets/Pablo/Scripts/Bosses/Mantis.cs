@@ -291,6 +291,7 @@ public class Mantis : MonoBehaviour, IDamageable
             StopAllCoroutines();
             mechanicsCoroutine = StartCoroutine(Wandering());
             actualMechanic = nameof(Wandering);
+            ControlAmbiente.singleton.LlenarVerde();
         }
     }
 
