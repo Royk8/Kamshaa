@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,6 +12,7 @@ public class Movement : MonoBehaviour, IStuneable
     [Header("Reeferences")]
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public LayerMask defaultLayer;
     public Transform playerModel;
     public Transform headPosition;
     private AnimationsControl animationsControl;
@@ -54,6 +56,7 @@ public class Movement : MonoBehaviour, IStuneable
     private Vector3 lookDirection;
     private float fakeDeltaTime = 0.016f;
     private Vector3 startPosition;
+    private DashAttack dashAttack;
 
     private void Start()
     {
@@ -65,6 +68,7 @@ public class Movement : MonoBehaviour, IStuneable
         inputAdapter.OnShoot += Shoot;
         inputAdapter.ToggleInputs(true);
         animationsControl = GetComponent<AnimationsControl>();
+        dashAttack = GetComponentInChildren<DashAttack>();
         startPosition = transform.position;
         StopGravityCoroutine(0.1f);
     }
@@ -298,7 +302,27 @@ public class Movement : MonoBehaviour, IStuneable
             return;
         }
         Vector3 direction = new Vector3(moveVelocity3.x, zVelocity + moveVelocity3.y, moveVelocity3.z);
+        if (CheckCollisionOnMovement(direction, out bool right, out bool front))
+        {
+            if(right && front)
+                direction = Vector3.Scale(direction, Vector3.up);
+            else if (right)
+                direction = Vector3.Scale(direction, new Vector3(0, 1, 1));
+            else if (front)
+                direction = Vector3.Scale(direction, new Vector3(1, 1, 0));
+        }
         transform.Translate(direction * Time.deltaTime);
+    }
+
+    public bool CheckCollisionOnMovement(Vector3 direction, out bool right, out bool front)
+    {
+        Vector3 directionX = (direction.x * Vector3.right).normalized;
+        Vector3 directionZ = (direction.z * Vector3.forward).normalized;
+
+        right = Physics.CheckSphere(groundCheck.position + directionX * 0.3f, groundCheckRadius, defaultLayer, QueryTriggerInteraction.Ignore);
+        front = Physics.CheckSphere(groundCheck.position + directionZ * 0.3f, groundCheckRadius, defaultLayer, QueryTriggerInteraction.Ignore);
+
+        return right || front;
     }
 
     public IEnumerator DashExecuter()
@@ -313,6 +337,7 @@ public class Movement : MonoBehaviour, IStuneable
             float startTime = Time.time;
             bool isDashingOffGround = false;
             Vector3 offGroundPosition = Vector3.zero;
+            dashAttack.Attack();
 
             while (Time.time < (startTime + dashTime))
             {
@@ -339,6 +364,10 @@ public class Movement : MonoBehaviour, IStuneable
                         break;
                     }
                 }
+                if (isStunned)
+                {
+                    break;
+                }
 
                 Vector3 thisFramePosition = Vector3.Lerp(transform.position, dashFinalPosition, Time.deltaTime / dashTime);
                 Vector3 thisFrameDirection = thisFramePosition - transform.position;
@@ -347,6 +376,7 @@ public class Movement : MonoBehaviour, IStuneable
                 yield return null;
             }
             isDashing = false;
+            dashAttack.StopAttack();
             inputAdapter.ToggleInputs(true);
         }
     }
