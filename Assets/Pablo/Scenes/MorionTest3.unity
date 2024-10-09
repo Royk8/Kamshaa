@@ -6071,7 +6071,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1805274996
 Transform:
   m_ObjectHideFlags: 0
@@ -6823,6 +6823,7 @@ MonoBehaviour:
   trailRenderer: {fileID: 1764349493}
   movimiento: {fileID: 1984539194}
   conCamara: {fileID: 1244475475}
+  particulasDobleSalto: {fileID: 0}
 --- !u!4 &1984539200 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6428577061434168102, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}

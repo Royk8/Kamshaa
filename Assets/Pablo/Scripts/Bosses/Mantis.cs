@@ -158,4 +158,10 @@ public class Mantis : MonoBehaviour
         }
 
     }
+
+    private IEnumerator DeadlyOmen()
+    {
+        yield return null;
+        actualMechanicIsFinished = true;
+    }
 }
