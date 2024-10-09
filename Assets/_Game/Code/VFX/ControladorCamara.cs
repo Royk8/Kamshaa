@@ -11,6 +11,10 @@ public class ControladorCamara : MonoBehaviour
     private float duracionTemblor = 0f;  // Duración del shake
     private float magnitudTemblor = 0f;  // Intensidad del shake
 
+    public Camera[] camaras;
+    public float apertura;
+    private float aperturaInicial;
+
     void Start()
     {
         // Calcula y guarda la distancia inicial de la cámara al objetivo
@@ -21,6 +25,17 @@ public class ControladorCamara : MonoBehaviour
 
         // Guarda la posición original de la cámara
         posicionOriginal = transform.position;
+        aperturaInicial = camaras[0].orthographicSize;
+        apertura = aperturaInicial;
+    }
+
+    public void CambiarApertura(float cuanto)
+	{
+        apertura = cuanto;
+    }
+    public void RestaurarApertura()
+    {
+        apertura = aperturaInicial;
     }
 
     void LateUpdate()
@@ -51,10 +66,23 @@ public class ControladorCamara : MonoBehaviour
                 transform.position = posicionOriginal;
             }
         }
+
     }
 
-    // Método público para iniciar el temblor de la cámara
-    public void IniciarTemblor(float duracion, float magnitud)
+	private void FixedUpdate()
+	{
+        if(Mathf.Abs(camaras[0].orthographicSize - apertura) > 0.005f)
+		{
+            for (int i = 0; i < camaras.Length; i++)
+            {
+                camaras[i].orthographicSize = Mathf.Lerp(camaras[i].orthographicSize, apertura, 0.1f);
+            }
+        }
+        
+    }
+
+	// Método público para iniciar el temblor de la cámara
+	public void IniciarTemblor(float duracion, float magnitud)
     {
         posicionOriginal = transform.position;  // Guarda la posición inicial antes del shake
         duracionTemblor = duracion;  // Configura la duración del temblor
