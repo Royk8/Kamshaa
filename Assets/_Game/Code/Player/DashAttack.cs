@@ -6,6 +6,7 @@ using UnityEngine;
 public class DashAttack : MonoBehaviour
 {
     Collider collider;
+    public int DashAttackDamage = 1;
 
     private void Start()
     {
@@ -24,12 +25,11 @@ public class DashAttack : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Print enemy hit when collide with them
-
         IDamageable enemy = other.GetComponent<IDamageable>();
         if (enemy != null)
         {
             Debug.Log("Enemy Hit");
-            enemy.ReceiveDamage(1);
+            enemy.ReceiveDamage(DashAttackDamage);
         }
 
     }
