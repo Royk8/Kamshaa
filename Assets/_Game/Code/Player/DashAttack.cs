@@ -25,7 +25,7 @@ public class DashAttack : MonoBehaviour
     {
         //Print enemy hit when collide with them
 
-        IEnemy enemy = other.GetComponent<IEnemy>();
+        IDamageable enemy = other.GetComponent<IDamageable>();
         if (enemy != null)
         {
             Debug.Log("Enemy Hit");
