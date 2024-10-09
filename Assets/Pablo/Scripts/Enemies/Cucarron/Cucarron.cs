@@ -4,7 +4,7 @@ using UnityEngine.AI;
 using UnityEngine;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class Cucarron : Enemy, IEnemy
+public class Cucarron : Enemy, IDamageable, IStuneable
 {
     public NavMeshAgent agent;
     public Animator anim;
@@ -14,7 +14,9 @@ public class Cucarron : Enemy, IEnemy
     public float chargeForce;
     public AnimationCurve turnCurveVelocity;
     public float turnVelocity;
+    public List<Transform> wanderingPoints;
 
+    private Transform actualDestination;
     private bool isAttacking = false;
     private bool buried = true;
     private bool alreadyTurned = false;
@@ -44,6 +46,7 @@ public class Cucarron : Enemy, IEnemy
             case States.Attacking:
                 break;
             case States.Dead:
+                SelectNextWayPoint();
                 break;
             default:
                 break;
@@ -114,7 +117,15 @@ public class Cucarron : Enemy, IEnemy
     public override void DeadState()
     {
         base.DeadState();
-        agent.isStopped = true;
+        if (agent.remainingDistance <= 0.5f)
+            SelectNextWayPoint();
+    }
+
+    private void SelectNextWayPoint()
+    {
+        int nextDestinationIndex = wanderingPoints.IndexOf(actualDestination) == (wanderingPoints.Count - 1) ? 0 : wanderingPoints.IndexOf(actualDestination) + 1;
+        actualDestination = wanderingPoints[nextDestinationIndex];
+        agent.SetDestination(actualDestination.position);
     }
 
     //this is called from an animation event in the animation Exit_Idle
@@ -123,19 +134,32 @@ public class Cucarron : Enemy, IEnemy
         readyToMove = true;
     }
 
-    public IEnumerator GetStuned(float timeStuned)
+    [ContextMenu("matar")]
+    private void Matar()
     {
-        agent.isStopped = true;
-        yield return new WaitForSeconds(timeStuned);
-        agent.isStopped = false;
+        ReceiveDamage(life);
     }
 
-    public void ReceiveDamage(int damageDealed)
+    public void ReceiveDamage(float value)
     {
-        life -= damageDealed;
+        if (!corrupted) return;
+        life -= value;
         if (life <= 0)
         {
             ChangeState(States.Dead);
         }
+    }
+
+    public void GetStunned(float duration)
+    {
+        agent.isStopped = true;
+        agent.enabled = false;
+        Invoke(nameof(UnStun), duration);
+    }
+
+    private void UnStun()
+    {
+        agent.isStopped = false;
+        agent.enabled = true;
     }
 }
