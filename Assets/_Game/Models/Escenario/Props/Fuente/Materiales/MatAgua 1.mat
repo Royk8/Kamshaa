@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MatAgua
+  m_Name: MatAgua 1
   m_Shader: {fileID: -6465566751694194690, guid: 9025d09af72afc6428babbee232067a9, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -37,7 +37,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Mascara:
-        m_Texture: {fileID: 2800000, guid: 602cb01f33cbe95438ab7969cdb408d1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 90d48b97861b97445adc88257d3d6f68, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Textura:
@@ -63,7 +63,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Tama_oEspuma: 30
-    - _Tama_oTextura: 6.44
+    - _Tama_oTextura: 0.73
     - _Velocidad: -0.01
     - _espuma: 1.73
     - _intensidadEspuma: 3.63

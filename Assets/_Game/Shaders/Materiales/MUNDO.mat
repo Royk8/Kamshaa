@@ -43,8 +43,8 @@ Material:
     m_Floats:
     - _Distorision: -10
     - _Saturacion: 0.201
-    - _b: 1
-    - _g: 1
-    - _r: 1
+    - _b: 0
+    - _g: 0
+    - _r: 0
     m_Colors: []
   m_BuildTextureStacks: []
