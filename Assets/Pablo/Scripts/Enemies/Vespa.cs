@@ -15,6 +15,7 @@ public class Vespa : Enemy, IEnemy
     public List<GameObject> stings = new();
     public GameObject stingPrefab;
     public Transform shootingSpot;
+    public Animator anim;
 
     private Transform actualPoint;
     private bool isAttacking;
@@ -52,8 +53,9 @@ public class Vespa : Enemy, IEnemy
             stings.Add(actualSting);
         }
         actualSting.transform.position = shootingSpot.position;
-        actualSting.transform.LookAt(target.position + new Vector3(0, 1, 0));
+        actualSting.transform.LookAt(target.position + new Vector3(0, 0.5f, 0));
         actualSting.SetActive(true);
+        anim.SetTrigger("atacar");
 
         yield return new WaitForSeconds(shootingRate);
 
