@@ -8,7 +8,7 @@ public class ControlAmbiente : MonoBehaviour
     public float r, g, b;
 
     private Coroutine corutinaR, corutinaG, corutinaB, corutinaCompleta;
-    public ControlAmbiente singleton;
+    public static ControlAmbiente singleton;
 
 	private void Awake()
 	{
