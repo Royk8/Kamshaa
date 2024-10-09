@@ -52,6 +52,7 @@ public class Movement : MonoBehaviour, IStuneable
     private Vector3 moveVelocity3;
     private IEnumerator jumpCoroutine;
     private Vector3 lookDirection;
+    private float fakeDeltaTime = 0.016f;
     private Vector3 startPosition;
 
     private void Start()
@@ -212,13 +213,13 @@ public class Movement : MonoBehaviour, IStuneable
             while ((jumpStarted + maxJumpTime) > Time.time)
             {
                 zVelocity = Math.Clamp(zVelocity + jumpForce * Time.deltaTime, float.MinValue, jumpForce);
-                Vector3 moveForce = moveDirection * acceleration * moveSpeed * Time.deltaTime;
+                Vector3 moveForce = moveDirection * acceleration * moveSpeed * fakeDeltaTime;
                 transform.Translate((moveForce + Vector3.up * zVelocity) * Time.deltaTime);
                 yield return null;
             }
             while (!isGrounded)
             {
-                Vector3 moveForce = moveDirection * acceleration * moveSpeed * Time.deltaTime;
+                Vector3 moveForce = moveDirection * acceleration * moveSpeed * fakeDeltaTime;
                 transform.Translate(moveForce * Time.deltaTime);
                 yield return null;
             }
@@ -265,7 +266,7 @@ public class Movement : MonoBehaviour, IStuneable
         if (moveInput != Vector2.zero && isGrounded)
         {
             moveVelocity3 = VerifyPlaneOfMovement(moveInput) *
-                acceleration * moveSpeed * Time.deltaTime;
+                acceleration * moveSpeed * fakeDeltaTime;
             if (moveVelocity3.magnitude > 20f)
             {
                 //Debugs the moveVelocity, move input, acceleration, delta time
