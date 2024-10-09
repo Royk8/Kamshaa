@@ -19,17 +19,27 @@ public class Mantis : MonoBehaviour
     public string actualMechanic;
     public float slashDamage, slashWait, slashWarningDelay, slashFinishDelay;
     private Transform selectedPosition;
-    [Space(1)]
-    [Header("Poison")]
     [Space(2)]
+    [Header("Poison")]
+    [Space(1)]
     public float basicAttackRange = 3;
     public float basicAttackFrecuence = 1;
+    public float basicAttackDamage = 1;
     public GameObject basicAttackHitSphere;
     public NavMeshAgent agent;
     public List<Transform> posiblePositions = new();
     private List<Transform> posiblePositionsRemaining = new();
     public PoisonTick poisonTick;
     private Transform spawnPosition;
+    [Space(2)]
+    [Header("DeadlyOmen")]
+    [Space(1)]
+    public float dOStunDuration = 1.5f;
+    public float timeUntilDO = 1f;
+    public float dODamage = 8f;
+    public float speedDuringDO, afterDeadlyOmenDelay;
+    public Transform mantisDOSpawnPosition;
+    public Transform playerDOSpawnPosition;
 
     private void Start()
     {
@@ -47,6 +57,10 @@ public class Mantis : MonoBehaviour
             actualMechanicIsFinished = false;
             StartCoroutine(Poison());
             actualMechanic = nameof(Poison);
+            yield return new WaitUntil(() => actualMechanicIsFinished);
+            actualMechanicIsFinished = false;
+            StartCoroutine(DeadlyOmen());
+            actualMechanic = nameof(DeadlyOmen);
             yield return new WaitUntil(() => actualMechanicIsFinished);
         }
     }
@@ -108,7 +122,7 @@ public class Mantis : MonoBehaviour
         agent.enabled = true;
         agent.isStopped = false;
         Coroutine destinationCo = StartCoroutine(SetMantisDestination(player.transform));
-        Coroutine basicAttackCo = StartCoroutine(BasicAttack());
+        Coroutine basicAttackCo = StartCoroutine(BasicAttackBucle());
 
         // ubica y activa la nube de veneno
         poisonTick.transform.position = new Vector3 (player.transform.position.x, poisonTick.transform.position.y, player.transform.position.z);
@@ -133,7 +147,7 @@ public class Mantis : MonoBehaviour
         }
     }
 
-    private IEnumerator BasicAttack()
+    private IEnumerator BasicAttackBucle()
     {
         while (true)
         {
@@ -141,27 +155,52 @@ public class Mantis : MonoBehaviour
             basicAttackHitSphere.SetActive(false);
             if ((transform.position - player.position).magnitude > basicAttackRange) continue;
 
-            Collider[] collidersAffected = Physics.OverlapSphere(transform.position, basicAttackHitSphere.transform.localScale.x, hitBoxMask);
-            basicAttackHitSphere.SetActive(true);
-            if (collidersAffected.Length > 0)
-                Debug.LogError($"{collidersAffected.FirstOrDefault().name} afectado por el ataque basico");
-            for (int i = 0; i < collidersAffected.Length; i++)
-            {
-                if (collidersAffected[i].gameObject == gameObject) continue;
-                if (TryGetComponent(out IDamageable damageable))
-                {
-                    damageable.ReceiveDamage(slashDamage);
-                    Debug.Log($"{collidersAffected[i].name} dañado por ataque basico de: {transform.name}");
-                }
-            }
+            BasicAttack(basicAttackDamage);
+
             yield return new WaitForSeconds(basicAttackFrecuence);
         }
+    }
 
+    private void BasicAttack(float damage)
+    {
+        Collider[] collidersAffected = Physics.OverlapSphere(basicAttackHitSphere.transform.position, basicAttackHitSphere.transform.localScale.x / 2, hitBoxMask);
+        basicAttackHitSphere.SetActive(true);
+        if (collidersAffected.Length > 0)
+        for (int i = 0; i < collidersAffected.Length; i++)
+        {
+            if (collidersAffected[i].gameObject == gameObject) continue;
+                Debug.Log($"{collidersAffected[i].name} afectado por el ataque basico");
+            if (TryGetComponent(out IDamageable damageable))
+            {
+                damageable.ReceiveDamage(damage);
+                Debug.Log($"{collidersAffected[i].name} dañado por ataque basico de: {transform.name}");
+            }
+        }
     }
 
     private IEnumerator DeadlyOmen()
     {
-        yield return null;
+        if (player.TryGetComponent(out IStuneable stuneable))
+        {
+            stuneable.GetStunned(dOStunDuration);
+        }
+        else
+            Debug.Log("no se encuentra el script con la interfaz de IStuneable en el player");
+
+        float normalSpeed = agent.speed;
+        transform.SetLocalPositionAndRotation(mantisDOSpawnPosition.position, mantisDOSpawnPosition.rotation);
+        player.SetLocalPositionAndRotation(playerDOSpawnPosition.position, playerDOSpawnPosition.rotation);
+        agent.speed = speedDuringDO;
+        agent.enabled = true;
+        agent.SetDestination(player.position + (transform.forward * 5));
+
+        yield return new WaitForSeconds(timeUntilDO);
+        BasicAttack(dODamage);
+        yield return new WaitForSeconds(afterDeadlyOmenDelay);
+        agent.speed = normalSpeed;
+        agent.ResetPath();
+        agent.enabled = false;
+        basicAttackHitSphere.SetActive(false);
         actualMechanicIsFinished = true;
     }
 }
