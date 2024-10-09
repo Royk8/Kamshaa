@@ -14,8 +14,14 @@ public class ControladorCamara : MonoBehaviour
     public Camera[] camaras;
     public float apertura;
     private float aperturaInicial;
+    public static ControladorCamara singleton;
 
-    void Start()
+	private void Awake()
+	{
+        singleton = this;
+	}
+
+	void Start()
     {
         // Calcula y guarda la distancia inicial de la cámara al objetivo
         if (objetivo != null)
