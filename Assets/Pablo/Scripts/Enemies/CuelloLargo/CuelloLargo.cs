@@ -1,31 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
-using System.Linq;
-using System.Runtime.CompilerServices;
 
-[RequireComponent(typeof(NavMeshAgent))]
-public class Vespa : Enemy, IDamageable, IStuneable
+public class CuelloLargo : Enemy, IDamageable, IStuneable
 {
     public NavMeshAgent agent;
     public List<Transform> wayPoints = new();
     public AnimationCurve turnCurveVelocity;
     public float turnVelocity;
-    public float shootingRate;
-    public List<GameObject> stings = new();
-    public GameObject stingPrefab;
-    public Transform shootingSpot;
+    public float attackingRate;
+    public float attackAnimationDelay;
+    public float damage;
+    public float unCorruptedSpeed;
     public Animator anim;
+    public GameObject hitCapsuleRef;
+    public Transform startHitCapsulePos, endHitCapsulePos;
+    public LayerMask hitMask;
 
     private Transform actualPoint;
     private bool isAttacking;
     private bool alreadyTurned = false;
-
-    private void Start()
-    {
-        SelectNextWayPoint();
-    }
 
     public override void AttackingState()
     {
@@ -43,24 +40,35 @@ public class Vespa : Enemy, IDamageable, IStuneable
         Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
         alreadyTurned = false;
         StartCoroutine(TurnToTarget(targetRotation));
+        hitCapsuleRef.SetActive(false);
 
         yield return new WaitUntil(() => alreadyTurned);
 
-        GameObject actualSting = stings.Where(x => !x.activeSelf).FirstOrDefault();
-        if (actualSting == null)
-        {
-            actualSting = Instantiate(stingPrefab, shootingSpot.position, Quaternion.identity);
-            actualSting.GetComponent<Sting>().creator = gameObject;
-            stings.Add(actualSting);
-        }
-        actualSting.transform.position = shootingSpot.position;
-        actualSting.transform.LookAt(target.position + new Vector3(0, 0.5f, 0));
-        actualSting.SetActive(true);
         anim.SetTrigger("atacar");
 
-        yield return new WaitForSeconds(shootingRate);
+        yield return new WaitForSeconds(attackAnimationDelay);
 
+        hitCapsuleRef.SetActive(true);
+        Invoke(nameof(DeactivateHitCapsuleRef), 0.5f);
+        Collider[] collidersAffected = Physics.OverlapCapsule(startHitCapsulePos.position, endHitCapsulePos.position, hitCapsuleRef.transform.localScale.x / 2, hitMask);
+        for (int i = 0; i < collidersAffected.Length; i++)
+        {
+            if (collidersAffected[i] == GetComponent<Collider>()) continue;
+
+            Debug.Log($"{collidersAffected[i].name} afectado por {transform.name}");
+            if (collidersAffected[i].TryGetComponent(out IDamageable damageable))
+            {
+                damageable.ReceiveDamage(damage);
+            }
+        }
+
+        yield return new WaitForSeconds(attackingRate);
         isAttacking = false;
+    }
+
+    private void DeactivateHitCapsuleRef()
+    {
+        hitCapsuleRef.SetActive(false);
     }
 
     private IEnumerator TurnToTarget(Quaternion targetRotation)
@@ -86,6 +94,14 @@ public class Vespa : Enemy, IDamageable, IStuneable
         agent.SetDestination(target.position);
     }
 
+    public override void IdleState()
+    {
+        base.IdleState();
+        if (states != States.Idle) return;
+        if (agent.remainingDistance <= 0.5f)
+            SelectNextWayPoint();
+    }
+
     private void SelectNextWayPoint()
     {
         actualPoint = actualPoint == null ? wayPoints[0] : actualPoint;
@@ -104,14 +120,6 @@ public class Vespa : Enemy, IDamageable, IStuneable
 
         agent.isStopped = false;
         agent.SetDestination(actualPoint.position);
-    }
-
-    public override void IdleState()
-    {
-        base.IdleState();
-        if (states != States.Idle) return;
-        if (agent.remainingDistance <= 0.5f)
-            SelectNextWayPoint();
     }
 
     public override void DeadState()
@@ -135,6 +143,7 @@ public class Vespa : Enemy, IDamageable, IStuneable
             case States.Attacking:
                 break;
             case States.Dead:
+                agent.speed = unCorruptedSpeed;
                 ComeBackToTheRoute();
                 break;
             default:
