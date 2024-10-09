@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Giloc.Movement
 {
@@ -10,6 +11,7 @@ namespace Giloc.Movement
         #region properties
         public Action OnPlayerReached;
 
+        [SerializeField] private NavMeshAgent agent;
         [SerializeField] private float chasingSpeed;
         [SerializeField] private float moveSpeed;
         [SerializeField] private float waitTimeBetweenPoints;
@@ -19,7 +21,6 @@ namespace Giloc.Movement
         private bool _isChasing;
         private float _minDistance;
         private Transform _currentIdleTarget;
-        private Vector3 _currentIdleDirection;
         private bool _movementStopped;
 
         private const float MIN_DISTANCE_TO_IDLE_TARGET = 0.1f;
@@ -29,12 +30,12 @@ namespace Giloc.Movement
         private void Start()
         {
             _currentIdleTarget = idlePoints[0];
-            UpdateIdleDirection();
         }
-        void Update()
+
+        private void Update()
         {
-            MoveChasing();
-            MoveIdle();
+            CheckPlayerDistance();
+            CheckPointDistance();
         }
         #endregion
 
@@ -58,18 +59,9 @@ namespace Giloc.Movement
             _minDistance = 0;
             _isChasing = false;
             _movementStopped = false;
-            UpdateIdleDirection();
-        }
-
-        private void MoveIdle()
-        {
-            if(_movementStopped || _isChasing) return;
-            transform.Translate(moveSpeed * Time.deltaTime * _currentIdleDirection);
-            if(Vector3.Distance(_currentIdleTarget.position, transform.position) < MIN_DISTANCE_TO_IDLE_TARGET)
-            {
-                _movementStopped = true;
-                StartCoroutine(WaitUntilNextMove());
-            }
+            agent.speed = moveSpeed;
+            agent.isStopped = false;
+            agent.SetDestination(_currentIdleTarget.position);
         }
 
         private void ChangeIdleTarget()
@@ -77,7 +69,7 @@ namespace Giloc.Movement
             var currentIndex = idlePoints.IndexOf(_currentIdleTarget);
             var newIndex = currentIndex == idlePoints.Count - 1 ? 0 : currentIndex + 1;
             _currentIdleTarget = idlePoints[newIndex];
-            _currentIdleDirection = (_currentIdleTarget.position - transform.position).normalized;
+            agent.SetDestination(_currentIdleTarget.position);
         }
 
         private IEnumerator WaitUntilNextMove()
@@ -87,15 +79,24 @@ namespace Giloc.Movement
             _movementStopped = false;
         }
 
-        private void MoveChasing()
+        private void CheckPlayerDistance()
         {
             if (!_isChasing || _movementStopped) return;
-            var direction = (_playerTransform.position - transform.position).normalized;
-            transform.Translate(chasingSpeed * Time.deltaTime * direction);
-            if (Vector3.Distance(transform.position, _playerTransform.position) < _minDistance)
+            if (agent.remainingDistance < _minDistance)
             {
                 _movementStopped = true;
+                agent.isStopped = true;
                 OnPlayerReached.Invoke();
+            }
+        }
+
+        private void CheckPointDistance()
+        {
+            if (_isChasing || _movementStopped) return;
+            if(agent.remainingDistance < MIN_DISTANCE_TO_IDLE_TARGET) 
+            {
+                _movementStopped = true;
+                StartCoroutine(WaitUntilNextMove());
             }
         }
 
@@ -103,11 +104,9 @@ namespace Giloc.Movement
         {
             _isChasing = true;
             _movementStopped = false;
-        }
-
-        private void UpdateIdleDirection()
-        {
-            _currentIdleDirection = (_currentIdleTarget.position - transform.position).normalized;
+            agent.isStopped = false;
+            agent.speed = chasingSpeed;
+            agent.SetDestination(_playerTransform.position);
         }
         #endregion
 

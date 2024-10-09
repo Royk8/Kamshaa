@@ -9,6 +9,8 @@ namespace Giloc.Enemies
     {
         #region properties
         [SerializeField] private List<Cannon> cannons;
+        
+        [SerializeField] private float rotationSpeed;
         #endregion
 
         #region unityMethods
@@ -27,6 +29,7 @@ namespace Giloc.Enemies
         private void Update()
         {
             WaitNextAttack();
+            RotateWhilePreparingAttack();
         }
 
         private void OnDisable()
@@ -78,6 +81,7 @@ namespace Giloc.Enemies
         protected override IEnumerator PrepareAttack()
         {
             yield return new WaitForSeconds(attackPreparationTime);
+            preparingAttack = false;
             if(!attackCanceled) Attack();
             else ResetAttackStoppers();
         }
@@ -88,8 +92,16 @@ namespace Giloc.Enemies
             secondsSinceLastAttack += Time.deltaTime;
             if (secondsSinceLastAttack > minTimeBetweenAttacks)
             {
-                StartCoroutine(PrepareAttack());
                 preparingAttack = true;
+                StartCoroutine(PrepareAttack());
+            }
+        }
+
+        private void RotateWhilePreparingAttack()
+        {
+            if (preparingAttack)
+            {
+                transform.Rotate(rotationSpeed * Time.deltaTime * Vector3.up);
             }
         }
 
