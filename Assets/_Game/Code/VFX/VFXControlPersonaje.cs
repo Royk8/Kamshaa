@@ -6,7 +6,6 @@ public class VFXControlPersonaje : MonoBehaviour
 {
     public TrailRenderer trailRenderer;
     public Movement movimiento;
-    public ControladorCamara conCamara;
     public GameObject particulasDobleSalto;
 
     void Start()
@@ -18,9 +17,9 @@ public class VFXControlPersonaje : MonoBehaviour
     public void Dash()
 	{
         StartCoroutine(Dashear());
-		if (conCamara!= null)
+		if (ControladorCamara.singleton!= null)
 		{
-            conCamara.IniciarTemblor(0.1f, 0.2f);
+            ControladorCamara.singleton.IniciarTemblor(0.1f, 0.2f);
 		}
 	}
 
