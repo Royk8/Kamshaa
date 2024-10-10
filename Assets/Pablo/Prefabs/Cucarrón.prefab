@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 8746475526996846304}
   - component: {fileID: 8746475526996846305}
   - component: {fileID: 8746475526996846334}
+  - component: {fileID: 1093210897558619901}
+  - component: {fileID: 6592375207359267182}
   m_Layer: 0
   m_Name: "Cucarr\xF3n"
   m_TagString: Untagged
@@ -51,11 +53,11 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.28
+  m_Radius: 0.43
   m_Height: 1.85
   m_Direction: 2
   m_Center: {x: 0, y: 0.74, z: 0}
@@ -106,6 +108,7 @@ MonoBehaviour:
   readyToMove: 0
   chargeDuration: 1
   chargeForce: 10
+  damage: 10
   turnCurveVelocity:
     serializedVersion: 2
     m_Curve:
@@ -137,6 +140,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  metamorfosis: {fileID: 1093210897558619901}
+  cucarronCollider: {fileID: 8746475526996846333}
 --- !u!195 &8746475526996846334
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -159,6 +164,52 @@ NavMeshAgent:
   m_BaseOffset: -0.38
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1093210897558619901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8746475526996846332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d895a128e0a55a44b84a83c619eb5746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mallas:
+  - {fileID: 270961732031993628}
+  - {fileID: 4238378119457859060}
+  "tiempoTransici\xF3n": 2
+  particulas: {fileID: 7519131671508558765, guid: b81c73d1749f44e4fad690a9e27c33c9, type: 3}
+  frecuenciaStun: 0.1
+  tiempoStun: 0.5
+--- !u!54 &6592375207359267182
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8746475526996846332}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &9000635066924164626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -223,5 +274,15 @@ PrefabInstance:
 --- !u!4 &62760489489708449 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8950435535743538099, guid: b844d573198861542a40d50894e909d7, type: 3}
+  m_PrefabInstance: {fileID: 9000635066924164626}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &270961732031993628 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 9163149197645295886, guid: b844d573198861542a40d50894e909d7, type: 3}
+  m_PrefabInstance: {fileID: 9000635066924164626}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4238378119457859060 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5060097193288041446, guid: b844d573198861542a40d50894e909d7, type: 3}
   m_PrefabInstance: {fileID: 9000635066924164626}
   m_PrefabAsset: {fileID: 0}

@@ -12,12 +12,16 @@ public class Cucarron : Enemy, IDamageable, IStuneable
     public bool readyToMove = true;
     public float chargeDuration;
     public float chargeForce;
+    public float damage;
     public AnimationCurve turnCurveVelocity;
     public float turnVelocity;
     public List<Transform> wanderingPoints;
+    public Metamorfosis metamorfosis;
+    public Collider cucarronCollider;
 
     private Transform actualDestination;
     private bool isAttacking = false;
+    private bool isCharging = false;
     private bool buried = true;
     private bool alreadyTurned = false;
 
@@ -46,6 +50,7 @@ public class Cucarron : Enemy, IDamageable, IStuneable
             case States.Attacking:
                 break;
             case States.Dead:
+                metamorfosis.IniciarTransicion();
                 SelectNextWayPoint();
                 break;
             default:
@@ -69,11 +74,22 @@ public class Cucarron : Enemy, IDamageable, IStuneable
         alreadyTurned = false;
         StartCoroutine(TurnToTarget(targetRotation));
         yield return new WaitUntil(() => alreadyTurned);
+        isCharging = true;
         agent.speed = chargeForce;
         agent.SetDestination(target.position + (transform.forward * 1.4f));
         yield return new WaitForSeconds(chargeDuration);
+        isCharging = false;
         agent.speed = normalVelocity;
         isAttacking = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!isCharging) return;
+        if (other.TryGetComponent(out IDamageable damageable))
+        {
+            damageable.ReceiveDamage(damage);
+        }
     }
 
     private IEnumerator TurnToTarget(Quaternion targetRotation)
@@ -98,6 +114,7 @@ public class Cucarron : Enemy, IDamageable, IStuneable
         buried = false;
         if (readyToMove)
         {
+            cucarronCollider.enabled = true;
             agent.SetDestination(target.position);
         }
     }
@@ -108,6 +125,7 @@ public class Cucarron : Enemy, IDamageable, IStuneable
         if (buried) return;
         if ((transform.position - initalPosition).magnitude < 0.7f)
         {
+            cucarronCollider.enabled = false;
             readyToMove = false;
             anim.SetBool("IsMoving", false);
             buried = true;
@@ -147,6 +165,10 @@ public class Cucarron : Enemy, IDamageable, IStuneable
         if (life <= 0)
         {
             ChangeState(States.Dead);
+        }
+        else
+        {
+            metamorfosis.AplicarEfectoStun();
         }
     }
 

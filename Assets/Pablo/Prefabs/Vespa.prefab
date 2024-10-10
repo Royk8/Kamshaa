@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4829986671168820272}
   - component: {fileID: 7360336995659030840}
   - component: {fileID: 5399425745419031138}
+  - component: {fileID: 4511979868948982118}
   m_Layer: 0
   m_Name: Vespa
   m_TagString: Untagged
@@ -119,6 +120,7 @@ MonoBehaviour:
   stingPrefab: {fileID: 5057216002442423863, guid: 06f0dba6ab35eda449c3e249533388f4, type: 3}
   shootingSpot: {fileID: 8971925819757678591}
   anim: {fileID: 1895604554048884594}
+  metamorfosis: {fileID: 4511979868948982118}
 --- !u!136 &7360336995659030840
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -164,6 +166,26 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4511979868948982118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8948800070998380609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d895a128e0a55a44b84a83c619eb5746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mallas:
+  - {fileID: 531245800352976402}
+  - {fileID: 5720736350352717491}
+  - {fileID: 3260924523925758608}
+  "tiempoTransici\xF3n": 2
+  particulas: {fileID: 7519131671508558765, guid: b81c73d1749f44e4fad690a9e27c33c9, type: 3}
+  frecuenciaStun: 0.1
+  tiempoStun: 0.5
 --- !u!1001 &482899523569920176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -221,9 +243,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59ddb005b10341b4f844c84245b848ee, type: 3}
+--- !u!137 &531245800352976402 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 138705261343942306, guid: 59ddb005b10341b4f844c84245b848ee, type: 3}
+  m_PrefabInstance: {fileID: 482899523569920176}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1895604554048884594 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2088844229897185218, guid: 59ddb005b10341b4f844c84245b848ee, type: 3}
+  m_PrefabInstance: {fileID: 482899523569920176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &3260924523925758608 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3166799221951253024, guid: 59ddb005b10341b4f844c84245b848ee, type: 3}
+  m_PrefabInstance: {fileID: 482899523569920176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5720736350352717491 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5320925892001078787, guid: 59ddb005b10341b4f844c84245b848ee, type: 3}
   m_PrefabInstance: {fileID: 482899523569920176}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8460967659416348390 stripped
