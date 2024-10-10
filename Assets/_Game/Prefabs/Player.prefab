@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 9064334376600762666}
   - component: {fileID: 5226509755172266273}
   - component: {fileID: 3666199060860467011}
+  - component: {fileID: 4596745147850013474}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -199,6 +200,20 @@ MonoBehaviour:
   movimiento: {fileID: 9039992414470757265}
   conCamara: {fileID: 0}
   particulasDobleSalto: {fileID: 0}
+--- !u!114 &4596745147850013474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193699498751373674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ffcca9469ce834381003b7734cdb25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
 --- !u!1 &328591914698026422
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,7 +774,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
