@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 {
     public float maxHealth = 100f;
     public float currentHealth;
+    public event Action<float> OnHealthChanged;
 
     /**
      * 
@@ -14,10 +16,23 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public void ReceiveDamage(float value)
     {
         currentHealth -= value;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        Debug.Log("Player received damage. Current health: " + currentHealth);
+        OnHealthChanged?.Invoke(currentHealth);
         if (currentHealth <= 0)
         {
             Die();
         }
+    }
+
+    //Just like me working in this game.
+    public void SpendHealth(float value)
+    {
+        currentHealth -= value;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        
+        OnHealthChanged?.Invoke(currentHealth);
+
     }
 
     private void Die()
