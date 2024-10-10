@@ -7,6 +7,7 @@ public class VFXControlPersonaje : MonoBehaviour
     public TrailRenderer trailRenderer;
     public Movement movimiento;
     public GameObject particulasDobleSalto;
+    public ParticleSystem mareo;
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class VFXControlPersonaje : MonoBehaviour
     
     public void Dash()
 	{
+        print("Dasheo");
         StartCoroutine(Dashear());
 		if (ControladorCamara.singleton!= null)
 		{
@@ -34,5 +36,17 @@ public class VFXControlPersonaje : MonoBehaviour
     public void DobleSalto()
 	{
         Instantiate(particulasDobleSalto, transform.position + Vector3.up*1.5f, Quaternion.identity);
+	}
+
+    public void SetMareado(bool sino)
+	{
+		if (sino)
+		{
+            mareo.Play();
+		}
+		else
+		{
+            mareo.Stop();
+		}
 	}
 }

@@ -26,10 +26,10 @@ public class AnimationsControl : MonoBehaviour
         Vector3 aPos;
 		while (autoCalcularVelocidad)
 		{
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
             aPos = transform.position;
             aPos.y = 0;
-            CambiarVelocidad((aPos - bPos).sqrMagnitude);
+            CambiarVelocidad((aPos - bPos).sqrMagnitude*3);
             bPos = transform.position;
             bPos.y = 0;
 		}
@@ -54,6 +54,18 @@ public class AnimationsControl : MonoBehaviour
     public void Disparar()
     {
         animator.SetTrigger("poder");
+    }
+    [ContextMenu("Marear")]
+    public void IniciarMareo()
+    {
+        animator.SetBool("mareado", true);
+        vfx.SetMareado(true);
+    }
+    [ContextMenu("Desmarear")]
+    public void FinalizarMareo()
+    {
+        animator.SetBool("mareado", false);
+        vfx.SetMareado(false);
     }
     public void CambiarVelocidad(float v)
 	{
