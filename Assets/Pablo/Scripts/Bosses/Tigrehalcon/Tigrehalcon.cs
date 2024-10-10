@@ -1,11 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Rendering.Universal;
-using static UnityEditor.Rendering.CameraUI;
-using static UnityEngine.GraphicsBuffer;
 
 public class Tigrehalcon : MonoBehaviour, IDamageable
 {
@@ -21,12 +18,13 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
     [Header("LaserBeam")]
     [Space(1)]
     public Transform laserBeamPosition;
-    public Transform laserBeamStartLookAt, laserBeamEndLookAt;
+    public Transform laserBeamLookAtOne, laserBeamLookAtTwo;
+    private Transform laserBeamLookAtFirst, laserBeamLookAtFinal;
     public AnimationCurve laserBeamInitialTurnCurve, laserBeamTurnCurve;
     public GameObject laserBeam;
     public float laserBeamInitialTurnSpeed;
     public float laserBeamTurnSpeed;
-    public float laserBeamChargeSpeed;
+    public float chargeSpeed;
     private bool alreadyTurned;
 
     [Space(2)]
@@ -38,6 +36,14 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
     public float persecutionRangeAttack;
     public float persecutionAttackFrecuence;
     public float persecutionDuration;
+
+    [Space(2)]
+    [Header("Pillars Of Fire")]
+    [Space(1)]
+    private GameObject actualSkipedPillarRail;
+    public List<GameObject> pillarRails = new();
+    public Transform pillarsCastPosition;
+    public float pillarsDuration;
 
     private void Awake()
     {
@@ -59,23 +65,38 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
             actualMechanicIsFinished = false;
             StartCoroutine(Persecution());
             yield return new WaitUntil(() => actualMechanicIsFinished);
+            actualMechanicIsFinished = false;
+            StartCoroutine(PillarsOfFire());
+            yield return new WaitUntil(() => actualMechanicIsFinished);
         }
     }
 
     private IEnumerator LaserBeam()
     {
-        agent.speed = laserBeamChargeSpeed;
+        agent.speed = chargeSpeed;
         agent.SetDestination(laserBeamPosition.position);
+        yield return new WaitForSeconds(0.5f);
         yield return new WaitUntil(() => agent.remainingDistance <= 0.5f);
 
-        Vector3 direction = (laserBeamStartLookAt.position - transform.position).normalized;
+        if ((laserBeamLookAtTwo.position - player.position).magnitude < (laserBeamLookAtOne.position - player.position).magnitude)
+        {
+            laserBeamLookAtFirst = laserBeamLookAtTwo;
+            laserBeamLookAtFinal = laserBeamLookAtOne;
+        }
+        else
+        {
+            laserBeamLookAtFirst = laserBeamLookAtOne;
+            laserBeamLookAtFinal = laserBeamLookAtTwo;
+        }
+
+        Vector3 direction = (laserBeamLookAtFirst.position - transform.position).normalized;
         Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
         alreadyTurned = false;
         StartCoroutine(TurnToTarget(targetRotation, laserBeamInitialTurnSpeed, laserBeamInitialTurnCurve));
         yield return new WaitUntil(() => alreadyTurned);
 
         laserBeam.SetActive(true);
-        direction = (laserBeamEndLookAt.position - transform.position).normalized;
+        direction = (laserBeamLookAtFinal.position - transform.position).normalized;
         targetRotation = Quaternion.LookRotation(direction, Vector3.up);
         alreadyTurned = false;
         StartCoroutine(TurnToTarget(targetRotation, laserBeamTurnSpeed, laserBeamTurnCurve));
@@ -141,18 +162,49 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(0.6f);
         Collider[] collidersAffected = Physics.OverlapSphere(basicAttackHitSphere.transform.position, basicAttackHitSphere.transform.localScale.x / 2, hitMask);
         basicAttackHitSphere.SetActive(true);
-        if (collidersAffected.Length > 0)
-            for (int i = 0; i < collidersAffected.Length; i++)
-            {
-                if (collidersAffected[i].gameObject == gameObject) continue;
-                Debug.Log($"{collidersAffected[i].name} afectado por ataque basico de: {transform.name}");
+        Invoke(nameof(DeactivateHitCollider), 0.5f);
+        for (int i = 0; i < collidersAffected.Length; i++)
+        {
+            if (collidersAffected[i].gameObject == gameObject) continue;
 
-                if (collidersAffected[i].TryGetComponent(out IDamageable damageable))
-                {
-                    damageable.ReceiveDamage(damage);
-                    Debug.Log($"{collidersAffected[i].name} dañado por ataque basico de: {transform.name}");
-                }
+            if (collidersAffected[i].TryGetComponent(out IDamageable damageable))
+            {
+                damageable.ReceiveDamage(damage);
+                Debug.Log($"{collidersAffected[i].name} dañado por ataque basico de: {transform.name}");
             }
+        }
+    }
+
+    private IEnumerator PillarsOfFire()
+    {
+        agent.speed = chargeSpeed;
+        agent.SetDestination(pillarsCastPosition.position);
+        yield return new WaitForSeconds(0.5f);
+        yield return new WaitUntil(() => agent.remainingDistance <= 0.25f);
+
+        alreadyTurned = false;
+        StartCoroutine(TurnToTarget(pillarsCastPosition.rotation, laserBeamInitialTurnSpeed, laserBeamInitialTurnCurve));
+        yield return new WaitUntil(() => alreadyTurned);
+
+        actualSkipedPillarRail = pillarRails.Where(x => x != actualSkipedPillarRail).ToList()[Random.Range(0, pillarRails.Count - 1)];
+        List<GameObject> actualPillarRails = pillarRails.Where(x => x != actualSkipedPillarRail).ToList();
+        for (int i = 0; i < actualPillarRails.Count; i++)
+        {
+            actualPillarRails[i].SetActive(true);
+        }
+
+        yield return new WaitForSeconds(pillarsDuration);
+
+        for (int i = 0; i < actualPillarRails.Count; i++)
+        {
+            actualPillarRails[i].SetActive(false);
+        }
+        actualMechanicIsFinished = true;
+    }
+
+    private void DeactivateHitCollider()
+    {
+        basicAttackHitSphere.SetActive(false);
     }
 
     public void ReceiveDamage(float value)

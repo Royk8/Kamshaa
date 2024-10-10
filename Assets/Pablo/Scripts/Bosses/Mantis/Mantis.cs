@@ -14,6 +14,7 @@ public class Mantis : MonoBehaviour, IDamageable
     public float tpDelay;
     public float maxLife;
     public float life;
+    public Metamorfosis metamorfosis;
 
     [Space(2)]
     [Header("Basic Attack")]
@@ -216,7 +217,6 @@ public class Mantis : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(0.6f);
         Collider[] collidersAffected = Physics.OverlapSphere(basicAttackHitSphere.transform.position, basicAttackHitSphere.transform.localScale.x / 2, hitBoxMask);
         basicAttackHitSphere.SetActive(true);
-        if (collidersAffected.Length > 0)
         for (int i = 0; i < collidersAffected.Length; i++)
         {
             if (collidersAffected[i].gameObject == gameObject) continue;
@@ -287,11 +287,16 @@ public class Mantis : MonoBehaviour, IDamageable
         life -= value;
         if (life <= 0)
         {
+            metamorfosis.IniciarTransicion();
             unCorrupted = true;
             StopAllCoroutines();
             mechanicsCoroutine = StartCoroutine(Wandering());
             actualMechanic = nameof(Wandering);
             ControlAmbiente.singleton.LlenarVerde();
+        }
+        else
+        {
+            metamorfosis.AplicarEfectoStun();
         }
     }
 
