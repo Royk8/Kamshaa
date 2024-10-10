@@ -9,11 +9,10 @@ namespace Giloc.Enemies
     {
         #region properties
         [SerializeField] private List<Cannon> cannons;
-        
-        [SerializeField] private float rotationSpeed;
+        private Transform _playerTransform;
         #endregion
 
-        #region unityMethods
+        #region unity methods
         private void OnEnable()
         {
             colliderDecteter.onPlayerDetected += StartChasing;
@@ -29,7 +28,6 @@ namespace Giloc.Enemies
         private void Update()
         {
             WaitNextAttack();
-            RotateWhilePreparingAttack();
         }
 
         private void OnDisable()
@@ -51,7 +49,7 @@ namespace Giloc.Enemies
         {
             foreach (var cannon in cannons)
             {
-                cannon.MakeAttack();
+                cannon.MakeAttack(_playerTransform);
             }
             secondsSinceLastAttack = 0;
             preparingAttack = false;
@@ -62,6 +60,25 @@ namespace Giloc.Enemies
         {
             attackCanceled = true;
             preparingAttack = false;
+        }
+
+        protected override IEnumerator PrepareAttack()
+        {
+            yield return new WaitForSeconds(attackPreparationTime);
+            preparingAttack = false;
+            if (!attackCanceled) Attack();
+            else ResetAttackStoppers();
+        }
+
+        protected override void WaitNextAttack()
+        {
+            if (preparingAttack || !playerReached) return;
+            secondsSinceLastAttack += Time.deltaTime;
+            if (secondsSinceLastAttack > minTimeBetweenAttacks)
+            {
+                preparingAttack = true;
+                StartCoroutine(PrepareAttack());
+            }
         }
 
         private void StartChasing(Transform transform)
@@ -78,35 +95,9 @@ namespace Giloc.Enemies
             enemyMovement.StartIdle();
         }
 
-        protected override IEnumerator PrepareAttack()
+        private void AllowAttack(Transform playerTransform)
         {
-            yield return new WaitForSeconds(attackPreparationTime);
-            preparingAttack = false;
-            if(!attackCanceled) Attack();
-            else ResetAttackStoppers();
-        }
-
-        protected override void WaitNextAttack()
-        {
-            if (preparingAttack || !playerReached) return;
-            secondsSinceLastAttack += Time.deltaTime;
-            if (secondsSinceLastAttack > minTimeBetweenAttacks)
-            {
-                preparingAttack = true;
-                StartCoroutine(PrepareAttack());
-            }
-        }
-
-        private void RotateWhilePreparingAttack()
-        {
-            if (preparingAttack)
-            {
-                transform.Rotate(rotationSpeed * Time.deltaTime * Vector3.up);
-            }
-        }
-
-        private void AllowAttack()
-        {
+            _playerTransform = playerTransform;
             playerReached = true;
         }
 
@@ -118,3 +109,5 @@ namespace Giloc.Enemies
         #endregion
     }
 }
+
+

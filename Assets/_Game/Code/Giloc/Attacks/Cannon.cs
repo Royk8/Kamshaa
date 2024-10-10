@@ -1,3 +1,4 @@
+using Giloc.Bullets;
 using System.Collections;
 using UnityEngine;
 
@@ -13,6 +14,13 @@ namespace Giloc.Attacks
         public override void MakeAttack()
         {
             Instantiate(bullet, position: transform.position, rotation: transform.localRotation);
+        }
+
+        public override void MakeAttack(Transform playerTransform)
+        {
+            var bulletClone = Instantiate(bullet, position: transform.position, rotation: transform.localRotation);
+            var acidBullet = bulletClone.GetComponent<AcidBullet>();
+            acidBullet.SetTarget(playerTransform);
         }
         #endregion
     }

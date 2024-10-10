@@ -9,7 +9,7 @@ namespace Giloc.Movement
     public class EnemyMovement : MonoBehaviour
     {
         #region properties
-        public Action OnPlayerReached;
+        public Action<Transform> OnPlayerReached;
 
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private float chasingSpeed;
@@ -86,7 +86,7 @@ namespace Giloc.Movement
             {
                 _movementStopped = true;
                 agent.isStopped = true;
-                OnPlayerReached.Invoke();
+                OnPlayerReached.Invoke(_playerTransform);
             }
         }
 

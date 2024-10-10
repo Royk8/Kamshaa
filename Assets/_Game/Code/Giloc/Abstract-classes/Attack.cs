@@ -7,6 +7,7 @@ namespace Giloc
     {
         #region methods
         public abstract void MakeAttack();
+        public abstract void MakeAttack(Transform playerTransform);
         #endregion
     }
 }

@@ -1,16 +1,19 @@
 using Giloc.Attacks;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Giloc.Enemies
 {
-    public class OctopusMelee : Enemy
+    public class OctopusBoss : Enemy
     {
         #region properties
-        [SerializeField] private Tentacle tentacle;
+        [SerializeField] private List<Cannon> cannons;
+        
+        [SerializeField] private float rotationSpeed;
         #endregion
 
-        #region unity methods
+        #region unityMethods
         private void OnEnable()
         {
             colliderDecteter.onPlayerDetected += StartChasing;
@@ -26,6 +29,7 @@ namespace Giloc.Enemies
         private void Update()
         {
             WaitNextAttack();
+            RotateWhilePreparingAttack();
         }
 
         private void OnDisable()
@@ -39,27 +43,25 @@ namespace Giloc.Enemies
         #region methods
         public override void TakeDamage(int pointsToTake = 1)
         {
-            throw new System.NotImplementedException();
+            CancelAttack();
+            lifePoints -= pointsToTake;
         }
 
         protected override void Attack()
         {
-            throw new System.NotImplementedException();
+            foreach (var cannon in cannons)
+            {
+                cannon.MakeAttack();
+            }
+            secondsSinceLastAttack = 0;
+            preparingAttack = false;
+            enemyMovement.ResumeChasing();
         }
 
         protected override void CancelAttack()
         {
-            throw new System.NotImplementedException();
-        }
-
-        protected override IEnumerator PrepareAttack()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        protected override void WaitNextAttack()
-        {
-            throw new System.NotImplementedException();
+            attackCanceled = true;
+            preparingAttack = false;
         }
 
         private void StartChasing(Transform transform)
@@ -76,7 +78,34 @@ namespace Giloc.Enemies
             enemyMovement.StartIdle();
         }
 
-        private void AllowAttack()
+        protected override IEnumerator PrepareAttack()
+        {
+            yield return new WaitForSeconds(attackPreparationTime);
+            preparingAttack = false;
+            if(!attackCanceled) Attack();
+            else ResetAttackStoppers();
+        }
+
+        protected override void WaitNextAttack()
+        {
+            if (preparingAttack || !playerReached) return;
+            secondsSinceLastAttack += Time.deltaTime;
+            if (secondsSinceLastAttack > minTimeBetweenAttacks)
+            {
+                preparingAttack = true;
+                StartCoroutine(PrepareAttack());
+            }
+        }
+
+        private void RotateWhilePreparingAttack()
+        {
+            if (preparingAttack)
+            {
+                transform.Rotate(rotationSpeed * Time.deltaTime * Vector3.up);
+            }
+        }
+
+        private void AllowAttack(Transform playerTransform)
         {
             playerReached = true;
         }
@@ -89,5 +118,3 @@ namespace Giloc.Enemies
         #endregion
     }
 }
-
-
