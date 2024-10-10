@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public bool playerIsTheTarget = true;
     public bool corrupted = true;
     public Coroutine calculateDistanceCO;
-    public int life;
+    public float life;
 
     private void Awake()
     {

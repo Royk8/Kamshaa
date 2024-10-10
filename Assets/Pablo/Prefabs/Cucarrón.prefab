@@ -97,10 +97,9 @@ MonoBehaviour:
   attackDistance: 3.95
   escapeDistance: 10.93
   target: {fileID: 0}
-  distanceToTarget: 0
   playerIsTheTarget: 1
   corrupted: 1
-  life: 0
+  life: 3
   agent: {fileID: 8746475526996846334}
   anim: {fileID: 8746475526996846304}
   movementClip: {fileID: 7400000, guid: 4eaaea2aba917ad48acd225ca41422aa, type: 2}
@@ -132,6 +131,12 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   turnVelocity: 3
+  wanderingPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!195 &8746475526996846334
 NavMeshAgent:
   m_ObjectHideFlags: 0
