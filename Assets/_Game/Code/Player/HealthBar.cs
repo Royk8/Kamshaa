@@ -11,19 +11,9 @@ public class HealthBar : MonoBehaviour
     public float currentHealth;
     PlayerHealth playerHealth;
 
-    private void Start()
-    {
-        indicator = GetComponent<RawImage>();
-    }
-
     public void SetHealth(float value)
     {
         indicator.rectTransform.localScale = new Vector3(value/maxHealth, 1, 1);
-    }
-
-    public void ModifyHealth(float value)
-    {
-        indicator.rectTransform.localScale += new Vector3(value/maxHealth, 0, 0);
     }
 
     private void OnEnable()
@@ -32,12 +22,13 @@ public class HealthBar : MonoBehaviour
         {
             playerHealth = FindFirstObjectByType<PlayerHealth>();
             currentHealth = playerHealth.currentHealth;
+            SetHealth(currentHealth);
         }
-        playerHealth.OnHealthChanged += ModifyHealth;
+        playerHealth.OnHealthChanged += SetHealth;
     }
 
     private void OnDisable()
     {
-        playerHealth.OnHealthChanged -= ModifyHealth;
+        playerHealth.OnHealthChanged -= SetHealth;
     }
 }

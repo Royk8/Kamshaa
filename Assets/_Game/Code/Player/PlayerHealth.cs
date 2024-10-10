@@ -16,6 +16,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public void ReceiveDamage(float value)
     {
         currentHealth -= value;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        Debug.Log("Player received damage. Current health: " + currentHealth);
+        OnHealthChanged?.Invoke(currentHealth);
         if (currentHealth <= 0)
         {
             Die();
@@ -26,6 +29,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public void SpendHealth(float value)
     {
         currentHealth -= value;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        
+        OnHealthChanged?.Invoke(currentHealth);
+
     }
 
     private void Die()
