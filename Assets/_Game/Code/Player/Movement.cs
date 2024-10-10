@@ -85,7 +85,6 @@ public class Movement : MonoBehaviour, IStuneable
         MoveExecuter();
         DetectSurface();
         FloatOnTheFloor();
-        RestartPosition();
     }
     [Header("Walking direction")]
     public Vector3 rightRotation = new Vector3(-40, -60, -45);
@@ -304,7 +303,7 @@ public class Movement : MonoBehaviour, IStuneable
         Vector3 direction = new Vector3(moveVelocity3.x, zVelocity + moveVelocity3.y, moveVelocity3.z);
         if (CheckCollisionOnMovement(direction, out bool right, out bool front))
         {
-            if(right && front)
+            if (right && front)
                 direction = Vector3.Scale(direction, Vector3.up);
             else if (right)
                 direction = Vector3.Scale(direction, new Vector3(0, 1, 1));
@@ -487,16 +486,12 @@ public class Movement : MonoBehaviour, IStuneable
         }
     }
 
-    public void RestartPosition()
+    public void SetPosition(Vector3 position)
     {
-        if (transform.position.y < -20)
-        {
-            transform.position = startPosition;
-            StartCoroutine(StopGravityCoroutine(0.1f));
-        }
+        transform.position = position;
     }
 
-    IEnumerator StopGravityCoroutine(float time)
+    public IEnumerator StopGravityCoroutine(float time)
     {
         if (gravity == 0)
         {
