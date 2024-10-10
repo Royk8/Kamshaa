@@ -61,7 +61,7 @@ MonoBehaviour:
     m_Bits: 72
   defaultLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   playerModel: {fileID: 9017193530443090786}
   headPosition: {fileID: 1310862752596650323}
   inputAdapter: {fileID: 1350956863114062409}
