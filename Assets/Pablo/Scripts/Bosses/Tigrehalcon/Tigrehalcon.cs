@@ -245,7 +245,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         _collider.enabled = true;
         for (int i = 0; i < actualPillarRails.Count; i++)
         {
-            actualPillarRails[i].SetActive(false);
+            actualPillarRails[i].GetComponent<FirePillarRail>().StartDeactivate();
         }
         actualMechanicIsFinished = true;
     }

@@ -136,7 +136,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   pillarsCastPosition: {fileID: 0}
-  pillarsDuration: 6
+  pillarsDuration: 8
 --- !u!195 &3435708943840590699
 NavMeshAgent:
   m_ObjectHideFlags: 0

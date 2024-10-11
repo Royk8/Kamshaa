@@ -13,6 +13,7 @@ public class FirePillar : MonoBehaviour
     public float damageFrecuence;
     public float damage;
     public float warningTime;
+    public bool doingDamage;
 
     private Coroutine damageTickCoroutine;
 
@@ -26,8 +27,9 @@ public class FirePillar : MonoBehaviour
         material.material = warning;
         yield return new WaitForSeconds(warningTime);
         material.material = danger;
+        doingDamage = true;
 
-        while (true)
+        while (doingDamage)
         {
             Collider[] collidersAffected = Physics.OverlapCapsule(initPoint.position, finalPoint.position, radio, mask);
             Debug.Log(collidersAffected.Length);
