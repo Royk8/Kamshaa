@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ControlAmbiente : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class ControlAmbiente : MonoBehaviour
 
     private Coroutine corutinaR, corutinaG, corutinaB, corutinaCompleta;
     public static ControlAmbiente singleton;
+    public UnityEvent ganaColor;
+    public UnityEvent ganaTodosColores;
 
 	private void Awake()
 	{
@@ -30,6 +33,7 @@ public class ControlAmbiente : MonoBehaviour
     public void LlenarRojo()
     {
         if (corutinaR != null) StopCoroutine(corutinaR);
+        ganaColor.Invoke();
         corutinaR = StartCoroutine(LlenarVariableSuave("r"));
     }
 
@@ -37,6 +41,7 @@ public class ControlAmbiente : MonoBehaviour
     public void LlenarVerde()
     {
         if (corutinaG != null) StopCoroutine(corutinaG);
+        ganaColor.Invoke();
         corutinaG = StartCoroutine(LlenarVariableSuave("g"));
     }
 
@@ -44,6 +49,7 @@ public class ControlAmbiente : MonoBehaviour
     public void LlenarAzul()
     {
         if (corutinaB != null) StopCoroutine(corutinaB);
+        ganaColor.Invoke();
         corutinaB = StartCoroutine(LlenarVariableSuave("b"));
     }
 
@@ -93,6 +99,7 @@ public class ControlAmbiente : MonoBehaviour
         float gInicial = g;
         float bInicial = b;
 
+        ganaTodosColores.Invoke();
         while (tiempoTranscurrido < tiempoTotal)
         {
             tiempoTranscurrido += Time.deltaTime;
