@@ -7,9 +7,12 @@ public class Raycast : EditorWindow
     static bool activo;
     public List<GameObject> prefabsParaInstanciar = new List<GameObject>();
     public GameObject prefabSeleccionado;
-    public GameObject objetoPadre; // Objeto donde se instanciarán los prefabs si se selecciona
+    public GameObject objetoPadre;
 
-    // Abrir desde el menú Morion/Creador de Arda
+    // Variables para la escala mínima y máxima
+    public float escalaMin = 0.5f;
+    public float escalaMax = 2.0f;
+
     [MenuItem("Morion/Creador de Arda")]
     static void Init()
     {
@@ -17,33 +20,27 @@ public class Raycast : EditorWindow
         ventana.Show();
     }
 
-    // Escuchar eventos de la escena
     void OnEnable() => SceneView.duringSceneGui += OnSceneGUI;
     void OnDisable() => SceneView.duringSceneGui -= OnSceneGUI;
 
-    // Recibir eventos de la escena
     void OnSceneGUI(SceneView vista)
     {
-        if (!activo)
-        {
-            return;
-        }
+        if (!activo) return;
 
         Ray rayo = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
         RaycastHit hit;
 
-        // Instanciar el prefab seleccionado al hacer clic
         if (Event.current.type == EventType.MouseDown && prefabSeleccionado != null && Physics.Raycast(rayo, out hit))
         {
             Debug.Log("Impacto: " + hit.collider.gameObject.name);
 
-            // Instanciar el prefab
             var objeto = (GameObject)PrefabUtility.InstantiatePrefab(prefabSeleccionado);
 
-            // Establecer la posición en el punto de impacto
+            // Establece la posición y escala aleatoria del objeto
             objeto.transform.position = hit.point;
+            float escalaAleatoria = Random.Range(escalaMin, escalaMax);
+            objeto.transform.localScale = Vector3.one * escalaAleatoria;
 
-            // Si se ha seleccionado un objeto en la jerarquía, establecerlo como padre
             if (objetoPadre != null)
             {
                 objeto.transform.SetParent(objetoPadre.transform);
@@ -54,23 +51,18 @@ public class Raycast : EditorWindow
         SceneView.RepaintAll();
     }
 
-    // Crear ventana del editor con botones para controlar el raycasting
-    // y seleccionar prefabs
     void OnGUI()
     {
-        // Botón para activar/desactivar el raycasting
         if (GUILayout.Button(activo ? "Desactivar" : "Activar"))
         {
             activo = !activo;
         }
 
-        // Cambiar color de label dependiendo de si está activo o no
         GUIStyle estiloEstado = new GUIStyle(GUI.skin.label);
         estiloEstado.normal.textColor = activo ? Color.green : Color.red;
 
         GUILayout.Label("Activo: " + activo, estiloEstado);
 
-        // Mostrar vista previa del prefab seleccionado centrada
         if (prefabSeleccionado != null)
         {
             GUILayout.Label("Prefab Seleccionado:");
@@ -89,11 +81,9 @@ public class Raycast : EditorWindow
             GUILayout.Label("No hay prefab seleccionado.");
         }
 
-        // Campo para seleccionar un GameObject de la jerarquía como padre
         GUILayout.Label("Seleccionar Objeto Padre (Opcional):");
         objetoPadre = (GameObject)EditorGUILayout.ObjectField(objetoPadre, typeof(GameObject), true);
 
-        // Área para arrastrar múltiples prefabs a la vez
         GUILayout.Label("Arrastra y Suelta Prefabs Abajo:");
         Event evt = Event.current;
         Rect dropArea = GUILayoutUtility.GetRect(0.0f, 50.0f, GUILayout.ExpandWidth(true));
@@ -103,8 +93,7 @@ public class Raycast : EditorWindow
         {
             case EventType.DragUpdated:
             case EventType.DragPerform:
-                if (!dropArea.Contains(evt.mousePosition))
-                    break;
+                if (!dropArea.Contains(evt.mousePosition)) break;
 
                 DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
 
@@ -126,11 +115,9 @@ public class Raycast : EditorWindow
 
         GUILayout.Space(20);
 
-        // Mostrar la lista de prefabs como botones organizados en cuadrícula con vista previa
         GUILayout.Label("Seleccionar Prefab:");
-
-        float windowWidth = position.width;  // Ancho de la ventana del editor
-        int columnas = Mathf.Max(1, Mathf.FloorToInt(windowWidth / 70));  // Calcula columnas en función del ancho disponible
+        float windowWidth = position.width;
+        int columnas = Mathf.Max(1, Mathf.FloorToInt(windowWidth / 70));
         int filas = Mathf.CeilToInt((float)prefabsParaInstanciar.Count / columnas);
 
         for (int fila = 0; fila < filas; fila++)
@@ -150,5 +137,13 @@ public class Raycast : EditorWindow
             }
             GUILayout.EndHorizontal();
         }
+
+        GUILayout.Space(20);
+        GUILayout.Label("Escala aleatoria de instanciación:");
+        escalaMin = EditorGUILayout.FloatField("Escala mínima", escalaMin);
+        escalaMax = EditorGUILayout.FloatField("Escala máxima", escalaMax);
+
+        // Restricción para evitar que el mínimo sea mayor que el máximo
+        escalaMin = Mathf.Min(escalaMin, escalaMax);
     }
 }

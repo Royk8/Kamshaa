@@ -1,16 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class Movement : MonoBehaviour
+public class Movement : MonoBehaviour, IStuneable
 {
     [Header("Reeferences")]
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public LayerMask defaultLayer;
     public Transform playerModel;
     public Transform headPosition;
     private AnimationsControl animationsControl;
@@ -23,6 +25,8 @@ public class Movement : MonoBehaviour
     public float inputThresholdToStartMoving;
     private float acceleration;
     private Vector2 moveVelocity;
+    private bool isStunned;
+    private IEnumerator stunCoroutine;
 
     [Header("Jump")]
     public float jumpForce;
@@ -45,10 +49,14 @@ public class Movement : MonoBehaviour
     public float groundCheckRadius = 0.2f;
     private bool isGrounded;
     private float gravity = -9.8f;
+    private bool isGravityStopped;
     private Vector3 floorPlaneNormal;
     private Vector3 moveVelocity3;
     private IEnumerator jumpCoroutine;
     private Vector3 lookDirection;
+    private float fakeDeltaTime = 0.016f;
+    private Vector3 startPosition;
+    private DashAttack dashAttack;
 
     private void Start()
     {
@@ -60,7 +68,11 @@ public class Movement : MonoBehaviour
         inputAdapter.OnShoot += Shoot;
         inputAdapter.ToggleInputs(true);
         animationsControl = GetComponent<AnimationsControl>();
+        dashAttack = GetComponentInChildren<DashAttack>();
+        startPosition = transform.position;
+        StopGravityCoroutine(0.1f);
     }
+
 
     private void Update()
     {
@@ -204,13 +216,13 @@ public class Movement : MonoBehaviour
             while ((jumpStarted + maxJumpTime) > Time.time)
             {
                 zVelocity = Math.Clamp(zVelocity + jumpForce * Time.deltaTime, float.MinValue, jumpForce);
-                Vector3 moveForce = moveDirection * acceleration * moveSpeed * Time.deltaTime;
+                Vector3 moveForce = moveDirection * acceleration * moveSpeed * fakeDeltaTime;
                 transform.Translate((moveForce + Vector3.up * zVelocity) * Time.deltaTime);
                 yield return null;
             }
             while (!isGrounded)
             {
-                Vector3 moveForce = moveDirection * acceleration * moveSpeed * Time.deltaTime;
+                Vector3 moveForce = moveDirection * acceleration * moveSpeed * fakeDeltaTime;
                 transform.Translate(moveForce * Time.deltaTime);
                 yield return null;
             }
@@ -257,7 +269,7 @@ public class Movement : MonoBehaviour
         if (moveInput != Vector2.zero && isGrounded)
         {
             moveVelocity3 = VerifyPlaneOfMovement(moveInput) *
-                acceleration * moveSpeed * Time.deltaTime;
+                acceleration * moveSpeed * fakeDeltaTime;
             if (moveVelocity3.magnitude > 20f)
             {
                 //Debugs the moveVelocity, move input, acceleration, delta time
@@ -278,14 +290,38 @@ public class Movement : MonoBehaviour
     private void Dash(InputAction.CallbackContext context)
     {
         Vector2 moveInput = inputAdapter.GetMovement();
-        if(isGrounded)
+        if (isGrounded)
             StartCoroutine(DashExecuter());
     }
 
     public void MoveExecuter()
     {
+        if (isStunned)
+        {
+            return;
+        }
         Vector3 direction = new Vector3(moveVelocity3.x, zVelocity + moveVelocity3.y, moveVelocity3.z);
+        if (CheckCollisionOnMovement(direction, out bool right, out bool front))
+        {
+            if (right && front)
+                direction = Vector3.Scale(direction, Vector3.up);
+            else if (right)
+                direction = Vector3.Scale(direction, new Vector3(0, 1, 1));
+            else if (front)
+                direction = Vector3.Scale(direction, new Vector3(1, 1, 0));
+        }
         transform.Translate(direction * Time.deltaTime);
+    }
+
+    public bool CheckCollisionOnMovement(Vector3 direction, out bool right, out bool front)
+    {
+        Vector3 directionX = (direction.x * Vector3.right).normalized;
+        Vector3 directionZ = (direction.z * Vector3.forward).normalized;
+
+        right = Physics.CheckSphere(groundCheck.position + directionX * 0.3f, groundCheckRadius, defaultLayer, QueryTriggerInteraction.Ignore);
+        front = Physics.CheckSphere(groundCheck.position + directionZ * 0.3f, groundCheckRadius, defaultLayer, QueryTriggerInteraction.Ignore);
+
+        return right || front;
     }
 
     public IEnumerator DashExecuter()
@@ -298,9 +334,40 @@ public class Movement : MonoBehaviour
             inputAdapter.ToggleInputs(false);
             Vector3 dashFinalPosition = transform.position + lookDirection * dashDistance;
             float startTime = Time.time;
+            bool isDashingOffGround = false;
+            Vector3 offGroundPosition = Vector3.zero;
+            dashAttack.Attack();
 
             while (Time.time < (startTime + dashTime))
             {
+                if (!isGrounded)
+                {
+                    if (!isDashingOffGround)
+                    {
+                        isDashingOffGround = true;
+                        offGroundPosition = transform.position;
+                        offGroundPosition.y = 0;
+                    }
+                }
+                else
+                {
+                    isDashingOffGround = false;
+                }
+
+                if (isDashingOffGround)
+                {
+                    Vector3 currentXZPosition = transform.position;
+                    currentXZPosition.y = 0;
+                    if (Vector3.Distance(offGroundPosition, currentXZPosition) > 2f)
+                    {
+                        break;
+                    }
+                }
+                if (isStunned)
+                {
+                    break;
+                }
+
                 Vector3 thisFramePosition = Vector3.Lerp(transform.position, dashFinalPosition, Time.deltaTime / dashTime);
                 Vector3 thisFrameDirection = thisFramePosition - transform.position;
                 thisFrameDirection = VerifyPlaneOfMovement(new Vector2(thisFrameDirection.x, thisFrameDirection.z));
@@ -308,6 +375,7 @@ public class Movement : MonoBehaviour
                 yield return null;
             }
             isDashing = false;
+            dashAttack.StopAttack();
             inputAdapter.ToggleInputs(true);
         }
     }
@@ -393,5 +461,48 @@ public class Movement : MonoBehaviour
 #if UNITY_EDITOR
         EditorApplication.isPaused = true; // Stop Play mode in the editor
 #endif
+    }
+
+    public void GetStunned(float duration)
+    {
+        if (isStunned && stunCoroutine != null)
+        {
+            StopCoroutine(stunCoroutine);
+            isStunned = false;
+        }
+        stunCoroutine = Stun(duration);
+        StartCoroutine(stunCoroutine);
+    }
+
+    public IEnumerator Stun(float duration)
+    {
+        if (!isStunned)
+        {
+            isStunned = true;
+            inputAdapter.ToggleInputs(false);
+            yield return new WaitForSeconds(duration);
+            isStunned = false;
+            inputAdapter.ToggleInputs(true);
+        }
+    }
+
+    public void SetPosition(Vector3 position)
+    {
+        transform.position = position;
+    }
+
+    public IEnumerator StopGravityCoroutine(float time)
+    {
+        if (gravity == 0)
+        {
+            yield break;
+        }
+
+        float oldGravity = gravity;
+        isGravityStopped = true;
+        zVelocity = 0;
+        yield return new WaitForSeconds(time);
+        gravity = oldGravity;
+        isGravityStopped = false;
     }
 }

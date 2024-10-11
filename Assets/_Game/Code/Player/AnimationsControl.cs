@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AnimationsControl : MonoBehaviour
 {
@@ -9,6 +9,9 @@ public class AnimationsControl : MonoBehaviour
     private bool enPiso;
     public bool autoCalcularVelocidad;
     public VFXControlPersonaje vfx;
+    public UnityEvent dobleSalto;
+    public UnityEvent dash;
+    public UnityEvent stun;
 
     Vector3 bPos;
 
@@ -26,10 +29,10 @@ public class AnimationsControl : MonoBehaviour
         Vector3 aPos;
 		while (autoCalcularVelocidad)
 		{
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
             aPos = transform.position;
             aPos.y = 0;
-            CambiarVelocidad((aPos - bPos).sqrMagnitude);
+            CambiarVelocidad((aPos - bPos).sqrMagnitude*3);
             bPos = transform.position;
             bPos.y = 0;
 		}
@@ -38,13 +41,15 @@ public class AnimationsControl : MonoBehaviour
 	public void Dash()
 	{
         animator.SetTrigger("dash");
-		if (vfx!=null)
+        dash.Invoke();
+        if (vfx!=null)
 		{
             vfx.Dash();
 		}
     }
     public void DobleSalto()
     {
+        dobleSalto.Invoke();
         animator.SetTrigger("resalto");
         if (vfx != null)
         {
@@ -54,6 +59,19 @@ public class AnimationsControl : MonoBehaviour
     public void Disparar()
     {
         animator.SetTrigger("poder");
+    }
+    [ContextMenu("Marear")]
+    public void IniciarMareo()
+    {
+        stun.Invoke();
+        animator.SetBool("mareado", true);
+        vfx.SetMareado(true);
+    }
+    [ContextMenu("Desmarear")]
+    public void FinalizarMareo()
+    {
+        animator.SetBool("mareado", false);
+        vfx.SetMareado(false);
     }
     public void CambiarVelocidad(float v)
 	{
