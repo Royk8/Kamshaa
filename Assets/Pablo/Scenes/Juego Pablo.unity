@@ -8070,6 +8070,7 @@ GameObject:
   - component: {fileID: 1993548859}
   - component: {fileID: 1993548861}
   - component: {fileID: 1993548860}
+  - component: {fileID: 1993548862}
   m_Layer: 0
   m_Name: Murrapo
   m_TagString: Untagged
@@ -8244,6 +8245,30 @@ MonoBehaviour:
   jumpVelocity: 1.5
   highTarget: 4
   damage: 10
+  wanderingSpeed: 2
+--- !u!136 &1993548862
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993548858}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.32
+  m_Height: 1.35
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.48, z: 0}
 --- !u!1 &1996641661
 GameObject:
   m_ObjectHideFlags: 0
@@ -9048,6 +9073,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 213984963}
     m_Modifications:
+    - target: {fileID: 577508688407599863, guid: 332f402b3bc4be24e84cb45b73d45d47, type: 3}
+      propertyPath: b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 577508688407599863, guid: 332f402b3bc4be24e84cb45b73d45d47, type: 3}
+      propertyPath: g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 577508688407599863, guid: 332f402b3bc4be24e84cb45b73d45d47, type: 3}
+      propertyPath: r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5424015974827689558, guid: 332f402b3bc4be24e84cb45b73d45d47, type: 3}
       propertyPath: m_Name
       value: AmbienteControl
@@ -9147,7 +9184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7830573459471143906, guid: 0f978db4af939b147a0fe5feb8947cf6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.73
+      value: 21.98
       objectReference: {fileID: 0}
     - target: {fileID: 7830573459471143906, guid: 0f978db4af939b147a0fe5feb8947cf6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9155,7 +9192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7830573459471143906, guid: 0f978db4af939b147a0fe5feb8947cf6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -83.2
+      value: -111.71
       objectReference: {fileID: 0}
     - target: {fileID: 7830573459471143906, guid: 0f978db4af939b147a0fe5feb8947cf6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9291,7 +9328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6428577061434168102, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.209995
+      value: 22.459995
       objectReference: {fileID: 0}
     - target: {fileID: 6428577061434168102, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9299,7 +9336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6428577061434168102, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -54.909996
+      value: -83.42
       objectReference: {fileID: 0}
     - target: {fileID: 6428577061434168102, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
       propertyPath: m_LocalRotation.w
