@@ -9,6 +9,7 @@ public class FirePillar : MonoBehaviour
     public Material warning, danger;
     public Transform initPoint, finalPoint;
     public LayerMask mask;
+    public float radio = 3;
     public float damageFrecuence;
     public float damage;
     public float warningTime;
@@ -28,7 +29,7 @@ public class FirePillar : MonoBehaviour
 
         while (true)
         {
-            Collider[] collidersAffected = Physics.OverlapCapsule(initPoint.position, finalPoint.position, transform.localScale.x / 2, mask);
+            Collider[] collidersAffected = Physics.OverlapCapsule(initPoint.position, finalPoint.position, radio, mask);
             Debug.Log(collidersAffected.Length);
 
             for (int i = 0; i < collidersAffected.Length; i++)
