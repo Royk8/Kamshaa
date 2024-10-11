@@ -10,9 +10,14 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
     private bool unCorrupted = false;
     private Coroutine mechanicsCoroutine;
     private float normalSpeed;
+    private Transform actualDestination;
     public Transform player;
     public float life;
+    public float minWanderingTime, maxWanderingTime;
     public NavMeshAgent agent;
+    public Collider _collider;
+    public List<Transform> wanderingPoints = new();
+    public float wanderingSpeed;
 
     [Space(2)]
     [Header("LaserBeam")]
@@ -25,25 +30,29 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
     public float laserBeamInitialTurnSpeed;
     public float laserBeamTurnSpeed;
     public float chargeSpeed;
+    public float stunTime;
     private bool alreadyTurned;
+    private bool isCharging;
 
     [Space(2)]
-    [Header("persecution")]
+    [Header("Persecution")]
     [Space(1)]
     public GameObject basicAttackHitSphere;
     public LayerMask hitMask;
     public float persecutionDamage;
-    public float persecutionRangeAttack;
+    public float persecutionLongRangeAttack;
+    public float persecutionShortRangeAttack;
     public float persecutionAttackFrecuence;
     public float persecutionDuration;
+    public float basicAttackTurnVelocity;
 
     [Space(2)]
-    [Header("Pillars Of Fire")]
+    [Header("FirePillars")]
     [Space(1)]
-    private GameObject actualSkipedPillarRail;
     public List<GameObject> pillarRails = new();
     public Transform pillarsCastPosition;
     public float pillarsDuration;
+    private GameObject actualSkipedPillarRail;
 
     private void Awake()
     {
@@ -74,10 +83,14 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
     private IEnumerator LaserBeam()
     {
         agent.speed = chargeSpeed;
+        agent.isStopped = false;
         agent.SetDestination(laserBeamPosition.position);
         yield return new WaitForSeconds(0.5f);
+        isCharging = true;
         yield return new WaitUntil(() => agent.remainingDistance <= 0.5f);
 
+        isCharging = false;
+        _collider.enabled = false;
         if ((laserBeamLookAtTwo.position - player.position).magnitude < (laserBeamLookAtOne.position - player.position).magnitude)
         {
             laserBeamLookAtFirst = laserBeamLookAtTwo;
@@ -102,6 +115,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         StartCoroutine(TurnToTarget(targetRotation, laserBeamTurnSpeed, laserBeamTurnCurve));
         yield return new WaitUntil(() => alreadyTurned);
 
+        _collider.enabled = true;
         agent.speed = normalSpeed;
         laserBeam.SetActive(false);
         actualMechanicIsFinished = true;
@@ -112,7 +126,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         Quaternion initialRotation = transform.rotation;
         float currentCurveValue = 0;
 
-        while (currentCurveValue != 1)
+        while (currentCurveValue < 1f)
         {
             currentCurveValue = Mathf.MoveTowards(currentCurveValue, 1, turnVelocity * Time.fixedDeltaTime);
 
@@ -138,6 +152,11 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         while (true)
         {
             agent.SetDestination(destination.position);
+            if (agent.remainingDistance < persecutionShortRangeAttack)
+                agent.isStopped = true;
+            else
+                agent.isStopped = false;
+
             yield return new WaitForSeconds(0.3f);
         }
     }
@@ -146,9 +165,21 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.3f);
             basicAttackHitSphere.SetActive(false);
-            if ((transform.position - player.position).magnitude > persecutionRangeAttack) continue;
+            if ((transform.position - player.position).magnitude > persecutionLongRangeAttack)
+            {
+                yield return new WaitForSeconds(0.3f);
+                continue;
+            }
+
+            if ((transform.position - player.position).magnitude <= persecutionShortRangeAttack)
+            {
+                Vector3 direction = (player.position - transform.position).normalized;
+                Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
+                alreadyTurned = false;
+                StartCoroutine(TurnToTarget(targetRotation, basicAttackTurnVelocity, laserBeamInitialTurnCurve));
+                yield return new WaitUntil(() => alreadyTurned);
+            }
 
             StartCoroutine(BasicAttack(persecutionDamage));
 
@@ -178,10 +209,14 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
     private IEnumerator PillarsOfFire()
     {
         agent.speed = chargeSpeed;
+        agent.isStopped = false;
         agent.SetDestination(pillarsCastPosition.position);
         yield return new WaitForSeconds(0.5f);
+        isCharging = true;
         yield return new WaitUntil(() => agent.remainingDistance <= 0.25f);
 
+        isCharging = false;
+        _collider.enabled = false;
         alreadyTurned = false;
         StartCoroutine(TurnToTarget(pillarsCastPosition.rotation, laserBeamInitialTurnSpeed, laserBeamInitialTurnCurve));
         yield return new WaitUntil(() => alreadyTurned);
@@ -195,6 +230,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
 
         yield return new WaitForSeconds(pillarsDuration);
 
+        _collider.enabled = true;
         for (int i = 0; i < actualPillarRails.Count; i++)
         {
             actualPillarRails[i].SetActive(false);
@@ -207,6 +243,33 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         basicAttackHitSphere.SetActive(false);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!isCharging) return;
+        if (other.TryGetComponent(out IStuneable stuneable))
+        {
+            stuneable.GetStunned(stunTime);
+        }
+    }
+
+    private IEnumerator Wandering()
+    {
+        agent.speed = wanderingSpeed;
+        agent.isStopped = false;
+        while (true)
+        {
+            actualDestination = wanderingPoints.Where(x => x != actualDestination).ToList()[Random.Range(0, wanderingPoints.Count - 1)];
+            agent.SetDestination(actualDestination.position);
+            yield return new WaitForSeconds(Random.Range(minWanderingTime, maxWanderingTime));
+        }
+    }
+
+    [ContextMenu("Matar")]
+    private void Matar()
+    {
+        ReceiveDamage(life);
+    }
+
     public void ReceiveDamage(float value)
     {
         if (unCorrupted) return;
@@ -215,7 +278,8 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         if (life <= 0)
         {
             unCorrupted = true;
-            agent.speed = normalSpeed;
+            StopAllCoroutines();
+            StartCoroutine(Wandering());
             ControlAmbiente.singleton.LlenarRojo();
         }
     }
