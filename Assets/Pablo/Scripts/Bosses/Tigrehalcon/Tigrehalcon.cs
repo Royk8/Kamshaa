@@ -19,6 +19,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
     public List<Transform> wanderingPoints = new();
     public float wanderingSpeed;
     public Animator anim;
+    public VFXControlBossRojo vfx;
 
     [Space(2)]
     [Header("LaserBeam")]
@@ -90,11 +91,10 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(0.5f);
         isCharging = true;
         anim.SetBool("corriendo", isCharging);
+        vfx.VerParticulas(isCharging);
         yield return new WaitUntil(() => agent.remainingDistance <= 0.5f);
+        anim.SetBool("corriendo", false);
 
-        isCharging = false;
-        anim.SetBool("corriendo", isCharging);
-        _collider.enabled = false;
         if ((laserBeamLookAtTwo.position - player.position).magnitude < (laserBeamLookAtOne.position - player.position).magnitude)
         {
             laserBeamLookAtFirst = laserBeamLookAtTwo;
@@ -113,9 +113,9 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         yield return new WaitUntil(() => alreadyTurned);
 
         anim.SetBool("poder", true);
-        ControladorCamara.singleton.IniciarTemblor(5, 0.06f); /////////// AAAAAAAAAAAA no va acá
         yield return new WaitForSeconds(laserBeamAnimDelay);
 
+        ControladorCamara.singleton.IniciarTemblor(3, 0.06f);
         laserBeam.SetActive(true);
         direction = (laserBeamLookAtFinal.position - transform.position).normalized;
         targetRotation = Quaternion.LookRotation(direction, Vector3.up);
@@ -123,7 +123,8 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         StartCoroutine(TurnToTarget(targetRotation, laserBeamTurnSpeed, laserBeamTurnCurve));
         yield return new WaitUntil(() => alreadyTurned);
 
-        _collider.enabled = true;
+        isCharging = false;
+        vfx.VerParticulas(isCharging);
         agent.speed = normalSpeed;
         laserBeam.SetActive(false);
         anim.SetBool("poder", false);
@@ -223,11 +224,10 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(0.5f);
         isCharging = true;
         anim.SetBool("corriendo", isCharging);
+        vfx.VerParticulas(isCharging);
         yield return new WaitUntil(() => agent.remainingDistance <= 0.25f);
 
-        isCharging = false;
-        anim.SetBool("corriendo", isCharging);
-        _collider.enabled = false;
+        anim.SetBool("corriendo", false);
         alreadyTurned = false;
         StartCoroutine(TurnToTarget(pillarsCastPosition.rotation, laserBeamInitialTurnSpeed, laserBeamInitialTurnCurve));
         yield return new WaitUntil(() => alreadyTurned);
@@ -240,11 +240,11 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
             actualPillarRails[i].SetActive(true);
         }
 
-        ControladorCamara.singleton.IniciarTemblor(5, 0.06f); /////////// AAAAAAAAAAAA no va acá
         yield return new WaitForSeconds(pillarsDuration);
 
         anim.SetBool("poder", false);
-        _collider.enabled = true;
+        isCharging = false;
+        vfx.VerParticulas(isCharging);
         for (int i = 0; i < actualPillarRails.Count; i++)
         {
             actualPillarRails[i].GetComponent<FirePillarRail>().StartDeactivate();

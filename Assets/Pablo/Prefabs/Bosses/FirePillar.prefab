@@ -141,7 +141,7 @@ MonoBehaviour:
   radio: 1.5
   damageFrecuence: 0.5
   damage: 15
-  warningTime: 1
+  warningTime: 2.2
   doingDamage: 0
 --- !u!1 &4699665036196840508
 GameObject:
