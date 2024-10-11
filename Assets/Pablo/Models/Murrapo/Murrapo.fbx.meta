@@ -3,7 +3,12 @@ guid: f6a00db502f0b8a4eb5c494360fd1fb7
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Murrapo_Material
+    second: {fileID: 2100000, guid: 7a6137abe533d0d488694575b2aaa274, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
