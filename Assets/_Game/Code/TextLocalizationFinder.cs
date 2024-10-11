@@ -60,16 +60,17 @@ public class TextLocalizationFinder : MonoBehaviour
             {
                 texts.Add(new DialogueLine
                 {
+                    key = item.Key,
                     text = item.LocalizedValue,
                     speaker = item.SharedEntry.Metadata.GetMetadata<Comment>().CommentText
                 });
             }
         }
 
-        foreach (var item in texts)
-        {
-            Debug.Log(item.speaker + ": " + item.text);
-        }
+        //foreach (var item in texts)
+        //{
+        //    Debug.Log(item.speaker + ": " + item.text);
+        //}
 
         return texts;
     }
@@ -77,6 +78,7 @@ public class TextLocalizationFinder : MonoBehaviour
 
 public struct DialogueLine
 {
+    public string key;
     public string text;
     public string speaker;
 }

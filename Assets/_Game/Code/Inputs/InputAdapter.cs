@@ -7,13 +7,18 @@ using UnityEngine.InputSystem;
 public class InputAdapter : MonoBehaviour
 {
     public bool isInputActive { get; private set;  }
+    public bool isUIActive { get; private set;  }
     private InputActionMap _playerActionsMap;
+    private InputActionMap _UIActionsMap;
     private InputAction moveInput;
     private InputAction jumpInput;
     private InputAction jumpInputUp;
     private InputAction jumpInputDown;
     private InputAction dashInput;
     private InputAction shootInput;
+    private InputAction uiNext;
+    private InputAction uiClick;
+    private InputAction uiSubmit;
     private InputAction test;
 
 
@@ -21,6 +26,7 @@ public class InputAdapter : MonoBehaviour
     public event Action<InputAction.CallbackContext> OnShoot;
     public event Action<InputAction.CallbackContext> OnJumpUp;
     public event Action<InputAction.CallbackContext> OnJumpDown;
+    public event Action<InputAction.CallbackContext> OnNextMessage;
 
     private void HandleOnDash(InputAction.CallbackContext context)
     {
@@ -42,12 +48,18 @@ public class InputAdapter : MonoBehaviour
         if (OnJumpDown != null) OnJumpDown.Invoke(context);
     }
 
+    private void HandleOnNextMessage(InputAction.CallbackContext context)
+    {
+        if (OnNextMessage != null) OnNextMessage.Invoke(context);
+    }
+
 
     private void Awake()
     {
         PlayerInput player = GetComponent<PlayerInput>();
 
         _playerActionsMap = player.actions.FindActionMap("Player");
+        _UIActionsMap = player.actions.FindActionMap("UI");
         moveInput = _playerActionsMap.FindAction("Move");
         jumpInput = _playerActionsMap.FindAction("Jump");
         jumpInputUp = _playerActionsMap.FindAction("JumpUp");
@@ -55,6 +67,11 @@ public class InputAdapter : MonoBehaviour
         dashInput = _playerActionsMap.FindAction("Dash");
         shootInput = _playerActionsMap.FindAction("Shoot");
         test = _playerActionsMap.FindAction("Test");
+
+        uiClick = _UIActionsMap.FindAction("Click");
+        uiNext = _UIActionsMap.FindAction("Next");
+        uiSubmit = _UIActionsMap.FindAction("Submit");
+
         test.performed += Testing;
     }
 
@@ -68,6 +85,32 @@ public class InputAdapter : MonoBehaviour
         Debug.Log(context.canceled);
         Debug.Log(context.started);
         Debug.Log(context.startTime);
+    }
+
+    [ContextMenu("ToggleFast")]
+    public void ToggleFast()
+    {
+        ToggleToUI(!isUIActive);
+    }
+
+    public void ToggleToUI(bool toggle)
+    {
+        if(toggle)
+        {
+            isUIActive = true;
+            _playerActionsMap.Disable();
+            _UIActionsMap.Enable();
+            ToggleUIInputs(true);
+            ToggleInputs(false);
+        }
+        else
+        {
+            isUIActive = false;
+            _UIActionsMap.Disable();
+            _playerActionsMap.Enable();
+            ToggleUIInputs(false);
+            ToggleInputs(true);
+        }
     }
 
     public void ToggleInputs(bool toggle)
@@ -88,6 +131,22 @@ public class InputAdapter : MonoBehaviour
             jumpInputDown.performed -= HandleOnJumpDown;
             dashInput.performed -= HandleOnDash;
             shootInput.performed -= HandleOnShoot;
+        }
+    }
+
+    public void ToggleUIInputs(bool toggle)
+    {
+        if (toggle)
+        {
+            uiNext.performed += HandleOnNextMessage;
+            uiClick.performed += HandleOnNextMessage;
+            uiSubmit.performed += HandleOnNextMessage;
+        }
+        else
+        {
+            uiNext.performed -= HandleOnNextMessage;
+            uiClick.performed -= HandleOnNextMessage;
+            uiSubmit.performed -= HandleOnNextMessage;
         }
     }
 
