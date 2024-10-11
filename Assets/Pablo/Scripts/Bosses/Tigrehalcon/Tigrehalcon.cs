@@ -93,7 +93,9 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         anim.SetBool("corriendo", isCharging);
         vfx.VerParticulas(isCharging);
         yield return new WaitUntil(() => agent.remainingDistance <= 0.5f);
+
         anim.SetBool("corriendo", false);
+        vfx.VerParticulas(false);
 
         if ((laserBeamLookAtTwo.position - player.position).magnitude < (laserBeamLookAtOne.position - player.position).magnitude)
         {
@@ -124,7 +126,6 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         yield return new WaitUntil(() => alreadyTurned);
 
         isCharging = false;
-        vfx.VerParticulas(isCharging);
         agent.speed = normalSpeed;
         laserBeam.SetActive(false);
         anim.SetBool("poder", false);
@@ -233,6 +234,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         vfx.VerParticulas(isCharging);
         yield return new WaitUntil(() => agent.remainingDistance <= 0.25f);
 
+        vfx.VerParticulas(false);
         anim.SetBool("corriendo", false);
         alreadyTurned = false;
         StartCoroutine(TurnToTarget(pillarsCastPosition.rotation, laserBeamInitialTurnSpeed, laserBeamInitialTurnCurve));
@@ -250,7 +252,6 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
 
         anim.SetBool("poder", false);
         isCharging = false;
-        vfx.VerParticulas(isCharging);
         for (int i = 0; i < actualPillarRails.Count; i++)
         {
             actualPillarRails[i].GetComponent<FirePillarRail>().StartDeactivate();
