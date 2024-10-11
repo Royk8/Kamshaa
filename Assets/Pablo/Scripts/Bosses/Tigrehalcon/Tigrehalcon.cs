@@ -199,7 +199,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
 
     private IEnumerator BasicAttack(float damage)
     {
-        //vfxAnim.Golpear();
+        anim.SetBool("poder", true);
         yield return new WaitForSeconds(0.6f);
         Collider[] collidersAffected = Physics.OverlapSphere(basicAttackHitSphere.transform.position, basicAttackHitSphere.transform.localScale.x / 2, hitMask);
         basicAttackHitSphere.SetActive(true);
@@ -214,6 +214,12 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
                 Debug.Log($"{collidersAffected[i].name} dañado por ataque basico de: {transform.name}");
             }
         }
+    }
+
+    private void DeactivateHitCollider()
+    {
+        anim.SetBool("poder", false);
+        basicAttackHitSphere.SetActive(false);
     }
 
     private IEnumerator PillarsOfFire()
@@ -250,11 +256,6 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
             actualPillarRails[i].GetComponent<FirePillarRail>().StartDeactivate();
         }
         actualMechanicIsFinished = true;
-    }
-
-    private void DeactivateHitCollider()
-    {
-        basicAttackHitSphere.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
