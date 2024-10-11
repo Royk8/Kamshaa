@@ -4,17 +4,26 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Linq;
 using Unity.Mathematics;
+using Unity.VisualScripting;
+using UnityEngine.UI;
 
 public class Murrapo : Enemy, IDamageable
 {
     public NavMeshAgent agent;
     public List<Transform> wayPoints = new();
+    public GameObject hitSphere;
     public AnimationCurve turnCurveVelocity;
     public AnimationCurve jumpCurveVelocity;
     public AnimationCurve positionCurveVelocity;
+    public LayerMask mask;
+    public float attackColdDown;
+    public float temblorDuration;
+    public float temblorMagnitud;
     public float turnVelocity;
     public float jumpVelocity;
     public float highTarget;
+    public float damage;
+    public float wanderingSpeed;
 
     private Transform actualPoint;
     private bool isAttacking;
@@ -25,6 +34,7 @@ public class Murrapo : Enemy, IDamageable
     {
         base.IdleState();
         if (states != States.Idle) return;
+        if (!agent.enabled) return;
         if (agent.remainingDistance <= 0.5f)
             SelectNextWayPoint();
     }
@@ -33,8 +43,10 @@ public class Murrapo : Enemy, IDamageable
     {
         base.FollowState();
         if (states != States.Follow) return;
+        if (!agent.enabled) return;
         agent.isStopped = false;
-        agent.SetDestination(target.position);
+        if (agent.enabled)
+            agent.SetDestination(target.position);
     }
 
     private void SelectNextWayPoint()
@@ -53,6 +65,7 @@ public class Murrapo : Enemy, IDamageable
     {
         actualPoint = wayPoints.Aggregate(wayPoints[0], (closer, next) => (transform.position - next.position).magnitude < (transform.position - closer.position).magnitude ? next : closer);
 
+        agent.enabled = true;
         agent.isStopped = false;
         agent.SetDestination(actualPoint.position);
     }
@@ -61,7 +74,8 @@ public class Murrapo : Enemy, IDamageable
     {
         base.AttackingState();
         if (states != States.Attacking) return;
-        agent.isStopped = true;
+        if (agent.enabled)
+        agent.isStopped = false;
         if (isAttacking) return;
         StartCoroutine(Attack());
     }
@@ -99,8 +113,35 @@ public class Murrapo : Enemy, IDamageable
             transform.position = new Vector3(zPosition.x, yPosition, zPosition.z);
             yield return new WaitForFixedUpdate();
         }
+        DamageHit();
+
+        yield return new WaitForSeconds(attackColdDown);
+
         agent.enabled = true;
         jumpLanded = true;
+    }
+
+    private void DamageHit()
+    {
+        hitSphere.SetActive(true);
+        ControladorCamara.singleton.IniciarTemblor(temblorDuration, temblorMagnitud);
+        Collider[] collidersAffected = Physics.OverlapSphere(hitSphere.transform.position, hitSphere.transform.localScale.x / 2, mask);
+
+        for (int i = 0; i < collidersAffected.Length; i++)
+        {
+            if (collidersAffected[i] == GetComponent<Collider>()) continue;
+            if (collidersAffected[i].TryGetComponent(out IDamageable creature))
+            {
+                creature.ReceiveDamage(damage);
+                Debug.Log(collidersAffected[i].name + " dañado por poison de: " + name);
+            }
+        }
+        Invoke(nameof(DeactivateHitSphere), 0.2f);
+    }
+
+    private void DeactivateHitSphere()
+    {
+        hitSphere.SetActive(false);
     }
 
     private IEnumerator TurnToTarget(Quaternion targetRotation)
@@ -140,6 +181,7 @@ public class Murrapo : Enemy, IDamageable
                 break;
             case States.Dead:
                 ComeBackToTheRoute();
+                agent.speed = wanderingSpeed;
                 break;
             default:
                 break;
