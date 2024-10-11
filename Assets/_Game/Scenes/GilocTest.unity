@@ -39318,26 +39318,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PulpoBasico
       objectReference: {fileID: 0}
-    - target: {fileID: 2861577309273423024, guid: dc1d2655245a8fd4bab974c13c480c20, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3412963319323348295, guid: dc1d2655245a8fd4bab974c13c480c20, type: 3}
-      propertyPath: m_Size.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3412963319323348295, guid: dc1d2655245a8fd4bab974c13c480c20, type: 3}
-      propertyPath: m_Size.z
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3412963319323348295, guid: dc1d2655245a8fd4bab974c13c480c20, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3412963319323348295, guid: dc1d2655245a8fd4bab974c13c480c20, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

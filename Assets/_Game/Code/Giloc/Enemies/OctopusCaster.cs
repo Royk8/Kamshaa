@@ -118,7 +118,7 @@ namespace Giloc.Enemies
 
         protected override IEnumerator Die()
         {
-            throw new System.NotImplementedException();
+            yield return null;
         }
         #endregion
     }

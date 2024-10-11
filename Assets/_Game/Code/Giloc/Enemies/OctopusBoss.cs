@@ -153,7 +153,7 @@ namespace Giloc.Enemies
 
         protected override IEnumerator Die()
         {
-            throw new NotImplementedException();
+            yield return null;
         }
         #endregion
     }
