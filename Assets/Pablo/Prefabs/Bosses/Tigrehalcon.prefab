@@ -63,6 +63,7 @@ MonoBehaviour:
   - {fileID: 0}
   wanderingSpeed: 2
   anim: {fileID: 5121382534238924279}
+  vfx: {fileID: 3297576304145227695}
   laserBeamPosition: {fileID: 0}
   laserBeamLookAtOne: {fileID: 0}
   laserBeamLookAtTwo: {fileID: 0}
@@ -453,7 +454,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 85109612199454845, guid: dfd6c46cf94ac5544a1026cdd34fc0c4, type: 3}
       propertyPath: finalScaleReference
-      value: 1.1263788
+      value: 1.1263747
       objectReference: {fileID: 0}
     - target: {fileID: 279682780146688545, guid: dfd6c46cf94ac5544a1026cdd34fc0c4, type: 3}
       propertyPath: m_Name
@@ -509,6 +510,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 624437586284230811, guid: dfd6c46cf94ac5544a1026cdd34fc0c4, type: 3}
   m_PrefabInstance: {fileID: 2270862978703949402}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3297576304145227695 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3621142545463615989, guid: dfd6c46cf94ac5544a1026cdd34fc0c4, type: 3}
+  m_PrefabInstance: {fileID: 2270862978703949402}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6f698be8f165242aed7922da347e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &5121382534238924279 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6382013672331973549, guid: dfd6c46cf94ac5544a1026cdd34fc0c4, type: 3}

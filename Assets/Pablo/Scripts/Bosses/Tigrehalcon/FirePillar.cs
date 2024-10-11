@@ -26,6 +26,7 @@ public class FirePillar : MonoBehaviour
     {
         material.material = warning;
         yield return new WaitForSeconds(warningTime);
+        ControladorCamara.singleton.IniciarTemblor(5, 0.06f);
         material.material = danger;
         doingDamage = true;
 
