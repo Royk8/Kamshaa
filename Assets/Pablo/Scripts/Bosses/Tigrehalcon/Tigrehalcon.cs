@@ -113,6 +113,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         yield return new WaitUntil(() => alreadyTurned);
 
         anim.SetBool("poder", true);
+        ControladorCamara.singleton.IniciarTemblor(5, 0.06f); /////////// AAAAAAAAAAAA no va acá
         yield return new WaitForSeconds(laserBeamAnimDelay);
 
         laserBeam.SetActive(true);
@@ -239,6 +240,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
             actualPillarRails[i].SetActive(true);
         }
 
+        ControladorCamara.singleton.IniciarTemblor(5, 0.06f); /////////// AAAAAAAAAAAA no va acá
         yield return new WaitForSeconds(pillarsDuration);
 
         anim.SetBool("poder", false);
