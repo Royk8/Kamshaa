@@ -11,6 +11,7 @@ public class Metamorfosis : MonoBehaviour
     public float frecuenciaStun = 0.1f;
     public float tiempoStun = 0.5f;
 
+
     private void Start()
     {
         // Inicializa la propiedad "_tiempo" del material en -0.1
