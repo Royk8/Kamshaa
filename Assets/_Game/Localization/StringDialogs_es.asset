@@ -18,18 +18,55 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 49636636737537
-    m_Localized: Quieres un poco de luz led?
-    m_Metadata:
-      m_Items: []
-  - m_Id: 49636636737536
+  - m_Id: 249186810970112
     m_Localized: "\xA1Kamsha\xE1! Al fin te encuentro! Ha sido dif\xEDcil sentir
       tu luz all\xE1 abajo."
     m_Metadata:
       m_Items: []
-  - m_Id: 49636598988800
-    m_Localized: "Kamsha\xE1 es contactado por Yensha\xE1, su gu\xEDa espiritual,
-      quien le da indicaciones de c\xF3mo regresar al Sol."
+  - m_Id: 249186840330240
+    m_Localized: "\xA1Yensha\xE1, amigo! \xA1Por fin apareces! No s\xE9 qu\xE9 hacer,
+      me perd\xED, todos se han ido y estoy atrapado."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330241
+    m_Localized: "Debes regresar a Wuam Luar, el Lugar Sagrado de Origen. Asciende
+      por la Gran Liana hacia el Sol, as\xED estar\xE1s de nuevo con nosotros."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330242
+    m_Localized: "Pero no s\xE9 c\xF3mo\u2026 No tengo la fuerza para trepar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330243
+    m_Localized: Necesitas las Plumas que coronaban a nuestros jefes perdidos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330244
+    m_Localized: "La Azul de Yaht\xFA el Sabedor, la Roja de Yahuar el Poderoso y
+      la Verde de Teshemb\xE1 el Sanador."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330245
+    m_Localized: "Ellas iluminar\xE1n tu camino y te dar\xE1n lo necesario para ascender
+      al Sol. B\xFAscalas con mucho cuidado, si te demoras te devorar\xE1n las sombras\u2026
+      como a ellos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330246
+    m_Localized: "\xA1Cuidado! una presencia turbia est\xE1 cerca!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330247
+    m_Localized: "Puedo sentir el peligro, pero \u2026 \xBFC\xF3mo lo enfrento?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330248
+    m_Localized: "Te regalar\xE9 mi aliento, as\xED tendr\xE1s la fuerza para pisar
+      el aire, pero ya no podr\xE9 hablarte m\xE1s..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330249
+    m_Localized: "\u2026 solo me quedar\xE1 esperar tu regreso a Wuam Luar."
     m_Metadata:
       m_Items: []
   references:

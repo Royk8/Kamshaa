@@ -155,9 +155,9 @@ RectTransform:
   - {fileID: 1902190289}
   m_Father: {fileID: 1178557481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 111.91666, y: -100}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &726127
@@ -7179,7 +7179,7 @@ MonoBehaviour:
   localizedStringTable:
     m_TableReference:
       m_TableCollectionName: GUID:ccbcdbdcebc87af4f926a90ab6c9e392
-  text: {fileID: 0}
+  entryId: C1
 --- !u!4 &121182103
 Transform:
   m_ObjectHideFlags: 0
@@ -32749,9 +32749,9 @@ RectTransform:
   - {fileID: 1285642863}
   m_Father: {fileID: 1178557481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 335.74997, y: -100}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &975204589
@@ -36824,12 +36824,12 @@ GameObject:
   - component: {fileID: 1178557483}
   - component: {fileID: 1178557482}
   m_Layer: 5
-  m_Name: Box
+  m_Name: DialoguePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1178557481
 RectTransform:
   m_ObjectHideFlags: 0
@@ -53112,9 +53112,9 @@ RectTransform:
   - {fileID: 2132185997}
   m_Father: {fileID: 1178557481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 559.58325, y: -100}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1860431632
@@ -58069,6 +58069,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2132921133}
+  - component: {fileID: 2132921134}
+  - component: {fileID: 2132921135}
   m_Layer: 5
   m_Name: Dialogue
   m_TagString: Untagged
@@ -58096,6 +58098,39 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2132921134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132921132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e5c13ef8caabef489b4cb87be7bf9d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 1178557480}
+  conversationText: {fileID: 1285642864}
+  leftImage: {fileID: 1902190290}
+  rightImage: {fileID: 2132185998}
+  conversationId: C1
+--- !u!114 &2132921135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132921132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b8da95aa174bd41854ab410d244375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizedStringTable:
+    m_TableReference:
+      m_TableCollectionName: GUID:ccbcdbdcebc87af4f926a90ab6c9e392
+  entryId: 
 --- !u!1001 &2134394355
 PrefabInstance:
   m_ObjectHideFlags: 0

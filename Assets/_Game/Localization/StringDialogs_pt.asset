@@ -18,16 +18,16 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 49636636737537
-    m_Localized: Voce quer un pouco de luz led?
+  - m_Id: 249186810970112
+    m_Localized: Kamshaa foi encontrado kkkkk
     m_Metadata:
       m_Items: []
-  - m_Id: 49636636737536
+  - m_Id: 249186840330240
     m_Localized: "\xA1Kamsha\xE1! Que fais voce abaixo kkkk"
     m_Metadata:
       m_Items: []
-  - m_Id: 49636598988800
-    m_Localized: Kamshaa foi encontrado kkkkk
+  - m_Id: 249186840330241
+    m_Localized: Voce quer un pouco de luz led?
     m_Metadata:
       m_Items: []
   references:

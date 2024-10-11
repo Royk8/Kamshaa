@@ -15,21 +15,61 @@ MonoBehaviour:
   m_TableCollectionName: StringDialogs
   m_TableCollectionNameGuidString: ccbcdbdcebc87af4f926a90ab6c9e392
   m_Entries:
-  - m_Id: 49636598988800
-    m_Key: C1M1
+  - m_Id: 249186810970112
+    m_Key: C1-M1
     m_Metadata:
       m_Items:
-      - rid: 1678124375521624116
-  - m_Id: 49636636737536
-    m_Key: C1M2
+      - rid: 1678124390047547410
+  - m_Id: 249186840330240
+    m_Key: C1-M2
     m_Metadata:
       m_Items:
-      - rid: 1678124375521624117
-  - m_Id: 49636636737537
-    m_Key: C2M1
+      - rid: 1678124390047547411
+  - m_Id: 249186840330241
+    m_Key: C1-M3
     m_Metadata:
       m_Items:
-      - rid: 1678124375521624118
+      - rid: 1678124390047547412
+  - m_Id: 249186840330242
+    m_Key: C1-M4
+    m_Metadata:
+      m_Items:
+      - rid: 1678124390047547413
+  - m_Id: 249186840330243
+    m_Key: C1-M5
+    m_Metadata:
+      m_Items:
+      - rid: 1678124390047547414
+  - m_Id: 249186840330244
+    m_Key: C1-M6
+    m_Metadata:
+      m_Items:
+      - rid: 1678124390047547415
+  - m_Id: 249186840330245
+    m_Key: C1-M7
+    m_Metadata:
+      m_Items:
+      - rid: 1678124390047547416
+  - m_Id: 249186840330246
+    m_Key: C2-M1
+    m_Metadata:
+      m_Items:
+      - rid: 1678124390047547417
+  - m_Id: 249186840330247
+    m_Key: C2-M2
+    m_Metadata:
+      m_Items:
+      - rid: 1678124390047547418
+  - m_Id: 249186840330248
+    m_Key: C2-M3
+    m_Metadata:
+      m_Items:
+      - rid: 1678124390047547419
+  - m_Id: 249186840330249
+    m_Key: C2-M4
+    m_Metadata:
+      m_Items:
+      - rid: 1678124390047547420
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
@@ -41,15 +81,47 @@ MonoBehaviour:
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
         m_CustomEpoch: 1728612920384
-    - rid: 1678124375521624116
-      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
-      data:
-        m_CommentText: Narrator
-    - rid: 1678124375521624117
+    - rid: 1678124390047547410
       type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_CommentText: "Yensha\xE1"
-    - rid: 1678124375521624118
+    - rid: 1678124390047547411
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: "Kamsha\xE1"
+    - rid: 1678124390047547412
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: "Yensha\xE1"
+    - rid: 1678124390047547413
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: "Kamsha\xE1"
+    - rid: 1678124390047547414
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: "Yensha\xE1"
+    - rid: 1678124390047547415
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: "Yensha\xE1"
+    - rid: 1678124390047547416
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: "Yensha\xE1"
+    - rid: 1678124390047547417
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: "Yensha\xE1"
+    - rid: 1678124390047547418
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: "Kamsha\xE1"
+    - rid: 1678124390047547419
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: "Yensha\xE1"
+    - rid: 1678124390047547420
       type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_CommentText: "Yensha\xE1"

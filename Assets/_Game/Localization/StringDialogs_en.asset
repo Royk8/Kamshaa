@@ -18,18 +18,55 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 49636636737537
-    m_Localized: Do you want some led light?
+  - m_Id: 249186810970112
+    m_Localized: "Kamsha\xE1! I finally find you! It has been difficult to sense
+      your light down there."
     m_Metadata:
       m_Items: []
-  - m_Id: 49636636737536
-    m_Localized: "\xA1Kamsha\xE1! I found you, Finally! It was quite difficult to
-      sense your light down there."
+  - m_Id: 249186840330240
+    m_Localized: "Yensha\xE1, my friend! Finally you show up! I don't know what to
+      do, I got lost, everyone has left and I'm trapped."
     m_Metadata:
       m_Items: []
-  - m_Id: 49636598988800
-    m_Localized: "Kamsha\xE1 is reached by Yensha\xE1, his spiritual guide, the one
-      who gives him the directions to come back home, the sun."
+  - m_Id: 249186840330241
+    m_Localized: You must return to Wuam Luar, the Sacred Place of Origin. Climb
+      up the Great Liana towards the Sun, so you will be with us again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330242
+    m_Localized: But I don't know how... I don't have the strength to climb.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330243
+    m_Localized: You need the Feathers that crowned our lost chiefs.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330244
+    m_Localized: "The Blue one of Yaht\xFA the Knowledgeable, the Red one of Yahuar
+      the Powerful and the Green one of Teshemb\xE1 the Healer."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330245
+    m_Localized: They will light your way and give you what you need to ascend to
+      the Sun. Look for them very carefully, if you delay the shadows will devour
+      you... like them.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330246
+    m_Localized: Watch out! A dark presence is near.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330247
+    m_Localized: "I can sense danger, but\u2026 How do I face it?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330248
+    m_Localized: I will give you my breath, so you will have the strength to step
+      on the air, but I will not be able to speak to you anymore...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330249
+    m_Localized: ... I can only wait for your return to Wam Luar.
     m_Metadata:
       m_Items: []
   references:
