@@ -12,3 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e54c988322a2a94da0159ba7fda6235, type: 3}
   m_Name: Characters
   m_EditorClassIdentifier: 
+  characters:
+  - characterName: "Kamsha\xE1"
+    sprite: {fileID: -1135381437, guid: 42d93d8db29ed59408cde3cabcacc8ea, type: 3}
+  - characterName: "Yensha\xE1"
+    sprite: {fileID: 418548173, guid: 42d93d8db29ed59408cde3cabcacc8ea, type: 3}
+  - characterName: "Teshemb\xE1"
+    sprite: {fileID: 901038836, guid: 42d93d8db29ed59408cde3cabcacc8ea, type: 3}
+  - characterName: Yahuar
+    sprite: {fileID: -617041790, guid: 42d93d8db29ed59408cde3cabcacc8ea, type: 3}
+  - characterName: "Yaht\xFA"
+    sprite: {fileID: 618780731, guid: 42d93d8db29ed59408cde3cabcacc8ea, type: 3}
