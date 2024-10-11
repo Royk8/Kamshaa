@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: StringDialogs Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: StringDialogs
+  m_TableCollectionNameGuidString: ccbcdbdcebc87af4f926a90ab6c9e392
+  m_Entries:
+  - m_Id: 49636598988800
+    m_Key: C1M1
+    m_Metadata:
+      m_Items:
+      - rid: 1678124375521624116
+  - m_Id: 49636636737536
+    m_Key: C1M2
+    m_Metadata:
+      m_Items:
+      - rid: 1678124375521624117
+  - m_Id: 49636636737537
+    m_Key: C2M1
+    m_Metadata:
+      m_Items:
+      - rid: 1678124375521624118
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1678124375521624088
+  references:
+    version: 2
+    RefIds:
+    - rid: 1678124375521624088
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1728612920384
+    - rid: 1678124375521624116
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: Narrator
+    - rid: 1678124375521624117
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: "Yensha\xE1"
+    - rid: 1678124375521624118
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: "Yensha\xE1"
