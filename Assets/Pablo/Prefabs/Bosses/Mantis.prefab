@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 22803818255380426}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.512}
+  m_LocalPosition: {x: 0, y: 0, z: 0.382}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 212185872925311481}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.51199996}
+  m_LocalPosition: {x: 0, y: 0, z: 0.3820001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -389,6 +389,7 @@ GameObject:
   - component: {fileID: 2186754664243741637}
   - component: {fileID: 7359712383987019362}
   - component: {fileID: 2402994096629967587}
+  - component: {fileID: 3175664167380651100}
   m_Layer: 7
   m_Name: Mantis
   m_TagString: Untagged
@@ -433,9 +434,10 @@ MonoBehaviour:
   tpDelay: 1
   maxLife: 50
   life: 50
+  metamorfosis: {fileID: 3175664167380651100}
   basicAttackRange: 2
   basicAttackFrecuence: 1
-  basicAttackDamage: 1
+  basicAttackDamage: 15
   basicAttackHitSphere: {fileID: 4863167443251857362}
   slashUbications:
   - {fileID: 0}
@@ -477,7 +479,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   actualMechanic: 
-  slashDamage: 3
+  slashDamage: 30
   slashWait: 1
   slashWarningDelay: 1
   slashFinishDelay: 1
@@ -490,7 +492,7 @@ MonoBehaviour:
   poisonTick: {fileID: 0}
   dOStunDuration: 3
   timeUntilDO: 2.7
-  dODamage: 8
+  dODamage: 50
   speedDuringDO: 2.6
   afterDeadlyOmenDelay: 2
   mantisDOSpawnPosition: {fileID: 0}
@@ -542,6 +544,26 @@ CapsuleCollider:
   m_Height: 1.68
   m_Direction: 1
   m_Center: {x: 0, y: 1.08, z: 0}
+--- !u!114 &3175664167380651100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7578469375836524534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d895a128e0a55a44b84a83c619eb5746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mallas:
+  - {fileID: 711143790035475692}
+  - {fileID: 7510328715558361142}
+  - {fileID: 1801925402259499695}
+  "tiempoTransici\xF3n": 2
+  particulas: {fileID: 7519131671508558765, guid: b81c73d1749f44e4fad690a9e27c33c9, type: 3}
+  frecuenciaStun: 0.1
+  tiempoStun: 0.5
 --- !u!1001 &7706862625086875406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -610,6 +632,21 @@ PrefabInstance:
 --- !u!4 &186079797414079240 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7521381013561773062, guid: 3be038cab6a7e1340a3e57a3235fef2e, type: 3}
+  m_PrefabInstance: {fileID: 7706862625086875406}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &711143790035475692 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7145588886859922402, guid: 3be038cab6a7e1340a3e57a3235fef2e, type: 3}
+  m_PrefabInstance: {fileID: 7706862625086875406}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1801925402259499695 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8355865208176479649, guid: 3be038cab6a7e1340a3e57a3235fef2e, type: 3}
+  m_PrefabInstance: {fileID: 7706862625086875406}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7510328715558361142 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 202181038838660920, guid: 3be038cab6a7e1340a3e57a3235fef2e, type: 3}
   m_PrefabInstance: {fileID: 7706862625086875406}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &8303251328979188310 stripped

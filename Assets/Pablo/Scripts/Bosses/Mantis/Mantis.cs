@@ -14,6 +14,7 @@ public class Mantis : MonoBehaviour, IDamageable
     public float tpDelay;
     public float maxLife;
     public float life;
+    public Metamorfosis metamorfosis;
 
     [Space(2)]
     [Header("Basic Attack")]
@@ -163,7 +164,7 @@ public class Mantis : MonoBehaviour, IDamageable
         posiblePositionsRemaining.Remove(spawnPosition);
         vfxAnim.Invisibilizar();
         yield return new WaitForSeconds(tpDelay);
-        transform.SetLocalPositionAndRotation(spawnPosition.position, spawnPosition.rotation);
+        transform.SetPositionAndRotation(spawnPosition.position, spawnPosition.rotation);
         vfxAnim.Visibilizar();
         yield return new WaitForSeconds(tpDelay);
 
@@ -216,7 +217,6 @@ public class Mantis : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(0.6f);
         Collider[] collidersAffected = Physics.OverlapSphere(basicAttackHitSphere.transform.position, basicAttackHitSphere.transform.localScale.x / 2, hitBoxMask);
         basicAttackHitSphere.SetActive(true);
-        if (collidersAffected.Length > 0)
         for (int i = 0; i < collidersAffected.Length; i++)
         {
             if (collidersAffected[i].gameObject == gameObject) continue;
@@ -235,7 +235,7 @@ public class Mantis : MonoBehaviour, IDamageable
         float normalSpeed = agent.speed;
         vfxAnim.Invisibilizar();
         yield return new WaitForSeconds(tpDelay);
-        transform.SetLocalPositionAndRotation(mantisDOSpawnPosition.position, mantisDOSpawnPosition.rotation);
+        transform.SetPositionAndRotation(mantisDOSpawnPosition.position, mantisDOSpawnPosition.rotation);
         vfxAnim.Visibilizar();
         yield return new WaitForSeconds(tpDelay);
 
@@ -246,7 +246,7 @@ public class Mantis : MonoBehaviour, IDamageable
         else
             Debug.Log("no se encuentra el script con la interfaz de IStuneable en el player");
 
-        player.SetLocalPositionAndRotation(playerDOSpawnPosition.position, playerDOSpawnPosition.rotation);
+        player.SetPositionAndRotation(playerDOSpawnPosition.position, playerDOSpawnPosition.rotation);
         agent.speed = speedDuringDO;
         agent.enabled = true;
         agent.SetDestination(player.position + (transform.forward * 5));
@@ -287,11 +287,16 @@ public class Mantis : MonoBehaviour, IDamageable
         life -= value;
         if (life <= 0)
         {
+            metamorfosis.IniciarTransicion();
             unCorrupted = true;
             StopAllCoroutines();
             mechanicsCoroutine = StartCoroutine(Wandering());
             actualMechanic = nameof(Wandering);
             ControlAmbiente.singleton.LlenarVerde();
+        }
+        else
+        {
+            metamorfosis.AplicarEfectoStun();
         }
     }
 

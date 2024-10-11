@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 20
   rb: {fileID: 7739970211646134588}
-  damage: 1
+  damage: 5
   disableDelay: 4
   creator: {fileID: 0}
 --- !u!54 &7739970211646134588
@@ -179,7 +179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6fe5e6baf9f44d542995db90e8767182, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.138
+      value: -0.157
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6fe5e6baf9f44d542995db90e8767182, type: 3}
       propertyPath: m_LocalPosition.z

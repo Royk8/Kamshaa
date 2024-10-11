@@ -58,6 +58,7 @@ public class CuelloLargo : Enemy, IDamageable, IStuneable
             Debug.Log($"{collidersAffected[i].name} afectado por {transform.name}");
             if (collidersAffected[i].TryGetComponent(out IDamageable damageable))
             {
+                Debug.Log($"{collidersAffected[i].name} dañado por {transform.name}");
                 damageable.ReceiveDamage(damage);
             }
         }
@@ -141,6 +142,7 @@ public class CuelloLargo : Enemy, IDamageable, IStuneable
             case States.Follow:
                 break;
             case States.Attacking:
+                agent.ResetPath();
                 break;
             case States.Dead:
                 agent.speed = unCorruptedSpeed;

@@ -17,6 +17,7 @@ public class Vespa : Enemy, IDamageable, IStuneable
     public GameObject stingPrefab;
     public Transform shootingSpot;
     public Animator anim;
+    public Metamorfosis metamorfosis;
 
     private Transform actualPoint;
     private bool isAttacking;
@@ -135,6 +136,7 @@ public class Vespa : Enemy, IDamageable, IStuneable
             case States.Attacking:
                 break;
             case States.Dead:
+                metamorfosis.IniciarTransicion();
                 ComeBackToTheRoute();
                 break;
             default:
@@ -155,6 +157,10 @@ public class Vespa : Enemy, IDamageable, IStuneable
         if (life <= 0)
         {
             ChangeState(States.Dead);
+        }
+        else
+        {
+            metamorfosis.AplicarEfectoStun();
         }
     }
 
