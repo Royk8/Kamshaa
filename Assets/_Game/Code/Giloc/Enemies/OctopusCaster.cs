@@ -39,10 +39,18 @@ namespace Giloc.Enemies
         #endregion
 
         #region methods
-        public override void TakeDamage(int pointsToTake = 1)
+        public override void TakeDamage(float pointsToTake = 1)
         {
+            if (!corrupted) return;
             CancelAttack();
             lifePoints -= pointsToTake;
+
+            if (lifePoints <= 0)
+            {
+                corrupted = false;
+                enemyMovement.IsChasing = false;
+                StartCoroutine(Die());
+            };
         }
 
         protected override void Attack()
@@ -83,6 +91,7 @@ namespace Giloc.Enemies
 
         private void StartChasing(Transform transform)
         {
+            if (!corrupted) return;
             ResetAttackStoppers();
             enemyMovement.StartChasing(transform, attackDistance);
         }
@@ -105,6 +114,11 @@ namespace Giloc.Enemies
         {
             preparingAttack = false;
             attackCanceled = false;
+        }
+
+        protected override IEnumerator Die()
+        {
+            yield return null;
         }
         #endregion
     }
