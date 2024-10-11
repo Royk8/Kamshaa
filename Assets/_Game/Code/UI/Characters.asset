@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e54c988322a2a94da0159ba7fda6235, type: 3}
+  m_Name: Characters
+  m_EditorClassIdentifier: 
+  characters:
+  - characterName: "Kamsha\xE1"
+    sprite: {fileID: -1135381437, guid: 42d93d8db29ed59408cde3cabcacc8ea, type: 3}
+  - characterName: "Yensha\xE1"
+    sprite: {fileID: 418548173, guid: 42d93d8db29ed59408cde3cabcacc8ea, type: 3}
+  - characterName: "Teshemb\xE1"
+    sprite: {fileID: 901038836, guid: 42d93d8db29ed59408cde3cabcacc8ea, type: 3}
+  - characterName: Yahuar
+    sprite: {fileID: -617041790, guid: 42d93d8db29ed59408cde3cabcacc8ea, type: 3}
+  - characterName: "Yaht\xFA"
+    sprite: {fileID: 618780731, guid: 42d93d8db29ed59408cde3cabcacc8ea, type: 3}
