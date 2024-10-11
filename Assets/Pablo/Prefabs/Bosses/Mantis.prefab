@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 22803818255380426}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.512}
+  m_LocalPosition: {x: 0, y: 0, z: 0.382}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 212185872925311481}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.51199996}
+  m_LocalPosition: {x: 0, y: 0, z: 0.3820001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -437,7 +437,7 @@ MonoBehaviour:
   metamorfosis: {fileID: 3175664167380651100}
   basicAttackRange: 2
   basicAttackFrecuence: 1
-  basicAttackDamage: 1
+  basicAttackDamage: 15
   basicAttackHitSphere: {fileID: 4863167443251857362}
   slashUbications:
   - {fileID: 0}
@@ -479,7 +479,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   actualMechanic: 
-  slashDamage: 3
+  slashDamage: 30
   slashWait: 1
   slashWarningDelay: 1
   slashFinishDelay: 1
@@ -492,7 +492,7 @@ MonoBehaviour:
   poisonTick: {fileID: 0}
   dOStunDuration: 3
   timeUntilDO: 2.7
-  dODamage: 8
+  dODamage: 50
   speedDuringDO: 2.6
   afterDeadlyOmenDelay: 2
   mantisDOSpawnPosition: {fileID: 0}

@@ -164,7 +164,7 @@ public class Mantis : MonoBehaviour, IDamageable
         posiblePositionsRemaining.Remove(spawnPosition);
         vfxAnim.Invisibilizar();
         yield return new WaitForSeconds(tpDelay);
-        transform.SetLocalPositionAndRotation(spawnPosition.position, spawnPosition.rotation);
+        transform.SetPositionAndRotation(spawnPosition.position, spawnPosition.rotation);
         vfxAnim.Visibilizar();
         yield return new WaitForSeconds(tpDelay);
 
@@ -235,7 +235,7 @@ public class Mantis : MonoBehaviour, IDamageable
         float normalSpeed = agent.speed;
         vfxAnim.Invisibilizar();
         yield return new WaitForSeconds(tpDelay);
-        transform.SetLocalPositionAndRotation(mantisDOSpawnPosition.position, mantisDOSpawnPosition.rotation);
+        transform.SetPositionAndRotation(mantisDOSpawnPosition.position, mantisDOSpawnPosition.rotation);
         vfxAnim.Visibilizar();
         yield return new WaitForSeconds(tpDelay);
 
@@ -246,7 +246,7 @@ public class Mantis : MonoBehaviour, IDamageable
         else
             Debug.Log("no se encuentra el script con la interfaz de IStuneable en el player");
 
-        player.SetLocalPositionAndRotation(playerDOSpawnPosition.position, playerDOSpawnPosition.rotation);
+        player.SetPositionAndRotation(playerDOSpawnPosition.position, playerDOSpawnPosition.rotation);
         agent.speed = speedDuringDO;
         agent.enabled = true;
         agent.SetDestination(player.position + (transform.forward * 5));
