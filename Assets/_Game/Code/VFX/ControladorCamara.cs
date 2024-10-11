@@ -16,29 +16,28 @@ public class ControladorCamara : MonoBehaviour
     private float aperturaInicial;
     public static ControladorCamara singleton;
 
-	private void Awake()
-	{
-        singleton = this;
-	}
-
-	void Start()
+    private void Awake()
     {
-        // Calcula y guarda la distancia inicial de la cámara al objetivo
+        singleton = this;
+    }
+
+    void Start()
+    {
         if (objetivo != null)
         {
             desplazamientoInicial = transform.position - objetivo.position;
         }
 
-        // Guarda la posición original de la cámara
         posicionOriginal = transform.position;
         aperturaInicial = camaras[0].orthographicSize;
         apertura = aperturaInicial;
     }
 
     public void CambiarApertura(float cuanto)
-	{
+    {
         apertura = cuanto;
     }
+
     public void RestaurarApertura()
     {
         apertura = aperturaInicial;
@@ -46,53 +45,41 @@ public class ControladorCamara : MonoBehaviour
 
     void LateUpdate()
     {
-        // Si hay un objetivo, realiza el seguimiento
         if (objetivo != null)
         {
-            Vector3 posicionDeseada = objetivo.position + desplazamientoInicial;  // Mantén la distancia original
+            Vector3 posicionDeseada = objetivo.position + desplazamientoInicial;
             if (posicionDeseada.y < 0) posicionDeseada.y = 3;
-            Vector3 posicionSuavizada = Vector3.Lerp(transform.position, posicionDeseada, velocidadSuavizada);  // Movimiento suavizado
-            transform.position = posicionSuavizada;
-        }
+            Vector3 posicionSuavizada = Vector3.Lerp(transform.position, posicionDeseada, velocidadSuavizada);
 
-        // Si está temblando, aplica el shake
-        if (estaTemblando)
-        {
-            if (duracionTemblor > 0)
+            if (estaTemblando && duracionTemblor > 0)
             {
-                transform.position = posicionOriginal + Random.insideUnitSphere * magnitudTemblor;  // Agrega el shake
-
-                // Decrementa la duración del shake
+                Vector3 shakeOffset = Random.insideUnitSphere * magnitudTemblor;
+                transform.position = posicionSuavizada + shakeOffset;
                 duracionTemblor -= Time.deltaTime;
             }
             else
             {
-                // Termina el shake y regresa la cámara a su posición original
                 estaTemblando = false;
-                transform.position = posicionOriginal;
+                transform.position = posicionSuavizada;
             }
         }
-
     }
 
-	private void FixedUpdate()
-	{
-        if(Mathf.Abs(camaras[0].orthographicSize - apertura) > 0.005f)
-		{
+    private void FixedUpdate()
+    {
+        if (Mathf.Abs(camaras[0].orthographicSize - apertura) > 0.005f)
+        {
             for (int i = 0; i < camaras.Length; i++)
             {
                 camaras[i].orthographicSize = Mathf.Lerp(camaras[i].orthographicSize, apertura, 0.1f);
             }
         }
-        
     }
 
-	// Método público para iniciar el temblor de la cámara
-	public void IniciarTemblor(float duracion, float magnitud)
+    public void IniciarTemblor(float duracion, float magnitud)
     {
-        posicionOriginal = transform.position;  // Guarda la posición inicial antes del shake
-        duracionTemblor = duracion;  // Configura la duración del temblor
-        magnitudTemblor = magnitud;  // Configura la magnitud del temblor
-        estaTemblando = true;  // Inicia el temblor
+        duracionTemblor = duracion;
+        magnitudTemblor = magnitud;
+        estaTemblando = true;
     }
 }
