@@ -120,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linearSpeed: 0
   maxLifeTime: 4
+  damage: 10
   parabolaHeight: 3
   timeToHit: 1
   acidArea: {fileID: 7169106489815853938}

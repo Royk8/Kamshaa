@@ -1,4 +1,5 @@
 using Giloc.Attacks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,11 @@ namespace Giloc.Enemies
     {
         #region properties
         [SerializeField] private List<Cannon> cannons;
-        
-        [SerializeField] private float rotationSpeed;
+        private bool _isRotating;
+        private float _rotationAmount;
+        private float _rotationSpeed;
+        private Quaternion _startRotation;
+        private Transform _playerTransform;
         #endregion
 
         #region unityMethods
@@ -24,12 +28,14 @@ namespace Giloc.Enemies
         private void Start()
         {
             secondsSinceLastAttack = minTimeBetweenAttacks;
+            _rotationSpeed = 360f / (attackPreparationTime * 5);
         }
 
         private void Update()
         {
             WaitNextAttack();
             RotateWhilePreparingAttack();
+            LookAtPLayer();
         }
 
         private void OnDisable()
@@ -41,10 +47,18 @@ namespace Giloc.Enemies
         #endregion
 
         #region methods
-        public override void TakeDamage(int pointsToTake = 1)
+        public override void TakeDamage(float pointsToTake = 1)
         {
+            if (!corrupted) return;
             CancelAttack();
             lifePoints -= pointsToTake;
+
+            if(lifePoints <= 0)
+            {
+                enemyMovement.IsChasing = false;
+                corrupted = false;
+                StartCoroutine(Die());
+            }
         }
 
         protected override void Attack()
@@ -66,6 +80,8 @@ namespace Giloc.Enemies
 
         private void StartChasing(Transform transform)
         {
+            if(!corrupted) return;
+            _playerTransform = transform;
             ResetAttackStoppers();
             enemyMovement.StartChasing(transform, attackDistance);
         }
@@ -93,15 +109,34 @@ namespace Giloc.Enemies
             if (secondsSinceLastAttack > minTimeBetweenAttacks)
             {
                 preparingAttack = true;
+                _startRotation = transform.rotation;
+                _isRotating = true;
                 StartCoroutine(PrepareAttack());
             }
         }
 
         private void RotateWhilePreparingAttack()
         {
-            if (preparingAttack)
+            if (_isRotating)
             {
-                transform.Rotate(rotationSpeed * Time.deltaTime * Vector3.up);
+                var t = _rotationSpeed * Time.deltaTime;
+                _rotationAmount += t;
+                transform.Rotate(0f, t, 0f);
+
+                if (_rotationAmount > 360f)
+                {
+                    transform.rotation = _startRotation;
+                    _isRotating = false;
+                    _rotationAmount = 0f;
+                }
+            }
+        }
+
+        private void LookAtPLayer()
+        {
+            if (playerReached && !_isRotating)
+            {
+                transform.LookAt(_playerTransform);
             }
         }
 
@@ -114,6 +149,11 @@ namespace Giloc.Enemies
         {
             preparingAttack = false;
             attackCanceled = false;
+        }
+
+        protected override IEnumerator Die()
+        {
+            yield return null;
         }
         #endregion
     }
