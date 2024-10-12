@@ -29,7 +29,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public void SpendHealth(float value)
     {
         currentHealth -= value;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        currentHealth = Mathf.Clamp(currentHealth, 1, maxHealth);
         
         OnHealthChanged?.Invoke(currentHealth);
 
