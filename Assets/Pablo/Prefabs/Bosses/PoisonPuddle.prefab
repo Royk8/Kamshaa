@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dee53fbac4020b41922093caed8312c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageTick: 0.1
+  damageTick: 1.5
   damageFrecuency: 0.3
   poisonWarning: 2.5
   poisonDuration: 10

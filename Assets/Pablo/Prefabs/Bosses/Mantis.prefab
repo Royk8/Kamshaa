@@ -435,6 +435,8 @@ MonoBehaviour:
   maxLife: 50
   life: 50
   metamorfosis: {fileID: 3175664167380651100}
+  healthBar: {fileID: 0}
+  monolitosVerdes: {fileID: 0}
   basicAttackRange: 2
   basicAttackFrecuence: 1
   basicAttackDamage: 15
@@ -510,7 +512,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 6
-  m_Acceleration: 8
+  m_Acceleration: 23
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -560,7 +562,7 @@ MonoBehaviour:
   - {fileID: 711143790035475692}
   - {fileID: 7510328715558361142}
   - {fileID: 1801925402259499695}
-  "tiempoTransici\xF3n": 2
+  tiempoTransicion: 2
   particulas: {fileID: 7519131671508558765, guid: b81c73d1749f44e4fad690a9e27c33c9, type: 3}
   frecuenciaStun: 0.1
   tiempoStun: 0.5
