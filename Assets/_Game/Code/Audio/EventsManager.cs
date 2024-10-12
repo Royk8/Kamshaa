@@ -7,6 +7,7 @@ public class EventsManager : MonoBehaviour
 {
     [field: Header("Player")]
     [field: SerializeField] public EventReference PlayerStep { get; private set; }
+    [field: SerializeField] public EventReference PlayerGround { get; private set; }
     [field: SerializeField] public EventReference PlayerDash { get; private set; }
     [field: SerializeField] public EventReference PlayerAttack { get; private set; }
     [field: SerializeField] public EventReference PlayerDie { get; private set; }
