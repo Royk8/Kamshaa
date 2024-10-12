@@ -136,7 +136,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -182,7 +182,7 @@ MonoBehaviour:
   - {fileID: 531245800352976402}
   - {fileID: 5720736350352717491}
   - {fileID: 3260924523925758608}
-  "tiempoTransici\xF3n": 2
+  tiempoTransicion: 2
   particulas: {fileID: 7519131671508558765, guid: b81c73d1749f44e4fad690a9e27c33c9, type: 3}
   frecuenciaStun: 0.1
   tiempoStun: 0.5
