@@ -29,7 +29,7 @@ namespace Giloc.Bullets
             var newRotationSpeed = rotationSpeed - (rotationSlowdownPerSec * Time.deltaTime);
             rotationSpeed = Mathf.Clamp(newRotationSpeed, minRotationSpeed, rotationSpeed);
             transform.Rotate(rotationSpeed * Time.deltaTime * Vector3.up);
-            transform.Translate(linearSpeed * Time.deltaTime * Vector3.forward, Space.Self);
+            transform.Translate(LinearSpeed * Time.deltaTime * Vector3.forward, Space.Self);
         }
 
         protected override void UpdateLifeState()

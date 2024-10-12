@@ -5,9 +5,10 @@ namespace Giloc
     public abstract class Bullet : MonoBehaviour
     {
         #region properties
-        [SerializeField] protected float linearSpeed;
+        [SerializeField] private float linearSpeed;
         [SerializeField] protected float maxLifeTime;
         [SerializeField] protected float damage;
+
         #endregion
 
         #region methods
@@ -20,8 +21,13 @@ namespace Giloc
             {
                 var playerHealth =  other.gameObject.GetComponent<IDamageable>();
                 playerHealth.ReceiveDamage(damage);
+                Destroy(gameObject);
             }
         }
+        #endregion
+
+        #region getters / setters
+        public float LinearSpeed { get => linearSpeed; set => linearSpeed = value; }
         #endregion
     }
 }
