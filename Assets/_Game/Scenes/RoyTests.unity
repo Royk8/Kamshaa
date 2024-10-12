@@ -58115,6 +58115,7 @@ MonoBehaviour:
   lettersPerSecond: 35
   conversationId: C1
   dialogueSpriteMapScriptable: {fileID: 11400000, guid: 7d6df212e4d86694093696935b5a51f3, type: 2}
+  inputAdapter: {fileID: 0}
 --- !u!114 &2132921135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58980,10 +58981,6 @@ PrefabInstance:
       propertyPath: floorDetectorPlane
       value: 
       objectReference: {fileID: 790923358}
-    - target: {fileID: 9064334376600762666, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
-      propertyPath: conCamara
-      value: 
-      objectReference: {fileID: 1244475475}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
