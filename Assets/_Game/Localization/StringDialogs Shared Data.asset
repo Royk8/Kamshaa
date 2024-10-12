@@ -70,6 +70,51 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 1678124390047547420
+  - m_Id: 348186759249920
+    m_Key: C3-M1
+    m_Metadata:
+      m_Items:
+      - rid: 1678124395523735554
+  - m_Id: 348186796998656
+    m_Key: C3-M2
+    m_Metadata:
+      m_Items:
+      - rid: 1678124395523735555
+  - m_Id: 348186796998657
+    m_Key: C3-M3
+    m_Metadata:
+      m_Items:
+      - rid: 1678124395523735556
+  - m_Id: 348186796998658
+    m_Key: C4-M1
+    m_Metadata:
+      m_Items:
+      - rid: 1678124395523735557
+  - m_Id: 348186796998659
+    m_Key: C4-M2
+    m_Metadata:
+      m_Items:
+      - rid: 1678124395523735558
+  - m_Id: 348186796998660
+    m_Key: C4-M3
+    m_Metadata:
+      m_Items:
+      - rid: 1678124395523735559
+  - m_Id: 348186796998661
+    m_Key: C5-M1
+    m_Metadata:
+      m_Items:
+      - rid: 1678124395523735560
+  - m_Id: 348186796998662
+    m_Key: C5-M2
+    m_Metadata:
+      m_Items:
+      - rid: 1678124395523735561
+  - m_Id: 348186796998663
+    m_Key: C5-M3
+    m_Metadata:
+      m_Items:
+      - rid: 1678124395523735562
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
@@ -125,3 +170,39 @@ MonoBehaviour:
       type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_CommentText: "Yensha\xE1"
+    - rid: 1678124395523735554
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: "Kamsha\xE1"
+    - rid: 1678124395523735555
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: "Teshemb\xE1 "
+    - rid: 1678124395523735556
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: "Kamsha\xE1"
+    - rid: 1678124395523735557
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: "Kamsha\xE1"
+    - rid: 1678124395523735558
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: Yahuar
+    - rid: 1678124395523735559
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: "Kamsha\xE1"
+    - rid: 1678124395523735560
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: "Kamsha\xE1"
+    - rid: 1678124395523735561
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: "Yaht\xFA"
+    - rid: 1678124395523735562
+      type: {class: Comment, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_CommentText: "Kamsha\xE1"
