@@ -13,6 +13,8 @@ public class EventsManager : MonoBehaviour
     [field: SerializeField] public EventReference PlayerDie { get; private set; }
     [field: SerializeField] public EventReference PlayerJump { get; private set; }
 
+    
+
     [field: Header("Enemy")]
 
     [field: SerializeField] public EventReference EnemyAttack { get; private set; }
@@ -21,6 +23,10 @@ public class EventsManager : MonoBehaviour
 
     public static EventsManager Instance { get; private set; }
 
+
+    [field: Header("Snapshots")]
+
+    [field: SerializeField] public EventReference StunSnapshot { get; private set; }
     private void Awake()
     {
         if (Instance != null){
