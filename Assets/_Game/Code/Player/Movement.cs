@@ -1,3 +1,4 @@
+using FIMSpace;
 using System;
 using System.Collections;
 using UnityEditor;
@@ -57,6 +58,7 @@ public class Movement : MonoBehaviour, IStuneable
     private float fakeDeltaTime = 0.016f;
     private Vector3 startPosition;
     private DashAttack dashAttack;
+    private bool counter;
 
     private void Start()
     {
@@ -172,13 +174,22 @@ public class Movement : MonoBehaviour, IStuneable
 
     private void HandleGravity()
     {
+        
         if (!isGrounded)
         {
             zVelocity += gravity * gravityMultiplier * Time.deltaTime;
+            counter = true;
         }
         else if (zVelocity < 0)
         {
             zVelocity = 0f;
+            if (counter)
+            {
+                AudioManager.Instance.PlayOneShot(EventsManager.Instance.PlayerGround, this.transform.position);
+                //FDebug.Log("sonido aterrizo");
+            }
+                
+            counter = false;
         }
     }
 
@@ -198,11 +209,13 @@ public class Movement : MonoBehaviour, IStuneable
                     extraJumpsLeft--;
                     animationsControl?.DobleSalto();
                     isJumping = false;
-                    StopCoroutine(jumpCoroutine);
+                    StopCoroutine(jumpCoroutine);                   
+                    
                 }
                 jumpCoroutine = ExecuteJump(inputAdapter.GetMovement());
                 StartCoroutine(jumpCoroutine);
             }
+            AudioManager.Instance.PlayOneShot(EventsManager.Instance.PlayerJump, this.transform.position);
         }
     }
 
@@ -226,6 +239,7 @@ public class Movement : MonoBehaviour, IStuneable
                 transform.Translate(moveForce * Time.deltaTime);
                 yield return null;
             }
+
         }
     }
 
@@ -241,7 +255,9 @@ public class Movement : MonoBehaviour, IStuneable
 
         if (!isJumping && isGrounded)
         {
+    
             extraJumpsLeft = extraJumps;
+            
         }
     }
 
@@ -249,6 +265,7 @@ public class Movement : MonoBehaviour, IStuneable
     {
         isJumping = false;
         timeFlyingLeft = 0;
+        
     }
 
     private Vector3 VerifyPlaneOfMovement(Vector2 direction)

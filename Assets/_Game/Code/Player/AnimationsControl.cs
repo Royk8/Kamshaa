@@ -12,6 +12,7 @@ public class AnimationsControl : MonoBehaviour
     public UnityEvent dobleSalto;
     public UnityEvent dash;
     public UnityEvent stun;
+    private FMOD.Studio.EventInstance Stun;
 
     Vector3 bPos;
 
@@ -66,12 +67,19 @@ public class AnimationsControl : MonoBehaviour
         stun.Invoke();
         animator.SetBool("mareado", true);
         vfx.SetMareado(true);
+        Stun = AudioManager.Instance.NuevaInstancia(EventsManager.Instance.StunSnapshot);
+        Stun.start();
     }
     [ContextMenu("Desmarear")]
     public void FinalizarMareo()
     {
+        
         animator.SetBool("mareado", false);
         vfx.SetMareado(false);
+
+        Stun.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        
+        
     }
     public void CambiarVelocidad(float v)
 	{
