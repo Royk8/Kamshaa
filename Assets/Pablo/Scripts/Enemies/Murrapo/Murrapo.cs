@@ -166,6 +166,7 @@ public class Murrapo : Enemy, IDamageable
     {
         base.DeadState();
         if (states != States.Dead) return;
+        if (!agent.enabled) return;
         if (agent.remainingDistance <= 0.5f)
             SelectNextWayPoint();
     }

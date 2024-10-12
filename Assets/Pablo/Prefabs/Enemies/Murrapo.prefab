@@ -156,7 +156,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   mask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 257
   attackColdDown: 1
   temblorDuration: 0.5
   temblorMagnitud: 0.1
@@ -304,7 +304,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 598956619312636942, guid: d23d527d82b58354d82c7fd31b06a91b, type: 3}
       propertyPath: finalScaleReference
-      value: 0.43539608
+      value: 0.43539613
       objectReference: {fileID: 0}
     - target: {fileID: 598956619312636942, guid: d23d527d82b58354d82c7fd31b06a91b, type: 3}
       propertyPath: _Editor_OnValidateTrigger
@@ -320,7 +320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3052324578644827859, guid: d23d527d82b58354d82c7fd31b06a91b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.061
+      value: 0.035
       objectReference: {fileID: 0}
     - target: {fileID: 3052324578644827859, guid: d23d527d82b58354d82c7fd31b06a91b, type: 3}
       propertyPath: m_LocalPosition.z
