@@ -16,6 +16,8 @@ public class Movement : MonoBehaviour, IStuneable
     public InputAdapter inputAdapter;
     public Transform floorDetectorPlane;
     public ParticleSystem stunParticles;
+    public GameObject projectile;
+    public Transform shooter;
 
     [Header("Movement")]
     public float moveSpeed;
@@ -381,6 +383,19 @@ public class Movement : MonoBehaviour, IStuneable
     public void Shoot(InputAction.CallbackContext context)
     {
         animationsControl.Disparar();
+        StartCoroutine(ShootCoroutine(projectile.GetComponent<ProjectileController>().castingTime));
+    }
+
+    IEnumerator ShootCoroutine(float wait)
+    {
+
+        GameObject launchedProjectile = Instantiate(projectile);
+        ProjectileController projectileController = launchedProjectile.GetComponent<ProjectileController>();
+        yield return new WaitForSeconds(wait);
+        launchedProjectile.transform.position = shooter.position;
+        launchedProjectile.transform.rotation = Quaternion.LookRotation(lookDirection);
+        launchedProjectile.GetComponent<Rigidbody>().velocity = lookDirection * projectileController.speed;
+        launchedProjectile.SetActive(true);
     }
 
 
