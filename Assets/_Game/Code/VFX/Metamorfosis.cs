@@ -4,7 +4,7 @@ using UnityEngine;
 public class Metamorfosis : MonoBehaviour
 {
     public Renderer[] mallas;
-    public float tiempoTransición = 2f;
+    public float tiempoTransicion = 2f;
     public GameObject particulas;
 
     // Variables para el efecto de stun
@@ -42,10 +42,10 @@ public class Metamorfosis : MonoBehaviour
             Instantiate(particulas, transform.position + Vector3.up * 0.5f, Quaternion.Euler(270, 0, 90));
         }
 
-        while (tiempoTranscurrido < tiempoTransición)
+        while (tiempoTranscurrido < tiempoTransicion)
         {
             tiempoTranscurrido += Time.deltaTime;
-            float t = tiempoTranscurrido / tiempoTransición;
+            float t = tiempoTranscurrido / tiempoTransicion;
             float valorTiempo = Mathf.Lerp(tiempoInicial, tiempoFinal, t);
 
             // Actualiza la propiedad "_tiempo" de cada material en la lista de mallas
