@@ -69,6 +69,42 @@ MonoBehaviour:
     m_Localized: "\u2026 solo me quedar\xE1 esperar tu regreso a Wuam Luar."
     m_Metadata:
       m_Items: []
+  - m_Id: 348186759249920
+    m_Localized: "Gracias, Teshemb\xE1, El Sanador."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998656
+    m_Localized: "Grita, Kamshaa, todo tu ser es sabidur\xEDa."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998657
+    m_Localized: Gracias, Gran Pez.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998658
+    m_Localized: Gracias, Yahuar, El Poderoso.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998659
+    m_Localized: Kamshaa, creador, ese fulgor ilumina tu camino.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998660
+    m_Localized: "Gracias, gracias, \xC1guila de Fuego."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998661
+    m_Localized: "Gracias, Yaht\xFA, El Sabedor."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998662
+    m_Localized: Escala, Kamshaa, ese camino te lleva a la luz.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998663
+    m_Localized: Gracias, insectote.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

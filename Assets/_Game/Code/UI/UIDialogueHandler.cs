@@ -81,6 +81,7 @@ public class UIDialogueHandler : MonoBehaviour
                 isNextMessage = false;
                 conversationText.text = line.text;
                 isDisplayingText = false;
+                
                 yield return new WaitUntil(() => isNextMessage);
             }
             //Debug.Log("Done waiting for next message");

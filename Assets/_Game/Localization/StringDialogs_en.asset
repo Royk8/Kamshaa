@@ -20,7 +20,7 @@ MonoBehaviour:
   m_TableData:
   - m_Id: 249186810970112
     m_Localized: "Kamsha\xE1! I finally find you! It has been difficult to sense
-      your light down."
+      your light down there."
     m_Metadata:
       m_Items: []
   - m_Id: 249186840330240
@@ -67,6 +67,42 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 249186840330249
     m_Localized: ... I can only wait for your return to Wam Luar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186759249920
+    m_Localized: "Thank you, Teshemb\xE1, The Healer."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998656
+    m_Localized: Shout, Kamshaa, your whole being is wisdom.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998657
+    m_Localized: Thank you, Great Fish.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998658
+    m_Localized: Thank you, Yahuar, The Powerful.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998659
+    m_Localized: Kamshaa, creator, that glow illuminates your path.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998660
+    m_Localized: Thank you, thank you, Eagle of Fire.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998661
+    m_Localized: "Thank you, Yaht\xFA, The Knower."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998662
+    m_Localized: Climb, Kamshaa, that path leads you to the light.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998663
+    m_Localized: Thank you, insect.
     m_Metadata:
       m_Items: []
   references:

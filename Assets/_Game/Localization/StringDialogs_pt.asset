@@ -19,15 +19,90 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 249186810970112
-    m_Localized: Kamshaa foi encontrado kkkkk
+    m_Localized: "\xA1Kamsha\xE1! Finalmente te encontro! Tem sido dif\xEDcil sentir
+      sua luz l\xE1 embaixo."
     m_Metadata:
       m_Items: []
   - m_Id: 249186840330240
-    m_Localized: "\xA1Kamsha\xE1! Que fais voce abaixo kkkk"
+    m_Localized: "\xA1Yensha\xE1, amigo! Finalmente voc\xEA aparece! N\xE3o sei o
+      que fazer, me perdi, todos se foram e estou preso."
     m_Metadata:
       m_Items: []
   - m_Id: 249186840330241
-    m_Localized: Voce quer un pouco de luz led?
+    m_Localized: "Voc\xEA deve retornar a Wuam Luar, o Lugar Sagrado de Origem. Suba
+      pela Grande Liana em dire\xE7\xE3o ao Sol, assim estar\xE1 novamente conosco."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330242
+    m_Localized: "Mas n\xE3o sei como... N\xE3o tenho for\xE7a para escalar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330243
+    m_Localized: "Voc\xEA precisa das Penas que coroavam nossos chefes perdidos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330244
+    m_Localized: "A Azul de Yaht\xFA, o S\xE1bio, a Vermelha de Yahuar, o Poderoso,
+      e a Verde de Teshemb\xE1, o Curador."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330245
+    m_Localized: "Elas iluminar\xE3o seu caminho e te dar\xE3o o necess\xE1rio para
+      ascender ao Sol. Procure-as com muito cuidado; se voc\xEA demorar, as sombras
+      te devorar\xE3o... como a eles."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330246
+    m_Localized: "\xA1Cuidado! Uma presen\xE7a turva est\xE1 perto!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330247
+    m_Localized: Posso sentir o perigo, mas... como enfrento isso?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330248
+    m_Localized: "Vou te dar meu f\xF4lego, assim voc\xEA ter\xE1 for\xE7a para pisar
+      no ar, mas n\xE3o poderei mais falar com voc\xEA..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330249
+    m_Localized: "\u2026 s\xF3 me restar\xE1 esperar seu retorno a Wuam Luar."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186759249920
+    m_Localized: "Obrigado, Teshemb\xE1, O Curador."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998656
+    m_Localized: "Grite, Kamshaa, todo o seu ser \xE9 sabedoria."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998657
+    m_Localized: Obrigado, Grande Peixe.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998658
+    m_Localized: Obrigado, Yahuar, O Poderoso.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998659
+    m_Localized: Kamshaa, criador, esse brilho ilumina seu caminho.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998660
+    m_Localized: "Obrigado, obrigado, \xC1guia de Fogo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998661
+    m_Localized: "Obrigado, Yaht\xFA, O S\xE1bio."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998662
+    m_Localized: "Escale, Kamshaa, esse caminho te leva \xE0 luz."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348186796998663
+    m_Localized: Obrigado, inseto.
     m_Metadata:
       m_Items: []
   references:
