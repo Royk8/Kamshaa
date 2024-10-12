@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 8258534654654367774}
   - component: {fileID: 1350280852645306323}
   - component: {fileID: 1967021219916826031}
+  - component: {fileID: 9053500769131407047}
   m_Layer: 0
   m_Name: CuelloLargo
   m_TagString: Untagged
@@ -258,6 +259,24 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.74
   m_Center: {x: 0, y: 0.64, z: -0.21}
+--- !u!114 &9053500769131407047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7601947690992926713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d895a128e0a55a44b84a83c619eb5746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mallas:
+  - {fileID: 4452728379200435210}
+  tiempoTransicion: 2
+  particulas: {fileID: 7519131671508558765, guid: b81c73d1749f44e4fad690a9e27c33c9, type: 3}
+  frecuenciaStun: 0.1
+  tiempoStun: 0.5
 --- !u!1 &7695249522934537270
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,5 +381,10 @@ Transform:
 --- !u!95 &4156149567203485779 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8535340951780900527, guid: cfe2b8cdfd701f24180cb20cdfc55c57, type: 3}
+  m_PrefabInstance: {fileID: 5755041072886585084}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4452728379200435210 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8220555326202241782, guid: cfe2b8cdfd701f24180cb20cdfc55c57, type: 3}
   m_PrefabInstance: {fileID: 5755041072886585084}
   m_PrefabAsset: {fileID: 0}
