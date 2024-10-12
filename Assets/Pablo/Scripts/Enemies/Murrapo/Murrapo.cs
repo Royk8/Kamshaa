@@ -66,7 +66,7 @@ public class Murrapo : Enemy, IDamageable
     {
         actualPoint = wayPoints.Aggregate(wayPoints[0], (closer, next) => (transform.position - next.position).magnitude < (transform.position - closer.position).magnitude ? next : closer);
 
-        agent.enabled = true;
+        if (!agent.enabled) return;
         agent.isStopped = false;
         agent.SetDestination(actualPoint.position);
     }
@@ -121,6 +121,8 @@ public class Murrapo : Enemy, IDamageable
         yield return new WaitForSeconds(attackColdDown);
 
         agent.enabled = true;
+        if (states == States.Idle || states == States.Dead)
+            ComeBackToTheRoute();
         jumpLanded = true;
     }
 
