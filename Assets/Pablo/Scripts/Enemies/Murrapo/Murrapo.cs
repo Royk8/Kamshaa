@@ -138,7 +138,7 @@ public class Murrapo : Enemy, IDamageable
             if (collidersAffected[i].TryGetComponent(out IDamageable creature))
             {
                 creature.ReceiveDamage(damage);
-                Debug.Log(collidersAffected[i].name + " dañado por poison de: " + name);
+                Debug.Log(collidersAffected[i].name + " dañado por pisoton de: " + name);
             }
         }
         Invoke(nameof(DeactivateHitSphere), 0.2f);

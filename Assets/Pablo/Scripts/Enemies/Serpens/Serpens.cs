@@ -3,16 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Linq;
+using UnityEngine.UI;
 
 public class Serpens : Enemy, IDamageable
 {
     public NavMeshAgent agent;
     public List<Transform> wayPoints = new();
     public AnimationCurve turnCurveVelocity;
+    public LayerMask mask;
+    public GameObject hitSphere;
+    public Animator anim;
     public float turnVelocity;
+    public float wanderingSpeed;
+    public float attackSpeed;
+    public float attackRange;
+    public float animAttackDuration;
+    public float damage;
+    public float unitsBackUp, unitsLeft, UnitsRight;
 
     private Transform actualPoint;
     private bool isAttacking;
+    private Coroutine followPlayerCo;
+    private Coroutine turnToTargetCo;
+    private Coroutine attackCo;
 
     public override void FollowState()
     {
@@ -45,7 +58,6 @@ public class Serpens : Enemy, IDamageable
     {
         actualPoint = wayPoints.Aggregate(wayPoints[0], (closer, next) => (transform.position - next.position).magnitude < (transform.position - closer.position).magnitude ? next : closer);
 
-        agent.isStopped = false;
         agent.SetDestination(actualPoint.position);
     }
 
@@ -56,7 +68,7 @@ public class Serpens : Enemy, IDamageable
         if (isAttacking) return;
 
         isAttacking = true;
-        StartCoroutine(Attack());
+        attackCo = StartCoroutine(Attack());
     }
 
     private IEnumerator TurnToTarget()
@@ -75,19 +87,87 @@ public class Serpens : Enemy, IDamageable
         }
     }
 
+    private IEnumerator FollowPlayerConstantly()
+    {
+        while (true)
+        {
+            agent.SetDestination(target.position);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
     private IEnumerator Attack()
     {
-        Coroutine turnToTargetCo = StartCoroutine(TurnToTarget());
+        agent.speed = attackSpeed;
+        turnToTargetCo = StartCoroutine(TurnToTarget());
+        followPlayerCo = StartCoroutine(FollowPlayerConstantly());
 
+        yield return new WaitForSeconds(0.4f);
+        yield return new WaitUntil(() => agent.remainingDistance <= attackRange);
 
+        anim.SetTrigger("atacar");
+        yield return new WaitForSeconds(animAttackDuration);
 
-        yield return null;
+        StopCoroutine(followPlayerCo);
+        DamageHit();
+        Vector3 destination = transform.position + (transform.forward * unitsBackUp);
+        agent.SetDestination(destination);
+        yield return new WaitForSeconds(0.4f);
+        yield return new WaitUntil(() => agent.remainingDistance <= 0.5f);
+
+        destination = transform.position + (transform.right * UnitsRight);
+        agent.SetDestination(destination);
+        yield return new WaitForSeconds(0.4f);
+        yield return new WaitUntil(() => agent.remainingDistance <= 0.5f);
+
+        destination = transform.position + (transform.right * -unitsLeft);
+        agent.SetDestination(destination);
+        yield return new WaitForSeconds(0.4f);
+        yield return new WaitUntil(() => agent.remainingDistance <= 0.5f);
+
+        StopCoroutine(turnToTargetCo);
+        isAttacking = false;
+    }
+
+    private void StopAttackingCoroutines()
+    {
+        if (attackCo != null)
+        StopCoroutine(attackCo);
+        if (turnToTargetCo != null)
+        StopCoroutine(turnToTargetCo);
+        if (followPlayerCo != null)
+        StopCoroutine(followPlayerCo);
+        isAttacking = false;
+    }
+
+    private void DamageHit()
+    {
+        hitSphere.SetActive(true);
+        Collider[] collidersAffected = Physics.OverlapSphere(hitSphere.transform.position, hitSphere.transform.localScale.x / 2, mask);
+
+        for (int i = 0; i < collidersAffected.Length; i++)
+        {
+            if (collidersAffected[i] == GetComponent<Collider>()) continue;
+            if (collidersAffected[i].TryGetComponent(out IDamageable creature))
+            {
+                creature.ReceiveDamage(damage);
+                Debug.Log(collidersAffected[i].name + " dañado por ataque de: " + name);
+            }
+        }
+        Invoke(nameof(DeactivateHitSphere), 0.2f);
+    }
+
+    private void DeactivateHitSphere()
+    {
+        hitSphere.SetActive(false);
     }
 
     public override void DeadState()
     {
         base.DeadState();
         if (states != States.Dead) return;
+        if (agent.remainingDistance <= 0.5f)
+            SelectNextWayPoint();
     }
 
     public override void ChangeState(States s)
@@ -96,13 +176,17 @@ public class Serpens : Enemy, IDamageable
         switch (s)
         {
             case States.Idle:
+                StopAttackingCoroutines();
                 ComeBackToTheRoute();
                 break;
             case States.Follow:
+                StopAttackingCoroutines();
                 break;
             case States.Attacking:
                 break;
             case States.Dead:
+                StopAttackingCoroutines();
+                agent.speed = wanderingSpeed;
                 ComeBackToTheRoute();
                 break;
             default:
