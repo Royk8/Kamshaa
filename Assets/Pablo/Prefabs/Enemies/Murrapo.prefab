@@ -156,7 +156,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   mask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 257
   attackColdDown: 1
   temblorDuration: 0.5
   temblorMagnitud: 0.1

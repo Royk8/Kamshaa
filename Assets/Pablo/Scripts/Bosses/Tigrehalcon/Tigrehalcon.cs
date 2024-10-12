@@ -55,6 +55,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
     [Header("FirePillars")]
     [Space(1)]
     public List<GameObject> pillarRails = new();
+    public List<GameObject> MandatoryFirePillars = new();
     public Transform pillarsCastPosition;
     public float pillarsDuration;
     private GameObject actualSkipedPillarRail;
@@ -252,6 +253,10 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         {
             actualPillarRails[i].SetActive(true);
         }
+        for (int i = 0; i < MandatoryFirePillars.Count; i++)
+        {
+            MandatoryFirePillars[i].SetActive(true);
+        }
 
         yield return new WaitForSeconds(pillarsDuration);
 
@@ -260,6 +265,10 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         for (int i = 0; i < actualPillarRails.Count; i++)
         {
             actualPillarRails[i].GetComponent<FirePillarRail>().StartDeactivate();
+        }
+        for (int i = 0; i < MandatoryFirePillars.Count; i++)
+        {
+            MandatoryFirePillars[i].GetComponent<FirePillarRail>().StartDeactivate();
         }
         actualMechanicIsFinished = true;
     }

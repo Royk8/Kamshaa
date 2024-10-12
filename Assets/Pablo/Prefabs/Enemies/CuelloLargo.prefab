@@ -215,7 +215,7 @@ MonoBehaviour:
   endHitCapsulePos: {fileID: 6862334443680611866}
   hitMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 257
 --- !u!195 &1350280852645306323
 NavMeshAgent:
   m_ObjectHideFlags: 0

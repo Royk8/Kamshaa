@@ -65,6 +65,7 @@ MonoBehaviour:
   wanderingSpeed: 2
   anim: {fileID: 5121382534238924279}
   vfx: {fileID: 3297576304145227695}
+  healthBar: {fileID: 0}
   laserBeamPosition: {fileID: 0}
   laserBeamLookAtOne: {fileID: 0}
   laserBeamLookAtTwo: {fileID: 0}
@@ -125,7 +126,7 @@ MonoBehaviour:
   basicAttackHitSphere: {fileID: 3206414394558253652}
   hitMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 257
   persecutionDamage: 10
   persecutionLongRangeAttack: 4
   persecutionShortRangeAttack: 2

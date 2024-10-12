@@ -479,7 +479,7 @@ MonoBehaviour:
   hitMaterial: {fileID: 2100000, guid: 60ebb23594c29bc46a45523c10a68b45, type: 2}
   hitBoxMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 257
   actualMechanic: 
   slashDamage: 30
   slashWait: 1
