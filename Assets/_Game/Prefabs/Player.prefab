@@ -44,6 +44,7 @@ Transform:
   - {fileID: 1310862752596650323}
   - {fileID: 2920006021608401138}
   - {fileID: 2523432567071981600}
+  - {fileID: 1954356605107431570}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9039992414470757265
@@ -70,6 +71,8 @@ MonoBehaviour:
   inputAdapter: {fileID: 1350956863114062409}
   floorDetectorPlane: {fileID: 0}
   stunParticles: {fileID: 2128228450157277612}
+  projectile: {fileID: 3611575502262125270, guid: d0f91c82ed050034bb44a57dbc0b54ab, type: 3}
+  shooter: {fileID: 1954356605107431570}
   moveSpeed: 5
   timeToMaxSpeed: 0.1
   inputThresholdToStartMoving: 0.1
@@ -5850,6 +5853,37 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &7243830834786859891
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1954356605107431570}
+  m_Layer: 0
+  m_Name: Shooter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1954356605107431570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7243830834786859891}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.71428823, y: -0.47754714, z: 0.23169096, w: -0.45613644}
+  m_LocalPosition: {x: 0, y: 0.36165524, z: 0.074959755}
+  m_LocalScale: {x: 99.999985, y: 100.00002, z: 100}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6428577061434168102}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7718249705566911460
 GameObject:
   m_ObjectHideFlags: 0
