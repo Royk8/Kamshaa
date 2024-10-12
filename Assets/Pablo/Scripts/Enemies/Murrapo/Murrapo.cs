@@ -24,6 +24,7 @@ public class Murrapo : Enemy, IDamageable
     public float highTarget;
     public float damage;
     public float wanderingSpeed;
+    public ControlEfectosGato vfx;
 
     private Transform actualPoint;
     private bool isAttacking;
@@ -103,6 +104,7 @@ public class Murrapo : Enemy, IDamageable
         float initialYPosition = transform.position.y;
         float currentCurveValue = 0;
         agent.enabled = false;
+        vfx.IniciarAtaque();
 
         while (currentCurveValue != 1)
         {
@@ -114,6 +116,7 @@ public class Murrapo : Enemy, IDamageable
             yield return new WaitForFixedUpdate();
         }
         DamageHit();
+        vfx.TerminarAtaque();
 
         yield return new WaitForSeconds(attackColdDown);
 

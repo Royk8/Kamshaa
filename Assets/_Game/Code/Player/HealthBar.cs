@@ -10,14 +10,16 @@ public class HealthBar : MonoBehaviour
     [Range(0,100)]
     public float currentHealth;
     PlayerHealth playerHealth;
+    float sizeDeltaX;
 
     public void SetHealth(float value)
     {
-        indicator.rectTransform.localScale = new Vector3(value/maxHealth, 1, 1);
+        indicator.rectTransform.sizeDelta = new Vector3((value/maxHealth) * sizeDeltaX, indicator.rectTransform.sizeDelta.y);
     }
 
     private void OnEnable()
     {
+        sizeDeltaX = indicator.rectTransform.sizeDelta.x;
         if (playerHealth == null)
         {
             playerHealth = FindFirstObjectByType<PlayerHealth>();

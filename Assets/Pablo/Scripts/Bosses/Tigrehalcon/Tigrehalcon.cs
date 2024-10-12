@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Tigrehalcon : MonoBehaviour, IDamageable
 {
@@ -20,6 +21,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
     public float wanderingSpeed;
     public Animator anim;
     public VFXControlBossRojo vfx;
+    public Slider healthBar;
 
     [Space(2)]
     [Header("LaserBeam")]
@@ -64,6 +66,9 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        healthBar.maxValue = life;
+        healthBar.value = life;
+        healthBar.transform.parent.gameObject.SetActive(true);
         StartCoroutine(MechanicsController());
     }
 
@@ -288,14 +293,16 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
 
     public void ReceiveDamage(float value)
     {
-        if (unCorrupted) return;
+        if (unCorrupted || isCharging) return;
 
         life -= value;
+        healthBar.value = life;
         if (life <= 0)
         {
             unCorrupted = true;
             StopAllCoroutines();
             StartCoroutine(Wandering());
+            Plumero.singleton.AdquirirPluma(Pluma.roja);
             ControlAmbiente.singleton.LlenarRojo();
         }
     }
