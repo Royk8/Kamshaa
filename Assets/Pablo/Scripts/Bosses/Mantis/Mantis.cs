@@ -80,10 +80,10 @@ public class Mantis : MonoBehaviour, IDamageable
             StartCoroutine(Slash());
             actualMechanic = nameof(Slash);
             yield return new WaitUntil(() => actualMechanicIsFinished);
-            /*actualMechanicIsFinished = false;
+            actualMechanicIsFinished = false;
             StartCoroutine(Poison());
             actualMechanic = nameof(Poison);
-            yield return new WaitUntil(() => actualMechanicIsFinished);*/
+            yield return new WaitUntil(() => actualMechanicIsFinished);
             actualMechanicIsFinished = false;
             StartCoroutine(DeadlyOmen());
             actualMechanic = nameof(DeadlyOmen);
