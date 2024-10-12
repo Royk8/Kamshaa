@@ -18,6 +18,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         currentHealth -= value;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         Debug.Log("Player received damage. Current health: " + currentHealth);
+		if (ControladorCamara.singleton != null)
+		{
+            ControladorCamara.singleton.IniciarTemblor(1, 0.2f);
+		}
+		if (MarcoSangre.singleton != null)
+		{
+            MarcoSangre.singleton.IniciarEfecto(1);
+		}
         OnHealthChanged?.Invoke(currentHealth);
         if (currentHealth <= 0)
         {
