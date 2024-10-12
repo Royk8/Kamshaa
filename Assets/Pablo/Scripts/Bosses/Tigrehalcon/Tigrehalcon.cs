@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Tigrehalcon : MonoBehaviour, IDamageable
 {
@@ -20,6 +21,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
     public float wanderingSpeed;
     public Animator anim;
     public VFXControlBossRojo vfx;
+    public Slider healthBar;
 
     [Space(2)]
     [Header("LaserBeam")]
@@ -53,6 +55,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
     [Header("FirePillars")]
     [Space(1)]
     public List<GameObject> pillarRails = new();
+    public List<GameObject> MandatoryFirePillars = new();
     public Transform pillarsCastPosition;
     public float pillarsDuration;
     private GameObject actualSkipedPillarRail;
@@ -64,6 +67,9 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        healthBar.maxValue = life;
+        healthBar.value = life;
+        healthBar.transform.parent.gameObject.SetActive(true);
         StartCoroutine(MechanicsController());
     }
 
@@ -93,7 +99,9 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         anim.SetBool("corriendo", isCharging);
         vfx.VerParticulas(isCharging);
         yield return new WaitUntil(() => agent.remainingDistance <= 0.5f);
+
         anim.SetBool("corriendo", false);
+        vfx.VerParticulas(false);
 
         if ((laserBeamLookAtTwo.position - player.position).magnitude < (laserBeamLookAtOne.position - player.position).magnitude)
         {
@@ -124,7 +132,6 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         yield return new WaitUntil(() => alreadyTurned);
 
         isCharging = false;
-        vfx.VerParticulas(isCharging);
         agent.speed = normalSpeed;
         laserBeam.SetActive(false);
         anim.SetBool("poder", false);
@@ -233,6 +240,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         vfx.VerParticulas(isCharging);
         yield return new WaitUntil(() => agent.remainingDistance <= 0.25f);
 
+        vfx.VerParticulas(false);
         anim.SetBool("corriendo", false);
         alreadyTurned = false;
         StartCoroutine(TurnToTarget(pillarsCastPosition.rotation, laserBeamInitialTurnSpeed, laserBeamInitialTurnCurve));
@@ -245,15 +253,22 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
         {
             actualPillarRails[i].SetActive(true);
         }
+        for (int i = 0; i < MandatoryFirePillars.Count; i++)
+        {
+            MandatoryFirePillars[i].SetActive(true);
+        }
 
         yield return new WaitForSeconds(pillarsDuration);
 
         anim.SetBool("poder", false);
         isCharging = false;
-        vfx.VerParticulas(isCharging);
         for (int i = 0; i < actualPillarRails.Count; i++)
         {
             actualPillarRails[i].GetComponent<FirePillarRail>().StartDeactivate();
+        }
+        for (int i = 0; i < MandatoryFirePillars.Count; i++)
+        {
+            MandatoryFirePillars[i].GetComponent<FirePillarRail>().StartDeactivate();
         }
         actualMechanicIsFinished = true;
     }
@@ -287,14 +302,16 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
 
     public void ReceiveDamage(float value)
     {
-        if (unCorrupted) return;
+        if (unCorrupted || isCharging) return;
 
         life -= value;
+        healthBar.value = life;
         if (life <= 0)
         {
             unCorrupted = true;
             StopAllCoroutines();
             StartCoroutine(Wandering());
+            Plumero.singleton.AdquirirPluma(Pluma.roja);
             ControlAmbiente.singleton.LlenarRojo();
         }
     }

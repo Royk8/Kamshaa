@@ -18,6 +18,10 @@ namespace Giloc.Enemies
             colliderDecteter.onPlayerDetected += StartChasing;
             colliderDecteter.onPlayerExit += StartIdle;
             enemyMovement.OnPlayerReached += AllowAttack;
+            foreach (var cannon in cannons)
+            {
+                cannon.OnAttackFinished += EndAttack;
+            }
         }
 
         private void Start()
@@ -35,6 +39,10 @@ namespace Giloc.Enemies
             colliderDecteter.onPlayerDetected -= StartChasing;
             colliderDecteter.onPlayerExit -= StartIdle;
             enemyMovement.OnPlayerReached -= AllowAttack;
+            foreach (var cannon in cannons)
+            {
+                cannon.OnAttackFinished -= EndAttack;
+            }
         }
         #endregion
 
@@ -49,6 +57,7 @@ namespace Giloc.Enemies
             {
                 corrupted = false;
                 enemyMovement.IsChasing = false;
+                playerReached = false;
                 StartCoroutine(Die());
             };
         }
@@ -59,9 +68,6 @@ namespace Giloc.Enemies
             {
                 cannon.MakeAttack(_playerTransform);
             }
-            secondsSinceLastAttack = 0;
-            preparingAttack = false;
-            enemyMovement.ResumeChasing();
         }
 
         protected override void CancelAttack()
@@ -73,7 +79,6 @@ namespace Giloc.Enemies
         protected override IEnumerator PrepareAttack()
         {
             yield return new WaitForSeconds(attackPreparationTime);
-            preparingAttack = false;
             if (!attackCanceled) Attack();
             else ResetAttackStoppers();
         }
@@ -116,9 +121,17 @@ namespace Giloc.Enemies
             attackCanceled = false;
         }
 
+        private void EndAttack()
+        {
+            secondsSinceLastAttack = 0;
+            preparingAttack = false;
+            enemyMovement.ResumeChasing();
+        }
+
         protected override IEnumerator Die()
         {
             yield return null;
+            StartIdle();
         }
         #endregion
     }

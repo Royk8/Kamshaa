@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Mantis : MonoBehaviour, IDamageable
 {
@@ -15,6 +16,8 @@ public class Mantis : MonoBehaviour, IDamageable
     public float maxLife;
     public float life;
     public Metamorfosis metamorfosis;
+    public Slider healthBar;
+    public MonolitosVerdes monolitosVerdes;
 
     [Space(2)]
     [Header("Basic Attack")]
@@ -63,6 +66,9 @@ public class Mantis : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        healthBar.maxValue = life;
+        healthBar.value = life;
+        healthBar.transform.parent.gameObject.SetActive(true);
         mechanicsCoroutine = StartCoroutine(MechanicsController());
     }
 
@@ -87,6 +93,7 @@ public class Mantis : MonoBehaviour, IDamageable
 
     private IEnumerator Slash()
     {
+        agent.enabled = false;
         if (slashUbicationsRemaining.Count == 0)
         {
             slashUbicationsRemaining = slashUbications.Where(x => x).ToList();
@@ -116,6 +123,7 @@ public class Mantis : MonoBehaviour, IDamageable
         StartCoroutine(MovePhantomMantis(hitBoxIndicators[randomArea].transform.GetChild(1).position));
         hitBoxIndicators[randomArea].GetComponent<MeshRenderer>().material = hitMaterial;
         Collider[] collidersAffected = Physics.OverlapBox(hitBoxIndicators[randomArea].transform.position, hitBoxIndicators[randomArea].transform.localScale / 2, hitBoxIndicators[randomArea].transform.rotation, hitBoxMask);
+
         for (int i = 0; i < collidersAffected.Length; i++)
         {
             if (collidersAffected[i].TryGetComponent(out IDamageable damageable))
@@ -124,7 +132,7 @@ public class Mantis : MonoBehaviour, IDamageable
                 Debug.Log($"{collidersAffected[i].name} dañado por slash de: {transform.name} ");
             }
             else
-                Debug.Log(collidersAffected[i].name);
+                Debug.Log($"{collidersAffected[i].name} affected for slash");
 
         }
         yield return new WaitForSeconds(slashFinishDelay);
@@ -285,6 +293,7 @@ public class Mantis : MonoBehaviour, IDamageable
         if (unCorrupted) return;
 
         life -= value;
+        healthBar.value = life;
         if (life <= 0)
         {
             metamorfosis.IniciarTransicion();
@@ -292,6 +301,9 @@ public class Mantis : MonoBehaviour, IDamageable
             StopAllCoroutines();
             mechanicsCoroutine = StartCoroutine(Wandering());
             actualMechanic = nameof(Wandering);
+            poisonTick.gameObject.SetActive(false);
+            monolitosVerdes.VolverConVibracion();
+            Plumero.singleton.AdquirirPluma(Pluma.verde);
             ControlAmbiente.singleton.LlenarVerde();
         }
         else
@@ -303,6 +315,7 @@ public class Mantis : MonoBehaviour, IDamageable
     public void Heal(float value)
     {
         life += value;
+        healthBar.value = life;
         if (value > maxLife)
             life = maxLife;
     }

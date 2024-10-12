@@ -37,7 +37,6 @@ public class PoisonTick : MonoBehaviour
         while (true)
         {
             Collider[] collidersAffected = Physics.OverlapSphere(transform.position, transform.localScale.x / 2, mask);
-            Debug.Log(collidersAffected.Length);
 
             for (int i = 0; i < collidersAffected.Length; i++)
             {
@@ -46,7 +45,6 @@ public class PoisonTick : MonoBehaviour
                     creator.GetComponent<Mantis>().Heal(damageTick);
                     continue;
                 }
-                Debug.Log(collidersAffected[i].name);
                 if (collidersAffected[i].TryGetComponent(out IDamageable creature))
                 {
                     creature.ReceiveDamage(damageTick);

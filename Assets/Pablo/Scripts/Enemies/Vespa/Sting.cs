@@ -32,10 +32,10 @@ public class Sting : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject == creator) return;
-        if (collision.gameObject.TryGetComponent(out IDamageable entity))
+        if (other.gameObject == creator) return;
+        if (other.gameObject.TryGetComponent(out IDamageable entity))
         {
             entity.ReceiveDamage(damage);
         }

@@ -9,9 +9,8 @@ public class Raycast : EditorWindow
     public GameObject prefabSeleccionado;
     public GameObject objetoPadre;
 
-    // Variables para la escala mínima y máxima
-    public float escalaMin = 0.5f;
-    public float escalaMax = 2.0f;
+    private float escalaSlider = 0.5f;
+    private Vector2 scrollPos; // Posición del scroll para la lista de prefabs
 
     [MenuItem("Morion/Creador de Arda")]
     static void Init()
@@ -25,20 +24,25 @@ public class Raycast : EditorWindow
 
     void OnSceneGUI(SceneView vista)
     {
-        if (!activo) return;
+        if (!activo || Event.current.button != 0 || prefabSeleccionado == null)
+        {
+            return;
+        }
 
         Ray rayo = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
         RaycastHit hit;
 
-        if (Event.current.type == EventType.MouseDown && prefabSeleccionado != null && Physics.Raycast(rayo, out hit))
+        if (Event.current.type == EventType.MouseDown && Physics.Raycast(rayo, out hit))
         {
             Debug.Log("Impacto: " + hit.collider.gameObject.name);
 
+            // Instancia el prefab y añade undo
             var objeto = (GameObject)PrefabUtility.InstantiatePrefab(prefabSeleccionado);
+            Undo.RegisterCreatedObjectUndo(objeto, "Crear Prefab");
 
-            // Establece la posición y escala aleatoria del objeto
+            // Posiciona y aplica escala en base a 1 + (valor aleatorio entre -escalaSlider y +escalaSlider)
             objeto.transform.position = hit.point;
-            float escalaAleatoria = Random.Range(escalaMin, escalaMax);
+            float escalaAleatoria = 1 + Random.Range(-escalaSlider, escalaSlider);
             objeto.transform.localScale = Vector3.one * escalaAleatoria;
 
             if (objetoPadre != null)
@@ -53,6 +57,14 @@ public class Raycast : EditorWindow
 
     void OnGUI()
     {
+        // Verificar si se presionó la tecla espacio y alternar "activo"
+        Event e = Event.current;
+        if (e.type == EventType.KeyDown && e.keyCode == KeyCode.Space)
+        {
+            activo = !activo;
+            Repaint(); // Refrescar la ventana para reflejar el cambio
+        }
+
         if (GUILayout.Button(activo ? "Desactivar" : "Activar"))
         {
             activo = !activo;
@@ -60,7 +72,6 @@ public class Raycast : EditorWindow
 
         GUIStyle estiloEstado = new GUIStyle(GUI.skin.label);
         estiloEstado.normal.textColor = activo ? Color.green : Color.red;
-
         GUILayout.Label("Activo: " + activo, estiloEstado);
 
         if (prefabSeleccionado != null)
@@ -84,38 +95,39 @@ public class Raycast : EditorWindow
         GUILayout.Label("Seleccionar Objeto Padre (Opcional):");
         objetoPadre = (GameObject)EditorGUILayout.ObjectField(objetoPadre, typeof(GameObject), true);
 
+        GUILayout.Label("Escala Aleatoria");
+        escalaSlider = EditorGUILayout.Slider(escalaSlider, 0f, 1f);
+
         GUILayout.Label("Arrastra y Suelta Prefabs Abajo:");
         Event evt = Event.current;
         Rect dropArea = GUILayoutUtility.GetRect(0.0f, 50.0f, GUILayout.ExpandWidth(true));
         GUI.Box(dropArea, "Arrastra los Prefabs Aquí");
 
-        switch (evt.type)
+        if (evt.type == EventType.DragUpdated || evt.type == EventType.DragPerform)
         {
-            case EventType.DragUpdated:
-            case EventType.DragPerform:
-                if (!dropArea.Contains(evt.mousePosition)) break;
+            if (!dropArea.Contains(evt.mousePosition)) return;
 
-                DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
-
-                if (evt.type == EventType.DragPerform)
+            DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
+            if (evt.type == EventType.DragPerform)
+            {
+                DragAndDrop.AcceptDrag();
+                foreach (var draggedObject in DragAndDrop.objectReferences)
                 {
-                    DragAndDrop.AcceptDrag();
-
-                    foreach (var draggedObject in DragAndDrop.objectReferences)
+                    if (draggedObject is GameObject go && PrefabUtility.IsPartOfPrefabAsset(go))
                     {
-                        if (draggedObject is GameObject go && PrefabUtility.IsPartOfPrefabAsset(go))
-                        {
-                            prefabsParaInstanciar.Add(go);
-                        }
+                        prefabsParaInstanciar.Add(go);
                     }
                 }
-                Event.current.Use();
-                break;
+            }
+            Event.current.Use();
         }
 
         GUILayout.Space(20);
-
         GUILayout.Label("Seleccionar Prefab:");
+
+        // Activar scroll si la lista es más grande que el espacio disponible
+        scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
+
         float windowWidth = position.width;
         int columnas = Mathf.Max(1, Mathf.FloorToInt(windowWidth / 70));
         int filas = Mathf.CeilToInt((float)prefabsParaInstanciar.Count / columnas);
@@ -138,12 +150,6 @@ public class Raycast : EditorWindow
             GUILayout.EndHorizontal();
         }
 
-        GUILayout.Space(20);
-        GUILayout.Label("Escala aleatoria de instanciación:");
-        escalaMin = EditorGUILayout.FloatField("Escala mínima", escalaMin);
-        escalaMax = EditorGUILayout.FloatField("Escala máxima", escalaMax);
-
-        // Restricción para evitar que el mínimo sea mayor que el máximo
-        escalaMin = Mathf.Min(escalaMin, escalaMax);
+        EditorGUILayout.EndScrollView();
     }
 }

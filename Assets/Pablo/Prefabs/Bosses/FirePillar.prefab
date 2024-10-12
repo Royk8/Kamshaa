@@ -137,7 +137,7 @@ MonoBehaviour:
   finalPoint: {fileID: 6242669972745796384}
   mask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 257
   radio: 1.5
   damageFrecuence: 0.5
   damage: 15

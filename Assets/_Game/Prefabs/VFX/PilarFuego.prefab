@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9195034351480580252}
   - component: {fileID: 2015743834260138242}
   - component: {fileID: 8819176784018244119}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Humo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4839,7 +4839,7 @@ GameObject:
   - component: {fileID: 6714455551882917368}
   - component: {fileID: 1850090194646484015}
   - component: {fileID: 9159279490176084101}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: PilarFuego
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9721,6 +9721,10 @@ PrefabInstance:
     - target: {fileID: 707701467879851901, guid: 13fcd8e7e8508bf49b89e4d915b15a21, type: 3}
       propertyPath: m_Name
       value: Fuego
+      objectReference: {fileID: 0}
+    - target: {fileID: 707701467879851901, guid: 13fcd8e7e8508bf49b89e4d915b15a21, type: 3}
+      propertyPath: m_Layer
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8649383240940475368, guid: 13fcd8e7e8508bf49b89e4d915b15a21, type: 3}
       propertyPath: looping

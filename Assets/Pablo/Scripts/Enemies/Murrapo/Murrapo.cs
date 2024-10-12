@@ -24,6 +24,7 @@ public class Murrapo : Enemy, IDamageable
     public float highTarget;
     public float damage;
     public float wanderingSpeed;
+    public ControlEfectosGato vfx;
 
     private Transform actualPoint;
     private bool isAttacking;
@@ -65,7 +66,7 @@ public class Murrapo : Enemy, IDamageable
     {
         actualPoint = wayPoints.Aggregate(wayPoints[0], (closer, next) => (transform.position - next.position).magnitude < (transform.position - closer.position).magnitude ? next : closer);
 
-        agent.enabled = true;
+        if (!agent.enabled) return;
         agent.isStopped = false;
         agent.SetDestination(actualPoint.position);
     }
@@ -103,6 +104,7 @@ public class Murrapo : Enemy, IDamageable
         float initialYPosition = transform.position.y;
         float currentCurveValue = 0;
         agent.enabled = false;
+        vfx.IniciarAtaque();
 
         while (currentCurveValue != 1)
         {
@@ -114,10 +116,13 @@ public class Murrapo : Enemy, IDamageable
             yield return new WaitForFixedUpdate();
         }
         DamageHit();
+        vfx.TerminarAtaque();
 
         yield return new WaitForSeconds(attackColdDown);
 
         agent.enabled = true;
+        if (states == States.Idle || states == States.Dead)
+            ComeBackToTheRoute();
         jumpLanded = true;
     }
 
@@ -163,6 +168,7 @@ public class Murrapo : Enemy, IDamageable
     {
         base.DeadState();
         if (states != States.Dead) return;
+        if (!agent.enabled) return;
         if (agent.remainingDistance <= 0.5f)
             SelectNextWayPoint();
     }

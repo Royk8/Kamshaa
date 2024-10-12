@@ -10,11 +10,14 @@ namespace Giloc.Enemies
     {
         #region properties
         [SerializeField] private List<Cannon> cannons;
+        [SerializeField] private Cannon parabolicCannon;
         private bool _isRotating;
         private float _rotationAmount;
         private float _rotationSpeed;
         private Quaternion _startRotation;
         private Transform _playerTransform;
+        private float _originalLife;
+        private int attackType = 0;
         #endregion
 
         #region unityMethods
@@ -23,12 +26,18 @@ namespace Giloc.Enemies
             colliderDecteter.onPlayerDetected += StartChasing;
             colliderDecteter.onPlayerExit += StartIdle;
             enemyMovement.OnPlayerReached += AllowAttack;
+            foreach (var cannon in cannons)
+            {
+                cannon.OnAttackFinished += EndAttack;
+            }
+            parabolicCannon.OnAttackFinished += EndAttack;
         }
 
         private void Start()
         {
             secondsSinceLastAttack = minTimeBetweenAttacks;
             _rotationSpeed = 360f / (attackPreparationTime * 5);
+            _originalLife = lifePoints;
         }
 
         private void Update()
@@ -43,6 +52,11 @@ namespace Giloc.Enemies
             colliderDecteter.onPlayerDetected -= StartChasing;
             colliderDecteter.onPlayerExit -= StartIdle;
             enemyMovement.OnPlayerReached -= AllowAttack;
+            foreach (var cannon in cannons)
+            {
+                cannon.OnAttackFinished -= EndAttack;
+            }
+            parabolicCannon.OnAttackFinished -= EndAttack;
         }
         #endregion
 
@@ -57,19 +71,28 @@ namespace Giloc.Enemies
             {
                 enemyMovement.IsChasing = false;
                 corrupted = false;
+                playerReached = false;
                 StartCoroutine(Die());
             }
         }
 
         protected override void Attack()
         {
-            foreach (var cannon in cannons)
+            if(lifePoints < _originalLife / 2)
             {
-                cannon.MakeAttack();
+                attackType = UnityEngine.Random.Range(0, 2);
             }
-            secondsSinceLastAttack = 0;
-            preparingAttack = false;
-            enemyMovement.ResumeChasing();
+            if(attackType == 0)
+            {
+                foreach (var cannon in cannons)
+                {
+                    cannon.MakeAttack();
+                }
+            }
+            else
+            {
+                parabolicCannon.MakeAttack(_playerTransform);
+            }
         }
 
         protected override void CancelAttack()
@@ -97,8 +120,7 @@ namespace Giloc.Enemies
         protected override IEnumerator PrepareAttack()
         {
             yield return new WaitForSeconds(attackPreparationTime);
-            preparingAttack = false;
-            if(!attackCanceled) Attack();
+            if(!attackCanceled) Attack();          
             else ResetAttackStoppers();
         }
 
@@ -147,13 +169,22 @@ namespace Giloc.Enemies
 
         private void ResetAttackStoppers()
         {
+            Debug.Log("Tal vez aca");
             preparingAttack = false;
             attackCanceled = false;
+        }
+
+        private void EndAttack()
+        {
+            secondsSinceLastAttack = 0;
+            preparingAttack = false;
+            enemyMovement.ResumeChasing();
         }
 
         protected override IEnumerator Die()
         {
             yield return null;
+            StartIdle();
         }
         #endregion
     }
