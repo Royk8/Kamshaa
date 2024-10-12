@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: StringDialogs
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: ccbcdbdcebc87af4f926a90ab6c9e392, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: 07277407e58a10b449168abb0ce519f4, type: 2}
+  - {fileID: 11400000, guid: 36cffb8f9b2e68546a71cc2a6608cc45, type: 2}
+  - {fileID: 11400000, guid: 8a51368660da0e3478ed28989515e18e, type: 2}
+  m_Extensions:
+  - rid: 1678124375521624100
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds:
+    - rid: 1678124375521624100
+      type: {class: CsvExtension, ns: UnityEditor.Localization.Plugins.CSV, asm: Unity.Localization.Editor}
+      data:
+        m_Collection: {fileID: 11400000}
+        m_ColumnsList:
+        - rid: 1678124375521624101
+        - rid: 1678124375521624102
+        - rid: 1678124375521624103
+        - rid: 1678124375521624104
+        m_ConnectedFile: D:/Downloads/Tabla de conversaciones - Hoja 1 (2).csv
+    - rid: 1678124375521624101
+      type: {class: KeyIdColumns, ns: UnityEditor.Localization.Plugins.CSV.Columns, asm: Unity.Localization.Editor}
+      data:
+        m_IncludeId: 1
+        m_IncludeSharedComments: 1
+        m_KeyFieldName: Key
+        m_IdFieldName: Id
+        m_CommentFieldName: Shared Comments
+    - rid: 1678124375521624102
+      type: {class: LocaleColumns, ns: UnityEditor.Localization.Plugins.CSV.Columns, asm: Unity.Localization.Editor}
+      data:
+        m_LocaleIdentifier:
+          m_Code: en
+        m_FieldName: English(en)
+        m_CommentFieldName: English(en) Comments
+        m_IncludeComments: 1
+    - rid: 1678124375521624103
+      type: {class: LocaleColumns, ns: UnityEditor.Localization.Plugins.CSV.Columns, asm: Unity.Localization.Editor}
+      data:
+        m_LocaleIdentifier:
+          m_Code: pt
+        m_FieldName: Portuguese(pt)
+        m_CommentFieldName: Portuguese(pt) Comments
+        m_IncludeComments: 1
+    - rid: 1678124375521624104
+      type: {class: LocaleColumns, ns: UnityEditor.Localization.Plugins.CSV.Columns, asm: Unity.Localization.Editor}
+      data:
+        m_LocaleIdentifier:
+          m_Code: es
+        m_FieldName: Spanish(es)
+        m_CommentFieldName: Spanish(es) Comments
+        m_IncludeComments: 1

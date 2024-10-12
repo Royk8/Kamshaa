@@ -69,6 +69,7 @@ MonoBehaviour:
   headPosition: {fileID: 1310862752596650323}
   inputAdapter: {fileID: 1350956863114062409}
   floorDetectorPlane: {fileID: 0}
+  stunParticles: {fileID: 2128228450157277612}
   moveSpeed: 5
   timeToMaxSpeed: 0.1
   inputThresholdToStartMoving: 0.1
@@ -147,6 +148,15 @@ MonoBehaviour:
   enPiso: 1
   autoCalcularVelocidad: 1
   vfx: {fileID: 9064334376600762666}
+  dobleSalto:
+    m_PersistentCalls:
+      m_Calls: []
+  dash:
+    m_PersistentCalls:
+      m_Calls: []
+  stun:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &9064334376600762666
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour, IStuneable
@@ -18,6 +15,7 @@ public class Movement : MonoBehaviour, IStuneable
     private AnimationsControl animationsControl;
     public InputAdapter inputAdapter;
     public Transform floorDetectorPlane;
+    public ParticleSystem stunParticles;
 
     [Header("Movement")]
     public float moveSpeed;
@@ -480,8 +478,11 @@ public class Movement : MonoBehaviour, IStuneable
         {
             isStunned = true;
             inputAdapter.ToggleInputs(false);
+            stunParticles.Play();
             yield return new WaitForSeconds(duration);
             isStunned = false;
+            stunParticles.Stop();
+            stunParticles.Clear();
             inputAdapter.ToggleInputs(true);
         }
     }
@@ -504,5 +505,11 @@ public class Movement : MonoBehaviour, IStuneable
         yield return new WaitForSeconds(time);
         gravity = oldGravity;
         isGravityStopped = false;
+    }
+
+    [ContextMenu("Get Stuneed")]
+    public void GetStunned()
+    {
+        GetStunned(2f);
     }
 }
