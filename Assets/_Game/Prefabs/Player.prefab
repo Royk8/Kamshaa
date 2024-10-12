@@ -69,6 +69,7 @@ MonoBehaviour:
   headPosition: {fileID: 1310862752596650323}
   inputAdapter: {fileID: 1350956863114062409}
   floorDetectorPlane: {fileID: 0}
+  stunParticles: {fileID: 2128228450157277612}
   moveSpeed: 5
   timeToMaxSpeed: 0.1
   inputThresholdToStartMoving: 0.1
@@ -147,6 +148,15 @@ MonoBehaviour:
   enPiso: 1
   autoCalcularVelocidad: 1
   vfx: {fileID: 9064334376600762666}
+  dobleSalto:
+    m_PersistentCalls:
+      m_Calls: []
+  dash:
+    m_PersistentCalls:
+      m_Calls: []
+  stun:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &9064334376600762666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10755,13 +10765,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1480333278421713642, guid: e4d868beb4cdc26499707682c1697b4b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4217830798342276281}
   m_SourcePrefab: {fileID: 100100000, guid: e4d868beb4cdc26499707682c1697b4b, type: 3}
 --- !u!95 &3153554831117848856 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5269439429592318506, guid: e4d868beb4cdc26499707682c1697b4b, type: 3}
   m_PrefabInstance: {fileID: 7125647162141479730}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8532158628578365912 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1480333278421713642, guid: e4d868beb4cdc26499707682c1697b4b, type: 3}
+  m_PrefabInstance: {fileID: 7125647162141479730}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4217830798342276281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8532158628578365912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c7637d13ca40545b59585095891169, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &9017193530443090786 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2288079207335745616, guid: e4d868beb4cdc26499707682c1697b4b, type: 3}

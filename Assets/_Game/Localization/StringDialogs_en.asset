@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: StringDialogs_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: ccbcdbdcebc87af4f926a90ab6c9e392, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 249186810970112
+    m_Localized: "Kamsha\xE1! I finally find you! It has been difficult to sense
+      your light down."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330240
+    m_Localized: "Yensha\xE1, my friend! Finally you show up! I don't know what to
+      do, I got lost, everyone has left and I'm trapped."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330241
+    m_Localized: You must return to Wuam Luar, the Sacred Place of Origin. Climb
+      up the Great Liana towards the Sun, so you will be with us again.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330242
+    m_Localized: But I don't know how... I don't have the strength to climb.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330243
+    m_Localized: You need the Feathers that crowned our lost chiefs.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330244
+    m_Localized: "The Blue one of Yaht\xFA the Knowledgeable, the Red one of Yahuar
+      the Powerful and the Green one of Teshemb\xE1 the Healer."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330245
+    m_Localized: They will light your way and give you what you need to ascend to
+      the Sun. Look for them very carefully, if you delay the shadows will devour
+      you... like them.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330246
+    m_Localized: Watch out! A dark presence is near.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330247
+    m_Localized: "I can sense danger, but\u2026 How do I face it?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330248
+    m_Localized: I will give you my breath, so you will have the strength to step
+      on the air, but I will not be able to speak to you anymore...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 249186840330249
+    m_Localized: ... I can only wait for your return to Wam Luar.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
