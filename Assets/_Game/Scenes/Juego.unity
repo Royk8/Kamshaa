@@ -2123,6 +2123,7 @@ GameObject:
   - component: {fileID: 356260862}
   - component: {fileID: 356260861}
   - component: {fileID: 356260860}
+  - component: {fileID: 356260865}
   m_Layer: 0
   m_Name: AzulZone
   m_TagString: Untagged
@@ -2213,6 +2214,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 356260865}
+        m_TargetAssemblyTypeName: FmodGlobalParameter, Assembly-CSharp
+        m_MethodName: EnviarParametro
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   eventoActivarExit:
     m_PersistentCalls:
       m_Calls:
@@ -2220,6 +2233,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: CambiaZonaVision, Assembly-CSharp
         m_MethodName: CerrarEscena
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 356260865}
+        m_TargetAssemblyTypeName: FmodGlobalParameter, Assembly-CSharp
+        m_MethodName: EnviarParametro
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2257,6 +2282,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356260858}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &356260865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356260858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ca619a4192dc34894c0ed7e9c4dfa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombreParametroGlobal: Batalla
 --- !u!1 &386478423
 GameObject:
   m_ObjectHideFlags: 0
@@ -5539,6 +5577,7 @@ GameObject:
   - component: {fileID: 994519282}
   - component: {fileID: 994519281}
   - component: {fileID: 994519280}
+  - component: {fileID: 994519285}
   m_Layer: 0
   m_Name: RojoZone
   m_TagString: Untagged
@@ -5629,6 +5668,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 994519285}
+        m_TargetAssemblyTypeName: FmodGlobalParameter, Assembly-CSharp
+        m_MethodName: EnviarParametro
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   eventoActivarExit:
     m_PersistentCalls:
       m_Calls:
@@ -5636,6 +5687,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: CambiaZonaVision, Assembly-CSharp
         m_MethodName: CerrarEscena
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 994519285}
+        m_TargetAssemblyTypeName: FmodGlobalParameter, Assembly-CSharp
+        m_MethodName: EnviarParametro
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5673,6 +5736,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994519278}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &994519285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994519278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ca619a4192dc34894c0ed7e9c4dfa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombreParametroGlobal: Batalla
 --- !u!1 &996809837
 GameObject:
   m_ObjectHideFlags: 0
@@ -7159,6 +7235,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1490472719}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1364251835
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1820765088486382344, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820765088486382344, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820765088486382344, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820765088486382344, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820765088486382344, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820765088486382344, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820765088486382344, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820765088486382344, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820765088486382344, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820765088486382344, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014065392305640399, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
 --- !u!1 &1369592516
 GameObject:
   m_ObjectHideFlags: 0
@@ -7859,6 +7992,7 @@ GameObject:
   - component: {fileID: 1476866725}
   - component: {fileID: 1476866724}
   - component: {fileID: 1476866723}
+  - component: {fileID: 1476866728}
   m_Layer: 0
   m_Name: VerdeZone
   m_TagString: Untagged
@@ -7949,15 +8083,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3400579783473774906}
-        m_TargetAssemblyTypeName: MonolitosVerdes, Assembly-CSharp
-        m_MethodName: MoverConVibracion
-        m_Mode: 1
+      - m_Target: {fileID: 1476866728}
+        m_TargetAssemblyTypeName: FmodGlobalParameter, Assembly-CSharp
+        m_MethodName: EnviarParametro
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
+          m_FloatArgument: 1
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
@@ -7968,6 +8102,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: CambiaZonaVision, Assembly-CSharp
         m_MethodName: CerrarEscena
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1476866728}
+        m_TargetAssemblyTypeName: FmodGlobalParameter, Assembly-CSharp
+        m_MethodName: EnviarParametro
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8005,6 +8151,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1476866721}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1476866728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476866721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ca619a4192dc34894c0ed7e9c4dfa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombreParametroGlobal: Batalla
 --- !u!1 &1490472718
 GameObject:
   m_ObjectHideFlags: 0
@@ -12526,7 +12685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7830573459471143906, guid: 0f978db4af939b147a0fe5feb8947cf6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7830573459471143906, guid: 0f978db4af939b147a0fe5feb8947cf6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12534,7 +12693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7830573459471143906, guid: 0f978db4af939b147a0fe5feb8947cf6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -139.6
+      value: -25.1
       objectReference: {fileID: 0}
     - target: {fileID: 7830573459471143906, guid: 0f978db4af939b147a0fe5feb8947cf6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12670,7 +12829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6428577061434168102, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.4799957
+      value: 0.57999563
       objectReference: {fileID: 0}
     - target: {fileID: 6428577061434168102, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12678,7 +12837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6428577061434168102, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -111.310005
+      value: 3.1900024
       objectReference: {fileID: 0}
     - target: {fileID: 6428577061434168102, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12747,3 +12906,4 @@ SceneRoots:
   - {fileID: 213984963}
   - {fileID: 1374406029}
   - {fileID: 1882475125}
+  - {fileID: 1364251835}
