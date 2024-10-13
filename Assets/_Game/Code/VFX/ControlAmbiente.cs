@@ -32,25 +32,31 @@ public class ControlAmbiente : MonoBehaviour
     [ContextMenu("LlenarRojo")]
     public void LlenarRojo()
     {
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("ZonaRojaActivada", 1);
         if (corutinaR != null) StopCoroutine(corutinaR);
         ganaColor.Invoke();
         corutinaR = StartCoroutine(LlenarVariableSuave("r"));
+        
     }
 
     [ContextMenu("LlenarVerde")]
     public void LlenarVerde()
     {
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("ZonaVerdeActivada", 1);
         if (corutinaG != null) StopCoroutine(corutinaG);
         ganaColor.Invoke();
         corutinaG = StartCoroutine(LlenarVariableSuave("g"));
+        
     }
 
     [ContextMenu("LlenarAzul")]
     public void LlenarAzul()
     {
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("ZonaAzulActivada", 1);
         if (corutinaB != null) StopCoroutine(corutinaB);
         ganaColor.Invoke();
         corutinaB = StartCoroutine(LlenarVariableSuave("b"));
+        
     }
 
     private IEnumerator LlenarVariableSuave(string color)
@@ -100,6 +106,9 @@ public class ControlAmbiente : MonoBehaviour
         float bInicial = b;
 
         ganaTodosColores.Invoke();
+
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByName("TodoActivado", 1);
+        
         while (tiempoTranscurrido < tiempoTotal)
         {
             tiempoTranscurrido += Time.deltaTime;
