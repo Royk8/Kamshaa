@@ -66,6 +66,7 @@ MonoBehaviour:
   anim: {fileID: 5121382534238924279}
   vfx: {fileID: 3297576304145227695}
   healthBar: {fileID: 0}
+  metamorfosis: {fileID: 9026834053900784580}
   laserBeamPosition: {fileID: 0}
   laserBeamLookAtOne: {fileID: 0}
   laserBeamLookAtTwo: {fileID: 0}
@@ -138,6 +139,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  MandatoryFirePillars: []
   pillarsCastPosition: {fileID: 0}
   pillarsDuration: 8
 --- !u!195 &3435708943840590699

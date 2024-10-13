@@ -210,6 +210,7 @@ MonoBehaviour:
   damage: 2
   unCorruptedSpeed: 2.5
   anim: {fileID: 4156149567203485779}
+  metamorfosis: {fileID: 9053500769131407047}
   hitCapsuleRef: {fileID: 96781946364054801}
   startHitCapsulePos: {fileID: 4353979420364015226}
   endHitCapsulePos: {fileID: 6862334443680611866}

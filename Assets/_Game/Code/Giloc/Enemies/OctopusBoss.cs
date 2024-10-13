@@ -18,6 +18,8 @@ namespace Giloc.Enemies
         private Transform _playerTransform;
         private float _originalLife;
         private int attackType = 0;
+        private int _attackCounter;
+        private float _currentTimeBetweenAttacks;
         #endregion
 
         #region unityMethods
@@ -25,6 +27,7 @@ namespace Giloc.Enemies
         {
             colliderDecteter.onPlayerDetected += StartChasing;
             colliderDecteter.onPlayerExit += StartIdle;
+            colliderDecteter.onBossZoneLeaving += StartIdle;
             enemyMovement.OnPlayerReached += AllowAttack;
             foreach (var cannon in cannons)
             {
@@ -36,7 +39,8 @@ namespace Giloc.Enemies
         private void Start()
         {
             secondsSinceLastAttack = minTimeBetweenAttacks;
-            _rotationSpeed = 360f / (attackPreparationTime * 5);
+            _currentTimeBetweenAttacks = minTimeBetweenAttacks;
+            _rotationSpeed = 360f / (attackPreparationTime * 10);
             _originalLife = lifePoints;
         }
 
@@ -51,6 +55,7 @@ namespace Giloc.Enemies
         {
             colliderDecteter.onPlayerDetected -= StartChasing;
             colliderDecteter.onPlayerExit -= StartIdle;
+            colliderDecteter.onBossZoneLeaving -= StartIdle;
             enemyMovement.OnPlayerReached -= AllowAttack;
             foreach (var cannon in cannons)
             {
@@ -93,6 +98,11 @@ namespace Giloc.Enemies
             {
                 parabolicCannon.MakeAttack(_playerTransform);
             }
+            _attackCounter += 1;
+            if(_attackCounter == 3){
+                _currentTimeBetweenAttacks = minTimeBetweenAttacks * 5;
+                _attackCounter = 0;
+            }
         }
 
         protected override void CancelAttack()
@@ -112,7 +122,7 @@ namespace Giloc.Enemies
         private void StartIdle()
         {
             playerReached = false;
-            secondsSinceLastAttack = minTimeBetweenAttacks;
+            secondsSinceLastAttack = _currentTimeBetweenAttacks;
             CancelAttack();
             enemyMovement.StartIdle();
         }
@@ -128,11 +138,12 @@ namespace Giloc.Enemies
         {
             if (preparingAttack || !playerReached) return;
             secondsSinceLastAttack += Time.deltaTime;
-            if (secondsSinceLastAttack > minTimeBetweenAttacks)
+            if (secondsSinceLastAttack > _currentTimeBetweenAttacks)
             {
                 preparingAttack = true;
                 _startRotation = transform.rotation;
-                _isRotating = true;
+                _currentTimeBetweenAttacks = minTimeBetweenAttacks;
+                if(attackType == 0) _isRotating = true;
                 StartCoroutine(PrepareAttack());
             }
         }
@@ -169,7 +180,6 @@ namespace Giloc.Enemies
 
         private void ResetAttackStoppers()
         {
-            Debug.Log("Tal vez aca");
             preparingAttack = false;
             attackCanceled = false;
         }
