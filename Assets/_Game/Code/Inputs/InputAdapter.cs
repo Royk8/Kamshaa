@@ -16,6 +16,9 @@ public class InputAdapter : MonoBehaviour
     private InputAction jumpInputDown;
     private InputAction dashInput;
     private InputAction shootInput;
+    private InputAction mapInput;
+    private InputAction pauseInput;
+    private InputAction uiPauseInput;
     private InputAction uiNext;
     private InputAction uiClick;
     private InputAction uiSubmit;
@@ -27,6 +30,9 @@ public class InputAdapter : MonoBehaviour
     public event Action<InputAction.CallbackContext> OnJumpUp;
     public event Action<InputAction.CallbackContext> OnJumpDown;
     public event Action<InputAction.CallbackContext> OnNextMessage;
+    public event Action<InputAction.CallbackContext> OnMap;
+    public event Action<InputAction.CallbackContext> OnPause;
+    public event Action<InputAction.CallbackContext> OnPauseUI;
 
     private void HandleOnDash(InputAction.CallbackContext context)
     {
@@ -53,6 +59,21 @@ public class InputAdapter : MonoBehaviour
         if (OnNextMessage != null) OnNextMessage.Invoke(context);
     }
 
+    private void HandleOnMap(InputAction.CallbackContext context)
+    {
+        if (OnMap != null) OnMap.Invoke(context);
+    }
+
+    private void HandleOnPause(InputAction.CallbackContext context)
+    {
+        if (OnPause != null) OnPause.Invoke(context);
+    }
+
+    private void HandleOnPauseUI(InputAction.CallbackContext context)
+    {
+        if (OnPauseUI != null) OnPauseUI.Invoke(context);
+    }
+
 
     private void Awake()
     {
@@ -66,11 +87,14 @@ public class InputAdapter : MonoBehaviour
         jumpInputDown = _playerActionsMap.FindAction("JumpDown");
         dashInput = _playerActionsMap.FindAction("Dash");
         shootInput = _playerActionsMap.FindAction("Shoot");
+        mapInput = _playerActionsMap.FindAction("Map");
+        pauseInput = _playerActionsMap.FindAction("Map");
         test = _playerActionsMap.FindAction("Test");
 
         uiClick = _UIActionsMap.FindAction("Click");
         uiNext = _UIActionsMap.FindAction("Next");
         uiSubmit = _UIActionsMap.FindAction("Submit");
+        uiPauseInput = _UIActionsMap.FindAction("Map");
 
         test.performed += Testing;
     }
@@ -124,6 +148,8 @@ public class InputAdapter : MonoBehaviour
             jumpInputDown.performed += HandleOnJumpDown;
             dashInput.performed += HandleOnDash;
             shootInput.performed += HandleOnShoot;
+            mapInput.performed += HandleOnMap;
+            pauseInput.performed += HandleOnPause;
         }
         else
         {
@@ -131,6 +157,8 @@ public class InputAdapter : MonoBehaviour
             jumpInputDown.performed -= HandleOnJumpDown;
             dashInput.performed -= HandleOnDash;
             shootInput.performed -= HandleOnShoot;
+            mapInput.performed -= HandleOnMap;
+            pauseInput.performed -= HandleOnPause;
         }
     }
 
@@ -141,12 +169,14 @@ public class InputAdapter : MonoBehaviour
             uiNext.performed += HandleOnNextMessage;
             uiClick.performed += HandleOnNextMessage;
             uiSubmit.performed += HandleOnNextMessage;
+            uiPauseInput.performed += HandleOnPause;
         }
         else
         {
             uiNext.performed -= HandleOnNextMessage;
             uiClick.performed -= HandleOnNextMessage;
             uiSubmit.performed -= HandleOnNextMessage;
+            uiPauseInput.performed -= HandleOnPause;
         }
     }
 
