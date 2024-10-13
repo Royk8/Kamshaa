@@ -200,6 +200,8 @@ namespace Giloc.Enemies
             {
                 dialogue.ActivateDialogue();
             }
+            Plumero.singleton.AdquirirPluma(Pluma.azul);
+            ControlAmbiente.singleton.LlenarAzul();
 
             StartIdle();
         }
