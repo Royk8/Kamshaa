@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 509234275513380008}
   - component: {fileID: 7739970211646134588}
   - component: {fileID: 4706484064223566130}
+  - component: {fileID: 2055586445833683434}
   m_Layer: 0
   m_Name: Sting
   m_TagString: Untagged
@@ -104,6 +105,37 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2055586445833683434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057216002442423863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -358526244
+      Data2: 1278534132
+      Data3: -1762183780
+      Data4: -569585803
+    Path: event:/SFX/Enemies/Guardianes/Yahtu2Sting
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 2.6000001
+  OverrideMaxDistance: 40
 --- !u!1001 &4913361616528653094
 PrefabInstance:
   m_ObjectHideFlags: 0
