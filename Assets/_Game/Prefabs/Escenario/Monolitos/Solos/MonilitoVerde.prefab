@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4659607840200874337}
   - component: {fileID: 1413538365570175706}
   - component: {fileID: 6934035306685097054}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: MonilitoVerde.001_cell.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 2031667030018128321}
   - component: {fileID: 1487609609492185648}
   - component: {fileID: 7974128211242651427}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: MonilitoVerde.001_cell.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 239382975951335292}
   - component: {fileID: 2711750193194216370}
   - component: {fileID: 7696059751478368433}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: MonilitoVerde.001_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 847041337986371288}
   - component: {fileID: 4200623190937346333}
   - component: {fileID: 5335259742242699488}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: MonilitoVerdeArmado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -522,7 +522,7 @@ GameObject:
   - component: {fileID: 1042657225758646143}
   - component: {fileID: 2946722276659383749}
   - component: {fileID: 1893356536455642300}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: MonilitoVerde.001_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -654,7 +654,7 @@ GameObject:
   - component: {fileID: 2059162151767851540}
   - component: {fileID: 1041769503950293059}
   - component: {fileID: 2787958040942492825}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: MonilitoVerde
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -669,7 +669,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2553617027963934482}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 150}
   m_ConstrainProportionsScale: 0
@@ -677,7 +677,7 @@ Transform:
   - {fileID: 3427016852748521163}
   - {fileID: 2742654147683890022}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &1041769503950293059
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -712,6 +712,9 @@ MonoBehaviour:
   - {fileID: 2123379888672483177}
   - {fileID: 1431011565036375840}
   - {fileID: 6934035306685097054}
+  eventoDestruirMonolito:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3260425538076291057
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,7 +726,7 @@ GameObject:
   - component: {fileID: 8831662643401613992}
   - component: {fileID: 1998685305829960851}
   - component: {fileID: 5751834899381398317}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5549,7 +5552,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2742654147683890022}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: Fracturas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5595,7 +5598,7 @@ GameObject:
   - component: {fileID: 3120126035884411040}
   - component: {fileID: 2984637348390470897}
   - component: {fileID: 6158192680453333587}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: MonilitoVerde.001_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5727,7 +5730,7 @@ GameObject:
   - component: {fileID: 4263550490617532332}
   - component: {fileID: 5861639978972558138}
   - component: {fileID: 7113231862808218025}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: PlumaVerde (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5812,7 +5815,7 @@ GameObject:
   - component: {fileID: 5922565845551756699}
   - component: {fileID: 4155970102825161497}
   - component: {fileID: 4957396142320575678}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: MonilitoVerde.001_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5946,7 +5949,7 @@ GameObject:
   - component: {fileID: 2415049588821485455}
   - component: {fileID: 1910019066285125777}
   - component: {fileID: 5713455346428458914}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: MonilitoVerde.001_cell.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6080,7 +6083,7 @@ GameObject:
   - component: {fileID: 7051653076763753083}
   - component: {fileID: 8720078804536885874}
   - component: {fileID: 7980660763094724959}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: MonilitoVerde.001_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6214,7 +6217,7 @@ GameObject:
   - component: {fileID: 4041906195352431223}
   - component: {fileID: 6863455909394392802}
   - component: {fileID: 1431011565036375840}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: MonilitoVerde.001_cell.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6345,7 +6348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4706546961886967811}
   - component: {fileID: 8110772507311535313}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: Pluma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6395,7 +6398,7 @@ GameObject:
   - component: {fileID: 7322590244271355171}
   - component: {fileID: 5657156139302822291}
   - component: {fileID: 2123379888672483177}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: MonilitoVerde.001_cell.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6529,7 +6532,7 @@ GameObject:
   - component: {fileID: 3032510667069248538}
   - component: {fileID: 4422016141820499282}
   - component: {fileID: 8129636373363886635}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: MonilitoVerde.001_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -18,6 +18,7 @@ public class Mantis : MonoBehaviour, IDamageable
     public Metamorfosis metamorfosis;
     public Slider healthBar;
     public MonolitosVerdes monolitosVerdes;
+    public Monolito monolito;
 
     [Space(2)]
     [Header("Basic Attack")]
@@ -315,8 +316,15 @@ public class Mantis : MonoBehaviour, IDamageable
                 dialogue.ActivateDialogue();
             }
 
+            monolito.Romper();
             healthBar.transform.parent.gameObject.SetActive(false);
             vfxAnim.Visibilizar();
+            phantomMantis.gameObject.SetActive(false);
+            for (int i = 0; i < hitBoxIndicators.Count; i++)
+            {
+                hitBoxIndicators[i].SetActive(false);
+                hitBoxVisualAreas[i].SetActive(false);
+            }
         }
         else
         {

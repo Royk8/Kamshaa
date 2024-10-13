@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 675813212808255074}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fracturas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 3319330401219752202}
   - component: {fileID: 146546186550073037}
   - component: {fileID: 2418691911094387861}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MonolitoRojo.001_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 5598598111748980157}
   - component: {fileID: 3429480055350128721}
   - component: {fileID: 8339208911177800717}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MonolitoRojo.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 5889259904940862841}
   - component: {fileID: 7860623090323365065}
   - component: {fileID: 4138333021460069102}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MonolitoRojo.001_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 6143331653589259849}
   - component: {fileID: 506491655990271638}
   - component: {fileID: 8758767458153673993}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MonolitoRojo.001_cell.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 8422661899666315545}
   - component: {fileID: 1710533695740392237}
   - component: {fileID: 6925478344764179760}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MonolitoRojo.001_cell.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -695,7 +695,7 @@ GameObject:
   - component: {fileID: 3349832091054692778}
   - component: {fileID: 4904253539331908924}
   - component: {fileID: 8638067551955001263}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: PlumaVerde (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -778,7 +778,7 @@ GameObject:
   - component: {fileID: 8054560926331696302}
   - component: {fileID: 1074974579077560981}
   - component: {fileID: 6522704576077184299}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5608,7 +5608,7 @@ GameObject:
   - component: {fileID: 6686830588238797631}
   - component: {fileID: 6078686497498853023}
   - component: {fileID: 7306055811929268322}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MonolitoRojo.001_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5742,7 +5742,7 @@ GameObject:
   - component: {fileID: 5244911369486356561}
   - component: {fileID: 7636006257889985743}
   - component: {fileID: 5590503497988224879}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MonolitoRojo.001_cell.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5873,7 +5873,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6054757215284293125}
   - component: {fileID: 7338776681856459479}
-  m_Layer: 4
+  m_Layer: 9
   m_Name: Pluma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5923,7 +5923,7 @@ GameObject:
   - component: {fileID: 4463677596735817687}
   - component: {fileID: 6332155129984912414}
   - component: {fileID: 8609717668958610220}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MonolitoRojo.001_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6057,7 +6057,7 @@ GameObject:
   - component: {fileID: 5130387430004073874}
   - component: {fileID: 3710223120519680583}
   - component: {fileID: 8748703920724924672}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MonolitoRojo.001_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6191,7 +6191,7 @@ GameObject:
   - component: {fileID: 7692773015229662137}
   - component: {fileID: 3633967076384207903}
   - component: {fileID: 3478286867057010070}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MonolitoRojo.001_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6325,7 +6325,7 @@ GameObject:
   - component: {fileID: 6588961268109012996}
   - component: {fileID: 7850779975086303197}
   - component: {fileID: 3208968543640986123}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MonolitoRojo.001_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6456,7 +6456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7003230561014100584}
   - component: {fileID: 7600077365266911591}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MonolitoRojo.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6471,7 +6471,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8764844602250281177}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 150}
   m_ConstrainProportionsScale: 0
@@ -6479,7 +6479,7 @@ Transform:
   - {fileID: 6850915309570009514}
   - {fileID: 675813212808255074}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!114 &7600077365266911591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6505,3 +6505,6 @@ MonoBehaviour:
   - {fileID: 5590503497988224879}
   - {fileID: 6925478344764179760}
   - {fileID: 8758767458153673993}
+  eventoDestruirMonolito:
+    m_PersistentCalls:
+      m_Calls: []
