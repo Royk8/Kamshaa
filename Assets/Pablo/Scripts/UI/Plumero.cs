@@ -8,7 +8,7 @@ public class Plumero : MonoBehaviour
     public static Plumero singleton;
 
     public Image plumeroImage;
-    public Sprite plumaRoja, plumaAzul, plumaVerde;
+    public GameObject plumaRoja, plumaAzul, plumaVerde;
     public GameObject plumaRojaGO, plumaAzulGO, plumaVerdeGO;
 
     private void Awake()
@@ -24,15 +24,15 @@ public class Plumero : MonoBehaviour
         switch (pluma)
         {
             case Pluma.azul:
-                plumeroImage.sprite = plumaAzul;
+                plumaAzul.SetActive(true);
                 plumaAzulGO.SetActive(true);
                 break;
             case Pluma.roja:
-                plumeroImage.sprite = plumaRoja;
+                plumaRoja.SetActive(true);
                 plumaRojaGO.SetActive(true);
                 break;
             case Pluma.verde:
-                plumeroImage.sprite = plumaVerde;
+                plumaVerde.SetActive(true);
                 plumaVerdeGO.SetActive(true);
                 break;
             default:
