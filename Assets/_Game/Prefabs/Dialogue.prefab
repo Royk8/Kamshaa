@@ -412,6 +412,7 @@ GameObject:
   - component: {fileID: 2725159474589159365}
   - component: {fileID: 8545841898490290947}
   - component: {fileID: 7088944239297353172}
+  - component: {fileID: 462718499461891391}
   m_Layer: 5
   m_Name: Dialogue
   m_TagString: Untagged
@@ -459,6 +460,10 @@ MonoBehaviour:
   conversationId: C1
   dialogueSpriteMapScriptable: {fileID: 11400000, guid: 7d6df212e4d86694093696935b5a51f3, type: 2}
   inputAdapter: {fileID: 0}
+  OnDialogueEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  fmodAudioTable: {fileID: 0}
 --- !u!114 &7088944239297353172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,6 +480,25 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:ccbcdbdcebc87af4f926a90ab6c9e392
   entryId: 
+--- !u!114 &462718499461891391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356037282597997872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa5c7b3ade111e46b028e40a23643b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EventName:
+    Guid:
+      Data1: -1545592079
+      Data2: 1160800937
+      Data3: 1033880240
+      Data4: 871379521
+    Path: event:/Voices/Voces
 --- !u!1 &6394784285626987079
 GameObject:
   m_ObjectHideFlags: 0
