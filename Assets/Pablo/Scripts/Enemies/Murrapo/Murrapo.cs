@@ -25,6 +25,7 @@ public class Murrapo : Enemy, IDamageable
     public float damage;
     public float wanderingSpeed;
     public ControlEfectosGato vfx;
+    public Metamorfosis metamorfosis;
 
     private Transform actualPoint;
     private bool isAttacking;
@@ -186,6 +187,7 @@ public class Murrapo : Enemy, IDamageable
             case States.Attacking:
                 break;
             case States.Dead:
+                metamorfosis.IniciarTransicion();
                 ComeBackToTheRoute();
                 agent.speed = wanderingSpeed;
                 break;
@@ -198,6 +200,7 @@ public class Murrapo : Enemy, IDamageable
     {
         if (!corrupted) return;
         life -= value;
+        metamorfosis.AplicarEfectoStun();
         if (life <= 0)
         {
             ChangeState(States.Dead);
