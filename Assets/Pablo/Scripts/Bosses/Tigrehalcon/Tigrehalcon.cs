@@ -313,6 +313,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
             StartCoroutine(Wandering());
             Plumero.singleton.AdquirirPluma(Pluma.roja);
             ControlAmbiente.singleton.LlenarRojo();
+            healthBar.transform.parent.gameObject.SetActive(false);
         }
     }
 }
