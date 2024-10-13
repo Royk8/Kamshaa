@@ -66,6 +66,7 @@ GameObject:
   - component: {fileID: 7400297575161267211}
   - component: {fileID: 677498038803443146}
   - component: {fileID: 986517713855385923}
+  - component: {fileID: 7305791941854109876}
   m_Layer: 0
   m_Name: PulpoBasico
   m_TagString: Untagged
@@ -252,6 +253,25 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &7305791941854109876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2861577309273423024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d895a128e0a55a44b84a83c619eb5746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mallas:
+  - {fileID: 9152941186956168615}
+  - {fileID: 8512589110012131640}
+  tiempoTransicion: 2
+  particulas: {fileID: 7519131671508558765, guid: b81c73d1749f44e4fad690a9e27c33c9, type: 3}
+  frecuenciaStun: 0.1
+  tiempoStun: 0.5
 --- !u!1 &8359856321759467327
 GameObject:
   m_ObjectHideFlags: 0
@@ -4978,5 +4998,15 @@ MonoBehaviour:
 --- !u!4 &7974317945466950816 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9168acadb2f0d5c4e94e8f15860bde2d, type: 3}
+  m_PrefabInstance: {fileID: 7575281719279481675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8512589110012131640 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2234352931384609395, guid: 9168acadb2f0d5c4e94e8f15860bde2d, type: 3}
+  m_PrefabInstance: {fileID: 7575281719279481675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &9152941186956168615 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7627680406242230548, guid: 9168acadb2f0d5c4e94e8f15860bde2d, type: 3}
   m_PrefabInstance: {fileID: 7575281719279481675}
   m_PrefabAsset: {fileID: 0}
