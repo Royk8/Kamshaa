@@ -55072,6 +55072,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2725159474589159365, guid: 8e1e3a6435775ec4ab703223786a40b3, type: 3}
   m_PrefabInstance: {fileID: 1340155525}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1520625967 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8545841898490290947, guid: 8e1e3a6435775ec4ab703223786a40b3, type: 3}
+  m_PrefabInstance: {fileID: 1340155525}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e5c13ef8caabef489b4cb87be7bf9d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1521917258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81486,6 +81497,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Guia
       objectReference: {fileID: 0}
+    - target: {fileID: 7072071362908108477, guid: 14a03605607a10f42905734fc9ff9ce2, type: 3}
+      propertyPath: dialogueHandler
+      value: 
+      objectReference: {fileID: 1520625967}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
