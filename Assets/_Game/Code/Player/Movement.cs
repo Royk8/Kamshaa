@@ -59,6 +59,7 @@ public class Movement : MonoBehaviour, IStuneable
     private Vector3 startPosition;
     private DashAttack dashAttack;
     private bool counter;
+    private FMOD.Studio.EventInstance StunSnapshot;
 
     private void Start()
     {
@@ -511,9 +512,12 @@ public class Movement : MonoBehaviour, IStuneable
             isStunned = true;
             inputAdapter.ToggleInputs(false);
             stunParticles.Play();
+            StunSnapshot = AudioManager.Instance.NuevaInstancia(EventsManager.Instance.StunSnapshot);
+            StunSnapshot.start();
             yield return new WaitForSeconds(duration);
             isStunned = false;
             stunParticles.Stop();
+            StunSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             stunParticles.Clear();
             inputAdapter.ToggleInputs(true);
         }
