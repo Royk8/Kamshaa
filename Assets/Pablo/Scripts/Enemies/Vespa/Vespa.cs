@@ -46,7 +46,7 @@ public class Vespa : Enemy, IDamageable, IStuneable
         Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
         alreadyTurned = false;
         StartCoroutine(TurnToTarget(targetRotation));
-
+        AudioManager.Instance.PlayOneShot(EventsManager.Instance.Yahtu2Attack, this.transform.position);
         yield return new WaitUntil(() => alreadyTurned);
 
         GameObject actualSting = stings.Where(x => !x.activeSelf).FirstOrDefault();
@@ -172,6 +172,7 @@ public class Vespa : Enemy, IDamageable, IStuneable
         {
             metamorfosis.AplicarEfectoStun();
         }
+        AudioManager.Instance.PlayOneShot(EventsManager.Instance.Yahtu2Hurt,this.transform.position);
     }
 
     public void GetStunned(float duration)

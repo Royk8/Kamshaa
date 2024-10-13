@@ -128,7 +128,7 @@ Material:
     - _efectoGolpe: 0
     - _offset: 0
     - _tama_o: 1
-    - _tiempo: 1.1
+    - _tiempo: -0.1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

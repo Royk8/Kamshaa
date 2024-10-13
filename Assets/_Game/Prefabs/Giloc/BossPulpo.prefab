@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 6862234186712451120}
   - component: {fileID: 4924180282551189225}
   - component: {fileID: 2641327341149300116}
+  - component: {fileID: 3448157311189664891}
   m_Layer: 0
   m_Name: BossPulpo
   m_TagString: Untagged
@@ -373,6 +374,24 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &3448157311189664891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3627895693353578132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d895a128e0a55a44b84a83c619eb5746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mallas:
+  - {fileID: 6776477889324959187}
+  tiempoTransicion: 2
+  particulas: {fileID: 7519131671508558765, guid: b81c73d1749f44e4fad690a9e27c33c9, type: 3}
+  frecuenciaStun: 0.1
+  tiempoStun: 0.5
 --- !u!1 &4933655929194081077
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,7 +592,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 318548064453930452, guid: e0c25e8d590e7b74cb9c8d28d5de4078, type: 3}
       propertyPath: finalScaleReference
-      value: 0.49276692
+      value: 0.49276677
       objectReference: {fileID: 0}
     - target: {fileID: 318548064453930452, guid: e0c25e8d590e7b74cb9c8d28d5de4078, type: 3}
       propertyPath: _Editor_OnValidateTrigger
@@ -628,6 +647,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0c25e8d590e7b74cb9c8d28d5de4078, type: 3}
+--- !u!137 &6776477889324959187 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6420543023000208491, guid: e0c25e8d590e7b74cb9c8d28d5de4078, type: 3}
+  m_PrefabInstance: {fileID: 509112779060969912}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7431615124915300936 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6931846820300958704, guid: e0c25e8d590e7b74cb9c8d28d5de4078, type: 3}
