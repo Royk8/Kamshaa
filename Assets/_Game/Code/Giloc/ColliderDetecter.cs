@@ -7,6 +7,7 @@ namespace Giloc
     {
         public UnityAction<Transform> onPlayerDetected;
         public UnityAction onPlayerExit;
+        public UnityAction onBossZoneLeaving;
 
         private void OnTriggerEnter(Collider otherCollider)
         {
@@ -22,6 +23,9 @@ namespace Giloc
             if (otherCollider.gameObject.CompareTag("Player"))
             {
                 onPlayerExit.Invoke();
+            }
+            else if(otherCollider.gameObject.CompareTag("BossZone")){
+                onBossZoneLeaving?.Invoke();
             }
         }
     }

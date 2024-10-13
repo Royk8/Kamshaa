@@ -27,6 +27,7 @@ namespace Giloc.Enemies
         {
             colliderDecteter.onPlayerDetected += StartChasing;
             colliderDecteter.onPlayerExit += StartIdle;
+            colliderDecteter.onBossZoneLeaving += StartIdle;
             enemyMovement.OnPlayerReached += AllowAttack;
             foreach (var cannon in cannons)
             {
@@ -54,6 +55,7 @@ namespace Giloc.Enemies
         {
             colliderDecteter.onPlayerDetected -= StartChasing;
             colliderDecteter.onPlayerExit -= StartIdle;
+            colliderDecteter.onBossZoneLeaving -= StartIdle;
             enemyMovement.OnPlayerReached -= AllowAttack;
             foreach (var cannon in cannons)
             {

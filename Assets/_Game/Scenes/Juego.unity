@@ -18706,6 +18706,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8313214940754814421, guid: 777aab7cc9ea4bd4d88f21759b2efd49, type: 3}
   m_PrefabInstance: {fileID: 525289695}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &529918443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 529918444}
+  - component: {fileID: 529918445}
+  m_Layer: 0
+  m_Name: BossZone
+  m_TagString: BossZone
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &529918444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529918443}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -219.89, y: -5.227928, z: -31.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 914462854}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &529918445
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529918443}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20, y: 15, z: 35}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &531818270
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32026,6 +32079,7 @@ Transform:
   - {fileID: 2182185074134921756}
   - {fileID: 2010844004}
   - {fileID: 282437608}
+  - {fileID: 529918444}
   m_Father: {fileID: 1882475125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &914973994
@@ -76033,6 +76087,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914462854}
     m_Modifications:
+    - target: {fileID: 250810314321341548, guid: a087300accfaf8d4ebe1db3c165b2ce8, type: 3}
+      propertyPath: finalScaleReference
+      value: 0.4927666
+      objectReference: {fileID: 0}
     - target: {fileID: 2641327341149300116, guid: a087300accfaf8d4ebe1db3c165b2ce8, type: 3}
       propertyPath: idlePoints.Array.data[0]
       value: 
