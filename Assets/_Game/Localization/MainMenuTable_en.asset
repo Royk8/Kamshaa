@@ -62,6 +62,18 @@ MonoBehaviour:
     m_Localized: Language
     m_Metadata:
       m_Items: []
+  - m_Id: 268311698300928
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268416044195840
+    m_Localized: Spanish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 269181898940416
+    m_Localized: Portuguese
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

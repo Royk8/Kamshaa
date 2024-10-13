@@ -88,13 +88,13 @@ public class InputAdapter : MonoBehaviour
         dashInput = _playerActionsMap.FindAction("Dash");
         shootInput = _playerActionsMap.FindAction("Shoot");
         mapInput = _playerActionsMap.FindAction("Map");
-        pauseInput = _playerActionsMap.FindAction("Map");
+        pauseInput = _playerActionsMap.FindAction("Pause");
         test = _playerActionsMap.FindAction("Test");
 
-        uiClick = _UIActionsMap.FindAction("Click");
+        //uiClick = _UIActionsMap.FindAction("Click");
         uiNext = _UIActionsMap.FindAction("Next");
         uiSubmit = _UIActionsMap.FindAction("Submit");
-        uiPauseInput = _UIActionsMap.FindAction("Map");
+        uiPauseInput = _UIActionsMap.FindAction("Pause");
 
         test.performed += Testing;
     }
@@ -167,14 +167,14 @@ public class InputAdapter : MonoBehaviour
         if (toggle)
         {
             uiNext.performed += HandleOnNextMessage;
-            uiClick.performed += HandleOnNextMessage;
+            //uiClick.performed += HandleOnNextMessage;
             uiSubmit.performed += HandleOnNextMessage;
             uiPauseInput.performed += HandleOnPause;
         }
         else
         {
             uiNext.performed -= HandleOnNextMessage;
-            uiClick.performed -= HandleOnNextMessage;
+            //uiClick.performed -= HandleOnNextMessage;
             uiSubmit.performed -= HandleOnNextMessage;
             uiPauseInput.performed -= HandleOnPause;
         }

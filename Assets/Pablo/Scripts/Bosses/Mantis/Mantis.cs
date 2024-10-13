@@ -18,6 +18,7 @@ public class Mantis : MonoBehaviour, IDamageable
     public Metamorfosis metamorfosis;
     public Slider healthBar;
     public MonolitosVerdes monolitosVerdes;
+    public Monolito monolito;
 
     [Space(2)]
     [Header("Basic Attack")]
@@ -308,8 +309,22 @@ public class Mantis : MonoBehaviour, IDamageable
             monolitosVerdes.VolverConVibracion();
             Plumero.singleton.AdquirirPluma(Pluma.verde);
             ControlAmbiente.singleton.LlenarVerde();
+
+            DialogueFunctionActivator dialogue = GetComponentInChildren<DialogueFunctionActivator>();
+            if (dialogue != null)
+            {
+                dialogue.ActivateDialogue();
+            }
+
+            monolito.Romper();
             healthBar.transform.parent.gameObject.SetActive(false);
             vfxAnim.Visibilizar();
+            phantomMantis.gameObject.SetActive(false);
+            for (int i = 0; i < hitBoxIndicators.Count; i++)
+            {
+                hitBoxIndicators[i].SetActive(false);
+                hitBoxVisualAreas[i].SetActive(false);
+            }
         }
         else
         {

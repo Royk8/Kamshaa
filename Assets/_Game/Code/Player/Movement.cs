@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour, IStuneable
     public Transform groundCheck;
     public LayerMask groundLayer;
     public LayerMask defaultLayer;
+    public LayerMask blockLayer;
     public Transform playerModel;
     public Transform headPosition;
     private AnimationsControl animationsControl;
@@ -227,9 +228,23 @@ public class Movement : MonoBehaviour, IStuneable
             isJumping = true;
             zVelocity = jumpForce;
             Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
+
+            if (CheckCollisionOnMovement(moveDirection.normalized, out bool right, out bool front, blockLayer))
+            {
+                if (right && front)
+                    moveDirection = Vector3.Scale(moveDirection, Vector3.up);
+                else if (right)
+                    moveDirection = Vector3.Scale(moveDirection, new Vector3(0, 1, 1));
+                else if (front)
+                    moveDirection = Vector3.Scale(moveDirection, new Vector3(1, 1, 0));
+            }
+
             while ((jumpStarted + maxJumpTime) > Time.time)
             {
                 zVelocity = Math.Clamp(zVelocity + jumpForce * Time.deltaTime, float.MinValue, jumpForce);
+
+
+
                 Vector3 moveForce = moveDirection * acceleration * moveSpeed * fakeDeltaTime;
                 transform.Translate((moveForce + Vector3.up * zVelocity) * Time.deltaTime);
                 yield return null;
@@ -318,6 +333,12 @@ public class Movement : MonoBehaviour, IStuneable
         {
             return;
         }
+
+        if (!inputAdapter.isInputActive)
+        {
+            return;
+        }
+
         Vector3 direction = new Vector3(moveVelocity3.x, zVelocity + moveVelocity3.y, moveVelocity3.z);
         if (CheckCollisionOnMovement(direction, out bool right, out bool front))
         {
@@ -332,6 +353,17 @@ public class Movement : MonoBehaviour, IStuneable
     }
 
     public bool CheckCollisionOnMovement(Vector3 direction, out bool right, out bool front)
+    {
+        Vector3 directionX = (direction.x * Vector3.right).normalized;
+        Vector3 directionZ = (direction.z * Vector3.forward).normalized;
+
+        right = Physics.CheckSphere(groundCheck.position + directionX * 0.3f, groundCheckRadius, defaultLayer, QueryTriggerInteraction.Ignore);
+        front = Physics.CheckSphere(groundCheck.position + directionZ * 0.3f, groundCheckRadius, defaultLayer, QueryTriggerInteraction.Ignore);
+
+        return right || front;
+    }
+
+    public bool CheckCollisionOnMovement(Vector3 direction, out bool right, out bool front, LayerMask layer)
     {
         Vector3 directionX = (direction.x * Vector3.right).normalized;
         Vector3 directionZ = (direction.z * Vector3.forward).normalized;
@@ -358,6 +390,19 @@ public class Movement : MonoBehaviour, IStuneable
 
             while (Time.time < (startTime + dashTime))
             {
+
+                if (isStunned)
+                {
+                    break;
+                }
+
+                if (CheckCollisionOnMovement(lookDirection, out bool right, out bool front, blockLayer))
+                {
+                    transform.position = transform.position - lookDirection * 0.3f;
+                    break;
+                }
+
+
                 if (!isGrounded)
                 {
                     if (!isDashingOffGround)
@@ -381,10 +426,9 @@ public class Movement : MonoBehaviour, IStuneable
                         break;
                     }
                 }
-                if (isStunned)
-                {
-                    break;
-                }
+
+
+
 
                 Vector3 thisFramePosition = Vector3.Lerp(transform.position, dashFinalPosition, Time.deltaTime / dashTime);
                 Vector3 thisFrameDirection = thisFramePosition - transform.position;

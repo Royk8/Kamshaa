@@ -23,6 +23,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
     public VFXControlBossRojo vfx;
     public Slider healthBar;
     public Metamorfosis metamorfosis;
+    public Monolito monolito;
 
     [Space(2)]
     [Header("LaserBeam")]
@@ -316,6 +317,14 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
             Plumero.singleton.AdquirirPluma(Pluma.roja);
             ControlAmbiente.singleton.LlenarRojo();
             healthBar.transform.parent.gameObject.SetActive(false);
+
+            DialogueFunctionActivator dialogue = GetComponentInChildren<DialogueFunctionActivator>();
+            if(dialogue != null)
+            {
+                dialogue.ActivateDialogue();
+            }
+
+            monolito.Romper();
             metamorfosis.IniciarTransicion();
             anim.SetBool("poder", false);
         }
