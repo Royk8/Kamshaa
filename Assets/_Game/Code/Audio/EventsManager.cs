@@ -24,6 +24,12 @@ public class EventsManager : MonoBehaviour
 
     [field: SerializeField] public EventReference Teshemba2Hurt { get; private set; }
 
+    [field: SerializeField] public EventReference Yahtu1Attack { get; private set; }
+
+    [field: SerializeField] public EventReference Yahtu1Walking { get; private set; }
+
+    [field: SerializeField] public EventReference Yahtu1Hurt { get; private set; }
+
     [field: SerializeField] public EventReference Yahtu2Attack { get; private set; }
 
     [field: SerializeField] public EventReference Yahtu2Hurt { get; private set; }
