@@ -17,9 +17,9 @@ MonoBehaviour:
     sprite: {fileID: -1135381437, guid: 42d93d8db29ed59408cde3cabcacc8ea, type: 3}
   - characterName: "Yensha\xE1"
     sprite: {fileID: 418548173, guid: 42d93d8db29ed59408cde3cabcacc8ea, type: 3}
-  - characterName: "Teshemb\xE1"
-    sprite: {fileID: 901038836, guid: 42d93d8db29ed59408cde3cabcacc8ea, type: 3}
-  - characterName: Yahuar
+  - characterName: "Teshemb\xE1 "
     sprite: {fileID: -617041790, guid: 42d93d8db29ed59408cde3cabcacc8ea, type: 3}
-  - characterName: "Yaht\xFA"
+  - characterName: Yahuar
     sprite: {fileID: 618780731, guid: 42d93d8db29ed59408cde3cabcacc8ea, type: 3}
+  - characterName: "Yaht\xFA"
+    sprite: {fileID: 901038836, guid: 42d93d8db29ed59408cde3cabcacc8ea, type: 3}

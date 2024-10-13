@@ -194,6 +194,13 @@ namespace Giloc.Enemies
         protected override IEnumerator Die()
         {
             yield return null;
+
+            DialogueFunctionActivator dialogue = GetComponentInChildren<DialogueFunctionActivator>();
+            if (dialogue != null)
+            {
+                dialogue.ActivateDialogue();
+            }
+
             StartIdle();
         }
         #endregion

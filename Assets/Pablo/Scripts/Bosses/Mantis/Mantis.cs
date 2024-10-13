@@ -308,6 +308,13 @@ public class Mantis : MonoBehaviour, IDamageable
             monolitosVerdes.VolverConVibracion();
             Plumero.singleton.AdquirirPluma(Pluma.verde);
             ControlAmbiente.singleton.LlenarVerde();
+
+            DialogueFunctionActivator dialogue = GetComponentInChildren<DialogueFunctionActivator>();
+            if (dialogue != null)
+            {
+                dialogue.ActivateDialogue();
+            }
+
             healthBar.transform.parent.gameObject.SetActive(false);
             vfxAnim.Visibilizar();
         }
