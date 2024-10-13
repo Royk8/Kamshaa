@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1249759616002073504}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 59.22, y: 0, z: 2.72}
+  m_LocalPosition: {x: 69, y: 0, z: 2.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -52,7 +52,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.25, y: 17.8, z: 44.66}
+  m_Size: {x: 30.8, y: 30, z: 44.66}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5488336940265824259
 MonoBehaviour:
@@ -69,7 +69,7 @@ MonoBehaviour:
   CollisionTag: Player
   Parameter: Zona
   TriggerEvent: 3
-  Value: 1
+  Value: 0
 --- !u!1 &1946488901982019831
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ Transform:
   m_GameObject: {fileID: 3564266868093014741}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 4.6, y: 0, z: -36.79}
+  m_LocalPosition: {x: 12.3, y: 0, z: -48.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -185,7 +185,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.25, y: 17.8, z: 75.07}
+  m_Size: {x: 28.9, y: 30.3, z: 117.7}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2505226274206677345
 MonoBehaviour:
@@ -213,6 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8367891166735786269}
   - component: {fileID: 3212395034446340533}
+  - component: {fileID: 8923961749532045580}
   m_Layer: 0
   m_Name: AmbienceManager
   m_TagString: Untagged
@@ -236,6 +237,37 @@ Transform:
   m_Father: {fileID: 1820765088486382344}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3212395034446340533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3895411044396085565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 36636176
+      Data2: 1097733438
+      Data3: -980451145
+      Data4: -1254465235
+    Path: event:/Ambiences/AmbienceSystem
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &8923961749532045580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -293,7 +325,7 @@ Transform:
   m_GameObject: {fileID: 4851403503694495418}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -56.1, y: 0, z: -0.3}
+  m_LocalPosition: {x: -71.9, y: 0, z: -0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -318,7 +350,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.25, y: 17.8, z: 85.6}
+  m_Size: {x: 32.92, y: 30, z: 117.34}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8339412899968160150
 MonoBehaviour:
@@ -335,7 +367,7 @@ MonoBehaviour:
   CollisionTag: Player
   Parameter: Zona
   TriggerEvent: 3
-  Value: 1
+  Value: 2
 --- !u!1 &6454420086034204864
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +395,7 @@ Transform:
   m_GameObject: {fileID: 6454420086034204864}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 4.6, y: 0, z: 1.5}
+  m_LocalPosition: {x: 4.6, y: 0, z: 2.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -388,7 +420,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 73.7, y: 17.8, z: 94.4}
+  m_Size: {x: 73.7, y: 400, z: 94.4}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &819766330244213255
 MonoBehaviour:
@@ -457,6 +489,13 @@ MonoBehaviour:
       Data3: 2115786393
       Data4: -802289848
     Path: event:/SFX/Player/Footsteps
+  <PlayerGround>k__BackingField:
+    Guid:
+      Data1: -1098605894
+      Data2: 1165549960
+      Data3: -1228222564
+      Data4: -1471406598
+    Path: event:/SFX/Player/Ground
   <PlayerDash>k__BackingField:
     Guid:
       Data1: 1727604288
@@ -466,39 +505,137 @@ MonoBehaviour:
     Path: event:/SFX/Player/Dash
   <PlayerAttack>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  <PlayerDie>k__BackingField:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1727604288
+      Data2: 1197156805
+      Data3: 1639740335
+      Data4: -1560625949
+    Path: event:/SFX/Player/Dash
   <PlayerJump>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  <EnemyAttack>k__BackingField:
+      Data1: -787306043
+      Data2: 1134183435
+      Data3: 1034998667
+      Data4: 988650528
+    Path: event:/SFX/Player/Jump
+  <Teshemba1Attack>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  <EnemyDie>k__BackingField:
+      Data1: -103276519
+      Data2: 1202882721
+      Data3: -1806024799
+      Data4: -1559472992
+    Path: event:/SFX/Enemies/Guardianes/Teshemba1Attack
+  <Teshemba1Hurt>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -561291925
+      Data2: 1218464568
+      Data3: -437934691
+      Data4: -2142561631
+    Path: event:/SFX/Enemies/Guardianes/Teshemba1Hurt
+  <Teshemba2Attack>k__BackingField:
+    Guid:
+      Data1: -263106172
+      Data2: 1282083395
+      Data3: -971924314
+      Data4: 1624372250
+    Path: event:/SFX/Enemies/Guardianes/Teshemba2Attack
+  <Teshemba2Hurt>k__BackingField:
+    Guid:
+      Data1: 1998696468
+      Data2: 1214367344
+      Data3: -1582514006
+      Data4: 169069012
+    Path: event:/SFX/Enemies/Guardianes/Teshemba2Hurt
+  <Yahtu2Attack>k__BackingField:
+    Guid:
+      Data1: 1088151093
+      Data2: 1100755189
+      Data3: 1235458466
+      Data4: 447226890
+    Path: event:/SFX/Enemies/Guardianes/Yahtu2Attack
+  <Yahtu2Hurt>k__BackingField:
+    Guid:
+      Data1: -1515275052
+      Data2: 1177382860
+      Data3: 785461122
+      Data4: 1322958145
+    Path: event:/SFX/Enemies/Guardianes/Yahtu2Hurt
+  <Yahuar1Attack>k__BackingField:
+    Guid:
+      Data1: -579344925
+      Data2: 1246229465
+      Data3: -840136287
+      Data4: 593391397
+    Path: event:/SFX/Enemies/Guardianes/Yahuar1Attack
+  <Yahuar1Hurt>k__BackingField:
+    Guid:
+      Data1: 1201114726
+      Data2: 1173982446
+      Data3: 1005119879
+      Data4: 801800999
+    Path: event:/SFX/Enemies/Guardianes/Yahuar1Hurt
+  <Yahuar2Attack>k__BackingField:
+    Guid:
+      Data1: -1885585392
+      Data2: 1317598058
+      Data3: 293267876
+      Data4: 1377833470
+    Path: event:/SFX/Enemies/Guardianes/Yahuar2Attack
+  <Yahuar2Hurt>k__BackingField:
+    Guid:
+      Data1: -1262412014
+      Data2: 1179352542
+      Data3: 1926387097
+      Data4: 1581432992
+    Path: event:/SFX/Enemies/Guardianes/Yahuar2Hurt
+  <TeshembaAttack>k__BackingField:
+    Guid:
+      Data1: 2116702105
+      Data2: 1154169099
+      Data3: -747952998
+      Data4: 2016397309
+    Path: event:/SFX/Enemies/Bosses/TesembaAttack
+  <TeshembaHurt>k__BackingField:
+    Guid:
+      Data1: 520700815
+      Data2: 1167159592
+      Data3: -2025428566
+      Data4: 1291250062
+    Path: event:/SFX/Enemies/Bosses/TeshembaHurt
+  <YahtuAttack>k__BackingField:
+    Guid:
+      Data1: -118380648
+      Data2: 1103566115
+      Data3: -821904209
+      Data4: 1208765733
+    Path: event:/SFX/Enemies/Bosses/YahtuAttack
+  <YahtuHurt>k__BackingField:
+    Guid:
+      Data1: 1086252763
+      Data2: 1223635074
+      Data3: 348386491
+      Data4: 784311175
+    Path: event:/SFX/Enemies/Bosses/YahtuHurt
+  <YahuarAttack>k__BackingField:
+    Guid:
+      Data1: 2031205511
+      Data2: 1188626976
+      Data3: -1977997919
+      Data4: -952070339
+    Path: event:/SFX/Enemies/Bosses/YahuarAttack
+  <YahuarHurt>k__BackingField:
+    Guid:
+      Data1: -148579190
+      Data2: 1151300264
+      Data3: 1634735780
+      Data4: 1201930524
+    Path: event:/SFX/Enemies/Bosses/YahuarHurt
+  <StunSnapshot>k__BackingField:
+    Guid:
+      Data1: -385915217
+      Data2: 1086401062
+      Data3: -1791678818
+      Data4: 148491200
+    Path: snapshot:/Stun
 --- !u!1 &8931515058108950901
 GameObject:
   m_ObjectHideFlags: 0
