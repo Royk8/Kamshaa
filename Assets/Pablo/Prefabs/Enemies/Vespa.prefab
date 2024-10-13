@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 7360336995659030840}
   - component: {fileID: 5399425745419031138}
   - component: {fileID: 4511979868948982118}
+  - component: {fileID: 7843747216457430759}
   m_Layer: 0
   m_Name: Vespa
   m_TagString: Untagged
@@ -187,6 +188,37 @@ MonoBehaviour:
   particulas: {fileID: 7519131671508558765, guid: b81c73d1749f44e4fad690a9e27c33c9, type: 3}
   frecuenciaStun: 0.1
   tiempoStun: 0.5
+--- !u!114 &7843747216457430759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8948800070998380609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2129445042
+      Data2: 1330502005
+      Data3: 1358861742
+      Data4: -1735074071
+    Path: event:/SFX/Enemies/Guardianes/Yahtu2Flying
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 2.6000001
+  OverrideMaxDistance: 40
 --- !u!1001 &482899523569920176
 PrefabInstance:
   m_ObjectHideFlags: 0

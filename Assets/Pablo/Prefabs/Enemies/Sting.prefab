@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 509234275513380008}
   - component: {fileID: 7739970211646134588}
   - component: {fileID: 4706484064223566130}
+  - component: {fileID: 2055586445833683434}
   m_Layer: 0
   m_Name: Sting
   m_TagString: Untagged
