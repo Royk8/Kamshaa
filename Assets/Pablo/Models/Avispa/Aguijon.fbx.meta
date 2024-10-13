@@ -3,7 +3,12 @@ guid: 921662a8e0d094542b81f898bdc8db1e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Vespa1_Material
+    second: {fileID: 2100000, guid: c8d996f23a711814f89c492ad3a7d3cf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

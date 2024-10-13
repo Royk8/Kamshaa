@@ -55,6 +55,10 @@ MonoBehaviour:
     m_Key: AcknowledgementsTitle
     m_Metadata:
       m_Items: []
+  - m_Id: 242601151651840
+    m_Key: LanguageTitle
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
