@@ -23,6 +23,10 @@ public class SliderLento : MonoBehaviour
 				slImitar.value = miSlider.value;
 			}
 			yield return new WaitForSeconds(0.5f);
+			if (slImitar.maxValue != miSlider.maxValue)
+			{
+				miSlider.maxValue = slImitar.maxValue;
+			}
 		}
     }
 }
