@@ -32,6 +32,7 @@ public class Mantis : MonoBehaviour, IDamageable
     public List<Transform> slashUbications = new();
     private List<Transform> slashUbicationsRemaining = new();
     public List<GameObject> hitBoxIndicators;
+    public List<GameObject> hitBoxVisualAreas;
     public VFXControlMantis phantomMantis;
     public float phantomMantisSpeed;
     public AnimationCurve phantomMantisSpeedCurve;
@@ -122,6 +123,7 @@ public class Mantis : MonoBehaviour, IDamageable
         // crea las hitbox donde va a golpear
         StartCoroutine(MovePhantomMantis(hitBoxIndicators[randomArea].transform.GetChild(1).position));
         hitBoxIndicators[randomArea].GetComponent<MeshRenderer>().material = hitMaterial;
+        hitBoxVisualAreas[randomArea].SetActive(true);
         Collider[] collidersAffected = Physics.OverlapBox(hitBoxIndicators[randomArea].transform.position, hitBoxIndicators[randomArea].transform.localScale / 2, hitBoxIndicators[randomArea].transform.rotation, hitBoxMask);
 
         for (int i = 0; i < collidersAffected.Length; i++)
@@ -139,6 +141,7 @@ public class Mantis : MonoBehaviour, IDamageable
 
         phantomMantis.gameObject.SetActive(false);
         hitBoxIndicators[randomArea].SetActive(false);
+        hitBoxVisualAreas[randomArea].SetActive(false);
         actualMechanicIsFinished = true;
     }
 

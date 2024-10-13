@@ -13,6 +13,7 @@ public class Serpens : Enemy, IDamageable
     public LayerMask mask;
     public GameObject hitSphere;
     public Animator anim;
+    public Metamorfosis metamorfosis;
     public float turnVelocity;
     public float wanderingSpeed;
     public float attackSpeed;
@@ -187,6 +188,7 @@ public class Serpens : Enemy, IDamageable
             case States.Dead:
                 StopAttackingCoroutines();
                 agent.speed = wanderingSpeed;
+                metamorfosis.IniciarTransicion();
                 ComeBackToTheRoute();
                 break;
             default:
@@ -198,6 +200,7 @@ public class Serpens : Enemy, IDamageable
     {
         if (!corrupted) return;
         life -= value;
+        metamorfosis.AplicarEfectoStun();
         if (life <= 0)
         {
             ChangeState(States.Dead);
