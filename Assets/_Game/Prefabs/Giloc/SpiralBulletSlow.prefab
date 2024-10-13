@@ -5154,8 +5154,8 @@ MonoBehaviour:
   linearSpeed: 6
   maxLifeTime: 2
   damage: 15
-  rotationSpeed: 300
-  rotationSlowdownPerSec: 300
+  rotationSpeed: 180
+  rotationSlowdownPerSec: 180
   minRotationSpeed: 0
 --- !u!1 &6040774825080258602
 GameObject:

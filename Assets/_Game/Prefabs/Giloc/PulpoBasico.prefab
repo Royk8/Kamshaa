@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullets:
   - {fileID: 4844987388999363392, guid: e0eefef284262bd42b1c168f045a8858, type: 3}
-  timeBetweenShots: 0
-  bulletsToShot: 0
+  timeBetweenShots: 0.3
+  bulletsToShot: 2
   minBulletSpeed: 0
   maxBulletSpeed: 0
 --- !u!1 &2861577309273423024
@@ -251,6 +251,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8359856321759467327
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +304,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 20
+  m_Radius: 12
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1113734087501733125
 MonoBehaviour:
