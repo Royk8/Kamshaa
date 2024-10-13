@@ -16,6 +16,7 @@ public class CuelloLargo : Enemy, IDamageable, IStuneable
     public float damage;
     public float unCorruptedSpeed;
     public Animator anim;
+    public Metamorfosis metamorfosis;
     public GameObject hitCapsuleRef;
     public Transform startHitCapsulePos, endHitCapsulePos;
     public LayerMask hitMask;
@@ -145,6 +146,7 @@ public class CuelloLargo : Enemy, IDamageable, IStuneable
                 agent.ResetPath();
                 break;
             case States.Dead:
+                metamorfosis.IniciarTransicion();
                 agent.speed = unCorruptedSpeed;
                 ComeBackToTheRoute();
                 break;
@@ -163,6 +165,7 @@ public class CuelloLargo : Enemy, IDamageable, IStuneable
     {
         if (!corrupted) return;
         life -= value;
+        metamorfosis.AplicarEfectoStun();
         if (life <= 0)
         {
             ChangeState(States.Dead);

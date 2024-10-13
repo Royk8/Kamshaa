@@ -296,8 +296,8 @@ public class Mantis : MonoBehaviour, IDamageable
         healthBar.value = life;
         if (life <= 0)
         {
-            metamorfosis.IniciarTransicion();
             unCorrupted = true;
+            metamorfosis.IniciarTransicion();
             StopAllCoroutines();
             mechanicsCoroutine = StartCoroutine(Wandering());
             actualMechanic = nameof(Wandering);
@@ -306,6 +306,7 @@ public class Mantis : MonoBehaviour, IDamageable
             Plumero.singleton.AdquirirPluma(Pluma.verde);
             ControlAmbiente.singleton.LlenarVerde();
             healthBar.transform.parent.gameObject.SetActive(false);
+            vfxAnim.Visibilizar();
         }
         else
         {
