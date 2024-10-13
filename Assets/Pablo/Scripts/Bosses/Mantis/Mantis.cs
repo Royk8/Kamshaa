@@ -305,6 +305,7 @@ public class Mantis : MonoBehaviour, IDamageable
             monolitosVerdes.VolverConVibracion();
             Plumero.singleton.AdquirirPluma(Pluma.verde);
             ControlAmbiente.singleton.LlenarVerde();
+            healthBar.transform.parent.gameObject.SetActive(false);
         }
         else
         {
