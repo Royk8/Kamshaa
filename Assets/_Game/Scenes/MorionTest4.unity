@@ -31617,14 +31617,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1748747481}
     - target: {fileID: 2186754664243741637, guid: ae837cb5e5335c84d82bc7b59c8f018d, type: 3}
-      propertyPath: slashUbications.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2186754664243741637, guid: ae837cb5e5335c84d82bc7b59c8f018d, type: 3}
-      propertyPath: posiblePositions.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2186754664243741637, guid: ae837cb5e5335c84d82bc7b59c8f018d, type: 3}
       propertyPath: slashUbications.Array.data[0]
       value: 
       objectReference: {fileID: 152480503}
@@ -74399,6 +74391,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 914462854}
     m_Modifications:
+    - target: {fileID: 250810314321341548, guid: a087300accfaf8d4ebe1db3c165b2ce8, type: 3}
+      propertyPath: finalScaleReference
+      value: 0.4927666
+      objectReference: {fileID: 0}
     - target: {fileID: 2641327341149300116, guid: a087300accfaf8d4ebe1db3c165b2ce8, type: 3}
       propertyPath: idlePoints.Array.data[0]
       value: 
