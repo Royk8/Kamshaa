@@ -317,7 +317,7 @@ public class Mantis : MonoBehaviour, IDamageable
     {
         life += value;
         healthBar.value = life;
-        if (value > maxLife)
+        if (life > maxLife)
             life = maxLife;
     }
 }

@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: MainMenuTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: MainMenuTable
+  m_TableCollectionNameGuidString: 019f15bd73995134fbe282f13a64dae6
+  m_Entries:
+  - m_Id: 8878776320
+    m_Key: PlayButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 234444251136
+    m_Key: OptionsButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 486542893056
+    m_Key: CreditsButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 697403138048
+    m_Key: ExitButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16258270978048
+    m_Key: DesignTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23295180627968
+    m_Key: ProgrammingTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23380803149824
+    m_Key: ArtTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23446083297280
+    m_Key: AudioTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23490811355136
+    m_Key: VoicesTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23521954062336
+    m_Key: AcknowledgementsTitle
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5219718442399039490
+  references:
+    version: 2
+    RefIds:
+    - rid: 5219718442399039490
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1728781982562
