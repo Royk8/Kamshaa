@@ -13,6 +13,7 @@ public class Vespa : Enemy, IDamageable, IStuneable
     public AnimationCurve turnCurveVelocity;
     public float turnVelocity;
     public float shootingRate;
+    public float sideWalk;
     public List<GameObject> stings = new();
     public GameObject stingPrefab;
     public Transform shootingSpot;
@@ -32,8 +33,9 @@ public class Vespa : Enemy, IDamageable, IStuneable
     {
         base.AttackingState();
         if (states != States.Attacking) return;
-        agent.isStopped = true;
         if (isAttacking) return;
+
+        agent.isStopped = true;
         StartCoroutine(Attack());
     }
 
@@ -59,8 +61,16 @@ public class Vespa : Enemy, IDamageable, IStuneable
         actualSting.SetActive(true);
         anim.SetTrigger("atacar");
 
+        agent.isStopped = false;
+        Vector3 destination = transform.position + (transform.right * sideWalk);
+        agent.SetDestination(destination);
+        yield return new WaitForSeconds(0.4f);
+        yield return new WaitUntil(() => agent.remainingDistance <= 0.5f);
+
+        agent.isStopped = true;
         yield return new WaitForSeconds(shootingRate);
 
+        sideWalk *= -1;
         isAttacking = false;
     }
 

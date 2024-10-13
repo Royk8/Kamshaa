@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  life: 20
+  life: 35
   minWanderingTime: 1
   maxWanderingTime: 6
   agent: {fileID: 3435708943840590699}

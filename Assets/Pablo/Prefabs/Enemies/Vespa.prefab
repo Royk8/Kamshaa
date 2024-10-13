@@ -116,6 +116,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   turnVelocity: 3
   shootingRate: 1
+  sideWalk: 3
   stings: []
   stingPrefab: {fileID: 5057216002442423863, guid: 06f0dba6ab35eda449c3e249533388f4, type: 3}
   shootingSpot: {fileID: 8971925819757678591}
