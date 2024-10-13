@@ -22,6 +22,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
     public Animator anim;
     public VFXControlBossRojo vfx;
     public Slider healthBar;
+    public Metamorfosis metamorfosis;
 
     [Space(2)]
     [Header("LaserBeam")]
@@ -306,6 +307,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
 
         life -= value;
         healthBar.value = life;
+        metamorfosis.AplicarEfectoStun();
         if (life <= 0)
         {
             unCorrupted = true;
@@ -314,6 +316,8 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
             Plumero.singleton.AdquirirPluma(Pluma.roja);
             ControlAmbiente.singleton.LlenarRojo();
             healthBar.transform.parent.gameObject.SetActive(false);
+            metamorfosis.IniciarTransicion();
+            anim.SetBool("poder", false);
         }
     }
 }
