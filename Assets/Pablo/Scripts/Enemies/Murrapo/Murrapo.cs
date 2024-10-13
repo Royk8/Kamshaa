@@ -25,6 +25,7 @@ public class Murrapo : Enemy, IDamageable
     public float damage;
     public float wanderingSpeed;
     public ControlEfectosGato vfx;
+    public Metamorfosis metamorfosis;
 
     private Transform actualPoint;
     private bool isAttacking;
@@ -138,7 +139,7 @@ public class Murrapo : Enemy, IDamageable
             if (collidersAffected[i].TryGetComponent(out IDamageable creature))
             {
                 creature.ReceiveDamage(damage);
-                Debug.Log(collidersAffected[i].name + " dañado por poison de: " + name);
+                Debug.Log(collidersAffected[i].name + " dañado por pisoton de: " + name);
             }
         }
         Invoke(nameof(DeactivateHitSphere), 0.2f);
@@ -186,6 +187,7 @@ public class Murrapo : Enemy, IDamageable
             case States.Attacking:
                 break;
             case States.Dead:
+                metamorfosis.IniciarTransicion();
                 ComeBackToTheRoute();
                 agent.speed = wanderingSpeed;
                 break;
@@ -198,6 +200,7 @@ public class Murrapo : Enemy, IDamageable
     {
         if (!corrupted) return;
         life -= value;
+        metamorfosis.AplicarEfectoStun();
         if (life <= 0)
         {
             ChangeState(States.Dead);
