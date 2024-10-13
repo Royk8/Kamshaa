@@ -18,10 +18,12 @@ public class UIDialogueHandler : MonoBehaviour
     public InputAdapter inputAdapter;
     private bool isDisplayingText;
     public UnityEvent OnDialogueEnd;
+    public FmodAudioTable fmodAudioTable;
 
     private void Start()
     {
         textLocalizationFinder = FindObjectOfType<TextLocalizationFinder>();
+        fmodAudioTable = GetComponent<FmodAudioTable>();
     }
 
     public void InitDialogue(string conversationId)
@@ -72,8 +74,9 @@ public class UIDialogueHandler : MonoBehaviour
                 rightImage.sprite = dialogueSpriteMapScriptable.GetSprite(speaker);
             }
 
-            string key = line.text;
+            string key = line.key;
             //Play fmod audio
+            fmodAudioTable.PlayDialogue(key);
 
             StartCoroutine(DisplayDialogueAnimation(line.text));
             //Debug.Log("Waiting for next message");
@@ -85,6 +88,7 @@ public class UIDialogueHandler : MonoBehaviour
                 isDisplayingText = false;
                 
                 yield return new WaitUntil(() => isNextMessage);
+                fmodAudioTable.StopDialogue(key);
             }
             //Debug.Log("Done waiting for next message");
 
