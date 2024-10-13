@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class Cucarron : Enemy, IDamageable, IStuneable
@@ -18,6 +19,10 @@ public class Cucarron : Enemy, IDamageable, IStuneable
     public List<Transform> wanderingPoints;
     public Metamorfosis metamorfosis;
     public Collider cucarronCollider;
+    public UnityEvent iniciaCaminar;
+    public UnityEvent iniciaCorrer;
+    public UnityEvent terminaCaminar;
+    public UnityEvent terminaCorrer;
 
     private Transform actualDestination;
     private bool isAttacking = false;
@@ -50,6 +55,8 @@ public class Cucarron : Enemy, IDamageable, IStuneable
             case States.Attacking:
                 break;
             case States.Dead:
+                terminaCorrer.Invoke();
+                iniciaCaminar.Invoke();
                 metamorfosis.IniciarTransicion();
                 SelectNextWayPoint();
                 break;
@@ -68,6 +75,8 @@ public class Cucarron : Enemy, IDamageable, IStuneable
     private IEnumerator Attack()
     {
         isAttacking = true;
+        terminaCaminar.Invoke();
+        iniciaCorrer.Invoke();
         float normalVelocity = agent.speed;
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
@@ -79,6 +88,8 @@ public class Cucarron : Enemy, IDamageable, IStuneable
         agent.SetDestination(target.position + (transform.forward * 1.4f));
         yield return new WaitForSeconds(chargeDuration);
         isCharging = false;
+        terminaCorrer.Invoke();
+        iniciaCaminar.Invoke();
         agent.speed = normalVelocity;
         isAttacking = false;
     }
@@ -114,6 +125,7 @@ public class Cucarron : Enemy, IDamageable, IStuneable
         buried = false;
         if (readyToMove)
         {
+            iniciaCaminar.Invoke();
             cucarronCollider.enabled = true;
             agent.SetDestination(target.position);
         }
@@ -125,6 +137,7 @@ public class Cucarron : Enemy, IDamageable, IStuneable
         if (buried) return;
         if ((transform.position - initalPosition).magnitude < 0.7f)
         {
+            terminaCaminar.Invoke();
             cucarronCollider.enabled = false;
             readyToMove = false;
             anim.SetBool("IsMoving", false);
