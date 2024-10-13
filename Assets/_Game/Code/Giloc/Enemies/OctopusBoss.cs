@@ -11,6 +11,7 @@ namespace Giloc.Enemies
         #region properties
         [SerializeField] private List<Cannon> cannons;
         [SerializeField] private Cannon parabolicCannon;
+        [SerializeField] private Monolito monolito;
         private bool _isRotating;
         private float _rotationAmount;
         private float _rotationSpeed;
@@ -202,6 +203,7 @@ namespace Giloc.Enemies
             }
             Plumero.singleton.AdquirirPluma(Pluma.azul);
             ControlAmbiente.singleton.LlenarAzul();
+            monolito.Romper();
 
             StartIdle();
         }
