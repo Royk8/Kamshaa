@@ -44,7 +44,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb47697edfe57bc40b78fa523a3365fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 4844987388999363392, guid: 8ef6a806e6063b0438e9dc17e2eddc25, type: 3}
+  bullets:
+  - {fileID: 4844987388999363392, guid: b623c7364ac94f34790c0f4482067b4d, type: 3}
+  - {fileID: 4844987388999363392, guid: 9a44683a9d6cfca4ab59690b58128ca8, type: 3}
+  - {fileID: 4844987388999363392, guid: 8ef6a806e6063b0438e9dc17e2eddc25, type: 3}
+  timeBetweenShots: 0.05
+  bulletsToShot: 2
+  minBulletSpeed: 5
+  maxBulletSpeed: 8
+--- !u!1 &92601204475477318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8720155437085467394}
+  - component: {fileID: 7766317325190066886}
+  m_Layer: 0
+  m_Name: ParabolicCannon
+  m_TagString: Untagged
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8720155437085467394
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92601204475477318}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0.18, y: 0.39700007, z: -1.59}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3062923135759203247}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &7766317325190066886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92601204475477318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb47697edfe57bc40b78fa523a3365fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullets:
+  - {fileID: 4844987388999363392, guid: e0eefef284262bd42b1c168f045a8858, type: 3}
+  timeBetweenShots: 2
+  bulletsToShot: 5
+  minBulletSpeed: 0
+  maxBulletSpeed: 0
 --- !u!1 &398499642246181503
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,7 +154,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 28
+  m_Radius: 6.8
   m_Center: {x: 1.7, y: 0, z: 0}
 --- !u!114 &991070641826502498
 MonoBehaviour:
@@ -295,6 +352,7 @@ MonoBehaviour:
   - {fileID: 3777175989261380803}
   - {fileID: 6638116840750358203}
   - {fileID: 282683930224943086}
+  parabolicCannon: {fileID: 7766317325190066886}
 --- !u!114 &2641327341149300116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,6 +406,7 @@ Transform:
   - {fileID: 347825209609348004}
   - {fileID: 6557912268042151137}
   - {fileID: 396497319565549947}
+  - {fileID: 8720155437085467394}
   m_Father: {fileID: 4179297686870211186}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &6885141730300562042
@@ -394,7 +453,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb47697edfe57bc40b78fa523a3365fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 4844987388999363392, guid: 9a44683a9d6cfca4ab59690b58128ca8, type: 3}
+  bullets:
+  - {fileID: 4844987388999363392, guid: 9a44683a9d6cfca4ab59690b58128ca8, type: 3}
+  - {fileID: 4844987388999363392, guid: 8ef6a806e6063b0438e9dc17e2eddc25, type: 3}
+  timeBetweenShots: 0.05
+  bulletsToShot: 2
+  minBulletSpeed: 4
+  maxBulletSpeed: 7
 --- !u!1 &7399212778023132105
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,7 +504,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb47697edfe57bc40b78fa523a3365fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 4844987388999363392, guid: b623c7364ac94f34790c0f4482067b4d, type: 3}
+  bullets:
+  - {fileID: 4844987388999363392, guid: b623c7364ac94f34790c0f4482067b4d, type: 3}
+  - {fileID: 4844987388999363392, guid: 9a44683a9d6cfca4ab59690b58128ca8, type: 3}
+  - {fileID: 4844987388999363392, guid: 8ef6a806e6063b0438e9dc17e2eddc25, type: 3}
+  timeBetweenShots: 0.05
+  bulletsToShot: 2
+  minBulletSpeed: 4
+  maxBulletSpeed: 8
 --- !u!1 &8805688082620529991
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,7 +556,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb47697edfe57bc40b78fa523a3365fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 4844987388999363392, guid: 9a44683a9d6cfca4ab59690b58128ca8, type: 3}
+  bullets:
+  - {fileID: 4844987388999363392, guid: 9a44683a9d6cfca4ab59690b58128ca8, type: 3}
+  - {fileID: 4844987388999363392, guid: 8ef6a806e6063b0438e9dc17e2eddc25, type: 3}
+  timeBetweenShots: 0.05
+  bulletsToShot: 2
+  minBulletSpeed: 4
+  maxBulletSpeed: 8
 --- !u!1001 &509112779060969912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -495,7 +573,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 318548064453930452, guid: e0c25e8d590e7b74cb9c8d28d5de4078, type: 3}
       propertyPath: finalScaleReference
-      value: 0.49276677
+      value: 0.49276692
       objectReference: {fileID: 0}
     - target: {fileID: 318548064453930452, guid: e0c25e8d590e7b74cb9c8d28d5de4078, type: 3}
       propertyPath: _Editor_OnValidateTrigger
