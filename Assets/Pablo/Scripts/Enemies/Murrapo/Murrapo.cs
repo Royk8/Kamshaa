@@ -26,11 +26,15 @@ public class Murrapo : Enemy, IDamageable
     public float wanderingSpeed;
     public ControlEfectosGato vfx;
     public Metamorfosis metamorfosis;
+    public GameObject particlesOne, particlesTwo;
+    public float particlesDuration;
 
     private Transform actualPoint;
     private bool isAttacking;
     private bool jumpLanded;
     private bool alreadyTurned = false;
+    private Coroutine deactivateHitSphereCo;
+    public GameObject actualParticles;
 
     public override void IdleState()
     {
@@ -86,6 +90,9 @@ public class Murrapo : Enemy, IDamageable
     {
         isAttacking = true;
 
+        if (deactivateHitSphereCo != null)
+            StopCoroutine(deactivateHitSphereCo);
+
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
         alreadyTurned = false;
@@ -130,6 +137,11 @@ public class Murrapo : Enemy, IDamageable
     private void DamageHit()
     {
         hitSphere.SetActive(true);
+        actualParticles = actualParticles == particlesOne ? particlesTwo : particlesOne;
+        SetActualParticle();
+        actualParticles.transform.parent = null;
+        actualParticles.SetActive(true);
+        actualParticles.GetComponent<ParticleSystem>().Play();
         ControladorCamara.singleton.IniciarTemblor(temblorDuration, temblorMagnitud);
         Collider[] collidersAffected = Physics.OverlapSphere(hitSphere.transform.position, hitSphere.transform.localScale.x / 2, mask);
 
@@ -142,12 +154,27 @@ public class Murrapo : Enemy, IDamageable
                 Debug.Log(collidersAffected[i].name + " dañado por pisoton de: " + name);
             }
         }
-        Invoke(nameof(DeactivateHitSphere), 0.2f);
+
+
+        deactivateHitSphereCo = StartCoroutine(DeactivateHitSphereDelayed());
+    }
+
+    private IEnumerator DeactivateHitSphereDelayed()
+    {
+        yield return new WaitForSeconds(particlesDuration);
+        DeactivateHitSphere();
     }
 
     private void DeactivateHitSphere()
     {
         hitSphere.SetActive(false);
+        actualParticles.SetActive(false);
+    }
+
+    private void SetActualParticle()
+    {
+        actualParticles.transform.parent = transform;
+        actualParticles.transform.position = hitSphere.transform.position;
     }
 
     private IEnumerator TurnToTarget(Quaternion targetRotation)
