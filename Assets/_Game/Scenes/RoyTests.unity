@@ -10740,6 +10740,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3437098894821279187, guid: d67bc1bc16875de46bbd2f59d1b57d01, type: 3}
   m_PrefabInstance: {fileID: 313828345}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &316836891 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6356037282597997872, guid: 8e1e3a6435775ec4ab703223786a40b3, type: 3}
+  m_PrefabInstance: {fileID: 1340155525}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &316921656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46894,7 +46899,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6356037282597997872, guid: 8e1e3a6435775ec4ab703223786a40b3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1520625969}
   m_SourcePrefab: {fileID: 100100000, guid: 8e1e3a6435775ec4ab703223786a40b3, type: 3}
 --- !u!4 &1340559175 stripped
 Transform:
@@ -55054,12 +55062,31 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8545841898490290947, guid: 8e1e3a6435775ec4ab703223786a40b3, type: 3}
   m_PrefabInstance: {fileID: 1340155525}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 316836891}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e5c13ef8caabef489b4cb87be7bf9d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1520625969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316836891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa5c7b3ade111e46b028e40a23643b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EventName:
+    Guid:
+      Data1: -1545592079
+      Data2: 1160800937
+      Data3: 1033880240
+      Data4: 871379521
+    Path: event:/Voices/Voces
 --- !u!1001 &1521917258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71692,7 +71719,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1889134617}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Monolitos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81663,9 +81690,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9039992414470757265, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
+      propertyPath: blockLayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039992414470757265, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
       propertyPath: floorDetectorPlane
       value: 
       objectReference: {fileID: 790923358}
+    - target: {fileID: 9039992414470757265, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
+      propertyPath: defaultLayer.m_Bits
+      value: 513
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
