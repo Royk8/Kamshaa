@@ -9,6 +9,7 @@ public class Sting : MonoBehaviour
     public float damage = 1;
     public float disableDelay;
     public GameObject creator;
+    bool yaDan = false;
 
     private void Start()
     {
@@ -35,10 +36,17 @@ public class Sting : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == creator) return;
-        if (other.gameObject.TryGetComponent(out IDamageable entity))
+        if (!yaDan && other.gameObject.TryGetComponent(out IDamageable entity))
         {
             entity.ReceiveDamage(damage);
         }
+        Invoke("Desactivar", 1);
+        yaDan = true;
+    }
+
+    void Desactivar()
+	{
         gameObject.SetActive(false);
+        yaDan = false;
     }
 }
