@@ -217,8 +217,8 @@ MonoBehaviour:
   AllowNonRigidbodyDoppler: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: 2.6000001
-  OverrideMaxDistance: 40
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 30
 --- !u!1001 &482899523569920176
 PrefabInstance:
   m_ObjectHideFlags: 0
