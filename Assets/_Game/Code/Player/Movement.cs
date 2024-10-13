@@ -318,6 +318,12 @@ public class Movement : MonoBehaviour, IStuneable
         {
             return;
         }
+
+        if (!inputAdapter.isInputActive)
+        {
+            return;
+        }
+
         Vector3 direction = new Vector3(moveVelocity3.x, zVelocity + moveVelocity3.y, moveVelocity3.z);
         if (CheckCollisionOnMovement(direction, out bool right, out bool front))
         {

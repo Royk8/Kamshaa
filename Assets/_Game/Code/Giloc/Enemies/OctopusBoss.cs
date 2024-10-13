@@ -194,8 +194,13 @@ namespace Giloc.Enemies
         protected override IEnumerator Die()
         {
             yield return null;
-            Plumero.singleton.AdquirirPluma(Pluma.azul);
-            ControlAmbiente.singleton.LlenarAzul();
+
+            DialogueFunctionActivator dialogue = GetComponentInChildren<DialogueFunctionActivator>();
+            if (dialogue != null)
+            {
+                dialogue.ActivateDialogue();
+            }
+
             StartIdle();
         }
         #endregion

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ public class UIDialogueHandler : MonoBehaviour
     public DialogueSpriteMap dialogueSpriteMapScriptable;
     public InputAdapter inputAdapter;
     private bool isDisplayingText;
+    public UnityEvent OnDialogueEnd;
 
     private void Start()
     {
@@ -91,6 +93,8 @@ public class UIDialogueHandler : MonoBehaviour
         inputAdapter.OnNextMessage -= HandleOnNextMessage;
 
         TogglePanel(false);
+
+        OnDialogueEnd?.Invoke();
 
         yield return null;
     }
