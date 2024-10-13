@@ -59,6 +59,18 @@ MonoBehaviour:
     m_Key: LanguageTitle
     m_Metadata:
       m_Items: []
+  - m_Id: 268311698300928
+    m_Key: EnglishEntry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 268416044195840
+    m_Key: SpanishEntry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 269181898940416
+    m_Key: PortugueseEntry
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
