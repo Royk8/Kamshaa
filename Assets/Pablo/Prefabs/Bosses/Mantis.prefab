@@ -666,6 +666,9 @@ MonoBehaviour:
   hitBoxIndicators:
   - {fileID: 6251404343310560717}
   - {fileID: 1750989830945778059}
+  hitBoxVisualAreas:
+  - {fileID: 5991512046241350631}
+  - {fileID: 659899594427237965}
   phantomMantis: {fileID: 7342060227985686808}
   phantomMantisSpeed: 6
   phantomMantisSpeedCurve:
