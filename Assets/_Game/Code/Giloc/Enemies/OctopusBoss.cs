@@ -194,6 +194,8 @@ namespace Giloc.Enemies
         protected override IEnumerator Die()
         {
             yield return null;
+            Plumero.singleton.AdquirirPluma(Pluma.azul);
+            ControlAmbiente.singleton.LlenarAzul();
             StartIdle();
         }
         #endregion
