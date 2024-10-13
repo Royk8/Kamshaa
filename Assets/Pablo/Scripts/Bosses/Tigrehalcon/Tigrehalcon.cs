@@ -23,6 +23,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
     public VFXControlBossRojo vfx;
     public Slider healthBar;
     public Metamorfosis metamorfosis;
+    public Monolito monolito;
 
     [Space(2)]
     [Header("LaserBeam")]
@@ -323,6 +324,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
                 dialogue.ActivateDialogue();
             }
 
+            monolito.Romper();
             metamorfosis.IniciarTransicion();
             anim.SetBool("poder", false);
         }
