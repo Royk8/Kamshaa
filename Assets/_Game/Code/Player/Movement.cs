@@ -390,6 +390,7 @@ public class Movement : MonoBehaviour, IStuneable
             bool isDashingOffGround = false;
             Vector3 offGroundPosition = Vector3.zero;
             dashAttack.Attack();
+            playerHealth.SpendHealth(1);
 
             while (Time.time < (startTime + dashTime))
             {
@@ -438,7 +439,7 @@ public class Movement : MonoBehaviour, IStuneable
                 thisFrameDirection = VerifyPlaneOfMovement(new Vector2(thisFrameDirection.x, thisFrameDirection.z));
                 transform.Translate(thisFrameDirection);
 
-                playerHealth.SpendHealth(2);
+                
                 yield return null;
             }
             isDashing = false;
@@ -459,7 +460,7 @@ public class Movement : MonoBehaviour, IStuneable
             return;
         }
         
-        playerHealth.SpendHealth(4);
+        playerHealth.SpendHealth(3);
         animationsControl.Disparar();
         AudioManager.Instance.PlayOneShot(EventsManager.Instance.PlayerCharge,this.transform.position);
         StartCoroutine(ShootCoroutine(projectile.GetComponent<ProjectileController>().castingTime));
