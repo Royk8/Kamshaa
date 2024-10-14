@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4469195, g: 0.49680394, b: 0.5750159, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692343, g: 0.49680978, b: 0.57501775, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -81795,6 +81795,10 @@ PrefabInstance:
     - target: {fileID: 5622283202009646510, guid: 14a03605607a10f42905734fc9ff9ce2, type: 3}
       propertyPath: m_Name
       value: Guia Inicial
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622283202009646510, guid: 14a03605607a10f42905734fc9ff9ce2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7072071362908108477, guid: 14a03605607a10f42905734fc9ff9ce2, type: 3}
       propertyPath: dialogueHandler
