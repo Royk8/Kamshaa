@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullets:
-  - {fileID: 4844987388999363392, guid: e0eefef284262bd42b1c168f045a8858, type: 3}
+  - {fileID: 4844987388999363392, guid: 444afea837c882f4f90c280a7a896cab, type: 3}
   timeBetweenShots: 0.3
   bulletsToShot: 2
   minBulletSpeed: 0
@@ -347,6 +347,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2498103462793350653}
     m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 9168acadb2f0d5c4e94e8f15860bde2d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9168acadb2f0d5c4e94e8f15860bde2d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9168acadb2f0d5c4e94e8f15860bde2d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9168acadb2f0d5c4e94e8f15860bde2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
