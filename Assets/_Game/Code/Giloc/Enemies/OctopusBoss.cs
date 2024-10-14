@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Giloc.Enemies
 {
@@ -12,6 +13,7 @@ namespace Giloc.Enemies
         [SerializeField] private List<Cannon> cannons;
         [SerializeField] private Cannon parabolicCannon;
         [SerializeField] private Monolito monolito;
+        [SerializeField] private Slider healthBar;
         private bool _isRotating;
         private float _rotationAmount;
         private float _rotationSpeed;
@@ -43,6 +45,8 @@ namespace Giloc.Enemies
             _currentTimeBetweenAttacks = minTimeBetweenAttacks;
             _rotationSpeed = 360f / (attackPreparationTime * 10);
             _originalLife = lifePoints;
+            healthBar.maxValue = _originalLife;
+            healthBar.value = lifePoints;
         }
 
         private void Update()
@@ -72,6 +76,7 @@ namespace Giloc.Enemies
             if (!corrupted) return;
             CancelAttack();
             lifePoints -= pointsToTake;
+            healthBar.value = lifePoints;
 
             if(lifePoints <= 0)
             {
@@ -84,6 +89,7 @@ namespace Giloc.Enemies
 
         protected override void Attack()
         {
+            if (!corrupted) return;
             if(lifePoints < _originalLife / 2)
             {
                 attackType = UnityEngine.Random.Range(0, 2);
@@ -115,6 +121,7 @@ namespace Giloc.Enemies
         private void StartChasing(Transform transform)
         {
             if(!corrupted) return;
+            healthBar.transform.parent.gameObject.SetActive(true);
             _playerTransform = transform;
             ResetAttackStoppers();
             enemyMovement.StartChasing(transform, attackDistance);
@@ -201,9 +208,17 @@ namespace Giloc.Enemies
             {
                 dialogue.ActivateDialogue();
             }
+            parabolicCannon.enabled = false;
+            for (int i = 0; i < cannons.Count; i++)
+            {
+                cannons[i].enabled = false;
+            }
             Plumero.singleton.AdquirirPluma(Pluma.azul);
             ControlAmbiente.singleton.LlenarAzul();
             monolito.Romper();
+            if (metamorfosis != null)
+            metamorfosis.IniciarTransicion();
+            healthBar.transform.parent.gameObject.SetActive(false);
 
             StartIdle();
         }

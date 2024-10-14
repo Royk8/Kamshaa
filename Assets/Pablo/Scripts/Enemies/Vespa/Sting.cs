@@ -9,6 +9,7 @@ public class Sting : MonoBehaviour
     public float damage = 1;
     public float disableDelay;
     public GameObject creator;
+    public TrailRenderer trail;
     bool yaDan = false;
 
     private void Start()
@@ -18,6 +19,7 @@ public class Sting : MonoBehaviour
 
     private void OnEnable()
     {
+        trail.Clear();
         SetUpVelocity();
     }
 

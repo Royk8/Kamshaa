@@ -131,6 +131,8 @@ namespace Giloc.Enemies
         protected override IEnumerator Die()
         {
             yield return null;
+            if (metamorfosis != null)
+                metamorfosis.IniciarTransicion();
             StartIdle();
         }
         #endregion
