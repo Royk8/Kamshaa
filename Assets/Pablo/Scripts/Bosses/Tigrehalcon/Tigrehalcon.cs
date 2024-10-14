@@ -209,6 +209,7 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
     private IEnumerator BasicAttack(float damage)
     {
         anim.SetBool("poder", true);
+        AudioManager.Instance.PlayOneShot(EventsManager.Instance.YahuarAttack, this.transform.position);
         yield return new WaitForSeconds(0.6f);
         Collider[] collidersAffected = Physics.OverlapSphere(basicAttackHitSphere.transform.position, basicAttackHitSphere.transform.localScale.x / 2, hitMask);
         basicAttackHitSphere.SetActive(true);
@@ -328,5 +329,6 @@ public class Tigrehalcon : MonoBehaviour, IDamageable
             metamorfosis.IniciarTransicion();
             anim.SetBool("poder", false);
         }
+        AudioManager.Instance.PlayOneShot(EventsManager.Instance.YahuarHurt, this.transform.position);
     }
 }
