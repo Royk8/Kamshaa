@@ -58,6 +58,8 @@ public class EventsManager : MonoBehaviour
 
     [field: SerializeField] public EventReference YahuarHurt { get; private set; }
 
+    [field: SerializeField] public EventReference YahuarRayo { get; private set; }
+
 
 
     [field: Header("Snapshots")]

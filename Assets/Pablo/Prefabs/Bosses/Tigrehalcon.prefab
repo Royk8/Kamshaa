@@ -68,6 +68,7 @@ MonoBehaviour:
   vfx: {fileID: 3297576304145227695}
   healthBar: {fileID: 0}
   metamorfosis: {fileID: 9026834053900784580}
+  monolito: {fileID: 0}
   laserBeamPosition: {fileID: 0}
   laserBeamLookAtOne: {fileID: 0}
   laserBeamLookAtTwo: {fileID: 0}
@@ -248,6 +249,7 @@ GameObject:
   - component: {fileID: 5839975113573949062}
   - component: {fileID: 7390477412159799822}
   - component: {fileID: 5134914786211647946}
+  - component: {fileID: 2702793029811785559}
   m_Layer: 7
   m_Name: Laser Beam
   m_TagString: Untagged
@@ -385,6 +387,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2702793029811785559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493512527247050945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 319810654
+      Data2: 1139806665
+      Data3: 364962701
+      Data4: 84440865
+    Path: event:/SFX/Enemies/Bosses/YahuarRayo
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &3206414394558253652
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,13 +608,52 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3859479298020700256, guid: dfd6c46cf94ac5544a1026cdd34fc0c4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3822344176382485045}
   m_SourcePrefab: {fileID: 100100000, guid: dfd6c46cf94ac5544a1026cdd34fc0c4, type: 3}
 --- !u!4 &1669088843944707777 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 624437586284230811, guid: dfd6c46cf94ac5544a1026cdd34fc0c4, type: 3}
   m_PrefabInstance: {fileID: 2270862978703949402}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3029838576167980602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3859479298020700256, guid: dfd6c46cf94ac5544a1026cdd34fc0c4, type: 3}
+  m_PrefabInstance: {fileID: 2270862978703949402}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3822344176382485045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3029838576167980602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1903630696
+      Data2: 1328949275
+      Data3: 47563673
+      Data4: 1996057876
+    Path: event:/SFX/Enemies/Bosses/Yahuarluz
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 1
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!137 &3193280190966872464 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 3734459026149525450, guid: dfd6c46cf94ac5544a1026cdd34fc0c4, type: 3}
@@ -656,6 +728,10 @@ PrefabInstance:
       propertyPath: InitialModule.startSizeZ.minMaxState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5618132487506631723, guid: e98f471edbe52974a9a06f629cf49171, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 1493512527247050945}
     - target: {fileID: 6331015876019222415, guid: e98f471edbe52974a9a06f629cf49171, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.9
@@ -721,7 +797,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8303280734005544773, guid: e98f471edbe52974a9a06f629cf49171, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e98f471edbe52974a9a06f629cf49171, type: 3}
