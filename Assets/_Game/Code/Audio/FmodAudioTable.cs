@@ -21,6 +21,7 @@ public class FmodAudioTable : MonoBehaviour
 
     public void PlayDialogue(string key)
     {
+        Debug.Log("Playing dialogue: " + key);
         var dialogueInstance = FMODUnity.RuntimeManager.CreateInstance(EventName);
 
         // Pin the key string in memory and pass a pointer through the user data
@@ -29,7 +30,7 @@ public class FmodAudioTable : MonoBehaviour
 
         dialogueInstance.setCallback(dialogueCallback);
         dialogueInstance.start();
-        dialogueInstance.release();
+        dialogueInstance.release();        
     }
 
     static FMOD.RESULT DialogueEventCallback(FMOD.Studio.EVENT_CALLBACK_TYPE type, IntPtr instancePtr, IntPtr parameterPtr)
@@ -98,5 +99,11 @@ public class FmodAudioTable : MonoBehaviour
                 }
         }
         return FMOD.RESULT.OK;
+    }
+
+    public void StopDialogue(string key)
+    {
+        // No se si necesitas el key como parametros, pero ahi lo mando
+        // Debes tener en cuenta que puede que se de el caso en el que intente detener un sonido cuando ya no esta sonando, para que lo manejes y evites cualquier bug
     }
 }
