@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3181195524798216648}
   - component: {fileID: 5501351017919826922}
   - component: {fileID: 8393948019073780414}
+  - component: {fileID: 4455225743149450188}
   m_Layer: 0
   m_Name: Particle System (1)
   m_TagString: Untagged
@@ -4887,6 +4888,37 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &4455225743149450188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980711663323748539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1608671877
+      Data2: 1296262007
+      Data3: 1926142625
+      Data4: -61677787
+    Path: event:/SFX/Enemies/Guardianes/YahuarGround
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 1
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 30
 --- !u!1 &1936958173157259935
 GameObject:
   m_ObjectHideFlags: 0
@@ -5004,6 +5036,7 @@ GameObject:
   - component: {fileID: 179564535627644559}
   - component: {fileID: 4231838214878954295}
   - component: {fileID: 387156533205225842}
+  - component: {fileID: -7450780544463511248}
   m_Layer: 0
   m_Name: PartichoqueGato
   m_TagString: Untagged
@@ -9833,6 +9866,37 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &-7450780544463511248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2724376666637954601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1608671877
+      Data2: 1296262007
+      Data3: 1926142625
+      Data4: -61677787
+    Path: event:/SFX/Enemies/Guardianes/YahuarGround
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 1
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 30
 --- !u!1 &4353882024102196515
 GameObject:
   m_ObjectHideFlags: 0
