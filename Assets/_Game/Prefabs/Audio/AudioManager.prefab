@@ -517,6 +517,20 @@ MonoBehaviour:
       Data3: 1034998667
       Data4: 988650528
     Path: event:/SFX/Player/Jump
+  <PlayerHurt>k__BackingField:
+    Guid:
+      Data1: -705272580
+      Data2: 1266367788
+      Data3: 1016667569
+      Data4: 802719312
+    Path: event:/SFX/Player/Hurt
+  <PlayerCharge>k__BackingField:
+    Guid:
+      Data1: -2055673429
+      Data2: 1201642722
+      Data3: -879804527
+      Data4: 628471370
+    Path: event:/SFX/Player/Charge
   <Teshemba1Attack>k__BackingField:
     Guid:
       Data1: -103276519
@@ -545,6 +559,27 @@ MonoBehaviour:
       Data3: -1582514006
       Data4: 169069012
     Path: event:/SFX/Enemies/Guardianes/Teshemba2Hurt
+  <Yahtu1Attack>k__BackingField:
+    Guid:
+      Data1: -1506986501
+      Data2: 1311948524
+      Data3: 952443792
+      Data4: 1560215209
+    Path: event:/SFX/Enemies/Guardianes/Yahtu1Attack
+  <Yahtu1Walking>k__BackingField:
+    Guid:
+      Data1: 451338507
+      Data2: 1085970516
+      Data3: 1336565927
+      Data4: -872419780
+    Path: event:/SFX/Enemies/Guardianes/Yahtu1Walk
+  <Yahtu1Hurt>k__BackingField:
+    Guid:
+      Data1: -1515275052
+      Data2: 1177382860
+      Data3: 785461122
+      Data4: 1322958145
+    Path: event:/SFX/Enemies/Guardianes/Yahtu2Hurt
   <Yahtu2Attack>k__BackingField:
     Guid:
       Data1: 1088151093
