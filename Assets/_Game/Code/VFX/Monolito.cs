@@ -13,6 +13,7 @@ public class Monolito : MonoBehaviour
     [ContextMenu("Romper")]
     public void Romper()
 	{
+        AudioManager.Instance.PlayOneShot(EventsManager.Instance.Monolito, this.transform.position);
         ControladorCamara.singleton.IniciarTemblor(0.5f, 0.2f);
         gmBueno.SetActive(false);
         gmFracturado.SetActive(true);

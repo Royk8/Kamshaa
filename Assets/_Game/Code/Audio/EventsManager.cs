@@ -66,6 +66,10 @@ public class EventsManager : MonoBehaviour
 
     [field: SerializeField] public EventReference StunSnapshot { get; private set; }
 
+    [field: Header("Elements")]
+
+    [field: SerializeField] public EventReference Monolito { get; private set; }
+
 
     public static EventsManager Instance { get; private set; }
     private void Awake()

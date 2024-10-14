@@ -23,6 +23,7 @@ public class MarcoSangre : MonoBehaviour
     public void IniciarEfecto(float tiempo)
     {
         StartCoroutine(EfectoSangre(tiempo));
+        AudioManager.Instance.PlayOneShot(EventsManager.Instance.PlayerHurt, this.transform.position);
     }
 
     private IEnumerator EfectoSangre(float tiempo)
