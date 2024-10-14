@@ -36,7 +36,14 @@ public class TextLocalizationFinder : MonoBehaviour
 
     public string GetText(string entry)
     {
-        return dialogsTable.GetEntry(entry).GetLocalizedString();
+        foreach (var item in dialogsTable.Values)
+        {
+            if (item.Key.StartsWith(entry))
+            {
+                return item.GetLocalizedString();
+            }
+        }
+        return null;
     }
 
 

@@ -105,6 +105,27 @@ MonoBehaviour:
     m_Localized: Obrigado, inseto.
     m_Metadata:
       m_Items: []
+  - m_Id: 1073854874763264
+    m_Localized: "Voc\xEA pode se mover rapidamente e investir.\nPara isso, pressione:
+      <EastController>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1076660625063936
+    m_Localized: "Agora voc\xEA tem o poder de atacar com energia.\nPressione: <WestController>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1076660625063937
+    m_Localized: 'Execute um salto duplo.
+
+      Quando estiver no ar, pressione
+      novamente: <SouthController>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1076660625063938
+    m_Localized: "Voc\xEA conseguiu as tr\xEAs Plumas Sagradas. Voc\xEA pode voltar
+      \xE0 Grande Videira para subir at\xE9 Wuam Luar."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

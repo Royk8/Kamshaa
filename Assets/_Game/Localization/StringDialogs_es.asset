@@ -105,6 +105,25 @@ MonoBehaviour:
     m_Localized: Gracias, insectote.
     m_Metadata:
       m_Items: []
+  - m_Id: 1073854874763264
+    m_Localized: "Puedes moverte r\xE1pidamente y embestir. \nPara hacerlo presiona:
+      <EastController>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1076660625063936
+    m_Localized: "Ahora tienes el poder de atacar con energ\xEDa. \nPresiona: <WestController>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1076660625063937
+    m_Localized: "Ejecuta un doble salto. \nCuando est\xE9s en el aire presiona nuevamente:
+      <SouthController>"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1076660625063938
+    m_Localized: Conseguiste las tres Plumas Sagradas. Puedes dirigirte de nuevo
+      a la Gran Liana para ascender a Wuam Luar.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

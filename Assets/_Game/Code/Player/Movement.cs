@@ -47,6 +47,7 @@ public class Movement : MonoBehaviour, IStuneable
 
     [Header("Others")]
     [Range(0f, 10f)]
+    public bool canFire;
     public float gravityMultiplier;
     public float groundCheckRadius = 0.2f;
     private bool isGrounded;
@@ -442,8 +443,17 @@ public class Movement : MonoBehaviour, IStuneable
         }
     }
 
+    public void GetFire()
+    {
+        canFire = true;
+    }
+
     public void Shoot(InputAction.CallbackContext context)
     {
+        if (!canFire)
+        {
+            return;
+        }
         animationsControl.Disparar();
         AudioManager.Instance.PlayOneShot(EventsManager.Instance.PlayerCharge,this.transform.position);
         StartCoroutine(ShootCoroutine(projectile.GetComponent<ProjectileController>().castingTime));
