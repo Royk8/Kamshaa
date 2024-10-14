@@ -11,8 +11,11 @@ public class EventsManager : MonoBehaviour
     [field: SerializeField] public EventReference PlayerDash { get; private set; }
     [field: SerializeField] public EventReference PlayerAttack { get; private set; }
     [field: SerializeField] public EventReference PlayerJump { get; private set; }
+    [field: SerializeField] public EventReference PlayerHurt { get; private set; }
 
-    
+    [field: SerializeField] public EventReference PlayerCharge { get; private set; }
+
+
 
     [field: Header("Guardianes")]
 

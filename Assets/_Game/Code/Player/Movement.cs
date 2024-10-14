@@ -445,6 +445,7 @@ public class Movement : MonoBehaviour, IStuneable
     public void Shoot(InputAction.CallbackContext context)
     {
         animationsControl.Disparar();
+        AudioManager.Instance.PlayOneShot(EventsManager.Instance.PlayerCharge,this.transform.position);
         StartCoroutine(ShootCoroutine(projectile.GetComponent<ProjectileController>().castingTime));
     }
 
