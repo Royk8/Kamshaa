@@ -37,6 +37,7 @@ public class CuelloLargo : Enemy, IDamageable, IStuneable
     private IEnumerator Attack()
     {
         isAttacking = true;
+        AudioManager.Instance.PlayOneShot(EventsManager.Instance.Yahuar2Attack, this.transform.position);
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
         alreadyTurned = false;
@@ -170,6 +171,7 @@ public class CuelloLargo : Enemy, IDamageable, IStuneable
         {
             ChangeState(States.Dead);
         }
+        AudioManager.Instance.PlayOneShot(EventsManager.Instance.Yahuar2Hurt, this.transform.position);
     }
 
     public void GetStunned(float duration)

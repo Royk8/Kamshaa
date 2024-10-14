@@ -85,6 +85,7 @@ namespace Giloc.Enemies
                 playerReached = false;
                 StartCoroutine(Die());
             }
+            AudioManager.Instance.PlayOneShot(EventsManager.Instance.TeshembaHurt, this.transform.position);
         }
 
         protected override void Attack()
@@ -110,6 +111,7 @@ namespace Giloc.Enemies
                 _currentTimeBetweenAttacks = minTimeBetweenAttacks * 5;
                 _attackCounter = 0;
             }
+            AudioManager.Instance.PlayOneShot(EventsManager.Instance.TeshembaAttack, this.transform.position);
         }
 
         protected override void CancelAttack()
@@ -221,6 +223,7 @@ namespace Giloc.Enemies
             healthBar.transform.parent.gameObject.SetActive(false);
 
             StartIdle();
+            AudioManager.Instance.PlayOneShot(EventsManager.Instance.TeshembaHurt, this.transform.position);
         }
         #endregion
     }

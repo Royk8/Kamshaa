@@ -100,6 +100,7 @@ public class Serpens : Enemy, IDamageable
     private IEnumerator Attack()
     {
         agent.speed = attackSpeed;
+        
         turnToTargetCo = StartCoroutine(TurnToTarget());
         followPlayerCo = StartCoroutine(FollowPlayerConstantly());
 
@@ -107,6 +108,7 @@ public class Serpens : Enemy, IDamageable
         yield return new WaitUntil(() => agent.remainingDistance <= attackRange);
 
         anim.SetTrigger("atacar");
+        AudioManager.Instance.PlayOneShot(EventsManager.Instance.Teshemba2Attack, this.transform.position);
         yield return new WaitForSeconds(animAttackDuration);
 
         StopCoroutine(followPlayerCo);
@@ -205,5 +207,6 @@ public class Serpens : Enemy, IDamageable
         {
             ChangeState(States.Dead);
         }
+        AudioManager.Instance.PlayOneShot(EventsManager.Instance.Teshemba2Hurt, this.transform.position);
     }
 }

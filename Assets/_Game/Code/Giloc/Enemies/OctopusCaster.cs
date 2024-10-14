@@ -60,6 +60,7 @@ namespace Giloc.Enemies
                 playerReached = false;
                 StartCoroutine(Die());
             };
+            AudioManager.Instance.PlayOneShot(EventsManager.Instance.Teshemba1Hurt, this.transform.position);
         }
 
         protected override void Attack()
@@ -68,6 +69,7 @@ namespace Giloc.Enemies
             {
                 cannon.MakeAttack(_playerTransform);
             }
+            AudioManager.Instance.PlayOneShot(EventsManager.Instance.Teshemba1Attack, this.transform.position);
         }
 
         protected override void CancelAttack()
@@ -134,6 +136,7 @@ namespace Giloc.Enemies
             if (metamorfosis != null)
                 metamorfosis.IniciarTransicion();
             StartIdle();
+            AudioManager.Instance.PlayOneShot(EventsManager.Instance.Teshemba1Hurt, this.transform.position);
         }
         #endregion
     }
