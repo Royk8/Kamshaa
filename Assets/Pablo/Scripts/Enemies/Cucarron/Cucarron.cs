@@ -29,6 +29,7 @@ public class Cucarron : Enemy, IDamageable, IStuneable
     private bool isCharging = false;
     private bool buried = true;
     private bool alreadyTurned = false;
+    private FMOD.Studio.EventInstance walking;
 
     private Vector3 initalPosition;
 
@@ -75,6 +76,7 @@ public class Cucarron : Enemy, IDamageable, IStuneable
     private IEnumerator Attack()
     {
         isAttacking = true;
+        AudioManager.Instance.PlayOneShot(EventsManager.Instance.Yahtu1Attack, this.transform.position);
         terminaCaminar.Invoke();
         iniciaCorrer.Invoke();
         float normalVelocity = agent.speed;
@@ -126,6 +128,9 @@ public class Cucarron : Enemy, IDamageable, IStuneable
         if (readyToMove)
         {
             iniciaCaminar.Invoke();
+            walking = AudioManager.Instance.NuevaInstancia(EventsManager.Instance.Yahtu1Walking);
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(walking, GetComponent<Transform>(), GetComponent<Rigidbody>());
+            walking.start();
             cucarronCollider.enabled = true;
             agent.SetDestination(target.position);
         }
@@ -138,6 +143,7 @@ public class Cucarron : Enemy, IDamageable, IStuneable
         if ((transform.position - initalPosition).magnitude < 0.7f)
         {
             terminaCaminar.Invoke();
+            walking.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             cucarronCollider.enabled = false;
             readyToMove = false;
             anim.SetBool("IsMoving", false);
@@ -183,6 +189,7 @@ public class Cucarron : Enemy, IDamageable, IStuneable
         {
             metamorfosis.AplicarEfectoStun();
         }
+        AudioManager.Instance.PlayOneShot(EventsManager.Instance.Yahtu1Hurt, this.transform.position);
     }
 
     public void GetStunned(float duration)
