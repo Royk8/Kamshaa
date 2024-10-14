@@ -9698,6 +9698,7 @@ Transform:
   m_Children:
   - {fileID: 6331015876019222415}
   - {fileID: 22037148293790573}
+  - {fileID: 5983198689799159134}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -142.838, z: 0}
 --- !u!198 &2556490791844719940
@@ -14495,3 +14496,55 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &8303280734005544773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5983198689799159134}
+  - component: {fileID: 5618132487506631723}
+  m_Layer: 0
+  m_Name: SonidoRayo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5983198689799159134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8303280734005544773}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7874242342618211483}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5618132487506631723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8303280734005544773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fae7fad92ec6a354aaf39f4605fefa74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Event>k__BackingField:
+    Guid:
+      Data1: 319810654
+      Data2: 1139806665
+      Data3: 364962701
+      Data4: 84440865
+    Path: event:/SFX/Enemies/Bosses/YahuarRayo
+  ps: {fileID: 2556490791844719940}
