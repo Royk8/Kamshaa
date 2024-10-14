@@ -70,7 +70,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 348186759249920
-    m_Localized: "Gracias, Teshemb\xE1, El Sanador."
+    m_Localized: "Gracias, Yaht\xFA, El Sabedor."
     m_Metadata:
       m_Items: []
   - m_Id: 348186796998656
@@ -94,7 +94,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 348186796998661
-    m_Localized: "Gracias, Yaht\xFA, El Sabedor."
+    m_Localized: "Gracias, Teshemb\xE1, El Sanador."
     m_Metadata:
       m_Items: []
   - m_Id: 348186796998662
@@ -106,12 +106,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1073854874763264
-    m_Localized: "Puedes moverte r\xE1pidamente y embestir. \nPara hacerlo presiona:
-      <EastController>"
+    m_Localized: "Puedes moverte r\xE1pidamente y embestir. A el precio de un poco
+      de tu energia.\nPara hacerlo presiona: <EastController>"
     m_Metadata:
       m_Items: []
   - m_Id: 1076660625063936
-    m_Localized: "Ahora tienes el poder de atacar con energ\xEDa. \nPresiona: <WestController>"
+    m_Localized: "Ahora tienes el poder de atacar a distancia gastando algo de tu
+      energ\xEDa. \nPresiona: <WestController>"
     m_Metadata:
       m_Items: []
   - m_Id: 1076660625063937

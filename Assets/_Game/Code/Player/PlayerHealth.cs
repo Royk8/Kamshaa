@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
@@ -43,8 +44,16 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     }
 
+    public void Heal (float value)
+    {
+        currentHealth += value;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        OnHealthChanged?.Invoke(currentHealth);
+    }
+
     private void Die()
     {
-        Debug.Log("Player died");
+        currentHealth = 0;
+        SceneManager.LoadScene("GameOver");
     }
 }
