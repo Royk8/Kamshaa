@@ -78,6 +78,15 @@ public class UIDialogueHandler : MonoBehaviour
             //Play fmod audio
             fmodAudioTable.PlayDialogue(key);
 
+            if (line.key.StartsWith("C2"))
+            {
+                Movement mov = inputAdapter.gameObject.GetComponent<Movement>();
+                if(mov != null)
+                {
+                    mov.extraJumps = 1;
+                }
+            }
+
             StartCoroutine(DisplayDialogueAnimation(line.text));
             //Debug.Log("Waiting for next message");
             yield return new WaitUntil(() => isNextMessage);
@@ -97,7 +106,7 @@ public class UIDialogueHandler : MonoBehaviour
         inputAdapter.OnNextMessage -= HandleOnNextMessage;
 
         TogglePanel(false);
-
+        
         OnDialogueEnd?.Invoke();
 
         yield return null;

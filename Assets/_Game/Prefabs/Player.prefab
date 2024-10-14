@@ -69,6 +69,9 @@ MonoBehaviour:
   defaultLayer:
     serializedVersion: 2
     m_Bits: 1
+  blockLayer:
+    serializedVersion: 2
+    m_Bits: 0
   playerModel: {fileID: 9017193530443090786}
   headPosition: {fileID: 1310862752596650323}
   inputAdapter: {fileID: 1350956863114062409}
@@ -82,7 +85,7 @@ MonoBehaviour:
   jumpForce: 6
   maxJumpTime: 0.2
   jumpCooldown: 0.2
-  extraJumps: 1
+  extraJumps: 0
   dashDistance: 10
   dashTime: 0.2
   dashCooldown: 0.6
