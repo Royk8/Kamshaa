@@ -11,6 +11,7 @@ public class Fuego : MonoBehaviour
     float velTiempo = 3f;
     public GameObject tomado;
     public float rango;
+    private FMOD.Studio.EventInstance evento;
 
     Vector3 posInicial;
     // Start is called before the first frame update
@@ -19,6 +20,9 @@ public class Fuego : MonoBehaviour
         particulas = GetComponent<ParticleSystem>();
         StartCoroutine(Buscar());
         posInicial = transform.position;
+        evento = AudioManager.Instance.NuevaInstancia(EventsManager.Instance.Fuego);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(evento, GetComponent<Transform>(), GetComponent<Rigidbody>());
+        evento.start();
     }
 
     public IEnumerator Buscar()
@@ -64,6 +68,7 @@ public class Fuego : MonoBehaviour
                 if (ph != null)
                     {
                     ph.Heal(10);
+                    evento.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                     }
                 Destroy(gameObject, 3);
 			}
@@ -78,4 +83,9 @@ public class Fuego : MonoBehaviour
 	{
         Gizmos.DrawWireSphere(transform.position, rango);
 	}
+
+    private void OnDestroy()
+    {
+        evento.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
 }

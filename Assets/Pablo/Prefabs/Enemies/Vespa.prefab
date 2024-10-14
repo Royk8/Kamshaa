@@ -88,7 +88,7 @@ MonoBehaviour:
   target: {fileID: 0}
   playerIsTheTarget: 1
   corrupted: 1
-  life: 5
+  life: 3
   agent: {fileID: 5399425745419031138}
   wayPoints: []
   turnCurveVelocity:
@@ -143,9 +143,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 1.5153532
   m_Direction: 1
-  m_Center: {x: 0, y: 1.6, z: 0}
+  m_Center: {x: 0, y: 1.3423233, z: 0}
 --- !u!195 &5399425745419031138
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -172,7 +172,7 @@ MonoBehaviour:
   target: {fileID: 0}
   playerIsTheTarget: 1
   corrupted: 1
-  life: 3
+  life: 4
   agent: {fileID: 1350280852645306323}
   wayPoints:
   - {fileID: 0}
