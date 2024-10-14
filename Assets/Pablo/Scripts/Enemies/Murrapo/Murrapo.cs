@@ -89,7 +89,7 @@ public class Murrapo : Enemy, IDamageable
     private IEnumerator Attack()
     {
         isAttacking = true;
-
+        AudioManager.Instance.PlayOneShot(EventsManager.Instance.Yahuar1Attack, this.transform.position);
         if (deactivateHitSphereCo != null)
             StopCoroutine(deactivateHitSphereCo);
 
@@ -232,5 +232,6 @@ public class Murrapo : Enemy, IDamageable
         {
             ChangeState(States.Dead);
         }
+        AudioManager.Instance.PlayOneShot(EventsManager.Instance.Yahuar1Hurt, this.transform.position);
     }
 }
