@@ -194,7 +194,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   mask:
     serializedVersion: 2
-    m_Bits: 257
+    m_Bits: 256
   hitSphere: {fileID: 6856412776113084316}
   anim: {fileID: 3494376564220257450}
   metamorfosis: {fileID: 6163678795404651939}

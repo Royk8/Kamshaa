@@ -13,6 +13,7 @@ namespace Giloc
         [SerializeField] protected float attackDistance;
         [SerializeField] protected ColliderDetecter colliderDecteter;
         [SerializeField] protected EnemyMovement enemyMovement;
+        [SerializeField] protected Metamorfosis metamorfosis;
         protected bool attackCanceled;
         protected float secondsSinceLastAttack;
         protected bool preparingAttack;
@@ -29,6 +30,8 @@ namespace Giloc
         protected abstract IEnumerator Die();
         public void ReceiveDamage(float value)
         {
+            if (metamorfosis != null)
+                metamorfosis.AplicarEfectoStun();
             TakeDamage(value);
         }
         #endregion
