@@ -664,6 +664,13 @@ MonoBehaviour:
       Data3: 1634735780
       Data4: 1201930524
     Path: event:/SFX/Enemies/Bosses/YahuarHurt
+  <YahuarRayo>k__BackingField:
+    Guid:
+      Data1: 319810654
+      Data2: 1139806665
+      Data3: 364962701
+      Data4: 84440865
+    Path: event:/SFX/Enemies/Bosses/YahuarRayo
   <StunSnapshot>k__BackingField:
     Guid:
       Data1: -385915217
@@ -671,6 +678,13 @@ MonoBehaviour:
       Data3: -1791678818
       Data4: 148491200
     Path: snapshot:/Stun
+  <Monolito>k__BackingField:
+    Guid:
+      Data1: 1795662238
+      Data2: 1136435486
+      Data3: -1851314754
+      Data4: -1583908144
+    Path: event:/SFX/PilarFall
 --- !u!1 &8931515058108950901
 GameObject:
   m_ObjectHideFlags: 0
