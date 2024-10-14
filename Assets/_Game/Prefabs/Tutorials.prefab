@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 500, y: -262.5}
-  m_SizeDelta: {x: 582, y: 94}
+  m_SizeDelta: {x: 800, y: 94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7674330873740753632
 CanvasRenderer:
@@ -78,7 +78,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Puedes moverte r\xE1pidamente y embestir. \nPara hacerlo presiona:"
+  m_Text: Conseguiste las tres Plumas Sagradas. Puedes dirigirte de nuevo a la Gran
+    Liana para ascender a Wuam Luar.
 --- !u!1 &3318901514601435862
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +170,7 @@ MonoBehaviour:
   conversationText: {fileID: 721612389007033742}
   image: {fileID: 6504492605264700025}
   lettersPerSecond: 10
-  conversationId: T1
+  conversationId: T4
   textLocalizationFinder: {fileID: 0}
   inputAdapter: {fileID: 0}
   xboxEast: {fileID: -1513250087, guid: 19a2b80866b8d75448d546e87b566d0e, type: 3}
@@ -277,7 +278,7 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 1
+  m_ChildControlWidth: 0
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0

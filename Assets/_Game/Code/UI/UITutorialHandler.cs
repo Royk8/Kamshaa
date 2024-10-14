@@ -27,8 +27,17 @@ public class UITutorialHandler : MonoBehaviour
 
     public void InitDialogue(string conversationId)
     {
+        Debug.Log("Buscando " +  conversationId);
         string line = textLocalizationFinder.GetText(conversationId);
+        Debug.Log("Encontrada: " + line);
+
         StartCoroutine(ShowDialogue(line));
+    }
+
+    private void SetTutorialText(string text)
+    {
+        conversationText.text = text;
+        Debug.Log("Text to display: " + text);
     }
 
     IEnumerator ShowDialogue(string line)
@@ -39,19 +48,23 @@ public class UITutorialHandler : MonoBehaviour
         Sprite sprite = null;
 
 
-
+        Debug.Log(line);
         //Get the seccion in the text between <>
         string[] split = line.Split('<', '>');
 
+        Debug.Log(split.Length);
+        Debug.Log(split[0]);
 
 
         if (split.Length < 2)
         {
             string text = split[0];
-            Debug.Log(split[1]);
-            conversationText.text = text;
+            SetTutorialText(text);
+            image.gameObject.SetActive(false);
             yield return new WaitForSeconds(displayTime);
 
+
+            image.gameObject.SetActive(true);
             dialoguePanel.SetActive(false);
             yield break;
         }
@@ -90,6 +103,7 @@ public class UITutorialHandler : MonoBehaviour
             }
         }
 
+        SetTutorialText(split[0]);
         image.sprite = sprite;
         yield return new WaitForSeconds(displayTime);
         dialoguePanel.SetActive(false);
