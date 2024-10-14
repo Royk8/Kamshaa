@@ -86,7 +86,7 @@ MonoBehaviour:
   jumpForce: 6
   maxJumpTime: 0.2
   jumpCooldown: 0.2
-  extraJumps: 1
+  extraJumps: 0
   dashDistance: 10
   dashTime: 0.2
   dashCooldown: 0.6

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
-using UnityEditor;
 using UnityEngine.UI;
 
 public class LocalizeDropdown : MonoBehaviour
@@ -31,14 +30,13 @@ public class LocalizeDropdown : MonoBehaviour
 
 public abstract class AddLocalizeDropdown
 {
-    [MenuItem("CONTEXT/Dropdown/Localize", false, 1)]
     private static void AddLocalizeComponent()
     {
         // add localize dropdown component to selected gameobject
-        GameObject selected = Selection.activeGameObject;
-        if (selected != null)
-        {
-            selected.AddComponent<LocalizeDropdown>();
-        }
+        //GameObject selected = Selection.activeGameObject;
+        //if (selected != null)
+        //{
+        //    selected.AddComponent<LocalizeDropdown>();
+        //}
     }
 }

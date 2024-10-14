@@ -11,9 +11,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Game/Scenes/Juego.unity
     guid: ae4cf7776e3a46d41bc6913b66424f8b
-  - enabled: 0
-    path: Assets/_Game/Scenes/MorionTest2.unity
-    guid: 4a13b2911ce140c4a982962706f3bb1b
+  - enabled: 1
+    path: Assets/_Game/Scenes/Intro.unity
+    guid: 5c04ad27e6be20f49959140a2e7ecb3e
+  - enabled: 1
+    path: Assets/_Game/Scenes/Creditos.unity
+    guid: df09e771ee1d3af47aa86d7776332b2e
+  - enabled: 1
+    path: Assets/_Game/Scenes/GameOver.unity
+    guid: ef201a90d3b45a54b8f1c5a4ede447c7
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 31fe7d2523db75240b8716312e55ff76, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: bb19f8dd6dbecd94888a5d74068c57cb, type: 2}
