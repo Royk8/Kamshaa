@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Game/Scenes/Creditos.unity
     guid: df09e771ee1d3af47aa86d7776332b2e
+  - enabled: 1
+    path: Assets/_Game/Scenes/GameOver.unity
+    guid: ef201a90d3b45a54b8f1c5a4ede447c7
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 31fe7d2523db75240b8716312e55ff76, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: bb19f8dd6dbecd94888a5d74068c57cb, type: 2}
