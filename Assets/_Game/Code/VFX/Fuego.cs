@@ -60,6 +60,11 @@ public class Fuego : MonoBehaviour
                 gt = Instantiate(tomado, transform.position, Quaternion.identity);
                 gt.transform.localScale = Vector3.one * 2;
                 this.enabled = false;
+                PlayerHealth ph = target.GetComponent<PlayerHealth>();
+                if (ph != null)
+                    {
+                    ph.Heal(10);
+                    }
                 Destroy(gameObject, 3);
 			}
 		}

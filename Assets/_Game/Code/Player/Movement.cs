@@ -62,6 +62,7 @@ public class Movement : MonoBehaviour, IStuneable
     private DashAttack dashAttack;
     private bool counter;
     private FMOD.Studio.EventInstance StunSnapshot;
+    private PlayerHealth playerHealth;
 
     private void Start()
     {
@@ -74,6 +75,7 @@ public class Movement : MonoBehaviour, IStuneable
         inputAdapter.ToggleInputs(true);
         animationsControl = GetComponent<AnimationsControl>();
         dashAttack = GetComponentInChildren<DashAttack>();
+        playerHealth = GetComponent<PlayerHealth>();
         startPosition = transform.position;
         StopGravityCoroutine(0.1f);
     }
@@ -435,6 +437,8 @@ public class Movement : MonoBehaviour, IStuneable
                 Vector3 thisFrameDirection = thisFramePosition - transform.position;
                 thisFrameDirection = VerifyPlaneOfMovement(new Vector2(thisFrameDirection.x, thisFrameDirection.z));
                 transform.Translate(thisFrameDirection);
+
+                playerHealth.SpendHealth(2);
                 yield return null;
             }
             isDashing = false;
@@ -454,6 +458,8 @@ public class Movement : MonoBehaviour, IStuneable
         {
             return;
         }
+        
+        playerHealth.SpendHealth(4);
         animationsControl.Disparar();
         AudioManager.Instance.PlayOneShot(EventsManager.Instance.PlayerCharge,this.transform.position);
         StartCoroutine(ShootCoroutine(projectile.GetComponent<ProjectileController>().castingTime));
