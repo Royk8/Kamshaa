@@ -83,4 +83,9 @@ public class Fuego : MonoBehaviour
 	{
         Gizmos.DrawWireSphere(transform.position, rango);
 	}
+
+    private void OnDestroy()
+    {
+        evento.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
 }
