@@ -38,7 +38,11 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+<<<<<<< Updated upstream
   m_IndirectSpecularColor: {r: 0.44692343, g: 0.49680978, b: 0.57501775, a: 1}
+=======
+  m_IndirectSpecularColor: {r: 0.44691968, g: 0.49680442, b: 0.57501656, a: 1}
+>>>>>>> Stashed changes
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15774,6 +15778,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8395364009384931656, guid: 88a9c553769ac21498e8d389b0e80e39, type: 3}
   m_PrefabInstance: {fileID: 393741152}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!4 &395290641 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5692585749369846028, guid: 07780895328bb0945b916c099a65dd5d, type: 3}
@@ -15926,6 +15931,12 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7020830107536977125, guid: 25d73d06eb7397a4fbaa7933d692fd5b, type: 3}
   m_PrefabInstance: {fileID: 398069645}
+=======
+--- !u!1 &395389625 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 193699498751373674, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
+  m_PrefabInstance: {fileID: 8393208088058541881}
+>>>>>>> Stashed changes
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &399178305
 PrefabInstance:
@@ -53309,104 +53320,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <Snapshot>k__BackingField.Path
-      value: snapshot:/Stun
+      propertyPath: <PlayerCharge>k__BackingField.Path
+      value: event:/SFX/Player/Charge
       objectReference: {fileID: 0}
     - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <PlayerJump>k__BackingField.Path
-      value: event:/SFX/Player/Jump
+      propertyPath: <PlayerCharge>k__BackingField.Guid.Data1
+      value: -2055673429
       objectReference: {fileID: 0}
     - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <PlayerAttack>k__BackingField.Path
-      value: event:/SFX/Player/Dash
+      propertyPath: <PlayerCharge>k__BackingField.Guid.Data2
+      value: 1201642722
       objectReference: {fileID: 0}
     - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <PlayerGround>k__BackingField.Path
-      value: event:/SFX/Player/Ground
+      propertyPath: <PlayerCharge>k__BackingField.Guid.Data3
+      value: -879804527
       objectReference: {fileID: 0}
     - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <StunSnapshot>k__BackingField.Path
-      value: snapshot:/Stun
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <Snapshot>k__BackingField.Guid.Data1
-      value: -385915217
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <Snapshot>k__BackingField.Guid.Data2
-      value: 1086401062
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <Snapshot>k__BackingField.Guid.Data3
-      value: -1791678818
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <Snapshot>k__BackingField.Guid.Data4
-      value: 148491200
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <PlayerJump>k__BackingField.Guid.Data1
-      value: -787306043
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <PlayerJump>k__BackingField.Guid.Data2
-      value: 1134183435
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <PlayerJump>k__BackingField.Guid.Data3
-      value: 1034998667
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <PlayerJump>k__BackingField.Guid.Data4
-      value: 988650528
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <PlayerAttack>k__BackingField.Guid.Data1
-      value: 1727604288
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <PlayerAttack>k__BackingField.Guid.Data2
-      value: 1197156805
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <PlayerAttack>k__BackingField.Guid.Data3
-      value: 1639740335
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <PlayerAttack>k__BackingField.Guid.Data4
-      value: -1560625949
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <PlayerGround>k__BackingField.Guid.Data1
-      value: -1098605894
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <PlayerGround>k__BackingField.Guid.Data2
-      value: 1165549960
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <PlayerGround>k__BackingField.Guid.Data3
-      value: -1228222564
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <PlayerGround>k__BackingField.Guid.Data4
-      value: -1471406598
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <StunSnapshot>k__BackingField.Guid.Data1
-      value: -385915217
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <StunSnapshot>k__BackingField.Guid.Data2
-      value: 1086401062
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <StunSnapshot>k__BackingField.Guid.Data3
-      value: -1791678818
-      objectReference: {fileID: 0}
-    - target: {fileID: 4214051659280163042, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
-      propertyPath: <StunSnapshot>k__BackingField.Guid.Data4
-      value: 148491200
+      propertyPath: <PlayerCharge>k__BackingField.Guid.Data4
+      value: 628471370
       objectReference: {fileID: 0}
     - target: {fileID: 9014065392305640399, guid: 1f07b8288cb02fb4d8956a92401a8045, type: 3}
       propertyPath: m_Name
@@ -82643,7 +82574,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1350956863114062409, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
   m_PrefabInstance: {fileID: 8393208088058541881}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 395389625}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65611eee467d9a947b19601259edba5b, type: 3}
@@ -88217,6 +88148,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1222550334535354625, guid: 0f978db4af939b147a0fe5feb8947cf6, type: 3}
+      propertyPath: attenuationObject
+      value: 
+      objectReference: {fileID: 395389625}
     - target: {fileID: 3246670456472857201, guid: 0f978db4af939b147a0fe5feb8947cf6, type: 3}
       propertyPath: objetivo
       value: 
