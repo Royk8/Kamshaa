@@ -13,6 +13,8 @@ public class ParticleFmod : MonoBehaviour
 
     public GameObject parent;
 
+    public bool playAtStart = false;
+
     private FMOD.Studio.EventInstance evento;
     void Start()
     {
@@ -21,18 +23,21 @@ public class ParticleFmod : MonoBehaviour
         }
         evento = AudioManager.Instance.NuevaInstancia(Event);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(evento, GetComponent<Transform>(), GetComponent<Rigidbody>());
+
+        if (playAtStart ) evento.start();
     }
     // Update is called once per frame
     void OnGUI()
     {
-        if (ps.isEmitting || parent.activeSelf)
+        if (ps.isStopped == false || parent.activeSelf)
         {
             evento.start();
+            Debug.LogWarning("fuego prendido");
         }
         
         if (ps.isEmitting == false || parent.activeSelf == false) 
         {
-
+            Debug.LogWarning("fuego apagado");
             evento.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
 

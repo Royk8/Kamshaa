@@ -70,6 +70,8 @@ public class EventsManager : MonoBehaviour
 
     [field: SerializeField] public EventReference Monolito { get; private set; }
 
+    [field: SerializeField] public EventReference Fuego { get; private set; }
+
 
     public static EventsManager Instance { get; private set; }
     private void Awake()
