@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 
 public class InputAdapter : MonoBehaviour
 {
-    public bool isInputActive { get; private set;  }
-    public bool isUIActive { get; private set;  }
+    public bool isInputActive { get; private set; }
+    public bool isUIActive { get; private set; }
     private InputActionMap _playerActionsMap;
     private InputActionMap _UIActionsMap;
     private InputAction moveInput;
@@ -36,12 +36,12 @@ public class InputAdapter : MonoBehaviour
 
     private void HandleOnDash(InputAction.CallbackContext context)
     {
-        if(OnDash != null) OnDash.Invoke(context);
-    }    
-    
+        if (OnDash != null) OnDash.Invoke(context);
+    }
+
     private void HandleOnShoot(InputAction.CallbackContext context)
     {
-        if(OnShoot != null) OnShoot.Invoke(context);
+        if (OnShoot != null) OnShoot.Invoke(context);
     }
 
     private void HandleOnJumpUp(InputAction.CallbackContext context)
@@ -99,6 +99,12 @@ public class InputAdapter : MonoBehaviour
         test.performed += Testing;
     }
 
+    private IEnumerator Start()
+    {
+        yield return new WaitForSeconds(3f);
+        IsController();
+    }
+
     private void Testing(InputAction.CallbackContext context)
     {
         Debug.Log("Test Input");
@@ -119,7 +125,7 @@ public class InputAdapter : MonoBehaviour
 
     public void ToggleToUI(bool toggle)
     {
-        if(toggle)
+        if (toggle)
         {
             isUIActive = true;
             _playerActionsMap.Disable();
@@ -142,7 +148,7 @@ public class InputAdapter : MonoBehaviour
         isInputActive = toggle;
         //Debug.Log($"{(toggle ? "A" : "Dea")}ctivating the inputs");
 
-        if(toggle)
+        if (toggle)
         {
             jumpInputUp.performed += HandleOnJumpUp;
             jumpInputDown.performed += HandleOnJumpDown;
@@ -182,7 +188,7 @@ public class InputAdapter : MonoBehaviour
 
     public Vector2 GetMovement()
     {
-        if(!isInputActive)
+        if (!isInputActive)
         {
             return Vector2.zero;
         }
@@ -206,6 +212,16 @@ public class InputAdapter : MonoBehaviour
     private void OnDisable()
     {
         _playerActionsMap.Disable();
+    }
+
+
+    [ContextMenu("ControllerType")]
+    public bool IsController()
+    {
+        var control = jumpInput.controls[0].name;
+        if (control == null) return false;
+        if (control == "buttonSouth") return true;
+        return false;
     }
 
 }

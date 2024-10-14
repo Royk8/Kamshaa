@@ -44,7 +44,7 @@ Material:
     - _Distorision: -10
     - _Saturacion: 0.33
     - _b: 0.1
-    - _g: 0.1
+    - _g: 0.7
     - _r: 0.1
     m_Colors: []
   m_BuildTextureStacks: []

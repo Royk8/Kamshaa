@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Mantis : MonoBehaviour, IDamageable
@@ -65,6 +66,9 @@ public class Mantis : MonoBehaviour, IDamageable
     public float minWanderingTime;
     public float maxWanderingTime;
     private Transform actualDestination;
+
+    [Header("Death")]
+    public UnityEvent onDeath;
 
     private void Start()
     {
@@ -316,6 +320,7 @@ public class Mantis : MonoBehaviour, IDamageable
                 dialogue.ActivateDialogue();
             }
 
+            onDeath?.Invoke();
             monolito.Romper();
             healthBar.transform.parent.gameObject.SetActive(false);
             vfxAnim.Visibilizar();

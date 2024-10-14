@@ -105,6 +105,30 @@ MonoBehaviour:
     m_Localized: Thank you, insect.
     m_Metadata:
       m_Items: []
+  - m_Id: 1073854874763264
+    m_Localized: 'You can move quickly and dash.
+
+      To do so, press: <EastController>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1076660625063936
+    m_Localized: 'Now you have the power to attack with energy.
+
+      Press: <WestController>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1076660625063937
+    m_Localized: 'Perform a double jump.
+
+      When you''re in the air, press again:
+      <SouthController>'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1076660625063938
+    m_Localized: You have obtained the three Sacred Feathers. You can head back to
+      the Great Vine to ascend to Wuam Luar.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
