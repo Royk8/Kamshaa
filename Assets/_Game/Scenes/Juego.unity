@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692343, g: 0.49680978, b: 0.57501775, a: 1}
+  m_IndirectSpecularColor: {r: 0.44691968, g: 0.49680442, b: 0.57501656, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -78270,7 +78270,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1889134617}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Monolitos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88701,6 +88701,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7072071362908108477, guid: 14a03605607a10f42905734fc9ff9ce2, type: 3}
+      propertyPath: dialogueID
+      value: C1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7072071362908108477, guid: 14a03605607a10f42905734fc9ff9ce2, type: 3}
       propertyPath: dialogueHandler
       value: 
       objectReference: {fileID: 1520625967}
@@ -89188,9 +89192,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9039992414470757265, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
+      propertyPath: blockLayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 9039992414470757265, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
       propertyPath: floorDetectorPlane
       value: 
       objectReference: {fileID: 790923358}
+    - target: {fileID: 9039992414470757265, guid: b10e3098f8d7ce945a9549b3bad7b77e, type: 3}
+      propertyPath: defaultLayer.m_Bits
+      value: 513
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
