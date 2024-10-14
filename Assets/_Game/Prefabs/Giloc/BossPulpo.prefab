@@ -343,18 +343,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90bb5027e92fd5f4584b451f8ab86b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifePoints: 10
+  lifePoints: 25
   attackPreparationTime: 0.1
   minTimeBetweenAttacks: 0.8
   attackDistance: 11
   colliderDecteter: {fileID: 991070641826502498}
   enemyMovement: {fileID: 2641327341149300116}
+  metamorfosis: {fileID: 3448157311189664891}
   cannons:
   - {fileID: 8731725678515536706}
   - {fileID: 3777175989261380803}
   - {fileID: 6638116840750358203}
   - {fileID: 282683930224943086}
   parabolicCannon: {fileID: 7766317325190066886}
+  monolito: {fileID: 0}
 --- !u!114 &2641327341149300116
 MonoBehaviour:
   m_ObjectHideFlags: 0

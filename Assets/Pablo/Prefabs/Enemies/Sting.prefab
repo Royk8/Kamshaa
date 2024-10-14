@@ -53,6 +53,7 @@ MonoBehaviour:
   damage: 5
   disableDelay: 4
   creator: {fileID: 0}
+  trail: {fileID: 1508756665297798872}
 --- !u!54 &7739970211646134588
 Rigidbody:
   m_ObjectHideFlags: 0

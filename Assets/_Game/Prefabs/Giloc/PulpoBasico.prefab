@@ -230,6 +230,7 @@ MonoBehaviour:
   attackDistance: 7
   colliderDecteter: {fileID: 1113734087501733125}
   enemyMovement: {fileID: 986517713855385923}
+  metamorfosis: {fileID: 7305791941854109876}
   cannons:
   - {fileID: 3263429673191752605}
 --- !u!114 &986517713855385923
