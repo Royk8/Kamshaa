@@ -40,6 +40,7 @@ public class TextLocalizationFinder : MonoBehaviour
         {
             if (item.Key.StartsWith(entry))
             {
+                Debug.Log(item.LocalizedValue);
                 return item.GetLocalizedString();
             }
         }

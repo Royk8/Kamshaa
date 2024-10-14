@@ -39,11 +39,20 @@ public class UITutorialHandler : MonoBehaviour
         Sprite sprite = null;
 
 
+
         //Get the seccion in the text between <>
         string[] split = line.Split('<', '>');
 
+
+
         if (split.Length < 2)
         {
+            string text = split[0];
+            Debug.Log(split[1]);
+            conversationText.text = text;
+            yield return new WaitForSeconds(displayTime);
+
+            dialoguePanel.SetActive(false);
             yield break;
         }
 
@@ -82,9 +91,6 @@ public class UITutorialHandler : MonoBehaviour
         }
 
         image.sprite = sprite;
-        string text = split[0];
-        Debug.Log(split[1]);
-        conversationText.text = text;
         yield return new WaitForSeconds(displayTime);
         dialoguePanel.SetActive(false);
     }

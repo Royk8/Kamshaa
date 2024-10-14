@@ -10,6 +10,10 @@ public class OnTriggerEvent : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Player"))
+        {
+            return;
+        }
         if (manyTimesLeft <= 0) return;
         onTriggerEnter?.Invoke();
         manyTimesLeft--;
