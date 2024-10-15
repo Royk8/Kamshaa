@@ -106,13 +106,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1073854874763264
-    m_Localized: 'You can move quickly and dash.
+    m_Localized: 'You can move quickly and dash, at the cost of some of your energy.
 
-      To do so, press: <EastController>'
+      To
+      do so, press: <EastController>'
     m_Metadata:
       m_Items: []
   - m_Id: 1076660625063936
-    m_Localized: 'Now you have the power to attack with energy.
+    m_Localized: 'Now you have the power to attack from a distance, using some of
+      your energy.
 
       Press: <WestController>'
     m_Metadata:

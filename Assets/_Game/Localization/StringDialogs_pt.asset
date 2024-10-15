@@ -106,12 +106,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1073854874763264
-    m_Localized: "Voc\xEA pode se mover rapidamente e investir.\nPara isso, pressione:
-      <EastController>"
+    m_Localized: "Voc\xEA pode se mover rapidamente e investir, ao custo de um pouco
+      da sua energia.\nPara isso, pressione: <EastController>"
     m_Metadata:
       m_Items: []
   - m_Id: 1076660625063936
-    m_Localized: "Agora voc\xEA tem o poder de atacar com energia.\nPressione: <WestController>"
+    m_Localized: "Agora voc\xEA tem o poder de atacar \xE0 dist\xE2ncia, gastando
+      um pouco da sua energia.\nPressione: <WestController>"
     m_Metadata:
       m_Items: []
   - m_Id: 1076660625063937
