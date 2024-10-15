@@ -46,8 +46,8 @@ public class Movement : MonoBehaviour, IStuneable
     private float dashStarted;
 
     [Header("Others")]
-    [Range(0f, 10f)]
     public bool canFire;
+    [Range(0f, 10f)]
     public float gravityMultiplier;
     public float groundCheckRadius = 0.2f;
     private bool isGrounded;

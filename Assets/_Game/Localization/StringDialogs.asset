@@ -32,7 +32,7 @@ MonoBehaviour:
         - rid: 1678124375521624102
         - rid: 1678124375521624103
         - rid: 1678124375521624104
-        m_ConnectedFile: D:/Downloads/Tabla de conversaciones - Hoja 1 (5).csv
+        m_ConnectedFile: D:/Downloads/Tabla de conversaciones - Hoja 1 (6).csv
     - rid: 1678124375521624101
       type: {class: KeyIdColumns, ns: UnityEditor.Localization.Plugins.CSV.Columns, asm: Unity.Localization.Editor}
       data:

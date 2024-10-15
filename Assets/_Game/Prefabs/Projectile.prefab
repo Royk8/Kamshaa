@@ -53,7 +53,7 @@ MonoBehaviour:
   timeBeforeDestroy: 5
   speed: 10
   damage: 1
-  castingTime: 0.45
+  castingTime: 0.1
   cooldown: 1
   energyCost: 1
   piso:
