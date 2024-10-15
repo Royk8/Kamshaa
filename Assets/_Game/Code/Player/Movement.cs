@@ -337,7 +337,7 @@ public class Movement : MonoBehaviour, IStuneable
             return;
         }
 
-        if (!inputAdapter.isInputActive)
+        if (!inputAdapter.isInputActive && isGrounded)
         {
             return;
         }
